@@ -1,0 +1,136 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: -15px;">
+        <div class="col-md-12">
+            <div class="card-header"
+                style="background-color: #5e85c2;color: white;font-weight: 500;border-radius: 5px;height: 70px;">
+                <div class="row">
+                    <div class="col-md-1" class="circle" style="background-color: transparent;"></div>
+                    <div class="col-md-3">
+                        <span>Welcome <label style="text-transform: uppercase;">{{DepartmentUser}}</label></span><br>
+                        <span style="text-transform: uppercase;">{{DepartmentUserDesignation}}- {{deptData.sroname}}</span>
+                    </div>
+                    <Span class="mx-1">
+                        <img src="assets/img/avatars/line.png">
+                    </Span>
+                    <div class="col-md-4">
+                        <!-- <span>LAST LOGIN :</span><br>
+                        <span>12TH OCTOBER 2021 8.34AM</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: 15px;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color: transparent;color: black;font-weight: 600;">
+                    <span>Verified Applications for SDA/FDA</span>
+                </div>
+                <div class="card-body" class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="allocated" #allocatedsorter="matSort" matSort>
+                        <ng-container matColumnDef="Action">
+                            <mat-header-cell *matHeaderCellDef class="col-sm-3">
+                                Action </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3">
+                                <button type="button" style="background-color: #0a429b;border-color:transparent"
+                                    (click)="onClick(element);" class="btn btn-primary px-4 mr-5">View</button>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="sno">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1"> S.No.
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.sno}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="applicationNum">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Application Number
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-2"> {{element.applicationNum}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="applicationDate">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1">Date</mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.applicationDate}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="serviceName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">Application Type
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3" style="text-align: start !important">
+                                {{element.serviceName}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="currentStatus">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3"> SDA/FDA
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3">{{element.username}}
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns1"
+                            style="background-color: #707070;color: white;"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns1;"
+                            [hidden]="row.applicationNum == null"></mat-row>
+                    </mat-table><br>
+                    <mat-paginator #allocatedPaginator [pageSizeOptions]="[10, 20, 30, 40]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: 15px;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color: transparent;color: black;font-weight: 600;">
+                    <span>Registered Applications from DEO</span>
+                </div>
+                <div class="card-body" class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="regApplications" #regAppsSorter="matSort" matSort>
+                        <ng-container matColumnDef="Action">
+                            <mat-header-cell *matHeaderCellDef class="col-sm-3">
+                                Action </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3">
+                                <button type="button" style="background-color: #0a429b;border-color:transparent"
+                                    (click)="onRegisteredAppCTA(element);"
+                                    class="btn btn-primary px-4 mr-5">View</button>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="sno">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1"> S.No.
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.sno}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="applicationNum">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Application Number
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-2"> {{element.applicationNum}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="applicationDate">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1">Date</mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.applicationDate}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="serviceName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">Application Type
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3" style="text-align: start !important">
+                                {{element.serviceName}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="currentStatus">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3"> DEO
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3">{{element.deoName}}
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns1"
+                            style="background-color: #707070;color: white;"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns1;"
+                            [hidden]="row.applicationNum == null"></mat-row>
+                    </mat-table><br>
+                    <mat-paginator #regAppsPaginator [pageSizeOptions]="[10, 20, 30, 40]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

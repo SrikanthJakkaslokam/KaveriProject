@@ -1,0 +1,33 @@
+<div class="top-section my-5" [formGroup]="cancelCourtOrderForm">
+  <div class="text-padding">
+    <div class="step1">
+      <p class="title-border">Cancel Court Order</p>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <p class="sub-text font-black">ORDER NUMBER*</p>
+        <input class="form-control custom-input" placeholder="value" formControlName="orderNumber"/>
+      </div>
+      <div class="col-md-3 mb-3">
+        <p class="sub-text font-black">ISSUING AUTHORITY*</p>
+        <input class="form-control custom-input" placeholder="value" formControlName="issuingAuthority" />
+      </div>
+      <!-- <div class="col-md-3 mb-3">
+        <p class="sub-text font-black">REGISTRATION ARTICLE**</p>
+        <input class="form-control custom-input" placeholder="value" />
+      </div> -->
+      <div class="col-md-3 mb-3">
+        <p class="sub-text font-black">DATE OF CANCELLATION</p>
+        <input class="form-control custom-input" type="date" placeholder="value" formControlName="cancellationDate" />
+      </div>
+      <div class="col-md-12 mb-3">
+        <p class="sub-text font-black">REMARKS*</p>
+        <input class="form-control custom-input" style="height: 120px;" placeholder="value" formControlName="cancellationRemarks" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="schedule-actions d-flex justify-content-center pb-4">
+  <button class="btn s-btn" (click)="saveCTA()">Save</button>
+  <button class="btn p-btn" (click)="cancelCTA()">Cancel</button>
+</div>

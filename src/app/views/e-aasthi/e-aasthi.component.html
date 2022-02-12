@@ -1,0 +1,496 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 59px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/non-agricultural-search"><br>
+                    </div>
+                    <div>
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <img src="assets/img/avatars/e-e.png">
+                    </div>
+                        <!-- <div class="form-group col-sm-8">
+                            <div class="row">
+                                <div class="form-group col-sm-5"></div>
+                                <div id="container">
+                                    <dx-popup
+                                    [width]="800"
+                                    [height]="300"
+                                    [dragEnabled]="false"
+                                    [closeOnOutsideClick]="true"
+                                    [showCloseButton]="false"
+                                    container=".dx-viewport"
+                                    [(visible)]="popupVisible">
+                                   
+                                   
+                                    <dxo-position
+                                        at="center"
+                                        my="center"
+                                        [of]="positionOf">
+                                    </dxo-position>
+                                    <div *dxTemplate="let data of 'content'">
+                                      <div class="row">
+                                        <div class="col-md-4">
+                                          <br><br>
+                                            <img src="assets/img/avatars/yay.png">
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-7">
+                                            <br><br>
+                                            <img src="assets/img/avatars/yay!.png"><br><br><br>
+                                            <div style="text-align: center;">
+                                              <button type="button" class="btn btn-primary px-4" routerLink="/view-e-aasthi" style="background-color: #0a429b;">View Property</button>
+                                         </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </dx-popup>
+                            </div>
+                            </div> -->
+                            <form class="form-horizontal" [formGroup]="kaveriForm" (ngSubmit)="onSubmit1()">
+                              <!-- <div style="margin-top: 100px;"> -->
+                              <div class="row" style="margin-top: 30px;">
+                                <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                               
+                                <div class="form-group col-md-2" style="margin-left: -20px;">
+                                  <label for="district">DISTRICT</label>
+                                  <select type="text" name="district" class="form-control" formControlName="district"
+                                    [(ngModel)]="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"
+                                    (change)="ondistrictChange($event)" required
+                                    [ngClass]="{ 'is-invalid': submitted && f.district.errors }">
+                                    <option disabled readonly>Select District</option>
+                                    <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.district.errors" class="invalid-feedback">
+                                    <div *ngIf="f.district.errors.required">District is required</div>
+                                  </div>
+                                </div>
+                                <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                <div class="form-group col-md-2" style="margin-left: 60px;">
+                                  <label for="taluka">TALUKA</label>
+                                  <select type="text" name="taluka" class="form-control" formControlName="taluka"
+                                    [(ngModel)]="selectedtalukvalue" (ngModelChange)="ontalukValuechange($event)"
+                                    (change)="ontalukaChange($event)" required
+                                    [ngClass]="{ 'is-invalid': submitted && f.taluka.errors }">
+                                    <option disabled readonly>Select Taluka</option>
+                                    <option *ngFor="let d of talukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                                    <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                                  </div>
+                                </div>
+                                <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                <div class="form-group col-md-2" style="margin-left: 60px;">
+                                  <label for="hobli">HOBLI</label>
+                                  <select type="text" name="hobli" class="form-control" formControlName="hobli"
+                                    [(ngModel)]="selectedhoblivalue" (ngModelChange)=" onhobliValuechange($event)"
+                                    (change)="onhobliChange($event)" required
+                                    [ngClass]="{ 'is-invalid': submitted && f.hobli.errors }">
+                                    <option disabled readonly>Select Hobli</option>
+                                    <option *ngFor="let d of hobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                                    <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                                  </div>
+                                </div>
+                                <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                <div class="form-group col-md-2" style="margin-left: 60px;">
+                                  <label for="village">INDEX II: VILLAGE</label>
+                                  <select type="text" name="village" class="form-control" formControlName="village"
+                                    [(ngModel)]="selectedvillagevalue" (change)="getRoadDetails($event)" required
+                                    [ngClass]="{ 'is-invalid': submitted && f.village.errors }">
+                                    <option disabled readonly>Select Index II: Village</option>
+                                    <option *ngFor="let d of villageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                                    <div *ngIf="f.village.errors.required">Village is required</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row" style="margin-top: 30px;">
+                                <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                                <div class="form-group col-md-2" style="margin-left: -20px;">
+                                  <label for="road">ROAD</label>
+                                  <select type="text" name="road" class="form-control" formControlName="road"
+                                    [(ngModel)]="selectedroadvalue" required
+                                    [ngClass]="{ 'is-invalid': submitted && f.road.errors }">
+                                    <option disabled readonly>Select road</option>
+                                    <option *ngFor="let d of roadList" [value]="d.roadcode"> {{d.roadnamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.road.errors" class="invalid-feedback">
+                                    <div *ngIf="f.road.errors.required">road is required</div>
+                                  </div>
+                                </div>
+            
+                              
+
+
+                              <div class="form-group col-md-2" style="margin-left: 60px;">
+                                <label for="pid">PID NO:</label>
+                                <input type="text" class="form-control" placeholder="Value"
+                                  formControlName="pid" (input)="checkPidNumber()" required
+                                  [ngClass]="{ 'is-invalid': submitted && f.pid.errors }" required>
+                                <div *ngIf="submitted && f.pid.errors" class="invalid-feedback">
+                                  <div *ngIf="f.pid.errors.required">pid Number is required</div>
+                                </div>
+                              </div>
+                            </div>
+                              <br>
+                              <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                  (click)="onSubmit()" [disabled]="!isPidNo">Search</button>
+                              </div><br><br><br>
+                              </form>
+                              <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;" *ngIf="propertyIdNumber && propertyIdNumber!=''">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                       
+                                        <div class="card-body">
+                                            <!-- <div>
+                                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/e-aasthi"><br>
+                                            </div>
+                                            <div>
+                                                <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                                                <img src="assets/img/avatars/view-property.png">
+                                            </div><br> -->
+                                            <div *ngIf="easthipdfData">
+                                              <div class="row m-5">
+                                                <div class="col-md-3">
+                                                  <span>PID NO. :</span>
+                                                  <h4 style="font-weight: 500">{{ propertyIdNumber }}</h4>
+                                                </div>
+                                                <div class="col-md-6"></div>
+                                                <div class="col-md-3" style="text-align: right; margin: auto">
+                                                  <!-- <img src="assets/img/icons/refresh.PNG" class="m-1" style="cursor: pointer;" /> -->
+                                                  <img src="assets/img/icons/download.PNG" (click)="SavePDF()" class="m-1" style="cursor: pointer;" />
+                                                  <img src="assets/img/icons/print.PNG" (click)="printForm15()" class="m-1" style="cursor: pointer;" />
+                                                </div>
+                                              </div>
+                                              <div class="row" id="eaasthiTable">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-8" id="form15Pdf">
+                                                         <div style="border: 1px solid black;">
+                                                <div style="text-align: center;">
+                                                    <div style="margin-top: 5px   ;">
+                                                    <img src="assets/img/avatars/government-of-karnataka-logo.png" alt="" width="100" height="100">
+                                                </div>
+                                                <h3>Government of Karnataka</h3>
+                                                <h2>Department of Stamps and Registration</h2>
+                                                </div>
+                                                </div>
+                                                <table border="1" style="width: 100%;border-collapse:collapse;">
+                                                    <!-- Kaveri Integration System -->
+                                                    <tr>
+                                                        <td colspan="4" style="text-align: center;"><h3>Kaveri Integration System</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Department</td>
+                                                        <td colspan="3">RDPR</td>
+                                                    </tr>
+                                                    <!-- Property Details -->
+                                                    <tr>
+                                                        <td colspan="4" style="text-align: center;"><h3>Property Details</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Property ID</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.propertyid:"-"}}</td>
+                                                        <td>Asset Number</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.assessmentnumber:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>District</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.districtname:"-"}}</td>
+                                                        <td>Blog</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.blockname:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Grampanchayat</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.grampanchayat:"-"}}</td>
+                                                        <td>Village</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.village:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Mulation Registration Number</td>
+                                                        <td></td>
+                                                        <td>Form Number</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.propertyform:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Property Category</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.propertycategory:"-"}}</td>
+                                                        <td>Property type</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.propertytype:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Site Area</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.sitearea:"-"}}</td>
+                                                        <td>Built up Area</td>
+                                                        <td>{{easthiresponse?easthiresponse.khathadetails.builtuparea:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Property classification</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.khathadetails.propertyclassification:"-"}}</td>
+                                                    </tr>
+                                                    <!-- Dimensions -->
+                                                    <tr>
+                                                        <td colspan="4" style="text-align: center;"><h3>Dimensions</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                <td>East To West</td>
+                                                <td>{{easthiresponse?easthiresponse.dimensions.dimension.easttowest:"-"}}</td>
+                                                <td>North To South</td>
+                                                <td>{{easthiresponse?easthiresponse.dimensions.dimension.northtosouth:"-"}}</td>
+                                                    </tr>
+                                                    <!-- Property Description -->
+                                                    <tr>
+                                                        <td colspan="4" style="text-align: center;"><h3>Property Description</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>South Boundary</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.khathadetails.checkbandi_south:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>North Boundary</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.khathadetails.checkbandi_north:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>East Boundary</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.khathadetails.checkbandi_east:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>West Boundary</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.khathadetails.checkbandi_west:"-"}}</td>
+                                                    </tr>
+                                                    <!-- Owner Details -->
+                                                    <tr>
+                                                        <td colspan="4" style="text-align: center;"><h3>Owner Details</h3></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Owner Name</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.ownerdetails.owner.ownername:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Address</td>
+                                                        <td colspan="3" style="text-transform: uppercase;">{{easthiresponse?easthiresponse.ownerdetails.owner.owneraddress:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Identifiertype</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.ownerdetails.owner.identifiertype:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>IdentifierName</td>
+                                                        <td colspan="3" style="text-transform: uppercase;">{{easthiresponse?easthiresponse.ownerdetails.owner.identifiername:"-"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Occupant</td>
+                                                        <td colspan="3">{{easthiresponse?easthiresponse.ownerdetails.owner.identificationdocument:"-"}}</td>
+                                                    </tr>
+                                                </table>  
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                              </div>
+                                                                           
+                                
+                                    
+                                            </div>
+                                            <!-- <br><br> -->
+                                            <!-- <iframe id="pdfViewer" width="100%" height="1300px" ></iframe>
+                                            {{pdf}}
+                                            <br><br>                               -->
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="eaasthidata && eaasthidata.length">
+                              <table class="table table-bordered" width="100%">
+                                <tr class="bg-primary">
+                                  <td colspan="5" class="text-white" style="background-color: #093172;">Results:</td>
+                              </tr>
+                                <tr class="text-center">
+                                    <td>S.No.</td>
+                                    <td>Property Id</td>
+                                    <td>Seller Name</td>
+                                    <td>Property Description</td>
+                                    <td>Total Area</td>
+                                </tr>
+                                
+                               <tr class="text-center">
+                                <td>1</td>
+                                <td>{{eaasthidata[0] && eaasthidata[0].propertyid?eaasthidata[0].propertyid:"-"}}</td>
+                                <td>{{eaasthidata[0] && eaasthidata[0].ownername?eaasthidata[0].ownername:"-"}}</td>
+                                <td>{{eaasthidata[0] && eaasthidata[0].propertydescription?eaasthidata[0].propertydescription:"-"}}</td>
+                                <td>{{eaasthidata[0].totalArea?eaasthidata[0].totalArea:"-"}} Sq meter</td>
+                               </tr>
+                            </table>
+                            </div>
+                              <!-- <div class="row" style="margin-left: -80px;" *ngIf="eaasthidata && eaasthidata.length">
+
+                                <dx-data-grid #grid id="grid-container" [dataSource]="eaasthidata" [showBorders]="true">
+                                  <dxi-column dataField="" caption="Results-" [groupIndex]="0" [width]="180"></dxi-column>
+                                  <dxi-column dataField="sno" alignment="center" caption="S.No." [width]="50"></dxi-column>
+                                  <dxi-column dataField="propertyid" alignment="center" caption="Property ID." [width]="200"></dxi-column>
+                                  <dxi-column dataField="propertydescription" alignment="center" caption="Property Description" [width]="200"></dxi-column>
+                                  <dxi-column dataField="buyername" alignment="center" caption="Buyer Name" [width]="300"></dxi-column>
+                                  <dxi-column dataField="ownername" alignment="center" caption="Seller Name" [width]="300"></dxi-column>
+                                  <dxi-column dataField="dateoftransaction" alignment="center" caption="Date Of Transaction" [width]="300"></dxi-column>
+                                  <div *dxTemplate="let data of 'cellTemplate'">
+                                    <div class="dx-field">
+                                      <div class="dx-field-label">Checked</div>
+                                      <div class="dx-field-value">
+                                          <dx-check-box [value]="false" alignment="center"></dx-check-box>
+                                      </div>
+                                  </div>
+                                </div>
+                          
+                                  <dxo-load-panel [enabled]="true">
+                                  </dxo-load-panel>
+                          
+                                </dx-data-grid><br>
+                          
+                              </div> -->
+                              <div *ngIf="eaasthidata && eaasthidata.length">
+                                  <div class="container-fluid" style="margin-bottom: -5px;" *ngFor="let item of propertyLength;index as i">
+                                <div class="row">
+                                  <div class="col-md-4">PROPERTY NUMBER TYPE
+                                    <div>
+                                        <select type="text" name="article" class="form-control" formControlName="propertyNumber"  (change)="onProperNumberTypeChange($event,i)"
+                                      required [ngClass]="{ 'is-invalid': submitted && f.article.errors }">
+                                      <option disabled readonly>Select article</option>
+                                      <option *ngFor="let d of propertyData" [value]="d.propertytypeid"> {{d.typeNameEnglish}}</option>
+                                      </select>
+                                      
+                                      
+                                    </div>
+                                    
+                                  </div>
+                                  
+                                  <div class="col-md-4">PRESENT PROPERTY NUMBERS DETAILS
+                                    <div>
+                                    <input type="text" name="presentProperty" (blur)="onKeyup($event,i)" class="form-control" placeholder="value">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4"><br><button type="button" class="btn btn-primary" (click)="deleteRow(i)">Delete</button></div>
+                                </div><br>
+                                
+                              </div>
+                              </div>
+                            
+                              <div *ngIf="eaasthidata && eaasthidata.length" style="color: #0a429b;font-weight: bold;" (click)="addMore()">+Add more details</div>
+                              <div style="text-align: center;" *ngIf="eaasthidata && eaasthidata.length">
+                                <button type="button" class="btn btn-primary px-4" (click)="continueSearch()"
+                                  style="background-color: #0a429b;">Select and Continue</button>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+        </div>
+    </div>
+      
+      </div>
+  </main>
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

@@ -1,0 +1,988 @@
+<main>
+
+
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;" *ngIf="NonAgriMarketvaluation">
+
+        <div class="animated fadeIn">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"
+                                    
+                            (click)="closePop()"><br>
+                            </div>
+                            <div>
+                                <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                                <img src="assets/img/avatars/MarketValuetion.png">
+                            </div><br><br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="animated fadeIn">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <br />
+                            <div class="row">
+                                <div>
+                                    <label class="unselectable"
+                                        style="cursor: pointer; padding-left: 10px; font-weight: bold;"
+                                        (click)="Backbuttonclicks()">
+                                        < &nbsp;&nbsp;&nbsp; </label><br>
+                                </div>
+                                <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF
+                                    {{numofprop}}</label><br>
+                                <div>
+                                    <label class="unselectable" style="cursor: pointer; font-weight: bold;"
+                                        (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="village" style="font-weight: bold;">INDEX II: VILLAGE :
+                                        {{vilLage}}</label>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <!-- <img src="assets/img/avatars/Input@3x.png" style = "width: 133px;"> -->
+                                    <label style="font-size: 16px;font-weight: bold;">Property Usage</label><br>
+                                    <label style="font-size: 16px;font-weight: bold;">NON-AGRICULTURAL</label>
+                                </div>
+                                <div class="form-group col-md-1"></div>
+                                <div class="form-group col-md-2">
+                                    <label for="units" style="font-size: 14px;font-weight: bold;">Property Type</label>
+                                    <select type="text" name="Units" class="form-control"
+                                        (change)="onPropertyTypeValuechange($event)" required>
+                                        <!-- <option selected disabled readonly>Value</option> -->
+                                        <option *ngFor="let p of propertytype" [value]="p.propertytypename">
+                                            {{p.propertytypename}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-1"></div>
+                                <div class="form-group col-md-2">
+                                    <label for="totalArea" style="font-size: 14px;font-weight: bold;">Total
+                                        Area</label><br>
+                                    <label style="font-size: 16px;font-weight: bold;">{{Unitcode}} SQ.M</label>
+                                </div>
+                                <div class="form-group col-md-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="animated fadeIn">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body" *ngIf="VacantType">
+                            <!-- <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                -->
+                            <h1 style="font-size: 18px;font-weight: bold;">NON-AGRICULTURAL RATE DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                           margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Property Type</th>
+                                                            <th>Rate(₹/sq.Metre)</th>
+                                                            <th>Select</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let vacant of VacantPlotDetails; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td>{{vacant.propertytypename}}</td>
+                                                            <td>{{vacant.rate}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedPropertytypeRate(vacant);"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="VacantPlotDetails[i].checked"
+                                                                    [checked]="vacant.checked"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="BuildingType">
+                            <!-- <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                -->
+                            <h1 style="font-size: 18px;font-weight: bold;">BUILDING RATE DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                           margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Property Type</th>
+                                                            <th>Rate(₹/sq.Metre)</th>
+                                                            <th>Select</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let building of BuildingRateDetails; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td>{{building.propertytypename}}</td>
+                                                            <td>{{building.rate}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedBuilldingPropertytypeRate(building);"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="BuildingRateDetails[i].checked"
+                                                                    [checked]="building.checked"></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="FlatType">
+                            <!-- <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                -->
+                            <h1 style="font-size: 18px;font-weight: bold;">FLAT RATE DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                           margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Floor</th>
+                                                            <th>Property Type</th>
+                                                            <th>Amenities</th>
+                                                            <th>Rate(₹/sq.Metre)</th>
+                                                            <th>Select</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let flat of FlateRateDetails; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td>{{flat.floor}}</td>
+                                                            <td>{{flat.propertytype}}</td>
+                                                            <td>{{flat.amenities}}</td>
+                                                            <td>{{flat.rate}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedFlatPropertytypeRate(flat);"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="FlateRateDetails[i].checked"
+                                                                    [checked]="flat.checked"></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="animated fadeIn" *ngIf="BuildandFlatTypes">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card">
+                        <!-- <div class="card-body" *ngIf="BuildingConstructionType">
+                     
+                            <h1 style="font-size: 18px;font-weight: bold;">CONSTRUCTION TYPE DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                           margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Select</th>
+                                                            <th>Construction Type</th>
+                                                            <th>Ground Floor Area(sq.m)</th>
+                                                            <th>Above Floor Area(sq.m)</th>
+                                                            <th>Amount(₹)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let type of ConstructionTypes; let i=index;">
+                                                            <td>{{i}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedConstructiontypes(type);" [disabled]="type.checked"
+                                                                    value="{{type.id}}" [(ngModel)]="type.checked"></td>
+                                                            <td>{{type.constructiontypenamee}}</td>
+                                                            <td><input type="text" [(ngModel)]="type.Groundfloor"
+                                                                    (change)="SelectedConstructiontypes(type);"></td>
+                                                            <td><input type="text" [(ngModel)]="type.Abovefloor"
+                                                                    (change)="SelectedConstructiontypes(type);"></td>
+                                                            <td>{{type.constructionTypeRate}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="card-body" *ngIf="BuildingConstructionType">
+                            <!-- <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                             -->
+                            <h1 style="font-size: 18px;font-weight: bold;">CONSTRUCTION TYPE DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                                        margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Select</th>
+                                                            <th>Construction Type</th>
+                                                            <th>Ground Floor Area(sq.m)</th>
+                                                            <th>Above Floor Area(sq.m)</th>
+                                                            <th>Amount(₹)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let type of ConstructionTypes; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedConstructiontypes(type);"
+                                                                    value="{{type.id}}"
+                                                                    [(ngModel)]="ConstructionTypes[i].checked"></td>
+                                                            <td>{{type.constructiontypenamee}}</td>
+                                                            <td><input type="text" [(ngModel)]="type.Groundfloor"
+                                                                    (change)="changestatus();"></td>
+                                                            <td><input type="text" [(ngModel)]="type.Groundfloor"
+                                                                (change)="changestatus();"></td>
+                                                            <td>{{type.constructionTypeRate}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="FlatApartmentType">
+                            <!-- <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                -->
+                            <h1 style="font-size: 18px;font-weight: bold;"> APARTMENT SPECIAL AMENITIES</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="
+                           margin-top: 22px;">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Description</th>
+                                                            <th>Select</th>
+
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr
+                                                            *ngFor="let amenities of ApartmentSpecialAmenities; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td>{{amenities.apartmentamenity}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (change)="SelectedApartmentSpecialAmenities(amenities);"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="ApartmentSpecialAmenities[i].checked"
+                                                                    [checked]="amenities.checked"></td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="animated fadeIn">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body" *ngIf="VacantType">
+                            <h1 style="font-size: 18px;font-weight: bold;"> ANNEXURE RULES</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Yes</th>
+                                                            <th>No</th>
+                                                            <th>Annexure Rule</th>
+                                                            <th>Percentage</th>
+                                                            <th>Amount(₹)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor='let annexurerules of Annexurerules; let i=index;'>
+
+                                                            <td>{{i+1}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="SelectedAnnexarule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="Annexurerules[i].Yeschecked" /></td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="Removepercentagerule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="Annexurerules[i].Nochecked" /></td>
+                                                            <td>{{annexurerules.description}}</td>
+                                                            <td>{{annexurerules.percentage}}</td>
+                                                            <td>{{annexurerules.Amount}}</td>
+
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="VacantType">
+                                <div style="text-align: center;">
+                                    <button type="button" class="btn btn-primary px-4"
+                                        (click)="ValuateVacantTypeTotalAmount()"
+                                        style="background-color: #0a429b;">Valuate</button>
+                                </div><br><br>
+                                <div  *ngIf="VacantTotalValuationAmount">
+                                    <div class="row">
+                                        <div class="col-md-12" style="">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body" >
+                                                    <table class="table table-striped table-bordered">
+                                                        <tbody>
+                                                            <tr *ngFor='let totallist of Totalvacantlist; let i=index;'>
+                                                                <td>{{totallist.name}}</td>
+                                                                <td>{{totallist.amount}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <button type="button" class="btn btn-primary px-4"
+                                            (click)="SendVacantValuationdetailstoApi()"
+                                            style="background-color: #0a429b;">Save and Continue</button>
+                                    </div><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="BuildingType">
+                            <h1 style="font-size: 18px;font-weight: bold;">ANNEXURE RULES</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Yes</th>
+                                                            <th>No</th>
+                                                            <th>Annexure Rule</th>
+                                                            <th>Percentage</th>
+                                                            <th>Amount(₹)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr
+                                                            *ngFor='let annexurerules of BuildingAnnexurerules; let i=index;'>
+
+                                                            <td>{{i+1}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="SelectedBuildingAnnexarule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="BuildingAnnexurerules[i].Yeschecked" />
+                                                            </td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="RemoveBuildingpercentagerule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="BuildingAnnexurerules[i].Nochecked" />
+                                                            </td>
+                                                            <td>{{annexurerules.description}}</td>
+                                                            <td>{{annexurerules.percentage}}</td>
+                                                            <td>{{annexurerules.Amount}}</td>
+
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body" *ngIf="FlatType">
+                            <h1 style="font-size: 18px;font-weight: bold;">ANNEXURE RULES</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Yes</th>
+                                                            <th>No</th>
+                                                            <th>Annexure Rule</th>
+                                                            <th>Percentage</th>
+                                                            <th>Amount(₹)</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr
+                                                            *ngFor='let annexurerules of FlatAnnexurerules; let i=index;'>
+
+                                                            <td>{{i+1}}</td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="SelectedFlatAnnexarule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="annexurerules.Yeschecked" />
+                                                            </td>
+                                                            <td><input type="checkbox"
+                                                                    (click)="Removeflatpercentagerule(annexurerules)"
+                                                                    value="{{i}}"
+                                                                    [(ngModel)]="annexurerules.Nochecked" /></td>
+                                                            <td>{{annexurerules.description}}
+                                                                <div *ngIf="annexurerules.IsInputAreaVisible"
+                                                                    style="width: 301px;margin-top: -17px;">
+                                                                    <label style="margin-left: 159px;">Enter
+                                                                        Area :</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Value" style="
+                                                                      margin-left: 240px;margin-top: -31px;"
+                                                                        [(ngModel)]="annexurerules.Number"
+                                                                        (change)="EnterTotalArea(annexurerules);">
+                                                                </div>
+                                                            </td>
+                                                            <td>{{annexurerules.percentage}}</td>
+                                                            <td>{{annexurerules.Amount}}</td>
+
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="animated fadeIn" *ngIf="BuildandFlatTypes">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card" *ngIf="TotalValuationAmountForBuildingButton">
+                        <div class="card-body">
+                            <h1 style="font-size: 18px;font-weight: bold;"> PARKING DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Parking Type</th>
+                                                            <th>Total Number of Parking</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor='let parking of BuildingParkingType; let i=index;'>
+                                                            <td>{{parking.parkingtypeid}}</td>
+                                                            <td>{{parking.description}}</td>
+                                                            <td><input type="text" value="{{parking.parkingtypeid}}"
+                                                                    [(ngModel)]="parking.Number"
+                                                                    (ngModelChange)="SelectedBuildingParkingtype($event);">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <button type="button" class="btn btn-primary px-4" (click)="ValuateTotalAmountForBuilding()"
+                                style="background-color: #0a429b;">Valuate</button>
+                        </div><br><br>
+                        <div  *ngIf="TotalValuationAmountForBuilding">
+                            <div class="row">
+                                <div class="col-md-12" style="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body" >
+                                            <table class="table table-striped table-bordered">
+                                                <tbody>
+                                                    <tr
+                                                        *ngFor='let totalbuildinglist of TotalBuildinglist; let i=index;'>
+                                                        <td>{{totalbuildinglist.name}}</td>
+                                                        <td>{{totalbuildinglist.amount}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary px-4"
+                                    (click)="SendBuildingValuationdetailstoApi()"
+                                    style="background-color: #0a429b;">Save and
+                                    Continue</button>
+                            </div><br>
+                        </div>
+                    </div>
+                    <div class="card" *ngIf="TotalValuationAmountForFlatButton">
+                        <div class="card-body">
+                            <h1 style="font-size: 18px;font-weight: bold;"> PARKING DETAILS</h1>
+                            <div >
+                                <div class="row">
+                                    <div class="col-md-12" style="">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body" >
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Parking Type</th>
+                                                            <th>Total Number of Parking</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor='let flatparking of FlatParkingType; let i=index;'>
+                                                            <td>{{flatparking.parkingtypeid}}</td>
+                                                            <td>{{flatparking.description}}</td>
+                                                            <td><input type="text" value="{{flatparking.parkingtypeid}}"
+                                                                    [(ngModel)]="flatparking.Number"
+                                                                    (ngModelChange)="SelectedFlatParkingtype($event);">
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h1 style="font-size: 18px;font-weight: bold;"> FLOOR DETAILS</h1>
+                            <div class="form-group col-md-2">
+                                <label for="units" style="font-size: 14px;font-weight: bold;">Floor Number</label>
+                                <select type="text" name="value" class="form-control"
+                                    (change)="OnFloorNumberchange($event)" [(ngModel)]="apartmentfloorrateid" required>
+                                    <!-- <option selected disabled readonly>Value</option> -->
+                                    <option *ngFor="let floor of FloorNumbers" [value] ="floor.apartmentfloorrateid"> {{floor.num}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="button" class="btn btn-primary px-4" (click)="ValuationTotalAmountforFlat()"
+                                style="background-color: #0a429b;">Valuate</button>
+                        </div><br><br>
+                        <div  *ngIf="TotalValuationAmountForFlat">
+                            <div class="row">
+                                <div class="col-md-12" style="">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body" >
+                                            <table class="table table-striped table-bordered">
+                                                <tbody>
+                                                    <tr *ngFor='let totallist of TotalFlatlist; let i=index;'>
+                                                        <td>{{totallist.name}}</td>
+                                                        <td>{{totallist.amount}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary px-4"
+                                    (click)="SendFlatValuationdetailstoApi()" style="background-color: #0a429b;">Save
+                                    and
+                                    Continue</button>
+                            </div><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"  *ngIf="AgriMarketvaluation">
+      
+        <div class="animated fadeIn">
+         <div class="row" style="margin-top: 20px;">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">
+                      <div>
+                          <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" (click)="closePop()"><br>
+                      </div>
+                      <div>
+                          <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                          <img src="assets/img/avatars/MarketValuetion.png">
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+   
+        </div>
+      <!-- </div> -->
+      <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+        
+          <div class="animated fadeIn">
+            
+           <div class="row" style="">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                      <br/>
+                      <div class="row">
+                        <div>
+                            <label class="unselectable" style="cursor: pointer; padding-left: 10px; font-weight: bold;" (click)="Backbuttonclicks()"> < &nbsp;&nbsp;&nbsp; </label><br>
+                        </div>
+                            <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF {{numofprop}}</label><br>
+                        <div>
+                            <label class="unselectable" style="cursor: pointer; font-weight: bold;" (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                            <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                        </div>
+                    </div><br>
+                    <br><br>
+                    <div class="row">
+                      <div class="form-group col-md-2">
+                      <!-- <img src="assets/img/avatars/Input@3x.png" style = "width: 133px;"> -->
+                      <label style="font-size: 16px;font-weight: bold;">Property Usage</label><br>
+                      <label style="font-size: 16px;font-weight: bold;">AGRICULTURAL</label>
+                      </div>
+                      <div class="form-group col-md-1"></div>
+                      <div class="form-group col-md-2">
+                          <label for="totalArea" style="font-size: 14px;font-weight: bold;">Total Area</label><br>
+                          <label style="font-size: 16px;font-weight: bold;">{{Unitcode}} Acres</label>
+                      </div>
+                      <div class="form-group col-md-1"></div>
+                      <div class="form-group col-md-3"></div>
+                    </div>
+                       <!-- <div>
+                          <label for="PropertyType">
+                              Property Type
+                          </label>
+                          <input id="value" type="text">
+                        </div>
+                      <div>
+                          <label for="TotalArea">
+                              Total Area
+                          </label>
+                          <input id="value" type="text" >
+                        </div> -->
+  
+                  
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+          </div>
+        <!-- </div> -->
+      <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+        
+          <div class="animated fadeIn">
+           <div class="row" >
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">   
+                      <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                          <div >
+                              <div class="row">
+                                  <div class="col-md-12" style = "
+                                  margin-top: 22px;">
+                                      <div class="panel panel-default">
+                                          <div class="panel-body">
+                                                  <table class="table table-striped table-bordered">
+                                                      <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                          <tr>
+                                                              <th>S.No</th>
+                                                              <th>Property Type</th>
+                                                              <th>Rate(₹/Acres)</th>
+                                                              <th>Select</th>
+              
+                                                          </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                          <tr *ngFor="let p of products; let i=index;">
+                                                              <td>{{i+1}}</td>
+                                                              <td>{{p.propertytype}}</td>
+                                                              <td>{{p.rate}}</td>
+                                                              <td><input type="checkbox"(change)="SelectedAgriPropertytypeRate(p);" value="{{i}}" [(ngModel)]="products[i].checked" [checked]="p.checked"></td>
+                                                          </tr>
+                                                      </tbody>
+                                                  </table>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+          </div>
+        <!-- </div> -->
+        <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+        
+          <div class="animated fadeIn">
+              <div class="row" >
+               <div class="col-md-12">
+                   <div class="card">
+                       <div class="card-body"> 
+                          <img src="assets/img/avatars/Annexure rules@3x.png" style = "width: 159px;"><br><br>  
+                             <div >
+                                 <div class="row">
+                                     <div class="col-md-12"
+                                     >
+                                         <div class="panel panel-default">
+                                             <div class="panel-body">
+                                                     <table class="table table-striped table-bordered" >
+                                                         <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                             <tr>
+                                                                 <th>S.No</th>
+                                                                 <th>Yes</th>
+                                                                 <th>No</th>
+                                                                 <th>Annexure Rule</th>
+                                                                 <th>Percentage</th>
+                                                                 <th>Amount(₹)</th>
+                                                             </tr>
+                                                         </thead>
+                                                         <tbody>
+                                                             <tr *ngFor='let annexurerules of AgriAnnexurerules; let i=index;'>
+                                                                 
+                                                                 <td>{{i+1}}</td>
+                                                                 <td><input type="checkbox" (click)="SelectedAgriAnnexarule(annexurerules)" value="{{annexurerules.i}}" [(ngModel)]="AgriAnnexurerules[i].Yeschecked"/></td>
+                                                                 <td><input type="checkbox" (click)="RemoveAgripercentagerule(annexurerules)" [(ngModel)]="AgriAnnexurerules[i].Nochecked"/></td>
+                                                                 <td>{{annexurerules.description}}</td>
+                                                                 <td>{{annexurerules.percentage}}</td>
+                                                                 <td>{{annexurerules.Amount}}</td>
+                                                             </tr>
+                                                         </tbody>
+                                                     </table>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div style="text-align: center;">
+                              <button type="button" class="btn btn-primary px-4" (click)="ValuateTotalAmount()" style="background-color: #0a429b;">Valuate</button>
+                         </div><br><br>
+                         <div  *ngIf="TotalValuationAmount">
+                          <div class="row">
+                              <div class="col-md-12" style = "" >
+                                  <div class="panel panel-default">
+                                      <div class="panel-body">
+                                              <table class="table table-striped table-bordered" >
+                                                  <tbody>
+                                                      <tr *ngFor='let totallist of Totallist; let i=index;'>
+                                                          <td>{{totallist.name}}</td>
+                                                          <td>{{totallist.amount}}</td>
+                                                      </tr>
+                                                  </tbody>
+                                              </table>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div style="text-align: center;">
+                            <button type="button" class="btn btn-primary px-4" (click)="SendValuationdetailstoApi()" style="background-color: #0a429b;">Save and Continue</button>
+                       </div>
+                      </div>
+                      
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        
+        
+        <!-- </div> -->
+      </div>
+      <div  style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"  *ngIf="MovableMarketvaluation">
+      
+        <div class="animated fadeIn">
+         <div class="row" >
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">
+                      <div>
+                          <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"  (click)="closePop()"><br>
+                      </div>
+                      <div>
+                          <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                          <img src="assets/img/avatars/MarketValuetion.png">
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+   
+        </div>
+      <!-- </div> -->
+      <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+        
+          <div class="animated fadeIn">
+            
+           <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body" >
+                      <br/>
+                      <div class="row">
+                        <div>
+                            <label class="unselectable" style="cursor: pointer; padding-left: 10px; font-weight: bold;" (click)="Backbuttonclicks()"> < &nbsp;&nbsp;&nbsp; </label><br>
+                        </div>
+                            <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF {{numofprop}}</label><br>
+                        <div>
+                            <label class="unselectable" style="cursor: pointer; font-weight: bold;" (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-3">
+                            <label for="district" style="font-weight: bold;">DISTRICT : </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="taluka" style="font-weight: bold;">TALUKA : </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="hobli" style="font-weight: bold;">HOBLI/TOWN :</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="village" style="font-weight: bold;">INDEX II: VILLAGE :</label>
+                        </div>
+                    </div><br>
+                    <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+          </div>
+          <div class="animated fadeIn">
+            <div class="row" >
+                <div class="col-md-12">
+                    <div class="card">
+                    <h1 class="md-display-3">Sorry, This miscellaneous Property Not Required in Marketvaluation</h1>
+                    <div style="text-align: center;">
+                        <button type="button" class="btn btn-primary px-4"
+                        routerLink="/fee-calculation"
+                            style="background-color: #0a429b;">
+                            Continue</button>
+                    </div><br>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        
+      </div>
+</main>

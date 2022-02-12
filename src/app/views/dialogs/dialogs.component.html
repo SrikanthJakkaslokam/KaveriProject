@@ -1,0 +1,17 @@
+<div class="container p-4 text-center ">
+    <i class="fas fa-check-circle fa-2x text-success"></i>
+    <!-- <span class="material-icons">face</span> -->
+
+    <h2 class="pt-3" mat-dialog-title>Success</h2>
+    <!-- <b>{{message}}</b> -->
+    <div [innerHTML]="message"></div>
+    <!-- <mat-dialog-content class="pt-3">Your appointment for {{scheduledDate}}, {{scheduledTime}} is successfully scheduled.
+    </mat-dialog-content>
+    <mat-dialog-content> Please reach the
+        office 15
+        minutes
+        early for a smooth registration experience.</mat-dialog-content><br><br> -->
+        <br><br>
+    <a type="button" routerLink="/dashboard" class="btn text-light px-4 btn-sm"
+        style="background-color: #0a429b;" mat-dialog-close>Close</a>
+</div>

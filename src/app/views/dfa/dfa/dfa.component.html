@@ -1,0 +1,1069 @@
+<app-header
+  [navbarBrandRouterLink]="['/dashboard']"
+  [fixed]="true"
+  [navbarBrandFull]="{
+    src: 'assets/img/avatars/NoPath.png',
+    width: '70',
+    height: '70'
+  }"
+  [navbarBrandMinimized]="{
+    src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png',
+    width: '40',
+    height: '40'
+  }"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'"
+>
+  <img
+    src="assets/img/avatars/government-of-karnataka-logo-1000x500.png"
+    class="img-avatar"
+    style="float: left; margin-left: -80px"
+  />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept"
+    >Department of Stamps and Registration,Government of Karnataka</span
+  >
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt="" /></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button
+        type="button"
+        style="background-color: #0a429b"
+        class="btn btn-block btn-primary active"
+        routerLink="/departmental-login"
+        aria-pressed="true"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</app-header>
+<div style="margin: 120px 20px 25px">
+  <div class="welcome-panel">
+    <div class="grey-circle"></div>
+    <div class="welcome-container">
+      <p class="welcome-text">WELCOME {{DepartmentUser}}</p>
+      <p class="fda">{{DepartmentUserDesignation}} - BENGALURU URBAN</p>
+    </div>
+    <div>
+      <p class="fda">
+        LAST LOGIN:<br />
+        12TH OCTOBER 2021 8.34AM
+      </p>
+    </div>
+  </div>
+  <div class="row m-0">
+    <div
+      class="col-md-7"
+      style="max-height: 700px; overflow: auto; padding-top: 25px"
+    >
+      <div class="top-section" style="margin-bottom: 20px">
+        <p
+          style="
+            font-weight: 700;
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            margin-left: 15px;
+            margin-bottom: 25px;
+          "
+        >
+          < Back
+        </p>
+        <div class="text-padding">
+          <div class="step1">
+            <p class="title-border">Application Details</p>
+          </div>
+          <div class="row m-0">
+            <div class="col-md-4">
+              <p class="sub-text font-black" style="font-size: 13px">
+                APPLICATION NUMBER
+              </p>
+              <div class="sub-text" style="font-size: 13px; color: #000">
+                {{ applicationNo }}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <p class="sub-text font-black" style="font-size: 13px">
+                DATE OF SUBMISSION
+              </p>
+              <div class="sub-text" style="font-size: 13px; color: #000">
+                {{ApplicationDate}}
+              </div>
+            </div>
+            <div class="col-md-4">
+              <p class="sub-text font-black" style="font-size: 13px">
+                APPLICATION TYPE
+              </p>
+              <div class="sub-text" style="font-size: 13px; color: #000">
+                {{ApplicationType}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="top-section" style="margin-bottom: 20px">
+        <div class="text-padding">
+          <div class="step1">
+            <p class="title-border">Property Details</p>
+          </div>
+          <h6
+            style="
+              color: #222;
+              margin: 30px 20px;
+              font-size: 14px;
+              font-weight: 500;
+            "
+          >
+            Property 1 of {{ numofprop }}
+          </h6>
+          <div class="row m-0">
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                DISTRICT : {{districtname}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                TALUKA: {{taluknamee}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                HOBLI/ TOWN: {{hoblinamee}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                INDEX II: VILLAGE: {{villagenamee}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                SRO : {{sronamee}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                PROPERTY TYPE : {{propertytypeid == 17 ? 'AGRICULTURAL' : 'NON-AGRICULTURAL'}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                SURVEY NO. : {{survey_no}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="sub-text"
+                style="font-size: 13px; color: #000; margin-bottom: 25px"
+              >
+                HISSA NO. : {{hissa_no}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr style="line-height: 6px">
+              <th
+                colspan="9"
+                class="text-left"
+                style="
+                  background-color: #0a429b;
+                  color: #fff;
+                  margin-left: 30px;
+                  padding: 15px;
+                "
+              >
+                Property Data- Bhoomi
+              </th>
+            </tr>
+            <tr style="line-height: 14px">
+              <th rowspan="2" scope="col">SI No</th>
+              <th rowspan="2" scope="col">Survey No</th>
+              <th rowspan="2" rowspan="2" scope="col">Hissa No</th>
+              <th rowspan="2" scope="col">Owner Name</th>
+              <th rowspan="2" scope="col">Relationship</th>
+              <th rowspan="2" scope="col">Relative Name</th>
+              <th scope="col" colspan="3">Available Extents</th>
+            </tr>
+            <tr style="line-height: 6px">
+              <th scope="col">Acre</th>
+              <th scope="col">Gunta</th>
+              <th scope="col">Fraction of Gunta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="line-height: 14px">
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">{{SurveyNo}}</td>
+              <td style="text-align: center;">{{HissaNo}}</td>
+              <td style="text-align: center;">{{owner}}</td>
+              <td style="text-align: center;">{{relationship}}</td>
+              <td style="text-align: center;">{{relativename}}</td>
+              <td style="text-align: center;">{{avl_ext_acre}}</td>
+              <td style="text-align: center;">{{avl_ext_gunta}}</td>
+              <td style="text-align: center;">{{avl_ext_fgunta}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table
+          class="table table-bordered"
+          style="margin-top: 50px; margin-bottom: 60px"
+        >
+          <thead>
+            <tr style="line-height: 6px">
+              <th
+                colspan="14"
+                style="
+                  background-color: #0a429b;
+                  color: #fff;
+                  text-align: left;
+                  margin-left: 30px;
+                  padding: 15px;
+                "
+              >
+                Court Order Details
+              </th>
+            </tr>
+            <tr style="line-height: 14px">
+              <th rowspan="2" scope="col">SI No</th>
+              <th rowspan="2" scope="col">SRO</th>
+              <th rowspan="2" scope="col">Court Order No.</th>
+              <th rowspan="2" scope="col">
+                Injunction or stay against the Property
+              </th>
+              <th rowspan="2" scope="col">Order Details</th>
+              <th rowspan="2" scope="col">Survey No.</th>
+              <th rowspan="2" scope="col">Current N0.</th>
+              <th rowspan="2" scope="col">Old No.</th>
+              <th scope="col" colspan="4">Boundaries</th>
+              <th rowspan="2" scope="col">Area</th>
+              <th rowspan="2" scope="col">Description</th>
+            </tr>
+            <tr style="line-height: 6px">
+              <th scope="col">East</th>
+              <th scope="col">North</th>
+              <th scope="col">West</th>
+              <th scope="col">South</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngIf="!courtData.length; else courtData">
+              <tr>
+                <td colspan="14" style="text-align: center;">No Data Found</td>
+              </tr>
+           </ng-container>
+           <ng-template  #courtData>
+            <tr>
+              <td style="vertical-align: middle;text-align:center">{{sno}}</td>
+              <td style="text-align: center;">{{c_sro}}</td>
+              <td style="text-align: center;">{{courT_ORDER_NUMBER}}</td>
+              <td style="text-align: center;">{{injuction_or_stay_flag}}</td>
+              <td style="text-align: center;">{{OrderDetails}}</td>
+              <td style="text-align: center;">{{c_survey_No}}</td>
+              <td style="text-align: center;">{{currentNumber}}</td>
+              <td style="text-align: center;">{{oldNumber}}</td>
+              <td style="text-align: center;">{{eastBoundary}}</td>
+              <td style="text-align: center;">{{northBoundary}}</td>
+              <td style="text-align: center;">{{westBoundary}}</td>
+              <td style="text-align: center;">{{southBoundary}}</td>
+              <td style="text-align: center;">{{area}}</td>
+              <td style="text-align: center;">{{description}}</td>
+            </tr>
+           </ng-template>
+          </tbody>
+        </table>
+        <div class="row m-0 mb-5">
+          <div class="col-md-6 mb-5 pl-5">
+            <p class="sub-text font-black m-0" style="font-size: 13px">
+              STAMP ARTICLE SELECTED
+            </p>
+            <div class="sub-text" style="font-size: 13px; color: #000">
+              {{stampartcileselected}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-5">
+            <p class="sub-text font-black m-0" style="font-size: 13px">
+              STAMP SUB ARTICLE SELECTED
+            </p>
+            <div class="sub-text" style="font-size: 13px; color: #000">
+              {{stampsubartcleselected}}
+            </div>
+          </div>
+          <div class="col-md-6 pl-5">
+            <p class="sub-text font-black m-0" style="font-size: 13px">
+              REGISTRATION FEE ARTICLE SELECTED
+            </p>
+            <div class="sub-text" style="font-size: 13px; color: #000">
+              {{regFeeArticleSelected}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <p class="sub-text font-black m-0" style="font-size: 13px">
+              BOOK NUMBER
+            </p>
+            <div class="sub-text" style="font-size: 13px; color: #000">
+              {{bookNumber}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="top-section" style="margin-bottom: 20px">
+        <div class="text-padding">
+          <div class="step1">
+            <p class="title-border">Party Details</p>
+          </div>
+          <ng-container *ngFor="let item of finalInfoPresenter;index as i">
+            <ng-container *ngIf="!item.isorganization">
+          <div
+            class="row ml-0 mr-0 align-items-center"
+            style="margin-top: 40px; margin-bottom: 30px"
+          >
+            <div class="col-md-3 p-0">
+              <h6 style="color: #222; font-size: 14px; font-weight: 600">
+                Presenter {{i+1}} Of {{finalInfoPresenterCount}}
+              </h6>
+            </div>
+            <div class="col-md-9 p-0">
+              <h6 style="color: #4e4e4e; font-size: 14px; font-weight: 500">
+                INDIVIDUAL/ORGANIZATION : <b> INDIVIDUAL </b>
+              </h6>
+            </div>
+          </div>
+          <div
+            class="row m-0"
+            style="
+              padding-bottom: 25px;
+              border-bottom: 1px solid #000;
+              margin-bottom: 25px;
+            "
+          >
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                FIRST NAME: {{item.name}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                MIDDLE NAME: -
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                LAST NAME: {{item.name}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                AGE: {{item.age}} YEARS
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                SEX : {{item.gender == 0 ? 'Female' : 'Male'}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                ADDRESS: {{item.address}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                PAN : {{item.pan}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                PROFESSION : {{item.profession}}
+              </div>
+            </div>
+          </div>
+          </ng-container>
+        </ng-container>
+        <div *ngFor="let item of finalInfoClaimant;index as i">
+          <ng-container *ngIf="!item.isorganization">
+          <div
+            class="row ml-0 mr-0 align-items-center"
+            style="margin-top: 40px; margin-bottom: 30px"
+          >
+            <div class="col-md-3 p-0">
+              <h6 style="color: #222; font-size: 14px; font-weight: 600">
+                Claimant {{i+1}} Of {{finalInfoClaimantCount}}
+              </h6>
+            </div>
+            <div class="col-md-9 p-0">
+              <h6 style="color: #4e4e4e; font-size: 14px; font-weight: 500">
+                IINDIVIDUAL/ORGANIZATION : <b>INDIVIDUAL</b>
+              </h6>
+            </div>
+          </div>
+          <div
+            class="row m-0"
+            style="padding-bottom: 30px; border-bottom: 1px solid #000"
+          >
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                FIRST NAME: {{item.name}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                MIDDLE NAME: -
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                LAST NAME: {{item.name}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                AGE:{{item.age}} YEARS
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                SEX : {{item.gender == 0 ? 'Female' : 'Male'}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                ADDRESS: {{item.address}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                PAN : {{item.pan}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                PROFESSION : {{item.profession}}
+              </div>
+            </div>
+          </div>
+          </ng-container>
+          </div>
+          <div *ngFor="let item of finalInfoExcutant;index as i">
+            <ng-container *ngIf="!item.isorganization">
+          <div
+            class="row ml-0 mr-0 align-items-center"
+            style="margin-top: 40px; margin-bottom: 30px"
+          >
+            <div class="col-md-3 p-0">
+              <h6 style="color: #222; font-size: 14px; font-weight: 600">
+                Executant {{i+1}} Of {{finalInfoExcutantCount}}
+              </h6>
+            </div>
+            <div class="col-md-5 p-0">
+              <h6 style="color: #4e4e4e; font-size: 14px; font-weight: 500">
+                INDIVIDUAL/ORGANIZATION : <b>INDIVIDUAL</b>
+              </h6>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+              <button class="s-btn" (click)="showCourtOrders()">
+                Court Orders
+              </button>
+            </div>
+            <!-- <div *ngIf="courtOrderVisible" style="margin-top: 20px">
+                  <table class="table table-bordered">
+                    <thead style="font-weight: bold;">
+                     <tr>
+                       <th colspan="6" style="background-color: #0a429b; color:#fff; text-align: left;">Results</th>
+                     </tr>
+                        <tr>
+                         <th class="col-2">Order Number</th>
+                         <th class="col-2">Issuing Authority</th>
+                         <th class="col-2">Issue Date</th>
+                         <th class="col-2">Description</th>
+                         <th class="col-2">Is Cancelled</th>
+                         <th class="col-2">Is In Force</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     <tr>
+                       <td>O.S. No. 5461</td>
+                       <td>City Civil Court</td>
+                       <td>04/08/2018</td>
+                       <td>Property No. 16/2</td>
+                       <td>No</td>
+                       <td>Yes</td>
+                     </tr>
+                    </tbody>
+                </table>
+                </div>
+                <div *ngIf="!courtOrderVisible"></div> -->
+          </div>
+          <div
+          class="row m-0"
+          style="padding-bottom: 30px; border-bottom: 1px solid #000"
+        >
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              FIRST NAME: {{item.name}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              MIDDLE NAME: -
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              LAST NAME: {{item.name}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              AGE:{{item.age}} YEARS
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              SEX : {{item.gender == 0 ? 'Female' : 'Male'}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              ADDRESS: {{item.address}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              PAN : {{item.pan}}
+            </div>
+          </div>
+          <div class="col-md-6 mb-3 p-0">
+            <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+              PROFESSION : {{item.profession}}
+            </div>
+          </div>
+        </div>
+            </ng-container>
+          </div>
+          <ng-container  *ngFor="let item of WitnessInfo;index as i">
+          <div
+            class="row ml-0 mr-0 align-items-center"
+            style="margin-top: 40px; margin-bottom: 30px"
+           
+          >
+            <div class="col-md-3 p-0">
+              <h6 style="color: #222; font-size: 14px; font-weight: 600">
+                Witness {{i+1}} of {{WitnessInfoTotalCount}}
+              </h6>
+            </div>
+           
+          </div>
+          <div class="row m-0" style="padding-bottom: 30px">
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                FIRST NAME: {{item.witnessname}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                MIDDLE NAME: -
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                LAST NAME: {{item.witnessname}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                AGE: {{item.age}} YEARS
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                SEX : {{item.gender == 0 ? 'Female' : 'Male'}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                ADDRESS: {{item.address}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                PROFESSION : {{item.profession}}
+              </div>
+            </div>
+            <!-- <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                IDENTIFIED : CLAIMANT
+              </div>
+            </div> -->
+          </div>
+          </ng-container>
+        
+        </div>
+      </div>
+
+      <div class="top-section" style="margin-bottom: 20px">
+        <div class="text-padding">
+          <div class="step1">
+            <p class="title-border">Property Schedule</p>
+          </div>
+          <div class="row m-0">
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                SCHEDULE: {{prpertyScheduletype}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                AREA: {{prpertyTotalarea}} GUNTA.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                EAST TO WEST: {{prpertyEasttowest}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                NORTH TO SOUTH: {{prpertyNorthtosouth}}
+              </div>
+            </div>
+            <div class="col-md-12 mt-2 mb-4 p-0">
+              <div
+                class="sub-text"
+                style="font-size: 14px; color: #4e4e4e; font-weight: 600"
+              >
+                BOUNDARIES:
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                NORTH: {{BoundariesNorthboundary}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                EAST: {{BoundariesEastboundary}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                WEST: {{BoundariesWestboundary}}
+              </div>
+            </div>
+            <div class="col-md-6 mb-3 p-0">
+              <div class="sub-text" style="font-size: 14px; color: #4e4e4e">
+                SOUTH: {{BoundariesSouthboundary}}
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              font-size: 14px;
+              color: #4e4e4e;
+              margin-top: 40px;
+              margin-bottom: 15px;
+            "
+          >
+            DESCRIPTION: {{BoundariesDescription}}
+          </div>
+        </div>
+      </div>
+      <div class="top-section" style="margin-bottom: 20px">
+        <div
+          class="text-padding d-flex justify-content-between align-items-center"
+        >
+          <div class="step1 m-0">
+            <p class="title-border m-0">Market Valuation and Fee Calculation</p>
+          </div>
+          <div class="d-flex">
+            <button class="s-btn mr-4" (click)="showMarketValuation()">
+              Market Valuation
+            </button>
+            <button class="s-btn" (click)="showFeeCalculation()">
+              Fee Calculation
+            </button>
+          </div>
+        </div>
+        <table
+          class="table px-4"
+          style="width: 100%; margin-top: 30px; margin-bottom: 30px"
+        >
+          <tr>
+            <td rowspan="10" style="padding: 36px 8px">
+              <p class="mb-0 font-weight-bold mb-4">Property 1 OF {{feecalculationdataCount}}</p>
+              <p style="white-space: normal" class="mb-0 td-value">
+                {{propertyDescription}}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Market Valuation</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Total Valuation Amount</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold font-blue">₹ {{TotalValuationAmount}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Consideration Amount</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Total Consideration Amount</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold font-blue">₹ ---</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="7" style="padding: 12px">
+              <p class="mb-0 font-weight-bold" style="margin-top: 110px">
+                Fee Calculation
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">
+                Government Duty after Exemption (A)
+              </p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{GovernmentDuty}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Surcharge Value (B)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{SurchargeValue}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Cess Value (C)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{CessValue}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Scanning Fees (D)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{ScanningFees}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Muatation Fees (E)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{MutationFees}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">Denotation of Stamp duty (F)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold">₹ {{DenonationofStampDuty}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr style="height: 20px">
+            <td style="border: none"></td>
+          </tr>
+          <tr cell>
+            <td style="padding: 12px" colspan="3">
+              <p class="mb-0 font-weight-bold">
+                Total Stamp Duty (G)=(A)+(B)+(C)+(D)+(E)-(F)
+              </p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold font-blue">₹ {{TotalStampDuty}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 12px" colspan="3">
+              <p class="mb-0 font-weight-bold">Total Registration Fees (H)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold font-blue">₹ {{TotalRegistrationFees}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+          <tr style="height: 20px">
+            <td style="border: none"></td>
+          </tr>
+          <tr>
+            <td style="padding: 12px" colspan="3">
+              <p class="mb-0 font-weight-bold">Total Payable Amount (G)+(H)</p>
+            </td>
+            <td style="padding: 12px">
+              <p class="mb-0 font-weight-bold font-blue">₹ {{TotalPayableAmount}}</p>
+            </td>
+            <td style="padding: 12px">
+              <input type="text" name="" id="" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div
+      class="col-md-5"
+      style="max-height: 700px; overflow: auto; padding-top: 25px"
+    >
+      <div class="top-section" style="margin-bottom: 20px">
+        <div class="text-padding">
+          <div class="step1">
+            <p class="title-border">Deed Document</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <dx-popup
+        [width]="800"
+        [height]="200"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [showCloseButton]="false"
+        container=".dx-viewport"
+        [(visible)]="courtOrderPopupVisible"
+      >
+        <div *dxTemplate="let data of 'content'">
+          <table class="table table-bordered">
+            <thead style="font-weight: bold">
+              <tr>
+                <th
+                  colspan="6"
+                  style="
+                    background-color: #0a429b;
+                    color: #fff;
+                    text-align: left;
+                  "
+                >
+                  Results
+                </th>
+              </tr>
+              <tr>
+                <th class="col-2">Order Number</th>
+                <th class="col-2">Issuing Authority</th>
+                <th class="col-2">Issue Date</th>
+                <th class="col-2">Description</th>
+                <th class="col-2">Is Cancelled</th>
+                <th class="col-2">Is In Force</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>O.S. No. 5461</td>
+                <td>City Civil Court</td>
+                <td>04/08/2018</td>
+                <td>Property No. 16/2</td>
+                <td>No</td>
+                <td>Yes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </dx-popup>
+    </div>
+    <!-- <div id="container"> -->
+    <dx-popup
+      [width]="1300"
+      [height]="650"
+      [dragEnabled]="false"
+      [closeOnOutsideClick]="true"
+      [showCloseButton]="true"
+      container=".dx-viewport"
+      [(visible)]="marketValuationPopupVisible"
+    >
+      <div *dxTemplate="let data of 'content'">
+        <dx-scroll-view width="100%" height="100%">
+          <app-non-agriculture [applicationnumber]="applicationNo" (closePopup) ="marketValuationPopupVisible = false"></app-non-agriculture>
+        </dx-scroll-view>
+      </div>
+    </dx-popup>
+    <!-- </div> -->
+    <!-- <div id="container"> -->
+    <dx-popup
+      [width]="1300"
+      [height]="650"
+      [dragEnabled]="false"
+      [closeOnOutsideClick]="true"
+      [showCloseButton]="true"
+      container=".dx-viewport"
+      [(visible)]="feeCalculationPopupVisible"
+    >
+      <div *dxTemplate="let data of 'content'">
+        <dx-scroll-view width="100%" height="100%">
+          <app-dfa-fee-calculation [applicationnumber]="applicationNo" (closePopup) ="feeCalculationPopupVisible = false"></app-dfa-fee-calculation>
+        </dx-scroll-view>
+      </div>
+    </dx-popup>
+  </div>
+  <!-- </div> -->
+  <div class="row m-0">
+    <div class="col-md-12 p-0">
+      <div class="top-section" style="margin-bottom: 20px">
+        <div class="text-padding">
+          <div class="step1" style="margin-bottom: 50px">
+            <p class="title-border">Application Review</p>
+            <p class="text-muted pl-3">
+              Select the section that needs to be corrected.
+            </p>
+          </div>
+          <table class="table" style="width: 100%; display: table">
+            <thead style="background-color: #0a429b; color: #fff">
+              <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Verified</th>
+                <th scope="col">Section</th>
+                <th scope="col" rowspan="4">Remarks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataSource;">
+                <td style="width: 5%">{{data.reviewid}}</td>
+                <td style="width: 10%">
+                  <input type="checkbox" 
+                  style="height:25px; width:25px; vertical-align: middle;" 
+                  id="opt1+{{data.reviewid}}" 
+                  [(ngModel)]="data.status" 
+                  value="Approved" name="option+{{data.reviewid}}" />
+                </td>
+                <td style="width: 15%">{{data.reviewname}}</td>
+                <td style="width: 60%"><input style="width: 100%;" [(ngModel)]="data.remarks"/></td>
+              </tr>
+          
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center my-4">
+    <button class="s-btn" *ngIf="(deptData.designationid == 2 || deptData.designationid == 3)" (click)="verifiedAndSend()">Verified and Send</button>
+    <button class="s-btn" *ngIf="deptData.designationid == 1" (click)="sroApproval()">Approve</button>
+  </div>
+  <!-- <div class="schedule-actions">
+    <button class="btn s-btn">Save</button>
+    <button class="btn p-btn">Reset</button>
+    <a style="margin-left: 40px; color: #0a429b">Cancel</a>
+  </div> -->
+</div>
+<app-footer
+  style="
+    background-color: #34373d;
+    z-index: 1020;
+    height: 50px;
+    border: 1px solid #34373d;
+  "
+>
+  <div class="row" style="margin-left: 10px">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px; background-color: #fbfbfb; z-index: 1020">
+  <div class="row" style="margin-left: 10px">
+    <span style="color: black"
+      >©2021, Department of Stamps and Registration, Karnataka</span
+    >
+  </div>
+</app-footer>

@@ -1,0 +1,66 @@
+.circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 -5px 3px 0;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #dfdfdf;
+  }
+
+  .search {
+    width: 300px;
+    height: 45px;
+    margin-left: 155px;
+    // margin: -50px 0 0 900px;
+    // padding: 10.9px 21.5px 10.9px 24px;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #fff;
+  }
+
+  .example-container {
+    height: 700px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-table {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+  }
+
+  .mat-column-sno {
+    flex: 0 0 6%;
+  }
+  .mat-column-applicationNum {
+    flex: 0 0 15%;
+  }
+  .mat-column-application {
+    flex: 0 0 22%;
+  }
+  .mat-column-applicationType {
+    flex: 0 0 30%;
+  }
+  .mat-column-applicationDate {
+    flex: 0 0 15%;
+  }
+  .mat-column-serviceName {
+    flex: 0 0 30%;
+  }
+
+  .mat-column-wrkFlowStatusNamee {
+    flex: 0 0 16%;
+  }
+  .mat-column-Status{
+    flex: 0 0 25%;
+  }
+  .mat-sort-header-indicator {
+   
+    color: white!important;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0px!important;
+}

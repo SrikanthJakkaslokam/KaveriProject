@@ -1,0 +1,566 @@
+<div class="top-section my-5" [formGroup]="addCourtOrderForm">
+    <div class="text-padding">
+      <div class="step1">
+        <p class="title-border">Add Court Order</p>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <p class="sub-text font-black">ORDER NUMBER<i class="mandate">*</i></p>
+          <input
+            class="form-control custom-input"
+            placeholder="value"
+            formControlName="OrderNumber"
+          />
+        </div>
+        <div class="col-md-3 mb-3">
+          <p class="sub-text font-black">
+            ISSUING AUTHORITY<i class="mandate">*</i>
+          </p>
+          <input
+            class="form-control custom-input"
+            placeholder="value"
+            formControlName="IssuingAuthority"
+          />
+        </div>
+        <!-- <div class="col-md-3 mb-3">
+          <p class="sub-text font-black">
+            REGISTRATION ARTICLE<i class="mandate">*</i>
+          </p>
+          <input
+            class="form-control custom-input"
+            placeholder="value"
+            formControlName="RegistrationArticle"
+          />
+        </div> -->
+        <div class="col-md-3 mb-3">
+          <p class="sub-text font-black">DATE OF ISSUE<i class="mandate">*</i></p>
+          <input
+            type="date"
+            class="form-control custom-input"
+            placeholder="value"
+            formControlName="IssueDate"
+          />
+        </div>
+        <div class="col-md-3 mb-3">
+          <p class="sub-text font-black">TYPE OF CASE</p>
+          <input
+            type="text"
+            class="form-control custom-input"
+            placeholder="value"
+            formControlName="CaseType"
+          />
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-12 mb-3">
+          <p class="sub-text font-black">DESCRIPTION<i class="mandate">*</i></p>
+          <input
+            class="form-control custom-input"
+            style="height: 130px"
+            placeholder="value"
+            formControlName="Description"
+          />
+        </div>
+      </div>
+      <div class="d-flex flex-row">
+        <div class="mb-3">
+          <input type="checkbox" formControlName="IsInForce" />
+        </div>
+        <div class="col-md-4 pl-3 mb-3">
+          <p>Is in force</p>
+        </div>
+        <div class="mb-3">
+          <input type="checkbox" formControlName="IsCancelled" />
+        </div>
+        <div class="pl-3 mb-3">
+          <p>Is Cancelled</p>
+        </div>
+        <!-- <div class="pl-5 mb-3">
+          <p style="color: #0A429B; font-weight: bold; font-size: 14px;">Cancellation Details</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="top-section my-5" [formGroup]="propertyDetailsForm">
+    <div class="text-padding" formArrayName="OrderProperties">
+      <div class="step1">
+        <p class="title-border">Add Property Details</p>
+      </div>
+      <ng-container
+        *ngFor="
+          let property of propertyDetailsForm.get('OrderProperties')['controls'];
+          let i = index
+        "
+        [formGroupName]="i"
+      >
+        <div
+          style="background-color: blue; padding: 12px 40px"
+          class="d-flex justify-content-between mb-4"
+        >
+          <p class="m-0" style="color: #fff">
+            Property {{ i + 1 }} of
+            {{ propertyDetailsForm.get("OrderProperties").length }}
+          </p>
+          <p
+            class="m-0"
+            style="color: #fff; cursor: pointer"
+            (click)="deleteProperty(i)"
+          >
+            Delete
+          </p>
+        </div>
+        <div class="d-flex flex-row">
+          <div class="mb-3">
+            <input
+              type="checkbox"
+              formControlName="IsAgriProperty"
+              (change)="isAgriProperty(i)"
+            />
+          </div>
+          <div class="pl-3 mb-3">
+            <p>Is Agricultural Property</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">DISTRICT</p>
+            <select class="form-control custom-select" formControlName="District" 
+            (change)="changeOPDistrict(getOrderProperties()?.at(i), $event.target.value)">
+              <option value="">Value</option>
+              <option [value]="d.districtCode" *ngFor="let d of districtList">
+                {{ d.districtNamee  }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">SUB REGISTRAR OFFICE</p>
+            <select class="form-control custom-select" formControlName="SroCode">
+              <option value="">Value</option>
+              <option [value]="d.srocode" *ngFor="let d of sroList">
+                {{ d.sronamee  }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">TALUKA</p>
+            <select class="form-control custom-select" formControlName="Taluka"
+            (change)="changeOPTaluka(getOrderProperties()?.at(i), $event.target.value)">
+              <option value="">Value</option>
+              <option [value]="d.talukCode" *ngFor="let d of getOrderProperties()?.at(i)?.get('talukaList')?.value">
+                {{ d.talukNamee  }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">INDEX II: VILLAGE</p>
+            <select
+              class="form-control custom-select"
+              formControlName="VillageCode"
+            >
+            <option value="">Value</option>
+            <option [value]="d.villagecode" *ngFor="let d of getOrderProperties()?.at(i)?.get('villageList')?.value">
+              {{ d.villagenamee  }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">HOBLI</p>
+            <select class="form-control custom-select" formControlName="Hobli">
+              <option value="">Value</option>
+            <option [value]="d.hoblicode" *ngFor="let d of getOrderProperties()?.at(i)?.get('hobliList')?.value">
+              {{ d.hoblinamee  }}
+            </option>
+            </select>
+          </div>
+          <div class="mt-4 col-md-12">
+            <p class="sub-text font-black">PROPERTY NUMBER DETAILS</p>
+            <p style="color: #707070">
+              Enter one or more details to further improve your search
+            </p>
+          </div>
+          <div class="col-md-12">
+            <hr style="color: grey" />
+          </div>
+          <ng-container formArrayName="PropertyNumbers">
+            <ng-container
+              *ngFor="
+                let propertyNo of propertyDetailsForm
+                  .get('OrderProperties')
+                  .controls[i].get('PropertyNumbers').controls;
+                let j = index
+              "
+              [formGroupName]="j"
+            >
+              <div
+                class="mb-3 col-md-3"
+                *ngIf="
+                  !propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              >
+                <p class="sub-text font-black">PROPERTY NUMBER TYPE</p>
+  
+                <select
+                  class="form-control custom-select"
+                  formControlName="PropertyNumberType"
+                >
+                  <option selected value="">Select Value</option>
+                  <option
+                    *ngFor="let pt of propertyTypes"
+                    [value]="pt.propertytypeid"
+                  >
+                    {{ pt.typeNameEnglish }}
+                  </option>
+                </select>
+              </div>
+              <div
+                class="mb-3 col-md-2"
+                *ngIf="
+                  !propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              ></div>
+              <div
+                class="mb-3 col-md-3"
+                *ngIf="
+                  !propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              >
+                <p class="sub-text font-black">PRESENT PROPERTY NUMBER DETAILS</p>
+                <input
+                  class="form-control custom-input"
+                  placeholder="value"
+                  formControlName="CurrentNumber"
+                />
+              </div>
+              <div
+                class="mb-3 col-md-3"
+                *ngIf="
+                  propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              >
+                <p class="sub-text font-black">SURVEY NUMBER</p>
+                <input
+                  class="form-control custom-input"
+                  type="number"
+                  placeholder="value"
+                  formControlName="SurveyNoc"
+                />
+              </div>
+              <div
+                class="mb-3 col-md-3"
+                *ngIf="
+                  propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              >
+                <p class="sub-text font-black">HISSA NUMBER</p>
+                <input
+                  class="form-control custom-input"
+                  type="number"
+                  placeholder="value"
+                  formControlName="HissaNumber"
+                />
+              </div>
+              <div
+                class="mb-3 col-md-6"
+                *ngIf="
+                  propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              ></div>
+              <div
+                class="mt-4 mb-3 col-md-3"
+                *ngIf="
+                  !propertyDetailsForm.value.OrderProperties[0].IsAgriProperty
+                "
+              >
+                <p
+                  class="sub-text font-black mt-3"
+                  style="color: blue; cursor: pointer"
+                  (click)="deletePropertyNo(i)"
+                >
+                  Delete
+                </p>
+              </div>
+            </ng-container>
+          </ng-container>
+          <div class="col-md-12">
+            <hr style="color: grey" />
+          </div>
+          <div class="col-md-12 mb-2">
+            <p
+              style="
+                color: #0a429b;
+                font-weight: bold;
+                font-size: 14px;
+                cursor: pointer;
+              "
+              *ngIf="!propertyDetailsForm.value.OrderProperties[0].IsAgriProperty"
+              (click)="addMorePropertyNos(i)"
+            >
+              Add more details
+            </p>
+          </div>
+          <div class="mb-4 col-md-12">
+            <p class="sub-text font-black">BOUNDARIES</p>
+          </div>
+  
+          <div class="col-md-3">
+            <p class="sub-text font-black">East</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="EastBoundary"
+            />
+          </div>
+          <div class="col-md-3">
+            <p class="sub-text font-black">West</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="WestBoundary"
+            />
+          </div>
+          <div class="col-md-3">
+            <p class="sub-text font-black">North</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="NorthBoundary"
+            />
+          </div>
+          <div class="col-md-3">
+            <p class="sub-text font-black">South</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="SouthBoundary"
+            />
+          </div>
+          <div class="col-md-12 mt-4">
+            <h4 style="color: #4e4e4e">Description of Property</h4>
+          </div>
+          <div class="col-md-12 mt-1 mb-4">
+            <input
+              style="height: 130px"
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="PropertyDescription"
+            />
+          </div>
+  
+          <div class="col-md-3">
+            <p class="sub-text font-black">AREA</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="Area"
+            />
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">MEASUREMENT UNITS</p>
+            <select
+              class="form-control custom-select"
+              formControlName="MeasurementUnit"
+            >
+              <option selected>Value</option>
+              <option>Claimant</option>
+              <option>Executant</option>
+              <option>Witness</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <p class="sub-text font-black">EXTENT DESCRIPTION</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="ExtentInformation"
+            />
+          </div>
+        </div>
+      </ng-container>
+      <div class="row">
+        <div class="col-md-12">
+          <hr style="color: grey" />
+        </div>
+        <div class="col-md-12 mb-4">
+          <p
+            style="
+              color: #0a429b;
+              font-weight: bold;
+              font-size: 14px;
+              cursor: pointer;
+            "
+            (click)="addMoreProperty()"
+          >
+            Add more property
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Party Details -->
+  
+  <div class="top-section my-5" [formGroup]="partyDetailsForm">
+    <div class="text-padding" formArrayName="Parties">
+      <div class="step1">
+        <p class="title-border">Add Party Details</p>
+      </div>
+      <ng-container
+        *ngFor="
+          let party of partyDetailsForm.get('Parties')['controls'];
+          let i = index
+        "
+        [formGroupName]="i"
+      >
+        <div
+          style="background-color: blue; padding: 12px 40px"
+          class="d-flex justify-content-between mb-4"
+        >
+          <p class="m-0" style="color: #fff">
+            Party {{ i + 1 }} of {{ partyDetailsForm.get("Parties").length }}
+          </p>
+          <p
+            class="m-0"
+            style="color: #fff; cursor: pointer"
+            (click)="deleteParty(i)"
+          >
+            Delete
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">SALUTATION</p>
+            <select
+              class="form-control custom-select"
+              formControlName="Saluation"
+            >
+              <option selected>Select</option>
+              <option>Mr</option>
+              <option>Miss</option>
+              <option>Mrs</option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">FIRST NAME<i class="mandate">*</i></p>
+            <input
+              class="form-control custom-input"
+              placeholder="FIRST NAME*"
+              formControlName="FirstName"
+            />
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">MIDDLE NAME</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="MiddleName"
+            />
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">LAST NAME</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="LastName"
+            />
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">AGE</p>
+            <input
+              class="form-control custom-input"
+              placeholder="value"
+              formControlName="Age"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mt-3">
+            <p class="sub-text font-black">ADDRESS</p>
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">House No/Building Name*</p>
+            <input
+              class="form-control custom-input"
+              placeholder="House No/Building Name*"
+              formControlName="HouseNo"
+            />
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">Street Address*</p>
+            <input
+              class="form-control custom-input"
+              placeholder="Street Address*"
+              formControlName="StreetAddress"
+            />
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">DISTRICT</p>
+            <select class="form-control custom-select" formControlName="District" 
+            (change)="changeOPDistrict(getParties()?.at(i), $event.target.value)">
+              <option value="">Value</option>
+              <option [value]="d.districtCode" *ngFor="let d of districtList">
+                {{ d.districtNamee  }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">TALUKA</p>
+            <select class="form-control custom-select" formControlName="Taluka"
+            (change)="changeOPTaluka(getParties()?.at(i), $event.target.value)">
+              <option value="">Value</option>
+              <option [value]="d.talukCode" *ngFor="let d of getParties()?.at(i)?.get('talukaList')?.value">
+                {{ d.talukNamee  }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">CITY/VILLAGE</p>
+            <select
+              class="form-control custom-select"
+              formControlName="City"
+            >
+            <option value="">Value</option>
+            <option [value]="d.villagecode" *ngFor="let d of getParties()?.at(i)?.get('villageList')?.value">
+              {{ d.villagenamee  }}
+            </option>
+            </select>
+          </div>
+          <div class="mb-3 col-md-3">
+            <p class="sub-text font-black">HOBLI</p>
+            <select class="form-control custom-select" formControlName="Hobli">
+              <option value="">Value</option>
+            <option [value]="d.hoblicode" *ngFor="let d of getParties()?.at(i)?.get('hobliList')?.value">
+              {{ d.hoblinamee  }}
+            </option>
+            </select>
+          </div>
+          <div class="col-md-3 mb-3">
+            <p class="sub-text font-black">Pin Code*</p>
+            <input
+              class="form-control custom-input"
+              placeholder="Pin Code*"
+              formControlName="PinCode"
+              type="number"
+            />
+          </div>
+        </div>
+        <hr style="color: grey" />
+      </ng-container>
+      <div class="col-md-12 mb-4">
+        <p
+          style="
+            color: #0a429b;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+          "
+          (click)="addMoreParty()"
+        >
+          Add more party
+        </p>
+      </div>
+    </div>
+  </div>
+<div class="schedule-actions d-flex justify-content-center pb-4">
+    <button class="btn s-btn" (click)="saveCTA()"
+        [disabled]="partyDetailsForm.invalid && addCourtOrderForm.invalid">Save</button>
+    <button class="btn p-btn" (click)="cancelCTA()">Cancel</button>
+</div>

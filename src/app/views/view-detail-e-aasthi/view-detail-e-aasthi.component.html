@@ -1,0 +1,322 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/view-e-aasthi"><br>
+                    </div>
+                    <div>
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <img src="assets/img/avatars/According to your Input, this is the property we found in Bhoomi database.png">
+                    </div><br>
+               
+                   
+      <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let item of kaveriData;index as i">
+      <h2>Property {{i+1}} of {{kaveriData && kaveriData.length}} <span style="color:#093172;" class="pull-right" ><button type="button" class="btn btn-primary" (click)="deleteProperty(i)">Delete</button></span></h2>
+    <div class="row">
+      
+      <div class="col-md-3">
+          <label for="district" style="font-weight: bold;">DISTRICT : {{item.disTrictName}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="taluka" style="font-weight: bold;">TALUKA : {{item.talUkaName}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{item.townName}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{item.villageName}}</label>
+      </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered ">
+        <tr class="text-center">
+          <td rowspan="2" style="width:291px;">S.No.</td>
+          <td rowspan="2" style="width:224px;">Property ID.</td>
+          <td rowspan="2" style="width:355px;">Property Description</td>
+          <td rowspan="2" style="width:297px;">Buyer Name</td>
+          <td rowspan="2" style="width:317px;">Seller Name</td>
+          <td rowspan="2" style="width:314px;">Date Of Transaction</td>
+        </tr>
+        <tr class="bg-primary" >
+            <!-- <td colspan="14" class="text-white" style="background-color: #093172;">Results:</td> -->
+        </tr>
+        <tr class="bg-primary" >
+          <td colspan="14" class="text-white" style="background-color: #093172;">Results:</td>
+         </tr>
+        <tr class="text-center">
+            <!-- <td></td>
+            <td>1</td>
+            <td>{{item.HissaNo}}</td>
+            <td>{{item.owner}}</td>
+            <td>{{item.relationship}}</td>
+            <td>{{item.relativename}}</td>
+            <td>{{item.availableextents.avl_ext_acre}}</td>
+            <td>{{item.availableextents.avl_ext_gunta}}</td>
+            <td>{{item.availableextents.avl_ext_fgunta}}</td> -->
+            <td>{{i+1}}</td>
+            <td>{{item.propertyID}}</td>
+            <td>{{item.propertydescription}}</td>
+            <td>{{item.buyername}}</td>
+            <td>{{item.ownername}}</td>
+            <td>{{item.dateoftransaction}}</td>
+        </tr>
+    </table>
+</div>
+ <!-- need to add here -->
+
+ <div class="table-responsive">
+  <table class="table table-bordered ">
+      <tr class="text-center">
+          <td rowspan="2">S.No.</td>
+          <td rowspan="2">SRO</td>
+          <td rowspan="2">Court Order No.</td>
+          <td rowspan="2">Injunction or stay against th...</td>
+          <td rowspan="2">Order Details</td>
+          <td rowspan="2">Survey No.</td>
+          <td rowspan="2">Current...</td>
+          <td rowspan="2">Old Number</td>
+          <td colspan="4">Boundaries</td>
+          <td rowspan="2">Area</td>
+          <td rowspan="2">Description</td>
+      </tr>
+      <tr class="text-center">
+          <td>East</td>
+          <td>North</td>
+          <td>West</td>
+          <td>South</td>
+      </tr>
+      <tr class="bg-primary">
+          <td colspan="14" class="text-white"  style="background-color: #093172;">Court Order Details:</td>
+      </tr>
+      <tr *ngFor="let court of item.Courtorders">
+          <td>{{i+1}}</td>
+          <td>{{court.sro?court.sro:"-"}}</td>
+          <td>{{court.court_order_number?court_order_number:"-"}}</td>
+          <td>{{court.injuction_or_stay_flag?court.injuction_or_stay_flag:"-"}}</td>
+          <td></td>
+          <td>{{court.survey_no?court.survey_no:"-"}}</td>
+          <td>{{court.currentnumber?court.currentnumber:"-"}}</td>
+          <td>{{court.oldnumber?court.oldnumber:""}}</td>
+          <td>{{court.eastboundary?court.eastboundary:"-"}}</td>
+          <td>{{court.northboundary?court.northboundary:"-"}}</td>
+          <td>{{court.westboundary?court.westboundary:"-"}}</td>
+          <td>{{court.southboundary?court.southboundary:"-"}}</td>
+          <td>{{court.area?court.area:""}}</td>
+          <td></td>
+      </tr>
+  </table>
+</div>
+  <table class="table text-center" *ngIf="item.selectedProperty && item.selectedProperty.length">
+    <thead>
+      <tr>
+        <th>PROPERTY NUMBER TYPE</th>
+        <th>PRESENT PROPERTY NUMBER DETAILS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of item.selectedProperty">
+        <td>{{k.propertNumberName}}</td>
+        <td>{{k.presentProperty}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container-fluid card">
+    <div class="row">
+      <div class="col-md-3" *ngIf="item.selectedArticle"><label>STAMP ARTICLE</label><br>{{item.selectedArticle}}</div>
+      <div class="col-md-3" *ngIf="!item.selectedArticle">
+        <label for="article">SELECT STAMP ARTICLE</label>
+        <select type="text" id="article" name="article" class="form-control" formControlName="article"  [(ngModel)]="item.stamparticlecode" (change)="onarticleChange($event,i)"
+        required >
+        <option disabled readonly>Select article</option>
+        <option *ngFor="let d of articleList" [value]="d.stamparticlecode"> {{d.articlenamee}}</option>
+    </select>
+      </div>
+      <div class="col-md-3" *ngIf="item.selectedSubArticle"><label>STAMP SUB-ARTICLE</label><br>{{item.selectedSubArticle}}</div>
+        <div class="col-md-3" *ngIf="!item.selectedSubArticle">
+        <label for="subarticle">SELECT STAMP SUB-ARTICLE</label>
+        <select type="text" name="subarticle" id="subarticle" class="form-control" formControlName="subarticle" (change)="onsubarticleChange($event,i)" required>
+       <option disabled readonly>Select Subarticle</option>
+       <option *ngFor="let d of subarticleList" [value]="d.stampruleid"> {{d.descriptione}}</option>
+   </select>
+      </div>
+      <div class="col-md-3" *ngIf="item.regArticlecode"><label>REGISTRATION FEE ARTICLE</label><br>{{item.selectedRegArticle}}</div>
+        <div class="col-md-3" *ngIf="!item.regArticlecode">
+        <label for="regarticle">SELECT REGISTRATION FEE ARTICLE</label>
+        <select type="text" name="regarticle" id="regarticle" class="form-control" formControlName="regFee" (change)="onRegChange($event,i)" required>
+       <option disabled readonly>Select registration fee article</option>
+       <option *ngFor="let d of registrationList" [value]="d.regarticlecode"> {{d.registrationfeearticle}}</option>
+   </select>
+      </div>
+      <div class="col-md-3" *ngIf="item.selectedBookNumber"><label>BOOK NUMBER</label><br>{{item.selectedBookNumber}}</div>
+        <div class="col-md-3" *ngIf="!item.selectedBookNumber">
+        <label for="bookNumber">SELECT BOOK NUMBER</label>
+        <input type="text" name="bookNo" id="bookNumber" class="form-control" [value]="bookNumber" disabled readonly/>
+      </div>
+    </div>
+  </div>
+
+    
+    <br>
+      </div>
+      <mat-card>
+      <div style="text-align: center;">  
+        <button mat-button  routerLink="/e-aasthi" >Add a new Property </button>
+       
+      </div>
+    </mat-card>
+    <br>
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-primary px-4"  style="background-color: #0a429b;"  (click)="onSubmit()" >Save Property & Continue</button>
+    </div><br>
+      </div>
+
+    </div>
+  </main>
+
+<dx-popup
+[width]="800"
+[height]="300"
+[dragEnabled]="false"
+[closeOnOutsideClick]="true"
+[showCloseButton]="false"
+container=".dx-viewport"
+[(visible)]="manualpopupVisible">
+
+
+<!-- <dxo-position
+        at="center"
+        my="center"
+        [of]="positionOf"> 
+    </dxo-position> -->
+    <div *dxTemplate="let data of 'content'">
+     
+        <div class="row">
+          <div class="col-md-4">
+            <br><br>
+            <img src="assets/img/avatars/Rectangle 688.png" style="width: 250px;height: 200px;">
+          
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-7">
+              <br><br>
+              <img src="assets/img/avatars/ooops.png"><br><br><br>
+              <div style="text-align: center;">
+                <button type="button" class="btn btn-primary px-4" routerLink="/search-on-kaveri" style="background-color: #0a429b;">Search Manual on Kaveri</button><br><br>
+     
+                <button type="button" class="btn btn-primary px-4" routerLink="/search-result-without-kaveri" style="background-color: #f6f8fa; color: #0a429b;" >Continue without Kaveri</button>
+              </div>
+          </div>
+      </div>
+      </div>
+</dx-popup>
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

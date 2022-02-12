@@ -1,0 +1,338 @@
+ 
+
+        
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    
+    <li class="nav-item d-md-down-none">
+      <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;">Log In</button>
+      </li>
+      <li class="nav-item d-md-down-none"></li>
+     <li class="nav-item d-md-down-none">
+      <button type="button" class="btn btn-block btn-outline-primary px-4">Register</button>
+    </li>
+  </ul>
+
+</app-header>
+<div class="app-body">
+  <main class="main">
+    <div class="container-fluid" style="padding: 0px;background-color: #fbfbfb">
+      
+      <div class="animated fadeIn">
+        <br>
+        <img src="assets/img/avatars/Vidhan Sabha Image Cropped.png" alt=""><br><br>
+        <div class="row">
+          <div class="col-md-8">
+             <mat-accordion>
+                  <mat-expansion-panel hideToggle disabled expanded  style="margin-left: 20px;font-family: Segoe UI;">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                    <span style="font-weight: 500;color: blue;text-decoration: underline;cursor: pointer;">
+                      Latest News
+                    </span>  
+                    <span style="float: right;margin-left: 600px;font-weight: 500;color: blue;cursor: pointer;">
+                      View All
+                    </span> 
+                      </mat-panel-title>
+                      <mat-panel-description>
+                          
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                  
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col-md-8"> -->
+                        <span>eSigning Facility for Online EC and Online CC</span><br><br>
+     
+     
+                        <span>Register as Bank User (For filing mortgaged/released properties)</span><br><br>
+     
+                           
+                        <span>Pre Registration Data Entry and Appointment Booking (PRDE)</span><br><br>
+     
+                          
+                        <span> User Manual. </span><br><br><br>
+     
+                      <!-- </div> -->
+                      
+                   <!-- </div> -->
+                  </mat-expansion-panel>
+                </mat-accordion><br>
+      
+               
+   <div class="card" style="height: 300px;margin-left: 20px;">
+    <div id="longtabs">
+      <dx-tabs
+          #apiTabs #selected
+          [dataSource]="tabs"
+          [selectedIndex]="2"
+          (onItemClick)="selectTab($event)"
+      ></dx-tabs>
+      <!-- <div class="content dx-fieldset">
+          <div class="dx-field">
+              <div class="dx-field-label">Selected index:</div>
+              <div class="dx-field-value">
+                  <dx-select-box
+                      [dataSource]="tabs"
+                      displayExpr="text"
+                      valueExpr="id"
+                      (onItemClick)="selectTab($event)"
+                      [(value)]="apiTabs.selectedIndex"
+                  ></dx-select-box>
+              </div>
+          </div>
+          <div class="dx-field">
+              <div class="dx-field-label">Selected content:</div>
+              <div class="dx-field-value-static left-aligned">
+                  {{tabContent}}
+              </div>
+          </div>
+      </div> -->
+  </div>
+  <div class="card-body">
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+          <mat-card class="cards">
+              <span>Online Encumbrance Certificate</span>
+          </mat-card><br>
+      </div>
+      <div class="col-md-6">
+          <mat-card class="cards">
+            <span>Online Completion Certificate</span>
+          </mat-card><br>
+      </div>
+      <div class="col-md-6">
+          <mat-card class="cards">
+            <span>Pre-Registration Data entry</span>
+              
+          </mat-card>
+      </div>
+      <div class="col-md-6">
+          <mat-card class="cards">
+              <span>Book Appointment</span>
+          </mat-card>
+      </div>
+     </div>
+  </div>
+   </div>               
+                  
+                
+              </div>
+              <div class="col-md-4">
+                  <div class="card" style="height: 500px;margin-right: 20px;">
+                    <dx-tabs [selectedIndex]="0">
+                      <dxi-item>
+                          <span>Departmental Login</span>
+                      </dxi-item>
+                      <dxi-item routerLink="/search-document-number">
+                          <span>Applicant Login</span>
+                      </dxi-item>
+                  </dx-tabs>
+                  <div class="card-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="Login()">
+                    <div class="form-group">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text"><img src="assets/img/avatars/usr.png" alt=""></span>
+                      </div> -->
+                      <label for="username">Username</label>
+                      <input type="text" formControlName="userName" class="form-control" placeholder="Username" autocomplete="username"
+                        >
+                    </div>
+                    <div class="form-group">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <img
+                            [src]="show_eye  ? 'assets/img/avatars/hidden.png' : 'assets/img/avatars/eye.png'"
+                            (click)="showPassword()" style="cursor: pointer;">
+                        </span>
+                      </div> -->
+                      <label for="password">Password</label>
+                      <input type="password" formControlName="password" class="form-control" placeholder="Password" autocomplete="current-password"
+                         [type]="show_button ? 'password' : 'text'">
+                    </div>
+                    <div class="form-group">
+                      <!-- <div class="input-group-prepend">
+                        <span class="input-group-text"><img src="assets/img/avatars/usr.png" alt=""></span>
+                      </div> -->
+                      <label for="info">Enter the text you see in the image below
+                      </label>
+                      <div class="input-group" style="text-align: center!important" >
+                        <botdetect-captcha captchaStyleName="CaptchaStyle" ></botdetect-captcha>
+                        <!-- <label for="CaptchaCode" style="font-weight: bold;">{{CaptchaCode}}</label> -->
+                        <input style="font-weight:bold;font-family:-webkit-body;" id="captchaValue" name="captchaValue" formControlName="captchaValue" [(ngModel)] ="captchaValue" type="text" placeholder="CAPTCHA" class="form-control">
+                            <span class="input-group-append">
+                              <button type="button" class="btn btn-primary" style="background-color: #0a429b;" (click)="Captcha();"><img src="assets/img/avatars/redo.png" alt=""></button>
+                            </span>
+                      </div><br>
+                      <!-- <input type="text" class="form-control" id="CaptchaUserInput" formControlName="CaptchaUserInput" placeholder="Value"
+                      (change)="ValidateCaptcha()"  required [ngClass]="{ 'is-invalid': submitted && f.CaptchaUserInput.errors }">
+                        <div *ngIf="submitted && f.CaptchaUserInput.errors" class="invalid-feedback">
+                          <div *ngIf="f.CaptchaUserInput.errors.required">Captcha is required</div>
+                      </div> -->
+                      <ng-container *ngIf="ValidCaptha">
+                        <label for="info" style="color: red;">Captha not matched
+                        </label><br>
+                      </ng-container>
+
+                      
+                      <!-- <div class="input-group">
+                         <span class="input-group-prepend">
+                          <button type="button" class="btn btn-primary"><i class="fa fa-facebook"></i></button>
+                        </span> -->
+                        <!-- <input type="text" id="input3-group2" name="input3-group2" class="form-control" placeholder="CAPTCHA">
+                        <span class="input-group-append">
+                          <button type="button" class="btn btn-primary" style="background-color: #0a429b;"><img src="assets/img/avatars/redo.png" alt=""></button>
+                        </span>
+                      </div><br>
+                      <input type="text" class="form-control" placeholder="" autocomplete="username"> --> -->
+                    </div>
+                    <!-- <div class="form-group" style="text-align: center;">
+                      <button type="button" class="btn btn-primary" style="background-color: #0a429b;">Login</button>
+                    </div> -->
+                    <div class="row">
+                      <div class="col-4">
+                        <!-- <button type="button" class="btn btn-primary px-4">Login</button> -->
+                      </div>
+                      <div class="col-8">
+                        <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;" (click)="Login()">Login</button>
+                      </div>
+                      <!-- <div class="col-6 text-right">
+                        <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                      </div> -->
+                    </div><br><br>
+                  </form>
+                    <div class="row">
+                      <div class="col-3">
+                      </div>
+                      <div class="col-9">
+                        <label for="info">Forgot Password ?&nbsp;<a href="#">Click Here</a></label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-3">
+                      </div>
+                      <div class="col-9">
+                        <label for="info">New User ?&nbsp;<a href="#">Register Account</a></label>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+
+
+
+
+
+
+
+               
+            
+            
+      </div><br>
+      <mat-accordion>
+        <mat-expansion-panel hideToggle disabled expanded style="height: 200px;background-color: #707070;">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+            </mat-panel-title>
+            <mat-panel-description>
+                
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+        <div class="row" style="margin-top: -50px;">
+          <div class="col-md-5"></div>
+          <div class="col-md-7"><span style="color: white;font-weight: 500;">
+            Important Links
+          </span><br><br></div>
+        </div>
+        <div class="row" style="margin-left: 3%;">
+          <!-- <div class="col-md-2"></div> -->
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/NoPath - Copy.png" alt=""><br>
+            <span class="login-cards">National Portal of India</span>
+          </div>
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/government-of-karnataka-logo.png" alt=""><br>
+            <span class="login-cards">Government of Karnataka</span>
+          </div>
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/NoPath - Copy (2).png" alt=""><br>
+            <span class="login-cards">E-Swathu</span>
+          </div>
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/NoPath - Copy (10).png" alt=""><br>
+            <span class="login-cards">Land Records-Bhoomi</span>
+          </div>
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/NoPath - Copy (3).png" alt=""><br>
+            <span class="login-cards">Khajane II Gateway</span>
+          </div>
+          <div class="col-md-2" style="text-align: center;cursor: pointer;">
+            <img src="assets/img/avatars/NoPath - Copy (4).png" alt=""><br>
+            <span class="login-cards">Sakala Web Portal</span>
+          </div>
+          <!-- <div class="col-md-2"></div> -->
+        </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      </div>
+    </div>
+  </main>
+</div>
+  
+<app-footer style="background-color: #0a429b">
+  <!-- <span><a href="https://coreui.io">CoreUI</a> &copy; 2021 Sample.</span>
+  <span class="ml-auto">Powered by <a href="https://coreui.io/angular">Sample</a></span> -->
+  <!-- <div > -->
+    <div class="row align-items-center" style="margin-left: 100px;">
+      <div class="col-xs-2">
+        <span></span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">Accessibility Statement&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Help&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Feedback&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;FAQ&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Visitors Analytics</span>
+      </div>
+      <!-- <div class="col-xs-1">
+      </div> -->
+    </div>
+    <div class="row" style="margin-left:500px;float: right;">
+      <!-- <div class="col-sm-4"></div> -->
+      <div class="col-sm-12">
+        
+      <span  class="ftr">©2021, Department of Stamps and Registration, Karnataka</span>
+      </div>
+      <!-- <div class="col-sm-4"></div> -->
+    </div>
+</app-footer>

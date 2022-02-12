@@ -1,0 +1,358 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+  [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+    style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg"
+            class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active"
+        routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+  <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+    <dxi-item>
+      <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+    </dxi-item>
+    <dxi-item>
+      <span>About Department</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Resources</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>External Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Help</span>
+    </dxi-item>
+  </dx-tabs>
+</app-header>
+
+<main class="main">
+
+  <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+    <div class="animated fadeIn">
+
+      <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+          <div class="card">
+
+            <div class="card-body">
+
+              <div style="margin-top: 25px;">
+                <!-- <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px"> -->
+                <img src="assets/img/avatars/1.png">
+                <button *ngIf="slotBookedDetail && slotBookedDetail.slotBookingId" type="button" class="btn btn-primary px-4 pull-right"
+                (click)='cancelAppointment()' style="background-color: #0a429b;" >Cancel</button>
+              </div><br><br /><br />
+              <!-- <form class="form-horizontal" [formGroup]="sroForm">
+                <div class="row" style="margin-top: 30px;">
+                  <div class="form-group col-md-2" style="margin-left: 120px;">
+                    <label for="typeofapt" class="label">Type of Appointment</label>
+                    <input type="text" name="apttype" class="form-control" formControlName="apttype" [readonly]="isReadOnly" [(ngModel)]="appointmentDetails.appointmenttype" id="appType">
+                    <select type="text" id="apttype" name="apttype" class="form-control" formControlName="apttype"
+                      required [ngClass]="{ 'is-invalid': submitted && f.apttype.errors }" required>
+                      <option disabled readonly>Select Appointment Type</option>
+                      <option *ngFor="let appType of responce" value={{appType.appointmenttypeid}}>
+                        {{appType.appointmenttype}} </option>
+                      <option *ngFor="let d of getapptype" [value]="d.appointmenttypeid">{{d.appointmenttype}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.apttype.errors" class="invalid-feedback">
+                      <div *ngIf="f.apttype.errors.required">Appointment Type is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="reason" class="label">Purpose of Appointment</label>
+                    <input type="text" name="reason" class="form-control" formControlName="reason" [readonly]="isReadOnly" [(ngModel)]="appointmentDetails.servicename" id="reason">
+                    <select type="text" id="reason" name="reason" class="form-control" formControlName="reason" required
+                      [ngClass]="{ 'is-invalid': submitted && f.reason.errors }">
+                      <option disabled readonly>Select Purpose </option>
+                      <option *ngFor="let purpose of responcePurpose" [value]="purpose.serviceid">
+                        {{purpose.servicename}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.reason.errors" class="invalid-feedback">
+                      <div *ngIf="f.reason.errors.required">Purpose is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="hobli" class="label">Select User Type</label>
+                    <select type="text" id="usertype" name="usertype" class="form-control" formControlName="usertype"
+                      required [ngClass]="{ 'is-invalid': submitted && f.usertype.errors }">
+                      <option disabled readonly>User Type</option>
+                      <option *ngFor="let user of responceUserTpye" [value]="user.partytypeid">
+                        {{user.descriptioninenglish}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.usertype.errors" class="invalid-feedback">
+                      <div *ngIf="f.usertype.errors.required">User is required</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="sro" class="label">SRO</label>
+                    <input type="text" name="sro" class="form-control" formControlName="sro" [readonly]="isReadOnly" [(ngModel)]="appointmentDetails.sroname" id="sro">
+                    <select type="text" id="sro" name="sro" class="form-control" formControlName="sro" required
+                      [ngClass]="{ 'is-invalid': submitted && f.sro.errors }">
+                      <option disabled readonly>Select SRO</option>
+                      <option *ngFor="let sro of responceSRO" [value]="sro.srocode">{{sro.sronamee}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.sro.errors" class="invalid-feedback">
+                      <div *ngIf="f.sro.errors.required">SRO is required</div>
+                    </div>
+                  </div>
+                </div><br><br>
+                <div style="text-align: center;">
+                  <button type="button" class="btn btn-primary px-4"
+                    style="background-color: #0a429b; color: #f1f1f1 !important;" (click)="onSubmit();">Search</button>
+                </div>
+
+              </form> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-left: -80px;margin-right: -25px;">
+        <div class="col-md-12">
+          <div class="card">
+
+            <form class="form-horizontal" [formGroup]="dateForm">
+              <div class="row" style="margin-top: 30px;">
+
+                <div class="row" style="margin-left: 80px; margin-top: 10px;margin-bottom: 0px;">
+                  <div class="col-md-5">
+                    <label for="TypeOfAppointment" style="font-weight: bold;"> Type Of Appointment :
+                      {{appointmentDetails.appointmenttype}}</label>
+                  </div><br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="col-md-5">
+                    <label for="PurposeOfAppoinmtment" style="font-weight: bold; margin-left: 75px;"> Purpose Of
+                      Appointment : {{appointmentDetails.servicename}}</label>
+                  </div><br><br><br>
+                  <div class="col-md-5">
+                    <label for="UserType" style="font-weight: bold;">User Type
+                       <select style="width: 200px;" (change)="onUserChange($event)" type="text" id="usertype" name="usertype" class="form-control" formControlName="usertype"
+                      required [ngClass]="{ 'is-invalid': submitted && f.usertype.errors }">
+                      <option disabled readonly>User Type</option>
+                      <option *ngFor="let user of responceUserTpye" [value]="user.partytypeid">
+                        {{user.descriptioninenglish}}</option>
+                    </select>  
+                    </label>
+                     
+                  </div><br><br><br>
+                  <div class="col-md-5">
+                    <span for="SubRegistarOffice" style="font-weight: bold;margin-left: 91px;">Sub Registar Office
+                      </span><span style="margin-left: 32px;font-weight: bold">: {{appointmentDetails.sroname}}</span>
+                  </div>
+                </div>
+                <hr />
+              </div>
+
+
+              <div class="row" style="margin-left:100px;">
+                <div class="col-md-6" style="margin-top: 10px;margin-bottom: 20px;">
+                  <p>Select Date and Time</p><br><br>
+                  <div class="pl-5">
+                    <mat-card class="demo-inline-calendar-card">
+                      <mat-calendar (selectedChange)="onDateChange($event)"></mat-calendar>
+                    </mat-card>
+                  </div>
+                  <br><br>
+                  <p *ngIf="selected">Selected date: {{selected}}</p>
+                </div>
+                <div class="col-md-6" style="margin-top: 100px;" *ngIf="selectedDate">
+                  <h2 class="text-center" style="background-color: #0a429b;color: #fff;">Available slot</h2>
+                  <h2 class="text-center">Selected Date : {{selectedDate}}</h2>
+                  <h2 class="text-center">{{slotTime}}</h2>
+                    <!-- <div class="p-4">
+                      <h4>Morning</h4>
+                      <carousel [interval]="false">
+                        <slide class="pb-5" style="margin-left: 13%;">
+                          <div class="wrapper">
+                            <input type="radio" name="mydate" value="8:00-8:30 AM" [(ngModel)]="timeSlots[0].isSelected" id="option-1"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="8:30-9:00 AM" [(ngModel)]="timeSlots[1].isSelected" id="option-2"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="9:00-9:30 AM" [(ngModel)]="timeSlots[2].isSelected" id="option-3"
+                              formControlName="mydate">
+                            <label for="option-1" class="option option-1" style="border-color: #0a429b !important;">
+                              <span>8:00-8:30 AM</span>
+                            </label>
+                            <label for="option-2" class="option option-2" style="border-color: #0a429b !important;">
+                              <span>8:30-9:00 AM</span>
+                            </label>
+                            <label for="option-3" class="option option-3" style="border-color: #0a429b !important;">
+                              <span>9:00-9:30 AM</span>
+                            </label>
+                          </div>
+                        </slide>
+                        <slide class="pb-5" style="margin-left: 13%;">
+                          <div class="wrapper">
+                            <input type="radio" name="mydate" value="9:30-10:00 AM" [(ngModel)]="timeSlots[3].isSelected && timeSlots[3].value" id="option-4"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="10:00-10:30 AM" [(ngModel)]="timeSlots[4].isSelected && timeSlots[4].value" id="option-5"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="10:30-11:00 AM" [(ngModel)]="timeSlots[5].isSelected && timeSlots[5].value" id="option-6"
+                              formControlName="mydate">
+                            <label for="option-4" class="option option-4" style="border-color: #0a429b !important;">
+                              <span>9:30-10:00 AM</span>
+                            </label>
+                            <label for="option-5" class="option option-5" style="border-color: #0a429b !important;">
+                              <span>10:00-10:30 AM</span>
+                            </label>
+                            <label for="option-6" class="option option-6" style="border-color: #0a429b !important;">
+                              <span>10:30-11:00 AM</span>
+                            </label>
+                          </div>
+                        </slide>
+                        <slide class="pb-5" style="margin-left: 13%;">
+                          <div class="wrapper">
+                            <input type="radio" name="mydate" value="11:00-11:30 PM" [(ngModel)]="timeSlots[6].isSelected && timeSlots[6].value" id="option-7"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="11:30-12:00 PM" [(ngModel)]="timeSlots[7].isSelected && timeSlots[7].value" id="option-8"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="12:00-12:30 PM" [(ngModel)]="timeSlots[8].isSelected && timeSlots[8].value" id="option-9"
+                              formControlName="mydate">
+                            <label for="option-7" class="option option-7" style="border-color: #0a429b !important;">
+                              <span>11:00-11:30 PM</span>
+                            </label>
+                            <label for="option-8" class="option option-8" style="border-color: #0a429b !important;">
+                              <span>11:30-12:00 PM</span>
+                            </label>
+                            <label for="option-9" class="option option-9" style="border-color: #0a429b !important;">
+                              <span>12:00-12:30 PM</span>
+                            </label>
+                          </div>
+                        </slide>
+                      </carousel>
+                    </div>
+                    <div class="pl-4 pr-4 pb-4">
+                      <h4>Evening</h4>
+                      <carousel [interval]="false">
+                        <slide class="pb-5" style="margin-left: 13%;">
+                          <div class="wrapper">
+                            <input type="radio" name="mydate" value="2:00-2:30 PM" [(ngModel)]="timeSlots[9].isSelected && timeSlots[9].value" id="option-10"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="2:30-3:00 PM" [(ngModel)]="timeSlots[10].isSelected && timeSlots[10].value" id="option-11"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="3:00-3:30 PM" [(ngModel)]="timeSlots[11].isSelected && timeSlots[11].value" id="option-12"
+                              formControlName="mydate">
+                            <label for="option-10" class="option option-10" style="border-color: #0a429b !important;">
+                              <span>2:00-2:30 PM</span>
+                            </label>
+                            <label for="option-11" class="option option-11" style="border-color: #0a429b !important;">
+                              <span>2:30-3:00 PM</span>
+                            </label>
+                            <label for="option-12" class="option option-12" style="border-color: #0a429b !important;">
+                              <span>3:00-3:30 PM</span>
+                            </label>
+                          </div>
+                        </slide>
+                        <slide class="pb-5" style="margin-left: 13%;">
+                          <div class="wrapper">
+                            <input type="radio" name="mydate" value="3:30-4:00 PM" [(ngModel)]="timeSlots[12].isSelected && timeSlots[12].value" id="option-13"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="4:00-4:30 PM" [(ngModel)]="timeSlots[13].isSelected && timeSlots[13].value" id="option-14"
+                              formControlName="mydate">
+                            <input type="radio" name="mydate" value="5:00-5:30 PM" [(ngModel)]="timeSlots[14].isSelected && timeSlots[14].value" id="option-15"
+                              formControlName="mydate">
+                            <label for="option-13" class="option option-13" style="border-color: #0a429b !important;">
+                              <span>3:30-4:00 PM</span>
+                            </label>
+                            <label for="option-14" class="option option-14" style="border-color: #0a429b !important;">
+                              <span>4:00-4:30 PM</span>
+                            </label>
+                            <label for="option-15" class="option option-15" style="border-color: #0a429b !important;">
+                              <span>5:00-5:30 PM</span>
+                            </label>
+                          </div>
+                        </slide>
+                      </carousel>
+                    </div> -->
+                  
+                </div>
+              </div><br><br>
+
+              <div style="text-align: center;" class="pb-3">
+                <button type="button" class="btn btn-primary px-4"
+                  (click)='submitTimeForm(selectedDate)' style="background-color: #0a429b;" [disabled]="isContinue"><span *ngIf="slotBookedDetail && slotBookedDetail.slotBookingId">Reschedule</span><span *ngIf="slotBookedDetail && !slotBookedDetail.slotBookingId">Schedule</span></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

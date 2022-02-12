@@ -1,0 +1,234 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+    [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+    [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+    [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+    <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+        style="float:left;margin-left:-80px" />
+    <span class="Kaveri">Kaveri Online Services</span>
+    <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+    <ul class="nav navbar-nav ml-auto">
+        <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+        <li class="nav-item dropdown" dropdown placement="bottom right">
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+                dropdownToggle (click)="false">
+                <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg"
+                        class="img-avatar" alt="" /></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="dropdown-header text-center"><strong>Account</strong></div>
+                <!--<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+        <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>-->
+                <a class="dropdown-item" href="#"><img
+                        src="assets/img/avatars/lock.png">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+            </div>
+        </li>
+
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active"
+                routerLink="/landing-page" aria-pressed="true">Logout</button>
+        </li>
+    </ul>
+
+</app-header>
+
+<div class="app-body">
+
+    <main class="main">
+        <dx-tabs style="width: 100%;z-index: 1020;margin-top: 45px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs>
+        <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+            <div class="animated fadeIn">
+                <div
+                    style="font-family: Segoe UI;height: 250px;margin-top: 45px;margin-left: -45px;margin-bottom: 5px;">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle disabled expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                </mat-panel-title>
+                                <mat-panel-description>
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="row" style="margin-top: -30px;">
+                                <div class="col-md-3">
+                                    <div>
+                                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"
+                                            routerLink="/dashboard"><br>
+                                    </div>
+                                    <div class="pl-3">
+                                        <h4 style="font-weight: 500;">
+                                            <span class="line pr-2"></span>Application
+                                            Details
+                                        </h4>
+                                        <p>Application Number</p>
+                                        <p>{{applicationnumber}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <!-- <h1>Hello User!</h1><br>
+                      <h2>Welcome to Kaveri Online Services</h2><br>
+                      <span>To start a new application process, Click on the Start button</span> -->
+                                    <br><br><br>
+                                    <div class="pt-1">
+                                        <p>DATE OF SUBMISSION</p>
+                                        <p>{{applicationstartdate}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3">
+                                    <br><br><br>
+                                    <div class="pt-2">
+                                        <p>APPLICATION TYPE</p>
+                                        <p>{{applicationtype}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </mat-expansion-panel><br>
+                        <!-- <mat-expansion-panel hideToggle disabled expanded>
+
+            </mat-expansion-panel> -->
+                    </mat-accordion><br><br>
+                </div>
+                <div style="font-family: Segoe UI;height: auto;margin-top: 0px;margin-left: -45px;margin-bottom: 5px;">
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle disabled expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                </mat-panel-title>
+                                <mat-panel-description>
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="row" style="margin-top: -30px;">
+                                <div>
+                                    <div class="pl-3" style="line-height: 0ex;">
+                                        <span>
+                                            <h4 style="font-weight: 500;">
+                                                <span class="line pr-2"></span>Application
+                                                Review
+                                            </h4>
+                                            <p>Select the section that needs to be corrected</p>
+                                        </span>
+                                    </div><br><br>
+                                    <table class="table-bordered text-center ml-5 pl-4" style="width: 85vw;">
+                                        <thead>
+                                            <tr class="text-light">
+                                                <th>S.No.</th>
+                                                <th>Section</th>
+                                                <th>Remarks</th>
+                                                <th>Action</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let application of applicationData">
+                                                <td>{{application.sno}}</td>
+                                                <td>{{application.reviewname}}</td>
+                                                <td>{{application.sroremarks}}</td>
+                                                <td *ngIf="application.action=='0'">No Action required</td>
+                                                <td *ngIf="application.action=='1' && application.sno=='4'"><a routerLink="/market-valuation"
+                                                        style="color: #0a429b;">Edit</a></td>
+                                                        <td *ngIf="application.action=='1' && application.sno=='5'"><a routerLink="/fee-calculation"
+                                                            style="color: #0a429b;">Edit</a></td>
+
+                                                <td>{{application.status}}</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+
+                        </mat-expansion-panel><br>
+                        <!-- <mat-expansion-panel hideToggle disabled expanded>
+
+            </mat-expansion-panel> -->
+                    </mat-accordion><br>
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="text-center" style="margin-left: 40%;">
+                        <span><button class="btn btn-sm"
+                                style="box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);background-color: #f1f1f1;">Cancel</button>&nbsp;&nbsp;&nbsp;<button
+                                class="btn btn-sm text-light" style="background-color: #0a429b;">Resend for
+                                Approval</button>
+                        </span>
+                    </div>
+                </div>
+
+            </div><br><br>
+        </div>
+    </main>
+</div>
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+    <div class="row" style="margin-left: 10px;">
+        <div class="col-xs-2">
+            <span></span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">Accessibility Statement&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Help&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Feedback&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;FAQ&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Visitors Analytics</span>
+        </div>
+        <!-- <div class="col-xs-1">
+      </div> -->
+    </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+    <div class="row" style="margin-left: 10px;">
+        <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+    </div>
+</app-footer>

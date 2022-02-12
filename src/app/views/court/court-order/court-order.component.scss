@@ -1,0 +1,142 @@
+* {
+  font-family: Segoe UI !important;
+}
+.title-border {
+  border-left: 5px solid #0a429b;
+  opacity: 1;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #222;
+  font-weight: bold;
+}
+.sub-text {
+  font-size: 13px;
+  color: #4e4e4e;
+  font-weight: 600;
+}
+.step2 {
+  margin-bottom: 33px;
+  margin-top: 85px;
+}
+.step1 {
+  margin-bottom: 33px;
+}
+.property-text,
+.boundary-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 40px;
+}
+.boundary-text {
+  margin-top: 36px;
+  font-size: 18px;
+}
+
+.schedule-text {
+font-size: 18px;
+color: #4e4e4e;
+margin-top: 40px;
+width: 70%;
+}
+
+.text-padding {
+padding: 0 40px;
+}
+
+.td-value {
+  color: #707070;
+}
+.font-black {
+   color: #4E4E4E;
+}
+.font-blue {
+   color: #0A429B !important;
+}
+.custom-select {
+   border-color: #0A429B;
+   &:focus {
+       box-shadow: none !important;
+       outline: none !important;
+   }
+}
+td {
+  border: 1px solid #707070;
+}
+.cursor-pointer {
+cursor: pointer;
+}
+.marg-24 {
+margin-bottom: 27.5px;
+}
+.custom-select, .custom-input {
+  border-color: #0A429B;
+  background-color: #fff;
+  &:focus {
+      box-shadow: none !important;
+      outline: none !important;
+  }
+}
+.top-section {
+  box-shadow: 0px 0px 6px #00000029;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 25px 0;
+}
+.schedule-actions {
+  .p-btn {
+    color: #0a429b;
+    padding: 8px 24px;
+    background-color: #fff;
+    border: 1px solid #0a429b;
+    border-radius: 5px;
+    margin-left: 60px;
+  }
+  .s-btn {
+    background-color: #0a429b;
+    color: #fff;
+    padding: 8px 24px;
+    border-radius: 5px;
+  }
+}
+
+
+.table-lable p {
+  color: #ffffff;
+  opacity: 1;
+  margin: 0;
+  padding: 0 0 0 7px;
+}
+.table-lable {
+  padding: 8px;
+  background: var(--unnamed-color-0a429b) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--unnamed-color-707070);
+  background: #0a429b 0% 0% no-repeat padding-box;
+  color: #ffffff;
+  opacity: 1;
+  margin: 0px;
+}
+.results-table th {
+  vertical-align: middle; 
+  border-color: #000; 
+  text-align: center; 
+}
+.mandate {
+  color: red;
+}
+.table-bordered td {
+  vertical-align: middle;
+  text-align: center;
+}
+.table-bordered {
+  min-width: 100%;
+}
+
+*tr{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.blue-color {
+  color: #0A429B;
+  cursor: pointer;
+}

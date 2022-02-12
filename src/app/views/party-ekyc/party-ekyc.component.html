@@ -1,0 +1,243 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+[sidebarToggler]="'lg'" [asideMenuToggler]="'lg'" style="height: 80px;">
+
+<img src="assets/img/avatars/online1.png"
+  style="float:left;margin-left:-5%" />
+<!-- <h2 style="font-family:Segoe UI;font-weight: bold;float: left;margin: 0px 270px 30px -270px;">Kaveri Online Services</h2><br>
+<h4 style="font-family:Segoe UI;float: left;font-style: italic;margin: 0px 0px 0px 0px;">Department of Stamps and Registration,Government of Karnataka</h4> -->
+<ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+        <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+        </li>
+       <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/departmental-login" aria-pressed="true">Logout</button>
+      </li>
+    </ul>
+  
+</app-header>   
+   
+<main class="main"> 
+        
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;font-family: Segoe UI">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 50px;margin-right: -25px;font-family: Segoe UI;">
+        <div class="col-md-12" style="font-family: Segoe UI;">
+          <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-12">
+                    <div class="card-header"  style="background-color: #5e85c2;color: white;font-weight: 500;border-radius: 5px;height: 70px;">
+                      <div class="row">
+                        <div class="col-md-1" class="circle"></div>
+                        <div class="col-md-3">
+                          <span>Welcome <label style="text-transform: uppercase;">{{DepartmentUser}}</label></span><br>
+                  <span style="text-transform: uppercase;">{{DepartmentUserDesignation}}- BENGALURU URBAN</span>
+                        </div>
+                        <img src="assets/img/avatars/line.png" style="margin-left: -40px;">
+                          <div class="col-md-3">
+                            <span>LAST LOGIN :</span><br>
+                            <span>12TH OCTOBER 2021 8.34AM</span>
+                          </div>
+                           <div class="col-md-1">
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" class="search">
+                          <!-- <span style="color: black;float: left;margin-top: 10px;margin-left: 25px;">Search</span> -->
+                          <input type="text" class="form-control" placeholder="Search" style="border: none;background-color: transparent;width: 70%;float: left;margin-top: 5px;margin-left: 25px;"> 
+                          <img src="assets/img/avatars/search-interface-symbol (1).png" style="float: right;margin-top: 10px;margin-right: 25px;">
+                          </div>
+                        </div> 
+                      </div> 
+                    </div>
+            </div>
+        </div>
+  
+        <div class="card">
+            <div class="card-body">
+                <div class="step1" style="margin-top: 60px">
+                    <p class="title-border">Party eKYC</p>
+                  </div>
+                  <div class="row mb-5">
+                   
+                  </div>
+                 
+                  <div class="row mt-4">
+                    <div class="col-md-3 mb-3">
+                      <p class="sub-text font-black">
+                        FIRST NAME: <b>{{ SelectedPartyData.firstname }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <p class="sub-text font-black">
+                        MIDDLE NAME: <b>{{ SelectedPartyData.middlename }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <p class="sub-text font-black">
+                        LAST NAME: <b>{{ SelectedPartyData.lastname }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                      <p class="sub-text font-black">
+                        AGE: <b>{{ SelectedPartyData.age }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="sub-text font-black">
+                        SEX:
+                        <b *ngIf="selectedParty">{{
+                          SelectedPartyData.sex === 0
+                          ? "Male"
+                          : SelectedPartyData.sex === 1
+                          ? "Female"
+                          : ""
+                          }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="sub-text font-black">
+                        ADDRESS: <b>{{ SelectedPartyData.address }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="sub-text font-black">
+                        PAN: <b>{{ SelectedPartyData.pan }}</b>
+                      </p>
+                    </div>
+                    <div class="col-md-3">
+                      <p class="sub-text font-black">
+                        PROFESSION: <b>{{ SelectedPartyData.profession }}</b>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row pb-4" style="border-bottom: 1px solid #000;margin-bottom: 50px;"></div>
+                  <div class="row mt-4" style="margin-bottom: 150px;">
+                    <div class="col-md-1"></div>  
+                    <div class="col-md-3">
+                        <label>Enter Aadhaar Number</label><br>
+                        <input type="text" class="form-control col-sm-8" placeholder="" value="1111 1111 1111"
+                             id="value">
+                    </div>
+                    <!-- <div class="col-md-1"></div>   -->
+                    <div class="col-md-2">
+                        <div class="d-flex justify-content-start flex-column align-items-center">
+                          <div><br><br>
+                            <select class="custom-select" style="margin-bottom: 12px;" [(ngModel)]="fingerName">
+                              <option selected value="null">Select</option>
+                              <option *ngFor="let finger of fingers">{{finger}}</option>
+                            </select>
+                          </div>
+                        
+                        </div>
+                      </div> 
+                    <div class="col-md-3">  <div style="
+                        width: 90%;
+                        height: 250px;
+                        border: 1px solid #707070;
+                        margin: 0 auto;
+                      ">
+                      <img id="captured-bio" [src]="capturedImage" alt="" style="width: 100%; height: 250px" *ngIf="capturedImage" />
+                    </div>
+                    </div>  
+                    <div class="col-md-3"><br><br><br>
+                        <ng-container *ngIf="tMode === 'capture'">
+                            <p class="font-blue font-weight-bold mt-4 cursor-pointer" id="capture-img" (click)="captureThumb()">CAPTURE</p>
+                          </ng-container>
+                          <!-- <ng-container *ngIf="tMode === 'reCapture'">
+                            <p class="font-blue font-weight-bold mt-4 cursor-pointer" style="width: 100%; padding: 0px 9%;" id="recapture-img"><span (click)="recaptureThumb()">RECAPTURE</span><span class="float-right" 
+                              (click)="saveThumb()">SAVE</span></p>
+                          </ng-container> -->
+                    </div>  
+                  </div>
+                  <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary px-4" (click)="showSuccessPopUp()" style="margin-bottom: 50px;">Save and Continue</button>
+                </div>
+            </div>
+           
+        </div>
+      
+        </div>
+    </div>
+ 
+    <div id="container">
+        <dx-popup
+        [width]="800"
+        [height]="350"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [showCloseButton]="false"
+        container=".dx-viewport"
+        [(visible)]="successpopupVisible">
+       
+            <div *dxTemplate="let data of 'content'">
+              <br>
+              <div class="row">
+                <div class="col-md-5">
+                  <br><br>
+                </div>
+                <div class="col-md-7">
+                  <img src="assets/img/avatars/Success.png">
+                </div>
+            </div><br><br>
+          <div style="text-align: center;">
+            <span>
+              eKYC successfully done.Taking you back in 5 seconds
+            </span>
+          </div><br><br><br>
+          <div style="text-align: center;">
+            <button type="button" class="btn btn-primary px-4" routerLink="/document/party-details" >Close</button>
+          </div>
+            </div>
+    </dx-popup>
+  </div>
+      </div>
+    </div>
+  </main>
+
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

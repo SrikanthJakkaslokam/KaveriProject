@@ -1,0 +1,379 @@
+<app-header  [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+      <div class="animated fadeIn">
+
+        <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+          <div class="col-md-12">
+            <div class="card">
+
+              <div class="card-body">
+                <div>
+                  <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"
+                    routerLink="/agricultural/non-agricultural"><br>
+                </div>
+                <div>
+                  <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                  <img src="assets/img/avatars/bhumi.png">
+                </div>
+                <form class="form-horizontal" [formGroup]="bhumiForm">
+                  <!-- <div style="margin-top: 100px;"> -->
+                  <div class="row" style="margin-top: 30px;">
+                    <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                    <div class="form-group col-md-2" style="margin-left: -20px;">
+                      <label for="district">DISTRICT</label>
+                      <select type="text" name="district" class="form-control" formControlName="district"
+                        [(ngModel)]="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"
+                        (change)="ondistrictChange($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.district.errors }">
+                        <option disabled readonly>Select District</option>
+                        <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.district.errors" class="invalid-feedback">
+                        <div *ngIf="f.district.errors.required">District is required</div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="taluka">TALUKA</label>
+                      <select type="text" name="taluka" class="form-control" formControlName="taluka"
+                        [(ngModel)]="selectedtalukvalue" (ngModelChange)="ontalukValuechange($event)"
+                        (change)="ontalukaChange($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.taluka.errors }">
+                        <option disabled readonly>Select Taluka</option>
+                        <option *ngFor="let d of talukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                        <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="hobli">HOBLI</label>
+                      <select type="text" name="hobli" class="form-control" formControlName="hobli"
+                        [(ngModel)]="selectedhoblivalue" (ngModelChange)=" onhobliValuechange($event)"
+                        (change)="onhobliChange($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.hobli.errors }">
+                        <option disabled readonly>Select Hobli</option>
+                        <option *ngFor="let d of hobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                        <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="village">INDEX II: VILLAGE</label>
+                      <select type="text" name="village" class="form-control" formControlName="village"
+                        [(ngModel)]="selectedvillagevalue" (change)="getRoadDetails($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.village.errors }">
+                        <option disabled readonly>Select Index II: Village</option>
+                        <option *ngFor="let d of villageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                        <div *ngIf="f.village.errors.required">Village is required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 30px;">
+                    <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                    <div class="form-group col-md-2" style="margin-left: -20px;">
+                      <label for="road">ROAD</label>
+                      <select type="text" name="road" class="form-control" formControlName="road"
+                        [(ngModel)]="selectedroadvalue" required
+                        [ngClass]="{ 'is-invalid': submitted && f.road.errors }">
+                        <option disabled readonly>Select road</option>
+                        <option *ngFor="let d of roadList" [value]="d.roadcode"> {{d.roadnamee}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.road.errors" class="invalid-feedback">
+                        <div *ngIf="f.road.errors.required">road is required</div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="surveyno">SURVEY NO:</label>
+                      <input type="text" class="form-control" placeholder="Value" [(ngModel)]="surVey"
+                        formControlName="surveyno" (input)="GetSurvayNoist()" required
+                        [ngClass]="{ 'is-invalid': submitted && f.surveyno.errors }" required>
+                      <div *ngIf="submitted && f.surveyno.errors" class="invalid-feedback">
+                        <div *ngIf="f.surveyno.errors.required">Survey Number is required</div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="hissa">HISSA NO:</label>
+                      <select type="text" name="hissa" class="form-control" formControlName="hissa"[(ngModel)]="hissavalue" (change)="onhissachange($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.hissa.errors }">
+                        <option disabled readonly>Select Hissa</option>
+                        <option *ngFor="let d of hissaList" [value]="d.hissano"> {{d.hissano}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.hissa.errors" class="invalid-feedback">
+                        <div *ngIf="f.hissa.error.required">Hissa is required</div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                    <div class="form-group col-md-2" style="margin-left: 60px;">
+                      <label for="extent">EXTENT</label>
+                      <select type="text" name="extent" class="form-control" formControlName="extent"
+                        [(ngModel)]="extentselectdvale" (change)="onExtentChange($event)" required
+                        [ngClass]="{ 'is-invalid': submitted && f.extent.errors }">
+                        <option disabled readonly>Select Extent</option>
+                        <option>Full Extent</option>
+                        <option>Part Extent</option>
+                        <option *ngFor="extent number" [value]="d.propertyid"> {{d.extentinformation}}</option>
+                      </select>
+                      <div *ngIf="submitted && f.extent.errors" class="invalid-feedback">
+                        <div *ngIf="f.extent.errors.required">Extent is required</div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+
+                  </div>
+                  <br>
+                  <ng-container *ngIf="isSketchNo">
+                    <div class="row" style="margin-top: 30px;">
+                      <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                      <div class="form-group col-md-2" style="margin-left: -20px;">
+                        <label for="esketch">11 E SKETCH NUMBER</label>
+                        <input type="text" class="form-control" (input)="getSketchNo($event)" [value]="" placeholder="Value" [(ngModel)]="esketch"
+                          formControlName="esketch" required [ngClass]="{ 'is-invalid': submitted && f.esketch.errors }"
+                          required>
+                        <div *ngIf="submitted && f.esketch.errors" class="invalid-feedback">
+                          <div *ngIf="f.esketch.errors.required">E Sketch Number is required</div>
+                        </div>
+                        <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                          <div *ngIf="f.village.errors.required">11 E SKETCH NUMBER required</div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                      (click)="GetBhoomiOwners();" [disabled]="!enableSearch">Search</button>
+                  </div><br><br><br>
+
+                  <!-- </div> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-left: -80px;">
+
+          <!-- <dx-data-grid #grid id="grid-container" [dataSource]="multiOwnersdata" [showBorders]="true">
+            <dxi-column dataField="" caption="Results- Bhoomi Database" [groupIndex]="0" [width]="180"></dxi-column>
+            <dxi-column dataField="sno" alignment="center" caption="S.No." [width]="50"></dxi-column>
+            <dxi-column dataField="SurveyNo" alignment="center" caption="SurveyNo." [width]="200"></dxi-column>
+            <dxi-column dataField="HissaNo" alignment="center" caption="Hissa No" [width]="200"></dxi-column>
+            <dxi-column dataField="owner" alignment="center" caption="Owner Name" [width]="300"></dxi-column>
+            <dxi-column dataField="relationship" alignment="center" caption="Relationship" [width]="300"></dxi-column>
+            <dxi-column dataField="relativename" alignment="center" caption="Relative Name" [width]="300"></dxi-column>
+            <dxi-column dataField="availableextents.avl_ext_acre" :col-span="2" alignment="center" caption="acre"
+              [width]="200"></dxi-column>
+            <dxi-column dataField="availableextents.avl_ext_gunta" :col-span="2" alignment="center" caption="Gunta"
+              [width]="200"></dxi-column>
+            <dxi-column dataField="availableextents.avl_ext_fgunta" :col-span="2" alignment="center"
+              caption="Fraction of Gunta" [width]="200"></dxi-column>
+
+
+            <div *dxTemplate="let data of 'cellTemplate'">
+              <div class="dx-field"></div> -->
+
+              <!-- <div class="dx-field-label">Checked</div> -->
+              <!-- <div class="dx-field-value">
+
+                <dx-check-box [value]="false" alignment="center"></dx-check-box> -->
+                <!-- <dx-check-box [(value)]="indeterminateValue"></dx-check-box> -->
+                <!-- <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                  (click)="GetSurvayNoist()">Proceed</button>
+              </div>
+            </div>
+
+            <dxo-load-panel [enabled]="true">
+            </dxo-load-panel>
+
+          </dx-data-grid><br> -->
+        <table class="table table-bordered " *ngIf="multiOwnersdata && multiOwnersdata.length">
+          <tr class="bg-primary" >
+            <td colspan="11" class="text-white" style="background-color: #093172;">Result-Bhoomi Database:</td>
+        </tr>
+            <tr class="text-center">
+                <td rowspan="2">Select</td>
+                <td rowspan="2">S.No.</td>
+                <td rowspan="2">SurveyNo.</td>
+                <td rowspan="2">Hissa No</td>
+                <td rowspan="2">Owner Name</td>
+                <td rowspan="2">Relationship</td>
+                <td rowspan="2">Relative Name</td>
+                <td colspan="3">Avilable Extent</td>
+            </tr>
+            <tr class="text-center">
+                <td>Acre</td>
+                <td>Gunta</td>
+                <td>Fraction of Gunta</td>
+            </tr>
+           
+            <tr class="text-center" *ngFor="let item of multiOwnersdata;index as i">
+                <td><input type="radio" name="bhoomiSelect" id="bhoomiSelect" [value]="item.ownerno" (change)="handleChange($event)"></td>
+                <td>{{i+1}}</td>
+                <td>{{survayNo?survayNo:"-"}}</td>
+                <td>{{hissano && hissano.length?hissano[0].hissano:"-"}}</td>
+                <td>{{item.owner?item.owner:"-"}}</td>
+                <td>{{item.relationship?item.relationship:"-"}}</td>
+                <td>{{item.relativename?item.relativename:"-"}}</td>
+                <td>{{item.availableextents?item.availableextents.avl_ext_acre:"-"}}</td>
+                <td>{{item.availableextents?item.availableextents.avl_ext_gunta:"-"}}</td>
+                <td>{{item.availableextents?item.availableextents.avl_ext_fgunta:"-"}}</td>
+            </tr>
+        </table>
+        <table class="table table-bordered " *ngIf="mojniData && mojniData.length">
+          <tr class="bg-primary" >
+            <td colspan="23" class="text-white" style="background-color: #093172;">Result-Mojni Database:</td>
+        </tr>
+            <tr class="text-center">
+                <td rowspan="2">Select</td>
+                <td rowspan="2">S.No.</td>
+                <td rowspan="2">SurveyNo.</td>
+                <td rowspan="2">Hissa No</td>
+                <td rowspan="2">PMS Number</td>
+                <td rowspan="2">Sketch Approved Date</td>
+                <td rowspan="2">Sketch Expiry Date</td>
+                <td rowspan="2">Transferror Name</td>
+                <td rowspan="2">No of co-Transferror</td>
+                <td rowspan="2">Name of Co-owner</td>
+                <td colspan="3">Avilable Extent</td>
+            </tr>
+            <tr class="text-center">
+                <td>Acre</td>
+                <td>Gunta</td>
+                <td>Fraction of Gunta</td>
+            </tr>
+           
+            <tr class="text-center">
+                <td><input type="radio" name="bhoomiSelect" id="mojniSelect" [value]="" (change)="handleChange($event)"></td>
+                <td>1</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.Transferor.LandBlock.SurveyNo:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.Transferor.LandBlock.Hissano:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.PMSnumber:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.SketchapprovedDate:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.SketchExpiryDate:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0]["PreMutationSketch"]["Transferor"]["Name"]:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0]["PreMutationSketch"]["Transferor"]["Co-Transferors"]["NumberofCoTransferers"]:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0]["PreMutationSketch"]["Transferor"]["Co-Transferors"]["Co-Transferor"]["Name"]:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.Transferor.LandBlock.Ext_acre:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.Transferor.LandBlock.Ext_gunta:"-"}}</td>
+                <td>{{mojniData && mojniData[0].PreMutationSketch?mojniData[0].PreMutationSketch.Transferor.LandBlock.Ext_fgunta:"-"}}</td>
+            </tr>
+        </table>
+        </div>
+        <div style="text-align: center;" *ngIf="multiOwnersdata && multiOwnersdata.length || mojniData && mojniData.length">
+          <button type="button" class="btn btn-primary px-4" (click)="continueSearch()"
+            style="background-color: #0a429b;" [disabled]="!isPropertySelected">Select and Continue</button>
+        </div>
+        <br>
+      </div>
+    </div>
+
+  </main>
+
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

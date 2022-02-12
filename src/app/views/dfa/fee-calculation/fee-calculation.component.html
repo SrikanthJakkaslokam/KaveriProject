@@ -1,0 +1,272 @@
+<main>   
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+        <!-- card 1 start -->
+        <div class="animated fadeIn">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" (click)="closePop()"><br>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <img src="assets/img/avatars/fee1.png" style="margin-left: 20px; height: 100%; width: auto;">
+                                
+                                <img src="assets/img/avatars/fee2.png" 
+                                >
+                            </div>
+                            <!-- margin-left: 490px; -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card 1 end -->
+        <!-- card 2 start -->
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row" style="margin-left: 40px;">
+                                <div>
+                                    <label class="unselectable" style="cursor: pointer; padding-left: 10px; font-weight: bold;" (click)="Backbuttonclicks()"> < &nbsp;&nbsp;&nbsp; </label><br>
+                                </div>
+                                    <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF {{numofprop}}</label><br>
+                                <div>
+                                    <label class="unselectable" style="cursor: pointer; font-weight: bold;" (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" style="margin-left: 40px; margin-right: 40px;">
+                        <div class="col-md-3">
+                            <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                        </div>
+                        <div class="col-md-3">
+                          <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                  </div>
+                  </div>
+                  </div>
+                        <div class="card-body">
+                            
+                            <form [formGroup]="feecalculation" class="form-horizontal" style="font-family: Segoe UI;">
+                                <div class="row" style="margin: 40px;">
+                                    <div class="col-md-3">
+                                        <p style="font-weight: 700; margin-bottom: 0;">Stamp Article </p><br>
+                                        <p>{{stamparticledes}}</p>
+                                    </div>
+                                    <div class="col-md-3" >
+                                        <p style="font-weight: 700; margin-bottom: 0;">Sub Article</p><br>
+                                        <p>{{stampruledes}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p style="font-weight: 700; margin-bottom: 0;">Market Value (₹)</p><br>
+                                        <p>₹ {{marketvalue | number:'1.2-2'}}</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p style="font-weight: 700; margin-bottom: 12px;">Consideration Amount (₹)</p>
+                                        <input type="number" class="form-control" style="background-color: white;" id="considerationamount" formControlName="considerationamount"
+                                            placeholder="Value" [(ngModel)]="considerationamount" [ngClass]="{ 'is-invalid': submittedcons && f.considerationamount.errors }" required>
+                                            <div *ngIf="submittedcons && f.considerationamount.errors" class="invalid-feedback">
+                                                <div *ngIf="f.considerationamount.errors.required">Consideration Amount is required</div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class=" col-md-5"></div>
+                                    <div *ngIf = "shownext"  class=" col-md-5">
+                                        <button  class="btn btn-block btn-primary col-md-2" style="font-size:large;" (click)="Nextproperty();" > Next </button>
+                                    </div> 
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card 2 end -->
+        <!-- card 3 start -->
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <div *ngIf="showcard" class="card">
+                        <div class="card-body">
+                            <div>
+                                <label style="font-size: large; font-weight: bold; margin-left: 40px;">Exemption Details</label>
+                            </div>
+                            <form [formGroup]="feecalculationexem" class="form-horizontal" style="font-family: Segoe UI;">
+                                <div class="row " style="margin: 40px">
+                                    <div class="col-md-12 row">
+                                       
+                                            <div class="col-md-6 row">
+                                                <div class="col-md-5" >
+                                                    <label for="governmentduty">Government Duty</label><br><br>
+                                                    <p>₹ {{GovernmentDutyafterExcemption | number:'1.2-2'}}</p>
+                                                </div>
+                                              
+                                                <div class="col-md-6">
+                                                
+                                                        <div class="d-flex align-items-center " style="margin-top: 10px;" >
+                                                            <input type="checkbox" id="checkbox" name="checkbox" style="
+                                                        margin-left: 35px;
+                                                        height: 25px;
+                                                        width: 25px;
+                                                        background-color: white;" (change)="show = !show" ng-model="show"  formControlName="checkbox"> <span style="font-size: 15px; margin-left: 15px;">Exemption for this duty</span>
+                                                        
+                                                    </div>
+                                                   
+                                               
+                                            </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div *ngIf="show" class="row ">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="form-group col-md-4" style="margin-left: -50px;">
+                                                        <label for="percentage">In Percentage</label>
+                                                        <input type="text" class="form-control" style="background-color: white;" id="percentage" formControlName="percentage"
+                                                            placeholder="Value">
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+                                                    <div class="form-group col-md-4" style=" margin-left: 20px;">
+                                                        <p >Upload Exemption Certifiate</p>
+                                                        <input type="file" class="file-input" name="Upload" id="Upload"
+                                                        (change)="onFileSelected($event)" #fileUpload style="margin-bottom: 5px;" formControlName="file">
+                                                        <div *ngIf="fileName" class="file-upload" style="margin-top: 5px;">
+                                                            {{fileName || "No file uploaded yet.&nbsp;&nbsp;   "}}
+                                                            <button mat-mini-fab color="primary" class="upload-btn"
+                                                                (click)="fileUpload.click()">
+                                                            <i class="fa fa-upload fa-2x" style="margin-top: -3px;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <ng-container  *ngIf="show">
+                                            <div class="form-group col-md-2" >
+                                            </div>
+                                            <div class="col-md-10" style="margin-top: 10px;" >
+                                                <div class="row d-flex align-items-center" style="margin-top: 10px;" >
+                                                    <div class="col-md-5 row">
+
+                                                        <div class="col-md-7 d-flex">
+                                                            <input type="radio" formControlName="inpercentageorrupee"
+                                                            style="height: 20px; width: 20px;" id="inpercentage" name="inpercentageorrupee" value="percentage">
+                                                            <label for="inpercentage" style="margin-left: 20px;">in Percentage</label>
+                                                        </div> 
+                                                        <div class="col-md-5 d-flex">
+                                                            <input style="height: 20px; width: 20px;" type="radio" formControlName="inpercentageorrupee" id="inrupee" name="inpercentageorrupee" 
+                                                            value="rupees">
+                                                        
+                                                            <label for="inrupee" style="margin-left: 20px;">in  ₹</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-7 pl-5">
+                                                        <label for="exemptiondecription">Exemption Decription</label>
+                                                        <input type="text" class="form-control" style="background-color: white;" id="exemptiondecription" formControlName="exemptiondecription"
+                                                            placeholder="Value">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </ng-container>
+                                        
+                                        <form [formGroup]="feecalculationconst" class="form-horizontal col-md-6" style="font-family: Segoe UI; margin-top: 30px;">
+                                            <div class="row">
+                                            <div class="col-md-5">
+                                                <label for="denonation">Denotation of Stamp Duty</label><br>
+                                               
+                                                <input type="number" class="form-control" style="background-color: white;" id="denonation" formControlName="denonation"
+                                                    placeholder="Value" [(ngModel)]="denonation" [ngClass]="{ 'is-invalid': submitted && f.denonation.errors }" required>
+                                                <div *ngIf="submitted && f.denonation.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.denonation.errors.required">Denotation of Stamp Duty is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-5">
+                                                <label  for="pages">Number of Pages</label><br>
+                                              
+                                                <input type="number" class="form-control" style="background-color: white;" id="pages" formControlName="pages"
+                                                    placeholder="Value" [(ngModel)]="pages" [ngClass]="{ 'is-invalid': submitted && f.pages.errors }" required>
+                                                <div *ngIf="submitted && f.pages.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.pages.errors.required">Number of pages required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <br>
+                                            <br>
+                                        
+                                        </form>
+                                        <div class="col-md-12 mt-4">
+
+                                            <div class="d-flex justify-content-center mb-5">
+                                                <button class="btn btn-block btn-primary col-md-2" style="font-size:large;" (click)="oncalculate();" ng-model="show"> Calculate </button>
+                                            </div>
+                                            <div *ngIf="showtbl">
+                                                <table class="table table-bordered" style="margin-left: -40px; width: calc(100% + 80px); border: none;" >
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Government Duty after Exemption(A)</td>
+                                                            <td style="font-weight: 700;">₹ {{GovernmentDutyafterExcemption | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Surcharge Value(B)</td>
+                                                            <td style="font-weight: 700;">₹ {{SurchargeValue | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Cess Value(C)</td>
+                                                            <td style="font-weight: 700;">₹ {{CessValue | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Denotation of Stamp Duty(D)</td>
+                                                            <td style="font-weight: 700;">₹ {{DenonationofStampDuty | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Total Stamp Duty(E)=(A)+(B)+(C)-(D)</td>
+                                                            <td style="font-weight: 700;">₹ {{TotalStampDuty | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Total Registration Fees(F)</td>
+                                                            <td style="font-weight: 700;">₹ {{TotalRegistrationFees | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                    <br>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Mutation Fees(G)</td>
+                                                            <td style="font-weight: 700;">₹ {{MutationFees | number:'1.2-2'}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="font-weight: 700;">Scanning Fees(H)</td>
+                                                            <td style="font-weight: 700;">₹ {{ScanningFees | number:'1.2-2'}}</td>
+                                                        </tr>
+<br>
+                                                        <tr> 
+                                                           
+                                                            <td style="font-weight: 700;">Total Payable Amount(I) = (E)+(F)+(G)+(H)</td>
+                                                            <td style="font-weight: 700;">₹ {{TotalPayableAmount | number:'1.2-2'}}</td> 
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                               
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- card 6 end -->
+</main>

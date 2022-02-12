@@ -1,0 +1,93 @@
+<div id="server_response"></div>
+
+<div id="server_response"></div>
+
+
+
+
+
+<main class="main">
+    <div class="row">
+        <div class="col-sm">
+            <div class="row document-registration">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 16px">Document Registration
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DOCUMENT NUMBER</label><br>
+                            <label
+                                style="font-weight: 12px;font-weight: 600;">{{finalRegNoData.fn_fetch_final_regnumber}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DATE OF
+                                PERSENTATION</label><br>
+                            <label style="font-size: 12px;font-weight:  600;">{{ pendingRegNumberData &&
+                                pendingRegNumberData.presentDate ?
+                                (pendingRegNumberData.presentDate | date:
+                                'dd/MM/yyyy') : ''}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DATE OF
+                                EXECUTION</label><br>
+                            <label style="font-size: 12px;font-weight:  600;">{{dateOfExecution | date:
+                                'dd/MM/yyyy'}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">APPLICATION
+                                TYPE</label><br>
+                            <label style="font-size: 12px;font-weight: 600;">Property
+                                Registration</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row document-summary-i">
+                <div style="margin-left: 3px;">
+                    <p>
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <label style="font-weight: bold;font-size: 16px">Scan and Upload Document
+                    </label>
+                </div>
+            </div>
+            <div class="row registered-document">
+                <div class="col-sm-9 px-0">
+                    <h4>Registered Document</h4>
+                    <p>The registered document consist of the deed document and endorsement . Press scan to continue.
+                    </p>
+                </div>
+                <div class="col-sm-3 px-0">
+                    <button type="button" class="btn btn-primary mr-3" (click)="scanToPdfWithThumbnails()">Scan</button>
+                    <button type="button" class="btn btn-primary" (click)="previewDocumentCTA()">Preview</button>
+                </div>
+            </div>
+            <div class="row registered-document">
+                <div class="col-sm-9 px-0">
+                    <h4>Annexure</h4>
+                    <p>All the annexures needs to be scanned and uploaded. Press scan to continue.</p>
+                </div>
+                <div class="col-sm-3 px-0">
+                    <button type="button" class="btn btn-primary mr-3" (click)="scanToPdfWithThumbnails()">Scan</button>
+                    <button type="button" class="btn btn-primary" (click)="previewDocumentCTA()">Preview</button>
+                </div>
+            </div>
+            <div class="row buttons">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary mr-3" (click)="uploadAllDocumentsCTA()">Upload All
+                        Documents</button>
+                    <button type="button" class="btn btn-primary" (click)="navToAck()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

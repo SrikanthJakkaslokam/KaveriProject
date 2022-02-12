@@ -1,0 +1,497 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <!--<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+        <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#"><img
+            src="assets/img/avatars/lock.png">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+
+</app-header>
+
+<div class="app-body">
+   
+  <main class="main">
+        <dx-tabs style="width: 100%;z-index: 1020;margin-top: 45px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+       
+       
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 45px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <div>
+                         <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/party-details-executant"><br>
+                    </div><br><br>
+                    <div>
+                        <img src="assets/img/avatars/party-1.png">
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-left: -80px;margin-right: -25px;">
+        <div class="col-md-4">
+            <div class="card">
+              <br>
+              <div style="text-align: left;">
+                <h3 style="font-weight: bold;margin-left: 20px;">Select the Party</h3>
+              </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src="assets/img/avatars/party-3.png">
+                    </div>
+                    <div class="col-md-10">
+                      
+                      <div class="card" style="margin-top: 10px;">
+                        <span  style="padding: 10px;font-weight: bold;cursor: pointer;" routerLink="/party-details">PRESENTER</span>
+                      </div>
+                    </div>
+                  </div><br>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img src="assets/img/avatars/party-3.png">
+                      </div>
+                      <div class="col-md-10">
+                        
+                        <div class="card" style="margin-top: 10px;">
+                          <span  style="padding: 10px;font-weight: bold;" routerLink="/party-details-executant">EXECUTANT</span>
+                        </div>
+                      </div>
+                  </div><br>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img src="assets/img/avatars/party-3.png">
+                      </div>
+                      <div class="col-md-10">
+                        
+                        <div class="card" style="margin-top: 10px;">
+                          <span  style="padding: 10px;font-weight: bold;" routerLink="/party-details-witness">IDENTIFIERS</span>
+                        </div>
+                      </div>
+                  </div><br>
+                  <!-- <div class="row">
+                    <div class="col-md-2">
+                      <img src="assets/img/avatars/party-3.png">
+                    </div>
+                    <div class="col-md-10">
+                      
+                      <div class="card" style="margin-top: 10px;">
+                        <span  style="padding: 10px;font-weight: bold;">PRESENTER</span>
+                      </div>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src="assets/img/avatars/party-3.png">
+                    </div>
+                    <div class="col-md-10">
+                      
+                      <div class="card" style="margin-top: 10px;">
+                        <span  style="padding: 10px;font-weight: bold;">AUTHORITY HOLDER</span>
+                      </div>
+                    </div>
+                  </div>  -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+              <br>
+              <div style="text-align: left;">
+                <h3 style="font-weight: bold;margin-left: 20px;">Enter the Details</h3>
+              </div>
+                <div class="card-body">
+                  <!-- <div id="scrolledtabs">
+                    <dx-tabs
+                        [scrollByContent]="true"
+                        [showNavButtons]="true"
+                    >
+                        <dxi-item [width]="50">
+                      <span>EXECUTANT 1</span>
+                  </dxi-item>
+                  <dxi-item [width]="50">
+                    <span>EXECUTANT 1</span>
+                </dxi-item>
+                <dxi-item [width]="50">
+                  <span>EXECUTANT 1</span>
+              </dxi-item>
+              <dxi-item [width]="50">
+                <span>EXECUTANT 1</span>
+            </dxi-item>
+            <dxi-item [width]="50">
+              <span>EXECUTANT 1</span>
+          </dxi-item>
+                </dx-tabs></div> -->
+                <mat-tab-group style="font-family: Segoe UI" #tabGroup (selectedTabChange)="tabChanged($event)" [(selectedIndex)] ="selectedIndex">
+                  <mat-tab *ngFor="let link of links; let index = index" >
+                    <ng-template mat-tab-label>
+                      {{link.name}}&nbsp;&nbsp;
+                      <button (click)="removeTab(index)" [disabled]="links.length === 1">
+                        <mat-icon class="example-tab-icon">clear</mat-icon>
+                      </button>&nbsp;
+                     <button (click)="addLink()">
+                      <mat-icon class="example-tab-icon">add</mat-icon>
+                     </button>
+                    </ng-template>
+                    <form *ngIf="witnessForm"  [formGroup]="witnessForm" class="form-horizontal">
+                      <div style="padding: 50px">
+                        <input type="hidden" class="form-control" id="witnessId" placeholder="Value" formControlName="witnessId">
+                  
+                        <div class="row">
+                          <div class="form-group col-sm-4">
+                            <label for="FirstName">First Name*</label>
+                            <input type="text" class="form-control" id="FirstName" placeholder="Value" [ngStyle]="firstname ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="FirstName" />
+                            <div *ngIf="firstname" >
+                              <div style="color: #f86c6b;font-size: 80%;">First Name is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <label for="MiddleName">Middle Name</label>
+                            <input type="text" class="form-control" id="MiddleName" placeholder="Value"  formControlName="MiddleName">
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <label for="LastName">Last Name</label>
+                            <input type="text" class="form-control" id="LastName" placeholder="Value"  formControlName="LastName">
+                          </div>
+                        </div><br>
+                      
+                        <div class="row">
+                          <div class="form-group col-sm-4">
+                            <label for="Age">Age*</label>
+                            <input type="text" class="form-control" id="Age" placeholder="Value" [ngStyle]="age ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="Age" />
+                            <div *ngIf="age" >
+                              <div style="color: #f86c6b;font-size: 80%;">Age is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-4">
+                            <label for="Sex">Gender*</label>
+                            <select type="text" name="Sex" class="form-control" formControlName="Sex"
+                              [(ngModel)]="selectedgendervalue" [ngStyle]="gender ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                              <option disabled readonly>Select Gender</option>
+                              <option *ngFor="let d of genderList" [value]="d.genderid"> {{d.descriptione}}</option>
+                            </select>
+                            <div *ngIf="gender" >
+                              <div style="color: #f86c6b;font-size: 80%;">Gender is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <label for="Profession">Profession</label>
+                            <input type="text" class="form-control" id="Profession" placeholder="Value"  formControlName="Profession">
+                          </div>
+                        </div><br>
+    
+                        <div class="row">
+                          <div class="form-group col-sm-6">
+                            <label style="font: bold;font-size: medium;">Address Details*</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-sm-4">
+                            <label for="HouseNo">House No/Building Name*</label>
+                            <input type="text" class="form-control" id="HouseNo" placeholder="Value" [ngStyle]="house ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="HouseNo">
+                            <div *ngIf="house" >
+                              <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <label for="street">Street Address*</label>
+                            <input type="text" class="form-control" id="street" placeholder="Value" [ngStyle]="street ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="street">
+                            <div *ngIf="street" >
+                              <div style="color: #f86c6b;font-size: 80%;">Street Address is required</div>
+                            </div>
+                          </div>
+                          <!-- <div class="form-group col-sm-4">
+                            <label for="Fullname">State</label>
+                            <input type="text" class="form-control" id="State" placeholder="Value" required formControlName="State">
+                          </div> -->
+                          <div class="form-group col-md-4" >
+                            <label for="State">State*</label>
+                            <select type="text" name="State" class="form-control" formControlName="State" [ngStyle]="state ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" >
+                                    <option disabled readonly>Select State</option>
+                                    <option value="1">Karnataka</option>
+                                    <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                                </select>
+                                <div *ngIf="state" >
+                                  <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                                </div>
+                                <!-- <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                                  <div *ngIf="f.State.errors.required">State is required</div>
+                              </div> -->
+                        </div>
+                        </div><br>
+                        <div class="row">
+                        
+                          <!-- <div class="form-group col-md-4" >
+                            <label for="District">District*</label>
+                            <select type="text" name="District" class="form-control" formControlName="District" [(ngModel)]="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"  (change)="ondistrictChange($event)"
+                                    required [ngClass]="{ 'is-invalid': submitted && f.District.errors }">
+                                    <option disabled readonly>Select District</option>
+                                    <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.District.errors" class="invalid-feedback">
+                                  <div *ngIf="f.District.errors.required">District is required</div>
+                              </div>
+                        </div> -->
+                        
+                        <div class="form-group col-md-4" >
+                          <label for="district">District*</label>
+                          <select type="text" name="District" class="form-control" formControlName="District" [(ngModel)]="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"  (change)="ondistrictChange($event)"
+                          [ngStyle]="district ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                                  <option disabled readonly>Select District</option>
+                                  <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                              </select>
+                              <div *ngIf="district" >
+                                <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                              </div>
+                              <!-- <div *ngIf="submitted && f.district.errors" class="invalid-feedback">
+                                <div *ngIf="f.district.errors.required">District is required</div>
+                            </div> -->
+                      </div>
+                          
+                      <div class="form-group col-md-4">
+                        <label for="taluka">Taluka*</label>
+                        <select type="text" name="taluka" class="form-control" formControlName="taluka" [(ngModel)]="selectedtalukvalue" (ngModelChange)="ontalukValuechange($event)"  (change)="ontalukaChange($event)"
+                        [ngStyle]="taluka ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                                <option disabled readonly>Select Taluka</option>
+                                <option *ngFor="let d of talukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                            </select>
+                            <div *ngIf="taluka" >
+                              <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                            </div>
+                            <!-- <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                              <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                          </div> -->
+                    </div>
+                    
+                    <div class="form-group col-md-4" >
+                      <label for="hobli">Hobli*</label>
+                      <select type="text" name="hobli" class="form-control" formControlName="hobli" [(ngModel)]="selectedhoblivalue" (ngModelChange)=" onhobliValuechange($event)"  (change)="onhobliChange($event)"
+                      [ngStyle]="hobli ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                              <option disabled readonly>Select Hobli</option>
+                              <option *ngFor="let d of hobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                          </select>
+                          <div *ngIf="hobli" >
+                            <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                            <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                        </div> -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-4" >
+                    <label for="City">City/Village*</label>
+                    <select type="text" name="City" class="form-control" formControlName="City"
+                    [ngStyle]="city ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" >
+                            <option disabled readonly>Select City/Village</option>
+                            <option *ngFor="let d of villageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                        </select>
+                        <div *ngIf="city" >
+                          <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                          <div *ngIf="f.village.errors.required">Village is required</div>
+                      </div> -->
+                </div>
+                          <div class="form-group col-sm-4">
+                            <label for="Fullname">Pin code*</label>
+                            <input type="text" class="form-control" id="Pincode" placeholder="Value" [ngStyle]="pincode ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="Pincode">
+                            <div *ngIf="pincode" >
+                              <div style="color: #f86c6b;font-size: 80%;">Pin code is required</div>
+                            </div>
+                          </div>
+                        </div><br>
+                        <div class="row" >
+                          <!-- <div class="form-group col-sm-4">
+                            <label for="Fullname">Relationship*</label>
+                            <input type="text" class="form-control" id="Relationship" placeholder="Value" required formControlName="Relationship">
+                          </div> -->
+                          <div class="form-group col-md-4">
+                            <label for="Relationship">Relationship*</label>
+                            <select type="text" name="Relationship" class="form-control" formControlName="Relationship"
+                              [(ngModel)]="selectedrelationshipvalue"  [ngStyle]="relationship ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                              <option disabled readonly>Select Relationship</option>
+                              <option *ngFor="let d of relationshipList" [value]="d.id"> {{d.relatione}}</option>
+                            </select>
+                            <div *ngIf="relationship" >
+                              <div style="color: #f86c6b;font-size: 80%;">Relationship is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group col-sm-4">
+                            <label for="RelativeName">Relative's Name*</label>
+                            <input type="text" class="form-control" id="RelativeName" placeholder="Value" [ngStyle]="relativesname ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="RelativeName" />
+                            <div *ngIf="relativesname" >
+                              <div style="color: #f86c6b;font-size: 80%;">Relative's Name is required</div>
+                            </div>
+                          </div>
+                        </div><br>
+                        <div class="row">
+                          <div class="form-group col-sm-6">
+                            <label style="font: bold;font-size: medium;">Identifies</label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="chkCL" id="radio8" value="option6"
+                                (click)="ExemptedChange()" formControlName="chkCL">
+                              <label class="form-check-label" for="radio8">
+                                Claimant
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-md-4"></div>
+                        </div><br />
+                      
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" name="chkEx" id="radio8" value="option7"
+                                (click)="ExemptedChange()" formControlName="chkEx">
+                              <label class="form-check-label" for="radio8">
+                                Executant
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-md-4"></div>
+                        </div><br />
+                      
+                        <div style="text-align: center;"><br />
+                          <button type="submit" class="btn btn-primary px-4" style="background-color: #0a429b;" (click)="onSubmit()">Save and Continue</button>
+                        </div>
+                      
+                      </div>
+                      <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert" style="max-width : 100%;">
+                        <strong >Witness details saved Successfully!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                    </form>
+                <!-- <ng-container *ngTemplateOutlet="tabContent"></ng-container> -->
+                  </mat-tab>
+                </mat-tab-group>
+                <!-- <nav mat-tab-nav-bar [backgroundColor]="background">
+                 
+                     <div mat-tab-link *ngFor="let link of links; let index = index"
+                     (click)="activeLink = link"
+                     [active]="activeLink == link"> {{link}}&emsp;<button [disabled]="links.length === 1"
+                     (click)="removeTab(index)"><img src="assets/img/avatars/close (2).png" ></button>&nbsp;&nbsp;<img src="assets/img/avatars/plus.png" (click)="addLink()"> </div>
+                    
+                    </nav> -->
+                
+                <!-- <button mat-raised-button class="example-action-button" (click)="toggleBackground()">
+                  Toggle background
+                </button> -->
+                <!-- <button mat-raised-button class="example-action-button" (click)="addLink()">
+                  Add link
+                </button> -->
+                <br>
+                
+               
+                
+
+
+            </div>
+            
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+  </main>
+</div>
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

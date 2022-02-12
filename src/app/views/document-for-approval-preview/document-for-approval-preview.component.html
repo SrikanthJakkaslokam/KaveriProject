@@ -1,0 +1,1159 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+[sidebarToggler]="'lg'" [asideMenuToggler]="'lg'" style="height: 80px;">
+
+<img src="assets/img/avatars/online1.png"
+  style="float:left;margin-left:-5%" />
+<!-- <h2 style="font-family:Segoe UI;font-weight: bold;float: left;margin: 0px 270px 30px -270px;">Kaveri Online Services</h2><br>
+<h4 style="font-family:Segoe UI;float: left;font-style: italic;margin: 0px 0px 0px 0px;">Department of Stamps and Registration,Government of Karnataka</h4> -->
+<ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+        <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+        </li>
+       <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/departmental-login" aria-pressed="true">Logout</button>
+      </li>
+    </ul>
+  
+</app-header>   
+   
+<main class="main"> 
+        
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;font-family: Segoe UI">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 50px;margin-right: -25px;font-family: Segoe UI;">
+        <div class="col-md-12" style="font-family: Segoe UI;">
+          <div class="row" style="margin-bottom: 20px">
+            <div class="col-md-12">
+                    <div class="card-header"  style="background-color: #5e85c2;color: white;font-weight: 500;border-radius: 5px;height: 70px;">
+                      <div class="row">
+                        <div class="col-md-1" class="circle"></div>
+                        <div class="col-md-3">
+                          <span>Welcome <label style="text-transform: uppercase;">{{DepartmentUser}}</label></span><br>
+                  <span style="text-transform: uppercase;">{{DepartmentUserDesignation}}- BENGALURU URBAN</span>
+                        </div>
+                        <img src="assets/img/avatars/line.png" style="margin-left: -40px;">
+                          <div class="col-md-3">
+                            <span>LAST LOGIN :</span><br>
+                            <span>12TH OCTOBER 2021 8.34AM</span>
+                          </div>
+                           <div class="col-md-1">
+                        </div>
+                        <div class="col-md-4">
+                          <div class="card" class="search">
+                          <!-- <span style="color: black;float: left;margin-top: 10px;margin-left: 25px;">Search</span> -->
+                          <input type="text" class="form-control" placeholder="Search" style="border: none;background-color: transparent;width: 70%;float: left;margin-top: 5px;margin-left: 25px;"> 
+                          <img src="assets/img/avatars/search-interface-symbol (1).png" style="float: right;margin-top: 10px;margin-right: 25px;">
+                          </div>
+                        </div> 
+                      </div> 
+                    </div>
+            </div>
+            
+        </div>
+        <div class="card">
+          <div class="card-body" style="margin-left: 10px;">
+            <div class="row">
+              <div class="col-md-12">
+                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"
+                    routerLink="/pending-application"><br><br>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label class="propertyHeading" style="font-weight: bold;font-size: large;margin-left: 5px;">Application Details</label>
+                              </div>
+                          </div><br/>
+                          <div class="row">
+                            <div class="col-md-3">
+                              <label style="font-weight: bold;">APPLICATION NUMBER</label><br>
+                              <label style="font-weight: bold;">{{ApplicationNumber}}</label>
+                            </div>
+                            <div class="col-md-3">
+                              <label style="font-weight: bold;">DATE OF SUBMISSION</label><br>
+                              <label style="font-weight: bold;">{{ApplicationDate}}</label>
+                            </div>
+                            <div class="col-md-3">
+                              <label style="font-weight: bold;">APPLICATION TYPE</label><br>
+                              <label style="font-weight: bold;">{{ApplicationType}}</label>
+                            </div>
+                           
+                          </div>  
+              </div>
+          </div> <br>
+           
+  
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-6" style="padding-left: 25px;">
+                      <label class="propertyHeading" style="font-weight: bold;font-size: large;">Property Details</label>
+                  </div>
+              </div><br/>
+              <div class="row">
+                <div>
+                    <label class="unselectable" (click)="backButton()" style="cursor: pointer; padding-left: 10px; font-weight: bold;" > < &nbsp;&nbsp;&nbsp; </label><br>
+                </div>
+                    <label style="font-size: 16px;font-weight: bold;">PROPERTY {{indexValue}} OF {{propertyCount}}</label><br>
+                <div>
+                    <label class="unselectable" (click)="frontButton()" style="cursor: pointer; font-weight: bold;" > &nbsp;&nbsp;&nbsp;> </label><br>
+                </div>
+            </div>
+            <br>
+              </div>
+          </div> <br>
+            <div class="row">
+              <div class="col-md-3">
+                  <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+              </div>
+          </div><br/>
+          <div class="row">
+              <div class="col-md-3">
+                  <label for="district" style="font-weight: bold;">SRO : {{sroname}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="taluka" style="font-weight: bold;">PROPERTY TYPE : {{propertytype}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="hobli" style="font-weight: bold;">SURVEY NO : {{SurveyNo}}</label>
+              </div>
+              <div class="col-md-3">
+                  <label for="village" style="font-weight: bold;">HISSA NO : {{HissaNo}}</label>
+              </div>
+          </div><br><br>
+          <div class="row">
+
+            <!-- <dx-data-grid #grid id="grid-container" style="width: 1721px;margin-left: 76px;"[dataSource]="BhoomiOwners" [showBorders]="true">
+              <dxi-column dataField="" caption="Results- Bhoomi Database" [groupIndex]="0" [width]="31"></dxi-column>
+              <dxi-column dataField="sno" alignment="center" caption="S.No." [width]=""></dxi-column>
+              <dxi-column dataField="SurveyNo" alignment="center" caption="SurveyNo." [width]=""></dxi-column>
+              <dxi-column dataField="HissaNo" alignment="center" caption="Hissa No" [width]=""></dxi-column>
+              <dxi-column dataField="owner" alignment="center" caption="Owner Name" [width]=""></dxi-column>
+              <dxi-column dataField="relationship" alignment="center" caption="Relationship" [width]=""></dxi-column>
+              <dxi-column dataField="relativename" alignment="center" caption="Relative Name" [width]=""></dxi-column>
+              <dxi-column  caption="availableextents" alignment="center">
+              <dxi-column dataField="availableextents.avl_ext_acre" :col-span="2" alignment="center" caption="acre"
+                [width]=""></dxi-column>
+              <dxi-column dataField="availableextents.avl_ext_gunta" :col-span="2" alignment="center" caption="Gunta"
+                [width]=""></dxi-column>
+              <dxi-column dataField="availableextents.avl_ext_fgunta" :col-span="2" alignment="center"
+                caption="Fraction of Gunta" [width]=""></dxi-column>
+              </dxi-column>
+              <div *dxTemplate="let data of 'cellTemplate'">
+                <div class="dx-field"></div>
+
+                <div class="dx-field-value">
+
+                  <dx-check-box [value]="false" alignment="center"></dx-check-box>
+                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                    (click)="GetSurvayNoist()">Proceed</button>
+                </div>
+              </div>
+
+              <dxo-load-panel [enabled]="true">
+              </dxo-load-panel>
+            </dx-data-grid> -->
+
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th colspan="9"  class="text-left" style="background-color: #05265b; color:#fff">Results- Bhoomi Database</th>
+                </tr>
+                <tr>
+                  <th rowspan="2" scope="col">S.No</th>
+                  <th rowspan="2" scope="col">Survey No.</th>
+                  <th rowspan="2" rowspan="2" scope="col">Hissa No.</th>
+                  <th rowspan="2" scope="col">Owner Name</th>
+                  <th rowspan="2" scope="col">Relationship</th>
+                  <th rowspan="2" scope="col">Relative Name</th>
+                  <th scope="col" colspan="3">Available Extent</th>
+                </tr>
+                <tr>
+                  <th scope="col">Acre</th>
+                  <th scope="col">Gunta</th>
+                  <th scope="col">Fraction of Gunta</th>
+                </tr>
+               
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align: center;">{{sno}}</td>
+                  <td style="text-align: center;">{{SurveyNo}}</td>
+                  <td style="text-align: center;">{{HissaNo}}</td>
+                  <td style="text-align: center;">{{owner}}</td>
+                  <td style="text-align: center;">{{relationship}}</td>
+                  <td style="text-align: center;">{{relativename}}</td>
+                  <td style="text-align: center;">{{avl_ext_acre}}</td>
+                  <td style="text-align: center;">{{avl_ext_gunta}}</td>
+                  <td style="text-align: center;">{{avl_ext_fgunta}}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-bordered" style="margin-top: 50px;">
+              <thead>
+                <tr>
+                  <th colspan="14" style="background-color: #05265b; color:#fff; text-align: left;">Court Order Details</th>
+                </tr>
+                <tr>
+                  <th rowspan="2" scope="col">S.No</th>
+                  <th rowspan="2" scope="col">SRO</th>
+                  <th rowspan="2" scope="col">Court Order No.</th>
+                  <th rowspan="2" scope="col">Injunction or Stay against the Property</th>
+                  <th rowspan="2" scope="col">Order Details</th>
+                  <th rowspan="2" scope="col">Survey No.</th>
+                  <th rowspan="2" scope="col">Current Number</th>
+                  <th rowspan="2" scope="col">Old Number</th>
+                  <th scope="col" colspan="4">Boundaries</th>
+                  <th rowspan="2" scope="col">Area</th>
+                  <th rowspan="2" scope="col">Description</th>
+                </tr>
+                <tr>
+                  <th scope="col">East</th>
+                  <th scope="col">North</th>
+                  <th scope="col">West</th>
+                  <th scope="col">South</th>
+                </tr>
+               
+              </thead>
+              <tbody>
+
+                <ng-container *ngIf="courtOrderInfoCount < 1; else courtData">
+                  <tr>
+                    <td colspan="14" style="text-align: center;">No Data Found</td>
+                  </tr>
+               </ng-container>
+               <ng-template  #courtData>
+                <tr>
+                  <td style="vertical-align: middle;text-align:center">{{sno}}</td>
+                  <td style="text-align: center;">{{c_sro}}</td>
+                  <td style="text-align: center;">{{courT_ORDER_NUMBER}}</td>
+                  <td style="text-align: center;">{{injuction_or_stay_flag}}</td>
+                  <td style="text-align: center;">{{OrderDetails}}</td>
+                  <td style="text-align: center;">{{c_survey_No}}</td>
+                  <td style="text-align: center;">{{currentNumber}}</td>
+                  <td style="text-align: center;">{{oldNumber}}</td>
+                  <td style="text-align: center;">{{eastBoundary}}</td>
+                  <td style="text-align: center;">{{northBoundary}}</td>
+                  <td style="text-align: center;">{{westBoundary}}</td>
+                  <td style="text-align: center;">{{southBoundary}}</td>
+                  <td style="text-align: center;">{{area}}</td>
+                  <td style="text-align: center;">{{description}}</td>
+                </tr>
+               </ng-template>
+              </tbody>
+            </table>
+
+            <!-- <dx-data-grid #grid id="grid-container" style="width: 1721px;margin-left: 76px;" [dataSource]="courtorder" [showBorders]="true">
+        <dxi-column dataField="" caption="Court Order Details" [groupIndex]="0" [width]=""></dxi-column>
+        <dxi-column dataField="sno" alignment="center" caption="S.No." [width]=""></dxi-column>
+        <dxi-column dataField="sro" alignment="center" caption="SRO" [width]=""></dxi-column>
+        <dxi-column dataField="courT_ORDER_NUMBER" alignment="center" caption="Court Order No." [width]="115"></dxi-column>
+        <dxi-column dataField="injuction_or_stay_flag" alignment="center" caption="Injunction or stay against the Property" [width]="200"></dxi-column>
+        <dxi-column dataField="OrderDetails" alignment="center" caption="Order Details" [width]=""></dxi-column>
+        <dxi-column dataField="survey_No" alignment="center" caption="Survey No."  [width]=""></dxi-column>
+        <dxi-column dataField="currentNumber" alignment="center" caption="Current Number" [width]=""></dxi-column>
+        <dxi-column dataField="oldNumber" alignment="center" caption="Old Number" [width]=""></dxi-column>
+        <dxi-column  caption="Boundaries" alignment="center">
+          <dxi-column dataField="eastBoundary":col-span="2" alignment="center" caption="East" [width]=""></dxi-column>
+          <dxi-column dataField="northBoundary":col-span="2" alignment="center" caption="North" [width]=""></dxi-column>
+          <dxi-column dataField="westBoundary":col-span="2" alignment="center"  caption="West" [width]=""></dxi-column>
+          <dxi-column dataField="southBoundary":col-span="2" alignment="center"  caption="South" [width]=""></dxi-column>
+        </dxi-column>
+        <dxi-column dataField="area" alignment="center" caption="Area" [width]=""></dxi-column>
+        <dxi-column dataField="description" alignment="center" caption="Description" [width]=""></dxi-column>
+
+              <div *dxTemplate="let data of 'cellTemplate'">
+                <div class="dx-field"></div>
+                <div class="dx-field-value">
+
+                  <dx-check-box [value]="false" alignment="center"></dx-check-box>
+                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                    (click)="GetSurvayNoist()">Proceed</button>
+                </div>
+              </div>
+
+              <dxo-load-panel [enabled]="true">
+              </dxo-load-panel>
+
+            </dx-data-grid><br> -->
+
+          </div><br><br>
+
+          <div class="row">
+            <div class="col-md-3">
+              <label for="district" style="font-weight: bold;">STAMP ARTICLE SELECTED</label>
+              <p>{{stampartcileselected}}</p>
+            </div>
+            <div class="col-md-3">
+              <label for="district" style="font-weight: bold;">STAMP SUB ARTICLE SELECTED</label>
+              <p>{{stampsubartcleselected}}</p>
+            </div>
+            <div class="col-md-3">
+              <label for="district" style="font-weight: bold;">REGISTRATION FEE ARTICLE SELECTED</label>
+              <p>{{regFeeArticleSelected}}</p>
+            </div>
+            <div class="col-md-3">
+              <label for="district" style="font-weight: bold;">BOOK NAME</label>
+              <p>{{bookNumber}}</p>
+            </div>
+          </div>
+
+          </div>
+        </div>
+        <div class="card" style="font-family: Segoe UI;">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-6">
+                      <label class="propertyHeading" style="font-weight: bold;font-size: large;">Party Details</label>
+                  </div><br/>
+              </div>
+              <br>
+
+              <div class="presenter" *ngFor="let item of finalInfoPresenter;index as i">
+                <ng-container *ngIf="item.isorganization === true; else individual">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Presenter {{i+1}} Of {{finalInfoPresenterCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : ORGANIZATION</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>ORGANIZATION NAME: {{item.name}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ORGANIZATION ID:  {{item.organizationid}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>REGISTERED ADDRESS: {{item.address}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN/TIN/TAN: {{item.tanno}}</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;text-transform: uppercase;">Authorised Signatory of</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.ausignatoryname}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.ausignatoryaddress}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.ausignatoryage}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.ausignatorysex === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.ausignatorypan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.ausigntoryprofession}}</label></label>
+                    </div>
+                  </div>
+                  <br><br>
+
+                  <ng-container *ngIf='item.poaname === ""; else noPOA'>
+                    <div></div>
+                  </ng-container>
+                  <ng-template #noPOA>
+                    <div class="row">
+                      <div class="col-md-2">
+                          <label style="font-weight: bold;text-transform: uppercase;">Representd by</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label>NAME : <label style="text-transform: uppercase;">{{item.poaname}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>ADDRESS : <label style="text-transform: uppercase;">{{item.poaaddress}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>AGE : <label style="text-transform: uppercase;">{{item.poaage}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <ng-container *ngIf="item.poasex === 0; else male">
+                          <label>SEX : FEMALE</label>
+                       </ng-container>
+                       <ng-template #male>
+                        <label>SEX : MALE</label>
+                       </ng-template>
+                      </div>
+                      <div class="col-md-3">
+                        <label>PAN : <label style="text-transform: uppercase;">{{item.poapan}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>PROFESSION : <label style="text-transform: uppercase;">{{item.poaprofession}}</label></label>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <br><br>
+                </ng-container>
+                <ng-template #individual>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Presenter {{i+1}} Of {{finalInfoPresenterCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : INDIVIDUAL</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.name}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.address}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.age}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.gender === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.pan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.profession}}</label></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+              <hr>
+              <br>
+
+
+
+              <div class="claimant" *ngFor="let item of finalInfoClaimant;index as i">
+                <ng-container *ngIf="item.isorganization === true; else individual">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Claimant {{i+1}} Of {{finalInfoClaimantCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : ORGANIZATION</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>ORGANIZATION NAME: {{item.name}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ORGANIZATION ID:  {{item.organizationid}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>REGISTERED ADDRESS: {{item.address}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN/TIN/TAN: {{item.tanno}}</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;text-transform: uppercase;">Authorised Signatory of</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.ausignatoryname}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.ausignatoryaddress}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.ausignatoryage}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.ausignatorysex === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.ausignatorypan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.ausigntoryprofession}}</label></label>
+                    </div>
+                  </div>
+                  <br><br>
+
+                  <ng-container *ngIf='item.poaname === ""; else noPOA'>
+                    <div></div>
+                  </ng-container>
+                  <ng-template #noPOA>
+                    <div class="row">
+                      <div class="col-md-2">
+                          <label style="font-weight: bold;text-transform: uppercase;">Representd by</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label>NAME : <label style="text-transform: uppercase;">{{item.poaname}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>ADDRESS : <label style="text-transform: uppercase;">{{item.poaaddress}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>AGE : <label style="text-transform: uppercase;">{{item.poaage}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <ng-container *ngIf="item.poasex === 0; else male">
+                          <label>SEX : FEMALE</label>
+                       </ng-container>
+                       <ng-template #male>
+                        <label>SEX : MALE</label>
+                       </ng-template>
+                      </div>
+                      <div class="col-md-3">
+                        <label>PAN : <label style="text-transform: uppercase;">{{item.poapan}}</label></label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>PROFESSION : <label style="text-transform: uppercase;">{{item.poaprofession}}</label></label>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <br><br>
+                </ng-container>
+                <ng-template #individual>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Claimant {{i+1}} Of {{finalInfoClaimantCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : INDIVIDUAL</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.name}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.address}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.age}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.gender === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.pan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.profession}}</label></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+              <hr>
+              <br>
+
+
+
+
+              <div class="executant" *ngFor="let item of finalInfoExcutant;index as i">
+                <ng-container *ngIf="item.isorganization === true; else individual">
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Excutant {{i+1}} Of {{finalInfoExcutantCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : ORGANIZATION</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>ORGANIZATION NAME: {{item.name}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ORGANIZATION ID:  {{item.organizationid}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>REGISTERED ADDRESS: {{item.address}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN/TIN/TAN: {{item.tanno}}</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;text-transform: uppercase;">Authorised Signatory of</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.ausignatoryname}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.ausignatoryaddress}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.ausignatoryage}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.ausignatorysex === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.ausignatorypan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.ausigntoryprofession}}</label></label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <ng-container *ngIf='item.poaname === ""; else noPOA'>
+                      <div></div>
+                    </ng-container>
+                    <ng-template #noPOA>
+                      <div class="row">
+                        <div class="col-md-2">
+                            <label style="font-weight: bold;text-transform: uppercase;">Representd by</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <label>NAME : <label style="text-transform: uppercase;">{{item.poaname}}</label></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>ADDRESS : <label style="text-transform: uppercase;">{{item.poaaddress}}</label></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>AGE : <label style="text-transform: uppercase;">{{item.poaage}}</label></label>
+                        </div>
+                        <div class="col-md-3">
+                          <ng-container *ngIf="item.poasex === 0; else male">
+                            <label>SEX : FEMALE</label>
+                         </ng-container>
+                         <ng-template #male>
+                          <label>SEX : MALE</label>
+                         </ng-template>
+                        </div>
+                        <div class="col-md-3">
+                          <label>PAN : <label style="text-transform: uppercase;">{{item.poapan}}</label></label>
+                        </div>
+                        <div class="col-md-3">
+                          <label>PROFESSION : <label style="text-transform: uppercase;">{{item.poaprofession}}</label></label>
+                        </div>
+                      </div>
+                    </ng-template>
+                  <br><br>
+                </ng-container>
+                <ng-template #individual>
+                  <div class="row">
+                    <div class="col-md-2">
+                        <label style="font-weight: bold;">Executant {{i+1}} Of {{finalInfoExcutantCount}}</label>
+                    </div>
+                    <div class="col-md-10">
+                        <label>INDIVIDUAL/ORGANIZATION : INDIVIDUAL</label>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label>NAME : <label style="text-transform: uppercase;">{{item.name}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>ADDRESS : <label style="text-transform: uppercase;">{{item.address}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>AGE : <label style="text-transform: uppercase;">{{item.age}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <ng-container *ngIf="item.gender === 0; else male">
+                        <label>SEX : FEMALE</label>
+                     </ng-container>
+                     <ng-template #male>
+                      <label>SEX : MALE</label>
+                     </ng-template>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PAN : <label style="text-transform: uppercase;">{{item.pan}}</label></label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>PROFESSION : <label style="text-transform: uppercase;">{{item.profession}}</label></label>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+              <hr>
+            <br>
+
+          <br>
+          <div *ngFor="let item of WitnessInfo;index as i">
+            <div class="row">
+              <div class="col-md-2">
+                  <label style="font-weight: bold;">Witness {{i+1}} of {{WitnessInfoTotalCount}}</label>
+              </div>
+              <!-- <div class="col-md-10">
+                <label>INDIVIDUAL/ORGANIZATION : {{item.isorganization}}</label>
+            </div> -->
+            <!-- <ng-container *ngIf="item.isorganization === true; else individual">
+              <label>INDIVIDUAL/ORGANIZATION : ORGANIZATION</label>
+           </ng-container>
+           <ng-template #individual>
+            <label>INDIVIDUAL/ORGANIZATION : INDIVIDUAL</label>
+           </ng-template> -->
+
+            </div><br/><br/>
+            <div class="row" >
+              <div class="col-md-3">
+                <label>NAME : <label style="text-transform: uppercase;">{{item.witnessname}}</label></label>
+              </div>
+              <div class="col-md-3">
+                <label>AGE : <label style="text-transform: uppercase;">{{item.age}}</label></label>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-3">
+                <!-- <label>SEX : <label style="text-transform: uppercase;">{{item.sex}}</label></label> -->
+                <ng-container *ngIf="item.sex === 0; else male">
+                  <label>SEX : FEMALE</label>
+               </ng-container>
+               <ng-template #male>
+                <label>SEX : MALE</label>
+               </ng-template>
+              </div>
+              <div class="col-md-3">
+                <label>ADDRESS: <label style="text-transform: uppercase;">{{item.address}}</label></label>
+              </div>
+              <div class="col-md-3">
+                <label>PROFESSION : <label style="text-transform: uppercase;">{{item.profession}}</label></label>
+              </div>
+              <!-- <div class="col-md-3">
+                <label>IDENTIFIED : <label style="text-transform: uppercase;">{{item.name}}</label></label>
+              </div> -->
+            </div>
+            <br/>
+        </div>
+
+
+<!-- <div class="row">
+<div class="col-md-2">
+  <label style="font-weight: bold;">Witness 2 of 2</label>
+</div>
+<div class="col-md-10">
+<label>INDIVIDUAL/ORGANIZATION : {{witnessOrganation}}</label>
+</div>
+</div><br/><br/>
+<div class="row" >
+<div class="col-md-3">
+<label>NAME : <label style="text-transform: uppercase;">{{witnessName}}</label></label>
+</div>
+<div class="col-md-3">
+<label>AGE : <label style="text-transform: uppercase;">{{witnessAge}}</label></label>
+</div>
+</div><br>
+<div class="row">
+<div class="col-md-3">
+<label>SEX : <label style="text-transform: uppercase;">{{witnessSex}}</label></label>
+</div>
+<div class="col-md-3">
+<label>ADDRESS: <label style="text-transform: uppercase;">{{witnessAddress}}</label></label>
+</div>
+<div class="col-md-3">
+<label>PROFESSION : <label style="text-transform: uppercase;">{{witnessProfession}}</label></label>
+</div>
+<div class="col-md-3">
+<label>IDENTIFIED : <label style="text-transform: uppercase;">{{witnessIdentified}}</label></label>
+</div>
+</div>
+<br/> -->
+
+  </div>
+          </div>
+        </div>
+        <div class="card" style="font-family: Segoe UI;">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-6">
+                      <label class="propertyHeading" style="font-weight: bold;font-size: large;">Property schedule</label>
+                  </div>
+              </div><br/>
+              <div class="row">
+                <!-- <div>
+                    <label class="unselectable" (click)="scheduleBackButton()" style="cursor: pointer; padding-left: 10px; font-weight: bold;" > < &nbsp;&nbsp;&nbsp; </label><br>
+                </div>
+                    <label style="font-size: 16px;font-weight: bold;">SCHEDULE {{scheduledIndexValue}} OF {{propertyScheduleCount}}</label><br>
+                <div>
+                    <label class="unselectable" (click)="scheduleFrontButton()" style="cursor: pointer; font-weight: bold;" > &nbsp;&nbsp;&nbsp;> </label><br>
+                </div> -->
+            </div><br>
+              <div class="row">
+                <div class="col-md-3">
+                  <label>SCHEDULE : <label style="text-transform: uppercase;">{{prpertyScheduletype}}</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>AREA : <label style="text-transform: uppercase;">{{prpertyTotalarea}} Gunta</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>EAST TO WEST : <label style="text-transform: uppercase;">{{prpertyEasttowest}}</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>NORTH TO SOUTH: {{prpertyNorthtosouth}}</label>
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-10">
+                    <label style="font-weight: bold;">BOUNDARIES</label>
+                </div>
+            </div><br/><br/>
+              <div class="row"  >
+                <div class="col-md-3">
+                  <label>NORTH : <label style="text-transform: uppercase;">{{BoundariesNorthboundary}}</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>EAST: <label style="text-transform: uppercase;">{{BoundariesEastboundary}}</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>WEST : <label style="text-transform: uppercase;">{{BoundariesWestboundary}}</label></label>
+                </div>
+                <div class="col-md-3">
+                  <label>SOUTH : <label style="text-transform: uppercase;">{{BoundariesSouthboundary}}</label></label>
+                </div>
+              </div><br/>
+            <br/>
+            <div class="row">
+              <div class="col-md-10">
+                <label>DESCRIPTION : {{BoundariesDescription}}</label>
+            </div>
+            </div>
+
+  </div>
+          </div>
+        </div>
+        <div class="card" style="font-family: Segoe UI;">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-6">
+                      <label class="propertyHeading" style="font-weight: bold;font-size: large;">Market Valuation and Fee Calculation</label>
+                  </div>
+              </div><br/>
+              <div class="row">
+                <div class="col-md-12" style = "margin-left: -80px;
+                margin-top: 22px;">
+                    <div class="panel panel-default">
+                        <div class="panel-body" style = "width: 100%; margin-left: 89px;">
+                                <table class="table table-striped table-bordered">
+                                  <tr>
+                                    <td colspan="1" style="font-weight: bold;">
+                                        <div class="row">
+                                          <div>
+                                            <label class="unselectable" (click)="feecalculationBackButton()" style="cursor: pointer; padding-left: 10px; font-weight: bold;" > < &nbsp;&nbsp;&nbsp; </label><br>
+                                        </div>
+                                            <label style="font-size: 16px;font-weight: bold;">Property {{feecalculationIndexValue}} OF {{feecalculationdataCount}}</label><br>
+                                        <div>
+                                            <label class="unselectable" (click)="feecalculationFrontButton()" style="cursor: pointer; font-weight: bold;" > &nbsp;&nbsp;&nbsp;> </label><br>
+                                        </div>
+                                        </div>
+                                    </td>
+                                    <!-- <td>{{propertyDescription}}</td> -->
+                                  </tr>
+                                    <tr>
+                                      <td rowspan="8">{{propertyDescription}}</td>
+                                      <td style="font-weight: bold;" >Market Valuation</td>
+                                      <td style="font-weight: bold;" >Total Valuation Amount</td>
+                                      <td>&#8377;&emsp;{{TotalValuationAmount}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Consideration Amount</td>
+                                      <td style="font-weight: bold;" >Total Consideration Amount</td>
+                                      <td>--</td>
+                                    </tr>
+                                    <tr>
+                                      <td rowspan="6" style="font-weight: bold;" >Fee Calculation</td>
+                                      <td style="font-weight: bold;" >Government Duty After Exception(A)</td>
+                                      <td>&#8377;&emsp;{{GovernmentDuty}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Surcharge Value (B)</td>
+                                      <td>&#8377;&emsp;{{SurchargeValue}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Cess Value (C)</td>
+                                      <td>&#8377;&emsp;{{CessValue}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Scanning Fees (D)</td>
+                                      <td>&#8377;&emsp;{{ScanningFees}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Mutation Fees(E)</td>
+                                      <td>&#8377;&emsp;{{MutationFees}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td style="font-weight: bold;" >Denotation of Stamp Duty(F)</td>
+                                      <td>&#8377;&emsp;{{DenonationofStampDuty}}</td>
+                                    </tr>
+                                </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" style = "margin-left: -80px;
+              margin-top: 22px;">
+                  <div class="panel panel-default">
+            <div class="panel-body" style = "width: 100%; margin-left: 89px;">
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <td style="font-weight: bold;" >Total Stamp Duty(G) =(A+B+C+D+E+F)</td>
+                  <td>&#8377;&emsp;{{TotalStampDuty}}</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold;" >Total Registration Fees(H)</td>
+                  <td>&#8377;&emsp;{{TotalRegistrationFees}}</td>
+                </tr>
+              </table>
+              </div>
+              </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style = "margin-left: -80px;
+                margin-top: 22px;">
+                    <div class="panel panel-default">
+              <div class="panel-body" style = "width: 100%; margin-left: 89px;">
+                <table class="table table-striped table-bordered">
+                  <tr>
+                    <td style="font-weight: bold;" >Total Payable Amount  (G)+(H) </td>
+                    <td>&#8377;&emsp;{{TotalPayableAmount}}</td>
+                  </tr>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+        </div>
+          </div>
+        </div>
+
+            <!-- <div class="card" style="font-family: Segoe UI;">
+              <div class="card-body">
+                <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-6" style="margin-bottom: 50px;">
+                          <label class="propertyHeading" style="font-weight: bold;font-size: large;">Application Review</label>
+                          <br>
+                     <label>Select the section that needs to be corrected.</label>
+                      </div>
+                      <div class="container">
+                        <div class="row">
+                                                         <div class="col-md-12" style = "margin-left: -80px;"
+                                                         >
+                                                             <div class="panel panel-default">
+                                                                 <div class="panel-body" style = "width: 1276px;">
+                                                                         <table class="table table-bordered">
+                                                                             <thead style="background-color: #05265b;color: #fbfbfb;">
+                                                                                 <tr style="text-align: center;">
+                                                                                     <th class="col-1">S.No</th>
+                                                                                     <th class="col-1">Approve</th>
+                                                                                     <th class="col-2">Not Approve</th>
+                                                                                     <th class="col-3">Section</th>
+                                                                                     <th class="col-5">Remarks</th>
+                                                                                 </tr>
+                                                                             </thead>
+                                                                             <tbody>
+                                                                              <tr *ngFor="let data of dataSource;" style="text-align: center;" >
+                                                                                <th>{{data.reviewid}}</th>
+                                                                                <th *ngFor="let stat of status">
+                                                                                  <input type="radio" style="height:25px; width:25px; vertical-align: middle;" id="opt1+{{data.reviewid}}" [(ngModel)]="data.status" value="{{stat}}" name="option+{{data.reviewid}}">
+                                                                                </th>
+                                                                                <th>{{data.reviewname}}</th>
+                                                                                <th><input style="width: 100%;" [(ngModel)]="data.remarks"/></th>
+                                                                              </tr>
+                                                                             </tbody>
+                                                                         </table>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                  </div><br>
+                     
+                  
+                  </div><br/>
+                  
+               </div>
+              </div>
+            </div> -->
+       
+        </div>
+    </div>
+    <!-- <div style="text-align: center;">
+      <button type="button" class="btn btn-outline-primary px-4" (click)="NotApproveAndSend();shownotApproveInfo()">Not Approve and Send</button>
+      <button type="button" class="btn btn-primary px-4" style="margin-left: 50px" (click)="Approve()">Approve and Send</button>
+    </div><br><br><br>
+     -->
+    <div id="container">
+      <dx-popup
+      [width]="800"
+      [height]="350"
+      [dragEnabled]="false"
+      [closeOnOutsideClick]="true"
+      [showCloseButton]="false"
+      container=".dx-viewport"
+      [(visible)]="notApprovepopupVisible">
+     
+          <div *dxTemplate="let data of 'content'">
+            <br>
+            <div class="row">
+              <div class="col-md-5">
+                <br><br>
+              </div>
+              <div class="col-md-7">
+                <img src="assets/img/avatars/Success.png">
+              </div>
+          </div><br><br>
+        <div style="text-align: center;">
+          <span>
+            Your application is not approved and has been successfully submitted to SRO for Rechecking
+          </span>
+        </div><br><br><br>
+        <div style="text-align: center;">
+          <a class="nav-link" (click)="closeApprove()" style="cursor:pointer;color: #0a429b;font-weight: bold;">Close</a>
+        </div>
+          </div>
+  </dx-popup>
+</div>
+<div id="container">
+  <dx-popup
+  [width]="800"
+  [height]="350"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [showCloseButton]="false"
+  container=".dx-viewport"
+  [(visible)]="approvepopupVisible">
+ 
+      <div *dxTemplate="let data of 'content'">
+        <br>
+        
+      <div class="row">
+        <div class="col-md-5">
+          <br><br>
+        </div>
+        <div class="col-md-7">
+          <img src="assets/img/avatars/Success.png">
+        </div>
+    </div><br><br>
+   
+        <div style="text-align: center;">
+          <span>
+            The application has been successfully approved
+          </span>
+        </div><br><br><br>
+        <div style="text-align: center;">
+          <a class="nav-link" routerLink="/pending-application" style="cursor:pointer;color: #0a429b;font-weight: bold;">Close</a>
+        </div>
+     
+      </div>
+</dx-popup>
+</div>
+      </div>
+    </div>
+  </main>
+
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

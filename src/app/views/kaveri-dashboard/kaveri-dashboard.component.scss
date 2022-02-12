@@ -1,0 +1,18 @@
+.example-container {
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-table {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+  }
+  .mat-column-sno {
+    flex: 0 0 10%;
+  }
+  .mat-column-Action {
+    flex: 0 0 35%;
+  }

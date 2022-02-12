@@ -1,0 +1,836 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+  [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+    style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+      <button type="button" class="btn btn-primary px-4" routerLink="/account-creation">Register</button>
+    </li>
+    <li class="nav-item d-md-down-none"></li>
+    <li class="nav-item d-md-down-none">
+      <button type="button" class="btn btn-block btn-outline-primary px-4" (click)="showloginInfo();">Log
+        In</button>
+    </li>
+  </ul>
+
+</app-header>
+<style>
+  .isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+  }
+  .disable-text-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  </style>
+
+<div class="app-body">
+
+  <main class="main">
+    <dx-tabs style="width: 100%;z-index: 1020;margin-top: 45px;position: fixed">
+      <dxi-item>
+        <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+      </dxi-item>
+      <dxi-item>
+        <span>About Department</span>
+      </dxi-item>
+      <dxi-item>
+        <span>Resources</span>
+      </dxi-item>
+      <dxi-item>
+        <span>Links</span>
+      </dxi-item>
+      <dxi-item>
+        <span>External Links</span>
+      </dxi-item>
+      <dxi-item>
+        <span>Help</span>
+      </dxi-item>
+    </dx-tabs>
+    <!-- <div style="width: 100%;z-index: 1020;margin-top: 82px;background-color: #fbfbfb;">
+            <carousel [noWrap]="noWrapSlides" [showIndicators]="showIndicator">
+                <slide *ngFor="let slide of slides; let index=index">
+                   <img [src]="slide.image" alt="image slide" style="display: block; width: 100%;">
+                </slide>
+             </carousel>
+          </div> -->
+
+    <div class="container-fluid" style="background-color: #fbfbfb;margin-top: 85px!important;">
+
+      <div class="animated fadeIn">
+
+        <div
+          style="font-family: Segoe UI;height: 250px;margin-top: -40px;margin-left: -65px;margin-bottom: 75px;margin-right: -10px;">
+          <mat-accordion>
+            <mat-expansion-panel hideToggle disabled expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="row" style="margin-top: -30px;">
+                <div class="col-md-2">
+                  <img src="assets/img/avatars/Rectangle 673.png" style="margin-top: -40px;width: 200px;height: 200px;">
+                </div>
+                <div class="col-md-6">
+                  <!-- <h1>Hello User!</h1><br>
+                          <h2>Welcome to Kaveri Online Services</h2><br>
+                          <span>To start a new application process, Click on the Start button</span> -->
+                  <br><img src="assets/img/avatars/landing.png">
+                </div>
+                <!-- <div class="col-md-1"></div> -->
+                <div class="col-md-4">
+                  <br><br><br>
+                  <button type="button" class="btn btn-primary px-4"
+                    style="background-color: #0a429b;float: right;margin-right: 10px;width: 200px;height: 50px;"
+                    (click)="showloginInfo();Login()">Log in to know more</button>
+                </div>
+              </div>
+
+            </mat-expansion-panel><br>
+            <!-- <mat-expansion-panel hideToggle disabled expanded>
+    
+                </mat-expansion-panel> -->
+          </mat-accordion><br><br>
+        </div>
+
+        <div id="container">
+          <dx-popup [width]="700" [height]="500" [dragEnabled]="false" [closeOnOutsideClick]="true"
+            [showCloseButton]="false" container=".dx-viewport" [(visible)]="loginpopupVisible">
+            <dxo-position at="center" my="center" [of]="positionOf">
+            </dxo-position>
+            <div *dxTemplate="let data of 'content'">
+              <div class="card" style="margin-top: -23px;margin-left: -25px;margin-right: -25px;">
+                <div class="card-header"
+                  style="background-color: #05265b;color: white;font-weight: 500;border-radius: 5px;">
+                  <span>Applicant Login</span>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+
+                      <img src="assets/img/avatars/login.png" style="margin-left: 20px;margin-top: -10px;">
+                    </div>
+                    <!-- <div class="col-md-1"></div> -->
+                    <div class="col-md-6" style="margin-left:-10px">
+                      <form [formGroup]="loginForm" (ngSubmit)="Login()">
+                        <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" id="userName" name="userName" formControlName="userName" class="form-control" placeholder="Username"
+                           style="background-color: white;" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+                            <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                              <div *ngIf="f.userName.errors.required">Username is required</div>
+                          </div>
+                          <span style="color:red;font-size: 12px;">{{USERNAME}}</span>
+
+                        </div>
+                        <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password"  id="password" name="password" formControlName="password" class="form-control"
+                            style="background-color: white;" placeholder="Password" 
+                            required [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                              <div *ngIf="f.password.errors.required">Password is required</div>
+                          </div>
+                          <span style="color:red;font-size: 12px;">{{PASSWORD}}</span>
+
+                          <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.password.errors.required">{{validationMessage}}</div>
+                              </div> -->
+                        </div>
+                        <div class="form-group">
+                          <label for="info">Enter the text you see in the image below
+                          </label>
+
+                          <div class="row" style="margin-left:0px" class="disable-text-selection" >
+                            <img [src] ="ImagePath" class="col-md-9 " >
+                            
+                            <span>
+                              <button type="button" class="btn btn-primary" style="background-color: #0a429b;" (click)="Captcha();"><img src="assets/img/avatars/redo.png" alt=""></button>
+                            </span>
+                          </div><br>
+                          
+                          <input type="text" class="form-control" id="loginCaptchaUserInput1" formControlName="loginCaptchaUserInput1" placeholder="Value"(change)="ValidateCaptcha()"  required [ngClass]="{ 'is-invalid': submitted && f.CaptchaUserInput.errors }">
+                            <div *ngIf="submitted && f.loginCaptchaUserInput.errors" class="invalid-feedback">
+                              <div *ngIf="f.loginCaptchaUserInput.errors.required">Captcha is required</div>
+                            </div>
+                            <span style="color:red;font-size: 12px;" >{{CAPTCHA}}</span>
+
+                        </div>
+                        <div class="row">
+                          <button type="button" class="btn btn-primary offset-md-4 col-md-4"
+                            style="background-color: #0a429b;" (click)="Login();">Login</button>
+                        </div>
+                        <br>
+                        <span style="color:red;font-size: 12px;">{{validationMessage}}</span>
+
+                      </form>
+                      <div class="row" style="font-size: smaller;">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-7" style="margin-left: 25px; ">
+                          <label for="info">Forgot Password ?&nbsp;<a href="#" (click)="showforgotpassword()"
+                              style="color: black; font-weight: bold;">Click Here</a></label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="font-size: smaller;">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-7" style="margin-left: 25px;">
+                          <label for="info">New User ?&nbsp;<a href="#/account-creation"
+                              style="color: black; font-weight: bold;">Register Account</a></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </dx-popup>
+        </div>
+
+        <!-- <form class="form-horizontal" [formGroup]="LandingPageForm" (ngSubmit)="onSubmit()">  -->
+        <form class="form-horizontal" [formGroup]="LandingPageForm">
+          <div class="row" style="margin-left: -80px;margin-top: -95px;margin-right: -25px;">
+            <div class="col-md-12">
+              <!-- <div class="card"> -->
+
+              <div class="card-header"
+                style="background-color: #888888;color: white;font-weight: 500;border-radius: 5px;height: 50px;">
+                <!-- <span>At a Glance</span> -->
+                <div class="row">
+                  <div class="col-md-3"><span>Dashboard</span></div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-1"><span>FROM</span></div>
+                  <div class="form-group col-md-2"><input class="form-control" id="date-input"
+                      formControlName="FromDate" type="date" name="date-input"
+                      style="margin-top: -5px;background-color: white;border: transparent;" (change)="onFromChange()">
+                  </div>
+                  <div class="col-md-1"><span>TO</span></div>
+                  <div class="form-group col-md-2"><input class="form-control" id="date-input" formControlName="ToDate"
+                      type="date" name="date-input"
+                      style="margin-top: -5px;background-color: white;border: transparent;" (change)="onToChange()">
+                  </div>
+                </div>
+                <!-- <button type="button" style="background-color: #0a429b;float: right;" class="btn btn-primary" aria-pressed="true">See All</button> -->
+              </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </form>
+
+
+        <div class="row" style="margin-left: -80px;margin-top: 30px;margin-right: -25px;">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header"
+                style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                <span>Documents Registered</span><br><br>
+                <div style="text-align: center;">
+                  <h1 style="font-size: 34px;font-weight: bold;">{{LandDocRegApplicationCount}}</h1>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper">
+                  <canvas baseChart class="chart" [datasets]="barChartData1" [labels]="barChartLabels1"
+                    [options]="barChartOptions1" [colors]="barChartColours1" [legend]="barChartLegend1"
+                    [chartType]="barChartType1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header"
+                style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                <span>Marriages Registered</span><br><br>
+                <div style="text-align: center;">
+                  <h1 style="font-size: 34px;font-weight: bold;">{{MarriageApplicationCount}}</h1>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper">
+                  <canvas baseChart class="chart" [datasets]="barChartData2" [labels]="barChartLabels2"
+                    [options]="barChartOptions2" [colors]="barChartColours2" [legend]="barChartLegend2"
+                    [chartType]="barChartType2"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div>
+              <mat-card class="cards">
+                <div class="row" style="margin-bottom: -20px;">
+                  <div class="col-md-8">
+                    <span style="font-size: 12px;font-weight: bold;">Encumbrance Cerificate</span><br>
+                    <img src="assets/img/avatars/land-33.png" style="width: 30px;height: 30px;">
+                  </div>
+                  <div class="col-md-4"><br>
+                    <h1 style="font-weight: bold;font-size: 32px;">{{ECApplicationCount}}</h1>
+                  </div>
+                </div>
+
+              </mat-card><br>
+              <mat-card class="cards">
+                <div class="row" style="margin-bottom: -20px;">
+                  <div class="col-md-8">
+                    <span style="font-size: 12px;font-weight: bold;">Certified Copy</span><br>
+                    <img src="assets/img/avatars/land-44.png" style="width: 30px;height: 30px;">
+                  </div>
+                  <div class="col-md-4"><br>
+                    <h1 style="font-weight: bold;font-size: 32px;">3489</h1>
+                  </div>
+                </div>
+              </mat-card><br>
+              <mat-card class="cards">
+                <div class="row" style="margin-bottom: -20px;">
+                  <div class="col-md-8">
+                    <span style="font-size: 12px;font-weight: bold;">Firm Registration</span><br>
+                    <img src="assets/img/avatars/land-55.png" style="width: 30px;height: 30px;">
+                  </div>
+                  <div class="col-md-4"><br>
+                    <h1 style="font-weight: bold;font-size: 32px;">1254</h1>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header"
+                style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                <span>Revenue Generated</span><br><br>
+                <div style="text-align: center;">
+                  <h1 style="font-size: 34px;font-weight: bold;">₹ {{totalamt}}</h1>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart-wrapper">
+                  <div id="chart-container" style="display: block;margin-top: -5px;">
+                    <canvas baseChart [labels]="doughnutChartLabels" [data]="doughnutChartData" labelsPosition="OutsideEnd"
+                      [chartType]="doughnutChartType" [colors]="chartColors" [options]="chartOptions" class="chart">
+                    </canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-left: -80px;margin-top: 5px;margin-right: -25px;">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header"
+                style="background-color: #888888;color: white;font-weight: 500;border-radius: 5px;">
+                <span>Apply for Service</span>
+                <!-- <button type="button" style="background-color: #0a429b;float: right;" class="btn btn-primary" aria-pressed="true">See All</button> -->
+              </div>
+              <div class="card-body">
+                <div class="row" style="margin-left: 20px">
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-1.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-2.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-4.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-5.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-6.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-7.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/land-3.png" style="cursor: pointer;">
+                  </div>
+                  <div class="col-md-1" style="margin-left: 70px">
+                    <img src="assets/img/avatars/doc-4.png" style="cursor: pointer; height: 160px;">
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card-body">
+                    <img src="assets/img/avatars/land-1.png" style="margin-right: 40px;cursor: pointer;margin-left: 80px;">
+                    <img src="assets/img/avatars/land-2.png" style="margin-right: 50px;cursor: pointer;margin-left: 80px;">
+                    <img src="assets/img/avatars/land-4.png" style="margin-right: 50px;cursor: pointer;margin-left: 80px;">
+                    <img src="assets/img/avatars/land-5.png" style="margin-right: 50px;cursor: pointer;margin-left: 80px;">
+                    <img src="assets/img/avatars/land-6.png" style="margin-right: 50px;cursor: pointer;margin-left: 80px;">
+                    <img src="assets/img/avatars/land-7.png" style="margin-right: 20px;cursor: pointer;margin-left: 80px;">
+                </div> -->
+            </div>
+          </div>
+          <div id="container">
+            <dx-popup [width]="700" [height]="500" [dragEnabled]="false" [closeOnOutsideClick]="true"
+              [showCloseButton]="false" container=".dx-viewport" [(visible)]="otppopupVisible">
+              <dxo-position at="center" my="center" [of]="positionOf">
+              </dxo-position>
+              <div *dxTemplate="let data of 'content'">
+                <div class="card" style="margin-top: -23px;margin-left: -25px;margin-right: -25px;">
+                  <div class="card-header"
+                    style="background-color: #05265b;color: white;font-weight: 500;border-radius: 5px;">
+                    <span>Applicant Login</span>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+
+                        <img src="assets/img/avatars/login.png" style="margin-left: 25px;margin-top: -10px;">
+                      </div>
+                      <!-- <div class="col-md-1"></div> -->
+                      <div class="col-md-6" style="margin-left:-20px;margin-top: 40px;">
+                        <form [formGroup]="loginOtpForm">
+                          <div class="form-group"></div>
+                          <div class="form-group">
+                            <label for="otp">Enter the OTP</label>
+                            <input type="text" id='otp' name='otp' class="form-control" placeholder="Value"
+                              formControlName="otp" autocomplete="otp" [ngClass]="{ 'is-invalid': submitted && f.otp.errors }" required>
+                              <div *ngIf="submitted && f.otp.errors" class="invalid-feedback">
+                                <div *ngIf="f.otp.errors.required">OTP is required</div>
+                            </div>
+                            <span style="color:red;font-size: 12px">{{otpmsg}}</span>
+                            <br>
+                          </div>
+                          <div class="form-group">
+                            <label for="info" >Resend OTP in {{timeLeft}} Seconds. &nbsp;<a href="#"
+                                (click)='sendotp();' class={{class}} >Resend</a>
+                            </label>
+                            <div class="input-group"></div><br>
+                          </div>
+                          <div class="row">
+                            <div class="col-4">
+                            </div>
+                            <div class="col-8">
+
+                              <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                (click)='verifyotp();'>Login</button>
+                            </div>
+                          </div><br><br>
+                        </form>
+                        <div style="font-size: smaller;">
+                          <div class="row">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-9">
+                              <label for="info">Forgot Password ?&nbsp;<a href="#" style="color: black;">Click
+                                  Here</a></label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-3">
+                            </div>
+                            <div class="col-9">
+                              <label for="info">New User ?&nbsp; <a routerLink="/account-creation"
+                                  style="color: black">Register Account</a></label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </dx-popup>
+          </div>
+          <!-- Forgot Password pop-up -start -->
+          <div id="container">
+            <dx-popup [width]="700" [height]="500" [dragEnabled]="false" [closeOnOutsideClick]="true"
+              [showCloseButton]="false" container=".dx-viewport" [(visible)]="forpasspopupVisible">
+              <dxo-position at="center" my="center" [of]="positionOf">
+              </dxo-position>
+              <div *dxTemplate="let data of 'content'">
+                <div class="card" style="margin-top: -23px;margin-left: -25px;margin-right: -25px;">
+                  <div class="card-header"
+                    style="background-color: #05265b;color: white;font-weight: 500;border-radius: 5px;">
+                    <span>Forgot Password</span>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6">
+
+                        <img src="assets/img/avatars/forgotpass.png" style="margin-left: 10px;margin-top: -10px;">
+                      </div>
+                      <!-- <div class="col-md-1"></div> -->
+                      <div class="col-md-6" style="margin-left:-10px; margin-right: 10px;">
+                        <form [formGroup]="forgotpass" (ngSubmit)="frgpass()">
+                          <div class="form-group">
+                            <label for="email">Email<label style="color: red;">*</label></label>
+                            <input type="text" formControlName="email" class="form-control" placeholder="Value"
+                              style="background-color: white;" required  [ngClass]="{ 'is-invalid': submittedf && g.email.errors }">
+                              <div *ngIf="submittedf && g.email.errors" class="invalid-feedback">
+                                <div *ngIf="g.email.errors.required">Email is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="mobilenumber">Mobile Number<label style="color: red;">*</label></label>
+                            <input type="text" formControlName="mobilenumber" class="form-control" placeholder="Value"
+                              style="background-color: white;" required  [ngClass]="{ 'is-invalid': submittedf && g.mobilenumber.errors }" ngModel pattern="[0-9]*" maxlength="10" minlength="10">
+                              <div *ngIf="submittedf && g.mobilenumber.errors" class="invalid-feedback">
+                                <div *ngIf="g.mobilenumber.errors.required">Mobile Number is required</div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="info">Enter the text you see in the image below
+                            </label>
+                            <div class="row" style="margin-left:0px" class="disable-text-selection" >
+                              <img [src] ="ImagePath" class="col-md-9 " >
+                              
+                              <span>
+                                <button type="button" class="btn btn-primary" style="background-color: #0a429b;" (click)="Captcha();"><img src="assets/img/avatars/redo.png" alt=""></button>
+                              </span>
+                            </div><br>
+                            <input type="text" class="form-control" id="ForgotCaptchaUserEntry" formControlName="ForgotCaptchaUserEntry" placeholder="Value"(change)="forgotValidateCaptcha()"  required [ngClass]="{ 'is-invalid': submitted && f.ForgotCaptchaUserEntry.errors }">
+                            <div *ngIf="submittedf && g.ForgotCaptchaUserEntry.errors" class="invalid-feedback">
+                              <div *ngIf="g.ForgotCaptchaUserEntry.errors.required">Captcha is required</div>
+                            </div>
+                           
+                          </div>
+                          <br>
+                          <div class="form-group">
+                            <button type="button" class="btn btn-primary col-md-5"
+                              style="background-color: #ffffff; color: blue;" (click) = "resetforgotpass();">Reset</button>
+                            <button type="button" class="btn btn-primary offset-md-1 col-md-5 margin-left-10px" 
+                              style="background-color: #0a429b; " (click) = "ForgotPassword();">Send</button>
+                          </div><br>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </dx-popup>
+          </div>
+          <!-- Forgot Password pop-up -end -->
+        </div>
+        <div class="row" style="margin-left: -80px;margin-right: -25px;">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header" style="background-color: #888888;color: white;font-weight: 500;">
+                <span>Fee Calculator</span>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-11.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">REGISTRATION FEES/
+                        STAMP DUTY</span>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-22.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">MARRIAGE FEES</span><br><br>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-33.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">ENCUMBRANCE
+                        CERTIFICATE FEES</span>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-44.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">CERTIFIED COPY FEES</span><br><br>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-55.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">FIRM REGISTRATION</span>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-66.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">GUIDANCE VALUE</span>
+                    </mat-card><br>
+                  </div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <mat-card class="cards">
+                      <img src="assets/img/avatars/land-77.png"
+                        style="width: 30px;height: 30px;margin-bottom: 5px;"><br>
+                      <span style="font-size: 12px;font-weight: bold;">GENERATE CHALLAN</span>
+                    </mat-card>
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header" style="background-color: #888888;color: white;font-weight: 500;">
+                    <span>Notices and Update</span>
+                  </div>
+                  <div class="card-body" style="margin-bottom: 10px;">
+                    <ul>
+                      <li style="margin-top: 16px;">Kaveri Online Service Circular</li>
+                      <li style="margin-top: 16px;">eSigning Facility for Online EC and Online CC</li>
+                      <li style="margin-top: 16px;">Register as Bank User</li>
+                      <li style="margin-top: 16px;">User Manual.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header" style="background-color: #888888;color: white;font-weight: 500;">
+                    <span>Quick Links</span>
+                  </div>
+                  <div class="card-body" style="margin-bottom: 7px;">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="assets/img/avatars/Rectangle 676.png"
+                          style="width: 150px;height: 150px;margin-top: 10px;">
+                      </div>
+                      <div class="col-md-8">
+                        <br>
+                        <div class="col-md-12" style="margin-left: 25px;">
+                          <mat-card class="cards">
+                            <span style="font-size: 12px;font-weight: bold;">GRIEVANCES AND REDRESSAL</span>
+                          </mat-card><br>
+                        </div>
+                        <!-- <div class="col-md-12" style="margin-left: 25px;">
+                                            <mat-card class="cards">
+                                                <span style="font-size: 12px;"> RIGHT TO INFORMATION
+                                                </span>
+                                            </mat-card><br>
+                                        </div> -->
+                        <div class="col-md-12" style="margin-left: 25px;">
+                          <mat-card class="cards">
+                            <span style="font-size: 12px;font-weight: bold;"> E-PROCUREMENT
+                            </span>
+                          </mat-card>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header" style="background-color: #888888;color: white;font-weight: 500;">
+                <span>Know Your Office</span>
+              </div>
+              <div class="card-body" class="example-container mat-elevation-z8">
+                <!-- <img src="assets/img/avatars/Card.png"  style="width: 426px;height: 560px;margin: -25px 0px -30px -24px;"> -->
+                <div class="row" style="margin-left: 15px;margin-top: 5px;">
+                  <div class="form-group col-md-8">
+                    <label for="district">Select District*</label>
+                    <select type="text" name="district" class="form-control" required
+                      style="background-color: white;border: solid 2px #0a429b;">
+                      <!-- <option disabled readonly>Select District</option> -->
+                      <option selected disabled readonly>Value</option>
+                      <!-- <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option> -->
+                    </select><br>
+                    <label for="district">Road Name*</label>
+                    <select type="text" name="district" class="form-control" required
+                      style="background-color: white;border: solid 2px #0a429b;">
+                      <!-- <option disabled readonly>Select District</option> -->
+                      <option selected disabled readonly>Value</option>
+                      <!-- <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option> -->
+                    </select>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <img src="assets/img/avatars/Rectangle 654.png"
+                      style="width: 110px;height: 110px;margin-top: -10px;margin-bottom: 10px;"><br>
+                    <button type="button" class="btn btn-primary px-4" (click)="toggleShow()">Search</button>
+                    <br><br>
+                  </div>
+                </div>
+                <div *ngIf="!isShown">
+                  <div class="card-body" style="height: 300px;"></div>
+                </div>
+                <div *ngIf="isShown">
+                  <mat-table #table [dataSource]="element">
+
+                    <ng-container matColumnDef="snum">
+                      <mat-header-cell *matHeaderCellDef> S.No.
+                      </mat-header-cell> <br>
+                      <mat-cell *matCellDef="let element"> {{element.snum}}
+                      </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="sro">
+                      <mat-header-cell *matHeaderCellDef>SRO</mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.sro}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="address">
+                      <mat-header-cell *matHeaderCellDef>Address
+                      </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: #707070;color: white;">
+                    </mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  </mat-table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="row" style="margin-left: -80px;margin-top: 10px;margin-right: -25px;">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header"
+                style="background-color: #888888;color: white;font-weight: 500;border-radius: 5px;">
+                <span>External Links</span>
+                <!-- <button type="button" style="background-color: #0a429b;float: right;" class="btn btn-primary" aria-pressed="true">See All</button> -->
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <!-- <div class="col-md-2"></div> -->
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/NoPath - Copy.png" alt=""><br>
+                    <span class="login-cards-ext">National Portal of India</span>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/government-of-karnataka-logo.png" alt=""><br>
+                    <span class="login-cards-ext">Government of Karnataka</span>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/NoPath - Copy (2).png" alt=""><br>
+                    <span class="login-cards-ext">E-Swathu</span>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/NoPath - Copy (10).png" alt=""><br>
+                    <span class="login-cards-ext">Land Records-Bhoomi</span>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/NoPath - Copy (3).png" alt=""><br>
+                    <span class="login-cards-ext">Khajane II Gateway</span>
+                  </div>
+                  <div class="col-md-2" style="text-align: center;cursor: pointer;">
+                    <img src="assets/img/avatars/NoPath - Copy (4).png" alt=""><br>
+                    <span class="login-cards-ext">Sakala Web Portal</span>
+                  </div>
+                  <!-- <div class="col-md-2"></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<app-footer style="background-color: #05265b;color: white;">
+  <div class="row" style="margin-top: 20px;margin-left: 10px;">
+    <div class="col-md-6">
+      <img src="assets/img/avatars/footer.png">
+      <!-- <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png">
+            <span style="color: white;">Kaveri Online Services</span>
+            <span style="color: white;">Department of Stamps and Registration,Government of Karnataka</span> -->
+    </div>
+    <div class="col-md-2">
+      <h3 style="font-weight: 500;">Follow Us</h3>
+    </div>
+    <div class="col-md-2">
+      <h3 style="font-weight: 500;">Contact Us</h3>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-2" style="margin-left: -50px;margin-top: -20px;">
+      <img src="assets/img/avatars/Group 153.png" style="margin-left: 10px;cursor: pointer;">
+      <img src="assets/img/avatars/Group 154.png" style="margin-left: 10px;cursor: pointer;">
+      <img src="assets/img/avatars/Group 155.png" style="margin-left: 10px;cursor: pointer;">
+      <img src="assets/img/avatars/Group 156.png" style="margin-left: 10px;cursor: pointer;">
+    </div>
+    <div class="col-md-2" style="margin-left: 50px;margin-top: -20px;">
+      <span>8th floor, Kandaya Bhavan,</span><br>
+      <span>K.G. Road, Bengaluru-560009</span><br><br>
+
+      <span>Ph. No. 080-22220979</span>
+    </div>
+    <div class="col-md-2" style="margin-top: -20px;">
+      <span>sd1.igro@karnataka.gov.in</span><br>
+      <span>sd2.igro@karnataka.gov.in</span><br>
+      <span>sd3.igro@karnataka.gov.in</span><br>
+      <span>sd4.igro@karnataka.gov.in</span>
+    </div>
+
+  </div><br>
+</app-footer>
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+      </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

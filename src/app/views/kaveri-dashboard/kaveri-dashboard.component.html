@@ -1,0 +1,388 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs>
+</app-header>
+
+<main class="main">
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+      <div class="animated fadeIn">
+       <div style="font-family: Segoe UI;height: 250px;margin-top: 80px;margin-left: -45px;margin-bottom: 20px;">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle disabled expanded>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="row"  style="margin-top: -30px;">
+                  <div class="col-md-3">
+                    <img src="assets/img/avatars/Rectangle 673.png"  style="margin-top: -40px;">
+                  </div>
+                  <div class="col-md-3">
+                    <span><h3 style="font-weight: 800; font-size: 20px;">Hello, {{loggedinUser}}</h3></span>
+                      <h3 style="font-weight: 600; font-size: 16px;">Welcome to Kaveri Online Services</h3>
+                      <span style="white-space: nowrap; font-size: 14px;">To start a new application process, Click on the start button</span>
+                      <!-- <h1>Hello User!</h1><br>
+                      <h2>Welcome to Kaveri Online Services</h2><br>
+                      <span>To start a new application process, Click on the Start button</span> -->
+                      <!-- <img src="assets/img/avatars/dashboard.png"> -->
+                  </div>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-3">
+                      <br><br><br>
+                    <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;" routerLink="/application-type">Start a New Application</button>
+                  </div>
+              </div>
+
+            </mat-expansion-panel><br>
+            <!-- <mat-expansion-panel hideToggle disabled expanded>
+
+            </mat-expansion-panel> -->
+          </mat-accordion><br><br>
+       </div>
+       <div class="row" style="margin-left: -60px;margin-top: 50px;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header"  style="background-color: #05265b;color: white;font-weight: 500;">
+                    <span>Previous Applications</span>
+                    <button type="button" style="background-color: #0a429b;float: right;" class="btn btn-primary" aria-pressed="true">See All</button>
+                </div>
+                <div class="card-body" class="example-container mat-elevation-z8">
+                    <!-- <div class="example-container mat-elevation-z8"> -->
+                        <!-- <mat-form-field>
+                          <input matInput (keyup)="applyFilter(input.value)" placeholder="Filter" #input>
+                        </mat-form-field> -->
+                        <mat-table #table [dataSource]="ApplnData">
+
+                            <ng-container matColumnDef="Action">
+
+                                <mat-header-cell *matHeaderCellDef>
+
+
+                                    Action </mat-header-cell>
+
+                                <mat-cell *matCellDef="let element">
+
+
+                                  <div *ngIf="element.wrkflowstatusnamee=='Application In Progress'">
+
+                                    <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" routerLink="/document-for-approval">View</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="Edit(element.applicationnumber)">Edit</button>
+
+                                  </div>
+                                  <div *ngIf="element.wrkflowstatusnamee=='Pending for Payment'">
+                                    <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="MakePayment(element.applicationnumber)">Make Payment</button>
+
+                                    <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" routerLink="/payment-page">Add Challan</button>
+                                  </div>
+
+                                <div *ngIf="element.wrkflowstatusnamee=='Pending to Book Appointment'">
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="scheduleAppointment(element.applicationnumber)">Schedule</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" routerLink="/document-for-approval">View</button>
+                                </div>
+                                <div *ngIf="element.wrkflowstatusnamee=='Application processed by SRO'">
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" disabled>Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" disabled>View</button>
+                                </div>
+                                <div *ngIf="element.wrkflowstatusnamee=='Pending at SRO'">
+
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="viewApplication(element.applicationnumber)">View</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" disabled>Edit</button>
+                                </div>
+                                <div *ngIf="element.wrkflowstatusnamee=='Application Not Approved by SRO'">
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="view(element.applicationnumber)">View</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="view(element.applicationnumber)">Edit</button>
+                                </div>
+                                <div *ngIf="element.wrkflowstatusnamee=='Application Submitted Online'">
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" (click)="scheduleAppointment(element.applicationnumber)">View</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  <button type="button" style="background-color: #0a429b;border-color:transparent" class="btn btn-primary px-4" disabled="disabled">Edit</button>
+                                </div>
+
+
+                                </mat-cell>
+
+                            </ng-container>
+                            <ng-container matColumnDef="sno">
+                                <mat-header-cell *matHeaderCellDef> S.No.
+                                </mat-header-cell>  <br>
+                                <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} 
+                                
+                                </mat-cell>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="applicationnumber">
+                                <mat-header-cell *matHeaderCellDef>Application Number</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.applicationnumber}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="applicationstartdate">
+                                <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.applicationstartdate}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="applicationtype">
+                                <mat-header-cell *matHeaderCellDef>Application Type
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.applicationtype}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="wrkflowstatusnamee">
+                                <mat-header-cell *matHeaderCellDef >Application Status
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.wrkflowstatusnamee}} </mat-cell>
+                            </ng-container>
+
+                            <!-- <ng-container matColumnDef="department">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;">
+                                    Department </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.department}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="designation">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;">
+                                    Designation
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.designation}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="categoryname">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Category
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.categoryname}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="categoryId">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Category id
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.categoryId}}
+                                </mat-cell>
+                            </ng-container>
+
+
+
+                            <ng-container matColumnDef="employmentType">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Type
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.employmentType}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="managerremarks">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Remarks
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.managerremarks}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="isapproved">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Approved
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.isapproved}} </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="isrejected">
+                                <mat-header-cell *matHeaderCellDef style="font-weight: bold;"> Rejected
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.isrejected}} </mat-cell>
+                            </ng-container> -->
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: #707070;color: white;"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table><br>
+                      <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+       <div class="row" style="margin-left: -60px;">
+           <div class="col-md-6">
+            <div class="card">
+<div class="card-header"  style="background-color: #05265b;color: white;font-weight: 500;">
+    <span>Latest News</span>
+</div>
+<div class="card-body">
+    <ul>
+        <li style="margin-top: 16px;">eSigning Facility for Online EC and Online CC</li>
+        <li style="margin-top: 16px;">Register as Bank User (For filing mortgaged/released properties)</li>
+        <li style="margin-top: 16px;">Pre Registration Data Entry and Appointment Booking (PRDE)</li>
+        <li style="margin-top: 16px;">User Manual.</li>
+    </ul>
+    <img src="assets/img/avatars/Group 175@3x.png" style="width: 200px;height: 200px;float: right;"><br>
+</div>
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"  style="background-color: #05265b;color: white;font-weight: 500;">
+                    <span>Services</span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-card class="cards">
+                                <span>BOOK APPOINTMENT</span>
+                            </mat-card><br>
+                            <mat-card class="cards">
+                                <span>FEE CALCULATION</span>
+                            </mat-card><br>
+                            <mat-card class="cards">
+                                <span>MARKET VALUATION</span>
+                            </mat-card><br>
+                            <mat-card class="cards">
+                                <span>CERTIFIED COPY</span>
+                            </mat-card><br>
+                            <mat-card class="cards">
+                                <span>ENCUMBRANCE CERTIFICATE</span>
+                            </mat-card><br>
+
+                        </div>
+                        <div class="col-md-6">
+                            <img src="assets/img/avatars/Group 176@3x.png" style="width: 200px;height: 200px;margin-top: 50px;margin-left: 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           </div>
+       </div>
+
+      </div>
+    </div>
+  </main>
+
+ <app-footer style="background-color: #05265b;color: white;">
+      <div class="row" style="margin-top: 20px;margin-left: 10px;">
+          <div class="col-md-6">
+              <img src="assets/img/avatars/footer.png">
+              <!-- <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png">
+              <span style="color: white;">Kaveri Online Services</span>
+              <span style="color: white;">Department of Stamps and Registration,Government of Karnataka</span> -->
+          </div>
+            <div class="col-md-2"><h3 style="font-weight: 500;">Follow Us</h3></div>
+            <div class="col-md-2"><h3 style="font-weight: 500;">Contact Us</h3></div>
+            <div class="col-md-2"></div>
+          <div class="col-md-6"></div>
+          <div class="col-md-2" style="margin-left: -50px;margin-top: -20px;">
+            <img src="assets/img/avatars/Group 153.png" style="margin-left: 10px;cursor: pointer;">
+            <img src="assets/img/avatars/Group 154.png" style="margin-left: 10px;cursor: pointer;">
+            <img src="assets/img/avatars/Group 155.png" style="margin-left: 10px;cursor: pointer;">
+            <img src="assets/img/avatars/Group 156.png" style="margin-left: 10px;cursor: pointer;">
+          </div>
+          <div class="col-md-2" style="margin-left: 50px;margin-top: -20px;">
+            <span>8th floor, Kandaya Bhavan,</span><br>
+            <span>K.G. Road, Bengaluru-560009</span><br><br>
+
+            <span>Ph. No. 080-22220979</span>
+          </div>
+            <div class="col-md-2" style="margin-top: -20px;">
+                <span>sd1.igro@karnataka.gov.in</span><br>
+                <span>sd2.igro@karnataka.gov.in</span><br>
+                <span>sd3.igro@karnataka.gov.in</span><br>
+                <span>sd4.igro@karnataka.gov.in</span>
+            </div>
+
+      </div><br>
+  </app-footer>
+  <app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+    <div class="row" style="margin-left: 10px;">
+      <div class="col-xs-2">
+        <span></span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">Accessibility Statement&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Help&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Feedback&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;FAQ&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Visitors Analytics</span>
+      </div>
+      <!-- <div class="col-xs-1">
+      </div> -->
+    </div>
+  </app-footer>
+  <app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+    <div class="row" style="margin-left: 10px;">
+      <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+    </div>
+  </app-footer>

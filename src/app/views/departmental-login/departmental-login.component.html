@@ -1,0 +1,247 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+[sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+<img src="assets/img/avatars/online1.png"
+  style="float:left;margin-left:-113%" />
+<!-- <h2 style="font-family:Segoe UI;font-weight: bold;float: left;margin: 0px 270px 30px -270px;">Kaveri Online Services</h2><br>
+<h4 style="font-family:Segoe UI;float: left;font-style: italic;margin: 0px 0px 0px 0px;">Department of Stamps and Registration,Government of Karnataka</h4> -->
+
+</app-header>
+
+<div class="app-body" style="overflow: hidden;">
+
+<main class="main">
+
+  <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+   <div class="row">
+        <div class="col-md-9">
+            <form class="form-horizontal" [formGroup]="LandingPageForm">
+                <div class="row" style="margin-left: -80px;margin-right: -25px;">
+                    <div class="col-md-12">
+                            <div class="card-header"  style="background-color: #888888;color: white;font-weight: 500;border-radius: 5px;height: 50px;">
+                              <div class="row">
+                                <div class="col-md-2"><span>Dashboard</span></div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-1"><span>FROM</span></div>
+                                <div class="form-group col-md-3"><input class="form-control" formControlName="FromDate"  type="date" style="margin-top: -5px;background-color: white;border: transparent;"></div>
+                                <div class="col-md-1"><span>TO</span></div> 
+                                <div class="form-group col-md-3"><input class="form-control" formControlName="ToDate" type="date" style="margin-top: -5px;background-color: white;border: transparent;"></div>
+                              </div> 
+                            </div>
+                    </div>
+                </div>
+            </form> 
+                <div class="row" style="margin-left: -80px;margin-top: 20px;margin-right: -25px;">
+                    <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-header"  style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                            <span>Documents Registered</span><br><br>
+                            <div style="text-align: center;"><h1 style="font-size: 34px;font-weight: bold;">{{LandDocRegApplicationCount}}</h1></div>
+                            <!-- <div style="text-align: center;"><h1 style="font-size: 34px;font-weight: bold;">6</h1></div> -->
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-wrapper">
+                            <canvas baseChart class="chart"
+                            [datasets]="barChartData1"
+                            [labels]="barChartLabels1"
+                            [options]="barChartOptions1"
+                            [colors]="barChartColours1"
+                            [legend]="barChartLegend1"
+                            [chartType]="barChartType1"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+
+                      <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-header"  style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                            <span>Marriages Registered</span><br><br>
+                            <div style="text-align: center;"><h1 style="font-size: 34px;font-weight: bold;">{{MarriageApplicationCount}}</h1></div>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-wrapper">
+                            <canvas baseChart class="chart"
+                            [datasets]="barChartData2"
+                            [labels]="barChartLabels2"
+                            [options]="barChartOptions2"
+                            [colors]="barChartColours2"
+                            [legend]="barChartLegend2"
+                            [chartType]="barChartType2"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card">
+                          <div class="card-header"  style="color: #4e4e4e;font-weight: 500;background-color: white;border-bottom: none;">
+                            <span>Revenue Generated</span><br><br>
+                            <div style="text-align: center;"><h1 style="font-size: 34px;font-weight: bold;">{{totalamt}}</h1></div>
+                        </div>
+                        <div class="card-body">
+                          <div class="chart-wrapper">
+                            <div id="chart-container" style="display: block;margin-top: -5px;">
+                              <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+                                [colors]="chartColors" [options]="chartOptions" class="chart">
+                              </canvas>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                     
+                      </div>
+                </div>
+                <div class="row" style="margin-left: -80px;margin-top: -15px;margin-right: -25px;">
+<div class="col-md-4">
+    <mat-card class="cards">
+        <div class="row" style="margin-bottom: -20px;">
+          <div class="col-md-8">
+            <span style="font-size: 12px;font-weight: bold;">Encumbrance Cerificate</span><br>
+            <img src="assets/img/avatars/land-33.png" style="width: 30px;height: 30px;">  
+          </div>
+          <!-- <div class="col-md-4"><br><h1 style="font-weight: bold;font-size: 32px;">123</h1></div> -->
+          <div class="col-md-4"><br><h1 style="font-weight: bold;font-size: 32px;">{{ECApplicationCount}}</h1></div>
+        </div>
+         
+          </mat-card>
+</div>
+<div class="col-md-4">
+    <mat-card class="cards">
+        <div class="row" style="margin-bottom: -20px;">
+          <div class="col-md-8">
+            <span style="font-size: 12px;font-weight: bold;">Certified Copy</span><br>
+    <img src="assets/img/avatars/land-44.png" style="width: 30px;height: 30px;"> 
+          </div>
+          <div class="col-md-4"><br><h1 style="font-weight: bold;font-size: 32px;">3489</h1></div>
+        </div>
+          </mat-card>
+</div>
+<div class="col-md-4">
+    <mat-card class="cards">
+        <div class="row" style="margin-bottom: -20px;">
+          <div class="col-md-8">
+            <span style="font-size: 12px;font-weight: bold;">Firm Registration</span><br>
+            <img src="assets/img/avatars/land-55.png" style="width: 30px;height: 30px;">  
+          </div>
+          <div class="col-md-4"><br><h1 style="font-weight: bold;font-size: 32px;">1254</h1></div>
+        </div>
+          </mat-card>
+</div>
+                </div>
+           </div>
+           <div class="col-md-3">
+                <div class="card" style="height: 450px;">
+                    <div class="card-header"  style="background-color: #05265b;color: white;font-weight: 500;border-radius: 5px;">
+                        <span>Departmental Login</span>
+                    </div>
+                <div class="card-body">
+                  <form [formGroup]="deptLoginForm" (ngSubmit)="Login()">
+                  <div class="form-group">
+                   
+                    <label for="username">Username</label>
+                    <input type="text" ngModel [email]="true" formControlName="deptuser" class="form-control" placeholder="Enter Username" autocomplete=""
+                    [ngClass]="{ 'is-invalid': submitted && f.deptuser.errors }">
+                    <div *ngIf="submitted && f.deptuser.errors" class="invalid-feedback">
+                      <div *ngIf="f.deptuser.errors.required">Username is required</div>
+                      <div *ngIf="f.deptuser.errors.email">Invalid User Email</div>
+                  </div>
+                  </div>
+                  <div class="form-group">
+                  
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="deptpassword" class="form-control" placeholder="Enter Password" autocomplete=""
+                    [ngClass]="{ 'is-invalid': submitted && f.deptpassword.errors }">
+                    <div *ngIf="submitted && f.deptpassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.deptpassword.errors.required">Password is required</div>
+                  </div>
+                  </div>
+                  <!-- <div class="form-group"> -->
+                      <div class="row">
+                        <div class="col-md-12">
+                            <label for="password">Place Finger on Scanner</label>
+                        </div>
+                          <div class="col-md-7">
+                            <!-- <textarea id="textarea-input" name="textarea-input" rows="3" class="form-control" placeholder=""></textarea> -->
+                            <div style="height: 50px;width: 150px;border-radius: 10px;border: 2px solid black"></div>
+                          </div>
+                          <div class="col-md-5">
+                            <br><a class="nav-link" style="cursor:pointer;color: #0a429b;font:bold;font-size: 12px;">Verify</a>
+                          </div>
+                      </div><br>
+                  <!-- </div><br> -->
+                  <div class="row">
+                    <div class="col-4">
+                      <!-- <button type="button" class="btn btn-primary px-4">Login</button> -->
+                    </div>
+                    <div class="col-8">
+                      <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;" (click)="Login()">Login</button>
+                    </div>
+                    <br><br>
+                    <span style="color:red;margin-left: 5px;font-weight: bold;">{{failureMessage}}</span>
+                    <!-- <dx-toast [(visible)]="isVisiblefail" [type]="type" [message]="message">
+                      <dxo-position
+                        my="right"
+                        at="right"
+                        of="#targetElement">
+                        </dxo-position>
+                    </dx-toast> -->
+                  </div><br><br>
+                </form>
+               
+                </div>
+                </div>
+           </div>
+   </div><br><br><br>
+  </div>
+</main>
+</div>
+
+
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+<div class="row" style="margin-left: 10px;">
+  <div class="col-xs-2">
+    <span></span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">Accessibility Statement&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Help&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Feedback&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;FAQ&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Visitors Analytics</span>
+  </div>
+  <!-- <div class="col-xs-1">
+    </div> -->
+</div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+<div class="row" style="margin-left: 10px;">
+  <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+</div>
+</app-footer>

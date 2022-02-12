@@ -1,0 +1,53 @@
+th{
+  background-color: #0a429b;
+}
+
+.was-validated .form-control:invalid, .form-control.is-invalid
+{
+background-image: none
+}
+
+.dx-datagrid-rows {
+min-height: 55px;
+}
+
+.example-stretched-tabs {
+max-width: 1300px;
+border-radius: 5px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+// color: #0a429b;
+color: #05265b;
+background-color: white;
+font-weight: bold;
+}
+
+.propertyHeading::before {
+content: "";
+display: block;
+width: 3px;
+height: 20px;
+background: #0707c1;
+left: -10px;
+top: 20%;
+position: absolute;
+border-radius: 6px;
+}
+.propertyHeading{
+position: relative;
+}
+
+.circle {
+width: 48px;
+height: 48px;
+margin: 0 -5px 3px 0;
+border-radius: 24px;
+border: solid 1px #707070;
+background-color: #dfdfdf;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: hidden!important;
+}

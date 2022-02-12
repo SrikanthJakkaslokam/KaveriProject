@@ -1,0 +1,177 @@
+<main class="main">
+    <div class="row">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-md-12 pl-0">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 15px">Document Registration
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DOCUMENT NUMBER</label><br>
+                            <label
+                                style="font-weight: 12px;font-weight: 600;">{{pendingRegNumberData.pendingregnumber}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DATE OF
+                                PERSENTATION</label><br>
+                            <label style="font-size: 12px;font-weight:  600;">{{pendingRegNumberData.presentDate | date:
+                                'dd/MM/yyyy'}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">APPLICATION
+                                TYPE</label><br>
+                            <label style="font-size: 12px;font-weight: 600;">Property
+                                Registration</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <br>
+            <div class="row">
+                <div class="col-md-12 pl-0">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 15px">Payment Details
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600">Full registration fee
+                                paid</label><br>
+
+                        </div>
+                        <div class="col-md-1 form-check">
+                            <input class="form-check-input" checked type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="col-md-1 form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                No
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <br>
+            <table class="table-bordered text-center " style="width: 90.5vw;">
+                <thead>
+                    <tr style="font-size:12px;font-weight:none;background-color: #0a429b;color: #ffff;">
+                        <th>CHALLAN NUMBER</th>
+                        <th>AMOUNT PAID</th>
+                        <th>DATE OF TRANSACTION </th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>K2P201020100001</td>
+                        <td style="color: rgba(206, 205, 205, 0.685);"><span
+                                style="margin-right: 2px;">&#8377;</span>65000/-</td>
+                        <td>20-02-2021</td>
+                        <td style="color:#0a429b;font-weight:600"> Delete</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div (click)="largeModal.show()"
+                style="height: 32px;width: 90.5vw; background: rgb(163, 163, 165); padding: 5px; cursor: pointer;">
+                <div class="text-center">
+                    <i class="fa fa-plus-circle "><span style="margin-left: 5px;">Add a new
+                            challan</span></i>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 30px; margin-left: 25px !important;">
+                <div class="col-md-2 form-check">
+                    <input class="form-check-input" type="checkbox" name="defaultCheck1" id="defaultCheck1">
+                    <p class="mt-2">Impound Application</p>
+                </div>
+                <div class="col-md-4 remarks">
+                    <input type="text" class="form-control" placeholder="Remarks" id="remarks">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content" style="padding: 20px 25px;">
+            <div class="modal-header" style="margin-bottom: 30px;">
+                <h4 class="modal-title" style="font-weight: bold; border-left: 4px solid rgb(57, 81, 192);
+                padding-left: 5px;">Payment Details</h4>
+                <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-0" style="border: none;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label style="font-size: 12px;font-weight: 600;">Purpose of challan</label><br>
+                        <label style="font-size: 12px;font-weight:  600;">PROPERTY REGISTRATION</label>
+                    </div>
+                    <div class="col-md-3">
+                        <label style="font-size: 12px;font-weight: 600;">Challan Number</label><br>
+                        <input type="text" class="form-control" placeholder="Value" id="value">
+                    </div>
+                    <div class="col-md-3">
+                        <label style="font-size: 12px;font-weight: 600;">Amount in Rupees</label><br>
+                        <input type="text" class="form-control" placeholder="Value" id="value">
+                    </div>
+                    <div class="col-md-3">
+                        <label style="font-size: 12px;font-weight: 600;">Date of Transaction</label><br>
+                        <input type="date" class="form-control" placeholder="Value" id="value">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 40px">
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary">Verify Challan</button>
+                    </div>
+                </div>
+                <div class="row table-container">
+                    <div class="col-md-12">
+                        <table class="table-bordered text-center " style="width: 74.5vw;">
+                            <thead>
+                                <tr style="font-size:12px;font-weight:none;background-color: #0a429b;color: #ffff;">
+                                    <th>CHALLAN NUMBER</th>
+                                    <th>AMOUNT PAID</th>
+                                    <th>DATE OF TRANSACTION </th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>K2P201020100001</td>
+                                    <td style="color: rgba(206, 205, 205, 0.685);"><span
+                                            style="margin-right: 2px;">&#8377;</span>65000/-</td>
+                                    <td>20-02-2021</td>
+                                    <td style="color:#0a429b;font-weight:600"> Delete</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row buttons continue-block">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary"> Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

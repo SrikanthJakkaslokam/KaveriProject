@@ -1,0 +1,155 @@
+#document-summary {
+  height: 40rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+$blue : rgb(57, 81, 192);
+main {
+  padding: 0px 25px 0px 25px;
+}
+td, th {
+  padding: 5px 10px;
+}
+.card-body {
+  padding: 30px;
+}
+.document-registration {
+  padding: 5px 10px;
+}
+.document-summary-i {
+  padding: 5px 10px;
+  p {
+    width: 4px; 
+    height: 25px;
+    border-radius: 3px; 
+    background: $blue;
+  }
+}
+.circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 -5px 3px 0;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #dfdfdf;
+  }
+  .main .container-fluid {
+    padding: 20px;
+    background-color: #fbfbfb;
+    font-family: "Segoe UI";
+  }
+  .search {
+    width: 300px;
+    height: 45px;
+    margin-left: 155px;
+    // margin: -50px 0 0 900px;
+    // padding: 10.9px 21.5px 10.9px 24px;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #fff;
+  }
+
+  .input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 15px;
+    font: 16px/16px;
+}
+.remarks{
+  border-color: #2023da;
+}
+.buttons button{
+  font-size: 12px;
+}
+.buttons{
+    margin-top: 30px;
+}
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
+}
+.modal-body {
+  padding: 1.5rem;
+}
+.continue-block {
+  margin: 30px 0px 30px 0px;
+}
+.table-container {
+  margin: 30px 0px 30px 0px;
+}
+.document-header{
+  margin-top: 20px;
+  img {
+    height: 55px;
+  }
+  h1{
+    margin: 0px !important;
+    font-weight: bold;
+    color: rgb(101, 155, 255);
+    font-family: Segoe UI;
+  }
+  h4{
+    font-weight: bold;
+  }
+}
+.document-details {
+  .row {
+    margin-left: 15px;
+  }
+}
+.document-details h3{
+    margin-top: 15px;
+    font-weight: bold;
+    font-family: Segoe UI;
+}
+#print-mode-document {
+  margin: 0px 25px;
+}
+.document-table table{
+    font-weight: bold;
+    font-family: Segoe UI;
+    font-size: 14px;
+    color: black;
+}
+.document-table td{
+    font-weight: 500;
+    font-family: Segoe UI;
+    padding: 10px;
+}
+.document-summary .vill{
+font-size: 14px;
+font-weight: bold;
+font-family: Segoe UI;
+}
+.document-summary .adoor{
+    font-size: 16px;
+    font-family: Segoe UI;
+    font-weight: bold;
+    color:red;
+}
+.document-summary .urban{
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Segoe UI;
+    color: red;
+}
+.document-boundary p{
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Segoe UI;
+}
+.document-boundary h5{
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Segoe UI;
+}
+.document-value .valuation{
+  font-size: 16px;
+  font-weight: bold;
+}
+.border{
+    border: 2px solid rgb(161, 163, 165);
+}

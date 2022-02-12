@@ -1,0 +1,450 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <!-- <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/bhoomi-search"><br>
+                    </div> -->
+                    <div class="row">
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <p *ngIf = "numberofproperties == 1"  style="font-weight: bolder; font-size: x-large; margin-top: 40px;">According to your Input, this is the property we found</p>
+                        <p *ngIf = "numberofproperties > 1" style="font-weight: bolder; font-size: x-large; margin-top: 40px;">According to your Input, these are the properties we found</p>
+                    </div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let item of kaveriData;index as i">
+      <h2>Property {{i+1}} of {{kaveriData && kaveriData.length}} <span style="color:#093172;" class="pull-right" ><button type="button" class="btn btn-primary" (click)="deleteProperty(i,item.pidno)">Delete</button></span></h2>
+    <div class="row" *ngIf="!item.ismovableproperty">
+      
+      <div class="col-md-3">
+          <label for="district" style="font-weight: bold;">DISTRICT : {{item.districtname}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="taluka" style="font-weight: bold;">TALUKA : {{item.talukaname}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{item.hobliname}}</label>
+      </div>
+      <div class="col-md-3">
+          <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{item.villagename}}</label>
+      </div>
+  </div>
+  <div class="table-responsive" *ngIf="item.propertytypeid && item.propertytypeid==17">
+    <table class="table table-bordered ">
+      <tr class="bg-primary" >
+        <td colspan="9" class="text-white" style="background-color: #093172;">Result-Bhoomi Database:</td>
+    </tr>
+        <tr class="text-center">
+            <td rowspan="2">S.No.</td>
+            <td rowspan="2">SurveyNo.</td>
+            <td rowspan="2">Hissa No</td>
+            <td rowspan="2">Owner Name</td>
+            <td rowspan="2">Relationship</td>
+            <td rowspan="2">Relative Name</td>
+            <td colspan="3">Avilable Extent</td>
+        </tr>
+        <tr class="text-center">
+            <td>Acre</td>
+            <td>Gunta</td>
+            <td>Fraction of Gunta</td>
+        </tr>
+       
+        <tr class="text-center">
+            <td>1</td>
+            <td>{{item.survey_no?item.survey_no:"-"}}</td>
+            <td>{{item.hissa_no?item.hissa_no:"-"}}</td>
+            <td>{{item.owner?item.owner:"-"}}</td>
+            <td>{{item.relationship?item.relationship:"-"}}</td>
+            <td>{{item.relativename?item.relativename:"-"}}</td>
+            <td>{{item.avl_ext_acre?item.avl_ext_acre:"0"}}</td>
+            <td>{{item.avl_ext_gunta?item.avl_ext_gunta:"0"}}</td>
+            <td>{{item.avl_ext_fgunta?item.avl_ext_fgunta:"0"}}</td>
+        </tr>
+    </table>
+</div>
+  <!-- non Agriculrure table -->
+  <div class="table-responsive" *ngIf="!item.ismovableproperty && item.propertytypeid && item.propertytypeid==28">
+    <table class="table table-bordered ">
+      <tr class="bg-primary">
+        <td colspan="5" class="text-white" style="background-color: #093172;">Results:</td>
+    </tr>
+      <tr class="text-center">
+          <td>S.No.</td>
+          <td>Property Id</td>
+          <td>Seller Name</td>
+          <td>Property Description</td>
+          <td>Total Area</td>
+      </tr>
+      
+     <tr class="text-center">
+      <!-- <td>1</td>
+      <td>Prashanth Mysore Vasudeva</td>
+      <td>ಅನಧಿಕೃತ</td>
+      <td>148.6448</td> -->
+      <td>1</td>
+      <td>{{item.partyinfononagri[0].pid}}</td>
+      <td>{{item.partyinfononagri[0].ownername}}</td>
+      <td>{{item.partyinfononagri[0].propertydescription}}</td>
+      <td>{{item.partyinfononagri[0].totalarea}} Sq meter</td>
+     </tr>
+  </table>
+  </div>
+  <div *ngIf="item.ismovableproperty">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <b>Description :</b>
+        </div>
+        <div class="col-md-3">
+          {{item.movablepropertydesc}}
+        </div>
+        <div class="col-md-3">
+         
+        </div>
+        <div class="col-md-3">
+  
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ <!-- need to add here -->
+
+ <div class="table-responsive" *ngIf="!item.ismovableproperty">
+  <table class="table table-bordered ">
+    <tr class="bg-primary">
+      <td colspan="14" class="text-white"  style="background-color: #093172;">Court Order Details:</td>
+  </tr>
+      <tr class="text-center">
+          <td rowspan="2">S.No.</td>
+          <td rowspan="2">SRO</td>
+          <td rowspan="2">Court Order No.</td>
+          <td rowspan="2">Injunction or stay against th...</td>
+          <td rowspan="2">Order Details</td>
+          <td rowspan="2">Survey No.</td>
+          <td rowspan="2">Current Number</td>
+          <td rowspan="2">Old Number</td>
+          <td colspan="4">Boundaries</td>
+          <td rowspan="2">Area</td>
+          <td rowspan="2">Description</td>
+      </tr>
+      <tr class="text-center">
+          <td>East</td>
+          <td>North</td>
+          <td>West</td>
+          <td>South</td>
+      </tr>
+
+      <tr>
+          <td>1</td>
+          <td>{{item.courtData && item.courtData.sro?item.courtData.sro:"-"}}</td>
+          <td>{{item.courtData && item.courtData.court_order_number?item.courtData.court_order_number:"-"}}</td>
+          <td>{{item.courtData && item.courtData.injuction_or_stay_flag?item.courtData.injuction_or_stay_flag:"-"}}</td>
+          <td>{{item.courtData && item.courtData.court_order_details?item.courtData.court_order_details:"-"}}</td>
+          <td>{{item.courtData && item.courtData.survey_no?item.courtData.survey_no:"-"}}</td>
+          <td>{{item.courtData && item.courtData.currentnumber?item.courtData.currentnumber:"-"}}</td>
+          <td>{{item.courtData && item.courtData.oldnumber?item.courtData.oldnumber:""}}</td>
+          <td>{{item.courtData && item.courtData.eastboundary?item.courtData.eastboundary:"-"}}</td>
+          <td>{{item.courtData && item.courtData.northboundary?item.courtData.northboundary:"-"}}</td>
+          <td>{{item.courtData && item.courtData.westboundary?item.courtData.westboundary:"-"}}</td>
+          <td>{{item.courtData && item.courtData.southboundary?item.courtData.southboundary:"-"}}</td>
+          <td>{{item.courtData && item.courtData.area?item.courtData.area:""}}</td>
+          <td>{{item.courtData && item.courtData.description?item.courtData.description:""}}</td>
+      </tr>
+  </table>
+</div>
+<div class="table-responsive" *ngIf="!item.ismovableproperty">
+  <table class="table table-bordered ">
+    <tr class="text-center">
+        <td>S.No.</td>
+        <td>SRO</td>
+        <td>Order No.</td>
+        <td>Liability Details</td>
+        <td>Amount</td>
+        <td>Issued Date</td>
+        <td>Issued By</td>
+        <td>Old Number</td>  
+    </tr>
+    <tr class="bg-primary">
+        <td colspan="8" class="text-white" style="background-color: #093172;">Liability Details:</td>
+    </tr>
+   <tr>
+    <td>1</td>
+    <td>{{item.srocode && item.srocode?item.srocode:"-"}}</td>
+    <td>{{item.ordernumber?item.ordernumber:"-"}}</td>
+    <td>{{item.liabilitynote?item.liabilitynote:"-"}}</td>
+    <td>{{item.amount?item.amount:"-"}}</td>
+    <td>{{item.issuedate?item.issuedate:"-"}}</td>
+    <td>{{item.issuedby?item.issuedby:"-"}}</td>
+    <td>{{item.oldNumber?item.oldNumber:"-"}}</td>
+   </tr>
+</table>
+</div>
+<div class="table-responsive" *ngIf="!item.ismovableproperty">
+  <table class="table table-bordered " *ngIf="item.partyinfopropnumberdetails && item.partyinfopropnumberdetails.length">
+    <tr class="bg-primary">
+      <td colspan="3" class="text-white" style="background-color: #093172;">Property Number Details:</td>
+  </tr>
+    <tr class="text-center">
+        <td>S.No.</td>
+        <td>Property Number Type</td>
+        <td>Current Number</td> 
+    </tr>
+ 
+   <tr *ngFor="let k of item.propertynumberdetails;index as j" class="text-center">
+    <td>{{j+1}}</td>
+    <td>{{k && k.propertynumbertype?k.propertynumbertype:"-"}}</td>
+    <td>{{k && k.currentnumber?k.currentnumber:"-"}}</td>
+   </tr>
+</table>
+</div>
+<div *ngIf="!item.stamparticlecode && !item.stampruleid && !item.regarticlecode && !item.bookid">
+  <input type="checkbox" (change)="agreeCheck($event)"/><span style="margin-left: 5px;;">There is court order/liability against this property. Would you like to continue?</span>
+</div><br />
+<div *ngIf="!item.ismovableproperty && item.stamparticlecode && item.stampruleid && item.regarticlecode && item.bookid">
+  <span style="margin-left: 5px;;">There is court order/liability against this property.</span>
+</div><br />
+<div class="container">
+  <div class="row" *ngIf="item.stamparticlecode && item.stampruleid && item.regarticlecode && item.bookid">
+    <div class="col-md-3">
+      <b>Article :</b>
+      <div>{{item.stamparticle}}</div>
+    </div>
+    <div class="col-md-3">
+      <b>Sub Article :</b>
+      <div>{{item.stampsubarticle}}</div>
+    </div>
+    <div class="col-md-3">
+      <b>Registration Article :</b>
+      <div>{{item.registrationfeearticle}}</div>
+    </div>
+    <div class="col-md-3">
+      <b>Book Name :</b>
+      <div>{{item.bookname}}</div>
+    </div>
+  </div>
+</div>
+    <form class="form-horizontal" [formGroup]="kaverisearch" (ngSubmit)="onSubmit()"> 
+    <div class="row">
+      <div class="form-group col-sm-12">
+          <div class="row">
+<!-- sd -->
+<!-- <div class="form-group col-md-2" style="margin-left: -20px;">
+  <label for="article">ARTICLE: </label>
+  <select type="text" name="article" class="form-control" formControlName="article" [(ngModel)]="testselectedarticle" (ngModelChange)="onarticleValuechange($event)"  (change)="onarticleChange($event)"
+          required [ngClass]="{ 'is-invalid': submitted && f.article.errors }">
+          <option disabled readonly>Select article</option>
+          <option *ngFor="let d of articleList" [value]="d.stamparticlecode"> {{d.articlenamee}}</option>
+      </select>
+      <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+        <div *ngIf="f.article.errors.required">article is required</div>
+    </div>
+</div> -->
+<!-- sd -->
+              
+                 
+              <div class="form-group col-sm-3 ml-1" style="margin-left: -80px;" *ngIf="!item.stamparticlecode">
+                <label for="pid">ARTICLE: </label>
+                <select type="text" name="article" class="form-control" formControlName="article" (change)="onarticleChange($event,i,item.pidno)"
+          required [ngClass]="{ 'is-invalid': submitted && f.article.errors }">
+          <option disabled readonly>Select article</option>
+          <option *ngFor="let d of articleList" [value]="d.stamparticlecode"> {{d.articlenamee}}</option>
+      </select>
+      <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+        <div *ngIf="f.article.errors.required">article is required</div>
+    </div>
+              </div>
+              
+            <div class="form-group col-sm-3 ml-1" style="margin-left: -80px;" *ngIf="!item.stampruleid">
+              <label for="pid">SUB ARTICLE: </label>
+              <select type="text" name="subarticle" class="form-control" formControlName="subarticle"
+               (change)="onsubarticleChange($event,i,item.pidno)"
+                              required [ngClass]="{ 'is-invalid': submitted && f.subarticle.errors }">
+              <option>Select Article</option>
+              <option *ngFor="let d of subarticleList" [value]="d.stampruleid"> {{d.descriptione}}</option>
+          </select>
+          <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+            <div *ngIf="f.article.errors.required">Subarticle is required</div>
+        </div>
+            </div>
+            <div class="form-group col-sm-3 ml-1" style="margin-left: -80px;" *ngIf="!item.regarticlecode">
+              <label for="pid">REGISTRATION ARTICLE: </label>
+              <select type="text" name="subarticle" class="form-control" formControlName="subarticle"
+               (change)="onRegChange($event,i,item.pidno)"
+                              required [ngClass]="{ 'is-invalid': submitted && f.subarticle.errors }">
+              <option>Select Registration Article</option>
+              <option *ngFor="let d of registrationList" [value]="d.regarticlecode"> {{d.articlenamee}}</option>
+          </select>
+          <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+            <div *ngIf="f.article.errors.required">Registration is required</div>
+        </div>
+            </div>
+            <div class="form-group col-sm-2 ml-1" *ngIf="!item.bookid">
+            <label for="bookNumber">BOOK NUMBER</label>
+            <input type="text" name="bookNo" id="bookNumber" class="form-control" [value]="bookNumber" disabled readonly/>
+          </div>
+          </div>
+              </div>
+              </div>
+    </form>
+    
+    <br>
+      </div>
+      <mat-card>
+      <div style="text-align: center;">  
+        <button mat-button  (click)="AddNewProperty()" [disabled]="!isCheck">Add a new Property </button>
+       
+      </div>
+    </mat-card>
+    <br>
+    <div style="text-align: center;" *ngIf="kaveriData && kaveriData.length">
+      <button type="button" class="btn btn-primary px-4"  style="background-color: #0a429b;"  (click)="onSubmit()" [disabled]="!isCheck" >Save Property & Continue</button>
+    </div><br>
+      </div>
+
+    </div>
+  </main>
+
+<dx-popup
+[width]="800"
+[height]="300"
+[dragEnabled]="false"
+[closeOnOutsideClick]="true"
+[showCloseButton]="false"
+container=".dx-viewport"
+[(visible)]="manualpopupVisible">
+
+
+<!-- <dxo-position
+        at="center"
+        my="center"
+        [of]="positionOf"> 
+    </dxo-position> -->
+    <div *dxTemplate="let data of 'content'">
+     
+        <div class="row">
+          <div class="col-md-4">
+            <br><br>
+            <img src="assets/img/avatars/Rectangle 688.png" style="width: 250px;height: 200px;">
+          
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-7">
+              <br><br>
+              <img src="assets/img/avatars/ooops.png"><br><br><br>
+              <div style="text-align: center;">
+                <button type="button" class="btn btn-primary px-4" routerLink="/search-on-kaveri" style="background-color: #0a429b;">Search Manual on Kaveri</button><br><br>
+     
+                <button type="button" class="btn btn-primary px-4" routerLink="/search-result-without-kaveri" style="background-color: #f6f8fa; color: #0a429b;" >Continue without Kaveri</button>
+              </div>
+          </div>
+      </div>
+      </div>
+</dx-popup>
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

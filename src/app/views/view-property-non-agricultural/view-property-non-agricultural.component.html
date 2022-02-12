@@ -1,0 +1,246 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/bhoomi-hissa"><br>
+                    </div>
+                    <div>
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <img src="assets/img/avatars/According to your Input, this is the property we found in Bhoomi database.png">
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                        </div>
+                    </div>
+                   
+      <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" style="margin-left: -80px;">
+
+      <dx-data-grid #grid
+      id="grid-container"
+      [dataSource]="eaasthidata"
+      [showBorders]="true">    
+  
+      
+      <dxi-column dataField="" caption="Results-" [groupIndex]="0" [width]="180"></dxi-column>
+      <dxi-column dataField="sno" alignment="center" caption="S.No." [width]="50"></dxi-column>
+      <dxi-column dataField="propertyid" alignment="center" caption="Property ID." [width]="200"></dxi-column>
+      <dxi-column dataField="propertydescription" alignment="center" caption="Property Description"  [width]="200"></dxi-column>
+      <dxi-column dataField="buyername" alignment="center" caption="Buyer Name" [width]="300"></dxi-column>
+      <dxi-column dataField="ownername" alignment="center" caption="Seller Name" [width]="300"></dxi-column>
+      <dxi-column dataField="dateoftransaction" alignment="center" caption="Date of Transaction" [width]="300"></dxi-column>
+     
+      <dxo-load-panel
+      [enabled]="true">
+  </dxo-load-panel>
+  </dx-data-grid><br>
+    </div>
+
+    <div class="row" style="margin-left: -65px;">
+      
+      <dx-data-grid #grid
+      id="grid-container"
+      [dataSource]="multiCourtOrderdata"
+      [showBorders]="true"> 
+    
+      <dxi-column dataField="" caption="Court Order Details" [groupIndex]="0" [width]="70"></dxi-column>
+      <dxi-column dataField="sno" alignment="center" caption="S.No." [width]="50"></dxi-column>
+      <dxi-column dataField="sro" alignment="center" caption="SRO" [width]="50"></dxi-column>
+      <dxi-column dataField="courT_ORDER_NUMBER" alignment="center" caption="Court Order No." [width]="115"></dxi-column>
+      <dxi-column dataField="injuction_or_stay_flag" alignment="center" caption="Injunction or stay against the Property" [width]="200"></dxi-column>
+      <dxi-column dataField="OrderDetails" alignment="center" caption="Order Details" [width]="115"></dxi-column>
+      <dxi-column dataField="survey_No" alignment="center" caption="Survey No."  [width]="90"></dxi-column>
+      <dxi-column dataField="currentNumber" alignment="center" caption="Current Number" [width]="120"></dxi-column>
+      <dxi-column dataField="oldNumber" alignment="center" caption="Old Number" [width]="100"></dxi-column>
+      <dxi-column  caption="Boundaries" alignment="center">
+        <dxi-column dataField="eastBoundary":col-span="2" alignment="center" caption="East" [width]="150"></dxi-column>
+        <dxi-column dataField="northBoundary":col-span="2" alignment="center" caption="North" [width]="150"></dxi-column>
+        <dxi-column dataField="westBoundary":col-span="2" alignment="center"  caption="West" [width]="150"></dxi-column>
+        <dxi-column dataField="southBoundary":col-span="2" alignment="center"  caption="South" [width]="150"></dxi-column>
+      </dxi-column>
+      <dxi-column dataField="area" alignment="center" caption="Area" [width]="150"></dxi-column>
+      <dxi-column dataField="description" alignment="center" caption="Description" [width]="115"></dxi-column>
+      <div *dxTemplate="let data of 'cellTemplate'">
+        <div class="dx-field">
+          <div class="dx-field-value">
+              <dx-check-box [value]="false" alignment="center"></dx-check-box>
+          </div>
+      </div>
+    </div>
+      <dxo-load-panel
+      [enabled]="true">
+  </dxo-load-panel>
+  </dx-data-grid><br>
+    </div>
+    <form class="form-horizontal" [formGroup]="kaverisearch" (ngSubmit)="onSubmit()"> 
+    <div class="row">
+      <div class="form-group col-sm-6"></div>
+      <div class="form-group col-sm-8">
+          <div class="row">
+              <div class="form-group col-sm-2">
+                  <label for="pid">ARTICLE: </label>
+              </div>
+              <div class="form-group col-sm-3" style="margin-left: -80px;">
+                <select type="text" name="article" class="form-control" formControlName="article" [(ngModel)]="testselectedarticle" (ngModelChange)="onarticleValuechange($event)"  (change)="onarticleChange($event)"
+          required [ngClass]="{ 'is-invalid': submitted && f.article.errors }">
+          <option disabled readonly>Select article</option>
+          <option *ngFor="let d of articleList" [ngValue]="d"> {{d.articlenamee}}</option>
+      </select>
+      <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+        <div *ngIf="f.article.errors.required">article is required</div>
+    </div>
+              </div>
+              <div class="form-group col-sm-3">
+                <label for="pid">SUB ARTICLE: </label>
+            </div>
+            <div class="form-group col-sm-3" style="margin-left: -80px;">
+              <select type="text" name="subarticle" class="form-control" formControlName="subarticle" [(ngModel)]="subselectedarticle" 
+                              required [ngClass]="{ 'is-invalid': submitted && f.subarticle.errors }">
+              <option disabled readonly>Select Article</option>
+              <option *ngFor="let d of subarticleList" [ngValue]="d"> {{d.descriptione}}</option>
+          </select>
+          <div *ngIf="submitted && f.article.errors" class="invalid-feedback">
+            <div *ngIf="f.article.errors.required">Subarticle is required</div>
+        </div>
+            </div>
+          </div>
+              </div>
+              </div>
+    </form>
+    <mat-card>
+      <div style="text-align: center;">  
+        <button mat-button  routerLink="/movable-immovable" >Add a new Property </button>
+      </div>
+    </mat-card>
+    <br>
+   
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-primary px-4"  style="background-color: #0a429b;"  (click)="onSubmit()">Select Property & Continue</button>
+    </div><br>
+      </div>
+
+    </div>
+  </main>
+
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

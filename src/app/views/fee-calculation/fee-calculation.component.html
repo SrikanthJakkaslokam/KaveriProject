@@ -1,0 +1,464 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header> 
+<style>
+    .file-input {
+        display: none;
+      }
+    table, th , td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        }
+    .unselectable {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+</style>
+<main class="main">   
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+        <!-- card 1 start -->
+        <div class="animated fadeIn">
+            <div class="row" style="margin-left: -80px;margin-top: 100px;margin-right: -25px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div *ngIf="isnotmovable">
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/market-valuation"><br>
+                            </div>
+                            <div *ngIf="!isnotmovable">
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/kaveri-result"><br>
+                            </div>
+                            <div>
+                                <img src="assets/img/avatars/fee1.png" style="margin-left: 20px;">
+                                
+                                <img src="assets/img/avatars/fee2.png" style="position:relative; padding-left: 55%;
+                                ; ">
+                            </div>
+                            <!-- margin-left: 490px; -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card 1 end -->
+        <!-- card 2 start -->
+        <div class="animated fadeIn">
+            <div class="row" style="margin-left: -80px;margin-right: -25px;">
+                <div class="col-md-12">
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row" style="margin-left: 40px;">
+                                <div>
+                                    <label class="unselectable" style="cursor: pointer; padding-left: 10px; font-weight: bold;" (click)="Backbuttonclicks()"> < &nbsp;&nbsp;&nbsp; </label><br>
+                                </div>
+                                    <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF {{numofprop}}</label><br>
+                                <div>
+                                    <label class="unselectable" style="cursor: pointer; font-weight: bold;" (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div *ngIf="isnotmovable" class="row" style="margin-left: 40px;">
+                        <div class="col-md-3" style="margin-left: 0px;">
+                            <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                        </div>
+                        <div class="col-md-3"style="margin-left: -5px;">
+                          <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                      </div>
+                      <div class="col-md-3"style="margin-left: -12px;">
+                        <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                    </div>
+                    <div class="col-md-3"style="margin-left: -5px;">
+                      <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                  </div>
+                  </div>
+                  </div>
+                        <div class="card-body">
+                            
+                            <form [formGroup]="feecalculation" class="form-horizontal" style="font-family: Segoe UI;">
+                                <div class="row" style="margin-top: 40px;margin-bottom: 40px;">
+                                    <div *ngIf="!isnotmovable" class="col-md-2"></div>
+                                    <div class="form-group col-md-2" style="margin-left: 70px;">
+                                        <label for="stampduty">Stamp Article </label><br>
+                                        <p>{{stamparticledes}}</p>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="form-group col-md-2" >
+                                        <label for="regiontype">Sub Article</label><br>
+                                        <p>{{stampruledes}}</p>
+                                    </div>
+                                    <div *ngIf="isnotmovable" class="col-md-1"></div>
+                                    <div *ngIf="isnotmovable" class="form-group col-md-2">
+                                        <label for="marketvalue">Market Value (₹)</label><br>
+                                        <p style="margin-top: 5px;">₹ {{marketvalue | number:'1.2-2'}}</p>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="form-group col-md-2">
+                                        <label for="considerationamount">Consideration Amount (₹)</label>
+                                        <input type="number" class="form-control" style="background-color: white;" id="considerationamount" formControlName="considerationamount"
+                                            placeholder="Value" [(ngModel)]="considerationamount" [ngClass]="{ 'is-invalid': submittedcons && f.considerationamount.errors }" required>
+                                            <div *ngIf="submittedcons && f.considerationamount.errors" class="invalid-feedback">
+                                                <div *ngIf="f.considerationamount.errors.required">Consideration Amount is required</div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row col-md-12">
+                                    <div class=" col-md-5"></div>
+                                    <div *ngIf = "shownext"  class=" col-md-5">
+                                        <button  class="btn btn-block btn-primary col-md-4" style="font-size:large;" (click)="Nextproperty();" > {{nextbutton}} </button>
+                                    </div> 
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card 2 end -->
+        <!-- card 3 start -->
+        <div class="animated fadeIn">
+            <div class="row" style="margin-left: -80px;margin-right: -25px;">
+                <div *ngIf="isnotmovable" class="col-md-12">
+                    <div *ngIf="showcard" class="card">
+                        <div class="card-body">
+                            <div>
+                                <label style="font-size: large; font-weight: bold; margin-left: 40px;">Exemption Details</label>
+                            </div>
+                            <form [formGroup]="feecalculationexem" class="form-horizontal" style="font-family: Segoe UI;">
+                                <div class="row " style="margin-top: 40px;margin-bottom: 40px;">
+                                    <div class=" row col-md-6">
+                                        <div class="form-group col-md-4" style="margin-left: 70px;">
+                                            <label for="governmentduty">Government Duty</label><br><br>
+                                            <p>₹ {{GovernmentDutyafterExcemption | number:'1.2-2'}}</p>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="form-group " style="margin-top: 10px;" >
+                                                    <div>&nbsp;</div>
+                                                    <input type="checkbox" id="checkbox" name="checkbox" style="
+                                                    margin-left: 35px;
+                                                    height: 25px;
+                                                    width: 25px;
+                                                    background-color: white;" (change)="show = !show" ng-model="show"  formControlName="checkbox">
+                                                    
+                                                </div>
+                                                <div style="margin-top: 32px;">
+                                                    <p for="checkbox" style="font-size: 15px;" >&nbsp;&nbsp;&nbsp;Exemption for this duty</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                    <div *ngIf="show" class="row col-md-6" >
+                                        <div class="col-md-2"></div>
+                                        <div class="form-group col-md-4" style="margin-left: -50px;">
+                                            <label for="percentage">In Percentage</label>
+                                            <input type="text" class="form-control" style="background-color: white;" id="percentage" formControlName="percentage"
+                                                placeholder="Value">
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                        <div class="form-group col-md-4" style=" margin-left: 20px;">
+                                            <p >Upload Exemption Certifiate</p>
+                                            <input type="file" class="file-input" name="Upload" id="Upload"
+                                            (change)="onFileSelected($event)" #fileUpload style="margin-bottom: 5px;" formControlName="file">
+                                            <div class="file-upload" style="margin-top: 5px;">
+                                                {{fileName || "No file uploaded yet.&nbsp;&nbsp;   "}}
+                                                <button mat-mini-fab color="primary" class="upload-btn"
+                                                    (click)="fileUpload.click()">
+                                                <i class="fa fa-upload fa-2x" style="margin-top: -3px;"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" *ngIf="show" style="margin-top: 40px;margin-bottom: 40px;">
+                                    <div class="form-group col-md-2" style="margin-left: 70px;">
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="form-group col-md-2" style="margin-top: 10px;" >
+                                        <div>&nbsp;</div>
+                                        <div class="row" style="margin-top: 10px;" >
+                                            <div >
+                                                <input type="radio" formControlName="inpercentageorrupee" id="inpercentage" name="inpercentageorrupee" value="percentage"style="margin-right: 10px; height: 20px; width: 20px; margin-left: 20px;">
+                                            </div>
+                                            <div style="margin-top: 0px;" >   
+                                                <label for="inpercentage" style="margin-right: 50px;">in Percentage</label>
+                                            </div> 
+                                            <div>
+                                                <input type="radio" formControlName="inpercentageorrupee" id="inrupee" name="inpercentageorrupee" value="rupees"style="margin-right: 10px; height: 20px; width: 20px;">
+                                            </div>
+                                            <div style="margin-top: 0px;" >
+                                                <label for="inrupee">in  ₹</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                    <div class="form-group col-md-5">
+                                        <label for="exemptiondecription">Exemption Decription</label>
+                                        <input type="text" class="form-control" style="background-color: white;" id="exemptiondecription" formControlName="exemptiondecription"
+                                            placeholder="Value">
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- card 3 ends -->
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="card col-md-6" *ngIf="showcard" style="margin-left: -50px;">
+                    <div class="card-body">
+                        <form [formGroup]="feecalculationconst" class="form-horizontal" style="font-family: Segoe UI;">
+                            <div class="row">
+                            <div class="col-md-5">
+                                <label style="font-size: large; font-weight: bold;" for="denonation">Denotation of Stamp Duty</label><br>
+                                <br>
+                                <br>
+                                <input type="number" class="form-control" style="background-color: white;" id="denonation" formControlName="denonation"
+                                    placeholder="Value" [(ngModel)]="denonation" [ngClass]="{ 'is-invalid': submitted && f.denonation.errors }" required>
+                                <div *ngIf="submitted && f.denonation.errors" class="invalid-feedback">
+                                    <div *ngIf="f.denonation.errors.required">Denotation of Stamp Duty is required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-5">
+                                
+                                <br>
+                                <br>
+                                <label for="denonationdesc">Denotation Description</label><br>
+                                <input type="text" class="form-control" style="background-color: white;" id="denonationdesc" formControlName="denonationdesc"
+                                    placeholder="Value" [(ngModel)]="denonationdesc" [ngClass]="{ 'is-invalid': submitted && f.denonation.errors }" required>
+                                <div *ngIf="submitted && f.denonation.errors" class="invalid-feedback">
+                                    <div *ngIf="f.denonation.errors.required">Denotation Description is required</div>
+                                </div>
+                            </div>
+                        </div>
+                            <br>
+                            <br>
+                            <!-- <div class="form-group col-md-5 " style="margin-left: -10px;">
+                                <p >Upload Denotation Certifiate</p>
+                                 <input type="file" class="file-input" name="Upload" id="Upload"
+                                (change)="onFileSelected($event)" #fileUpload style="margin-bottom: 5px;" formControlName="file">
+                                <div class="file-upload" style="margin-top: 5px;">
+                                    {{fileName || "No file uploaded yet.&nbsp;&nbsp;   "}}
+                                    <button mat-mini-fab color="primary" class="upload-btn"
+                                        (click)="fileUpload.click()">
+                                    <i class="fa fa-upload fa-2x" style="margin-top: -3px;"></i>
+                                    </button>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            <!-- card 4 ends -->
+                <div  *ngIf="showcard" class="card col-md-6 " style="margin-left: 45px;">
+                    <div class="card-body">
+                        <form [formGroup]="feecalculationconst" class="form-horizontal" style="font-family: Segoe UI;">
+                            <div class="col-md-5">
+                                <label style="font-size: large; font-weight: bold;" for="pages">Number of Pages</label><br>
+                                <br>
+                                <br>
+                                <input type="number" class="form-control" style="background-color: white;" id="pages" formControlName="pages"
+                                    placeholder="Value" [(ngModel)]="pages" [ngClass]="{ 'is-invalid': submitted && f.pages.errors }" required>
+                                <div *ngIf="submitted && f.pages.errors" class="invalid-feedback">
+                                    <div *ngIf="f.pages.errors.required">Number of pages required</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- card 5 ends -->
+                                <div class="animated fadeIn">
+                                    <div class="row" style="margin-left: -80px;margin-right: -25px;">
+                                        <div class="col-md-12">
+                                            <div *ngIf="showcard" class="card">
+                                                <div class="card-body">
+                                <br>
+                                <div *ngIf="iscalculate" class="row">
+                                <div class=" col-md-5"></div>
+                                <button class="btn btn-block btn-primary col-md-2" style="font-size:large;" (click)="oncalculate();" ng-model="show"> Calculate </button>
+                                </div>
+                                <br>
+                                <div class="offset-md-2  col-md-12" >
+                                    <br>
+                                    <table *ngIf="showtbl" class="col-md-8" style="align-content:center; font-weight: bold;">
+                                        <tr>
+                                            <td class="col-md-2" style="padding-left: 6%;  font-weight: bold;">SNo.</td>
+                                            <td class="col-md-6" style="padding-left: 20%; font-weight: bold;"> Fee Name</td>
+                                            <td class="col-md-4" style="padding-left: 14%; font-weight: bold;">Amount in ₹</td>
+                                        
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">1.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Government Duty after Exemption(A)</td>
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{GovernmentDutyafterExcemption | number:'1.2-2'}}</td>
+                                        
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">2.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Surcharge Value(B)</td>
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{SurchargeValue | number:'1.2-2'}}</td>
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">3.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Cess Value(C)</td> 
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{CessValue | number:'1.2-2'}}</td>
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">4.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Denotation of Stamp Duty(D)</td> 
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{DenonationofStampDuty | number:'1.2-2'}}</td>
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">5.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Total Stamp Duty(E)=(A)+(B)+(C)-(D)</td>
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{TotalStampDuty | number:'1.2-2'}}</td>
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">6.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Total Registration Fees(F)</td> 
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{TotalRegistrationFees | number:'1.2-2'}}</td>
+                                        </tr>
+                                        <br>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">7.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Mutation Fees(G)</td>
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{MutationFees | number:'1.2-2'}}</td> 
+                                        </tr>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">8.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Scanning Fees(H)</td> 
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{ScanningFees | number:'1.2-2'}}</td> 
+                                        </tr>
+                                        <br>
+                                        <tr> 
+                                            <td class="col-md-2" style="padding-left: 7%; font-weight: bold;">9.</td>
+                                            <td  class="col-md-6"style="padding-left: 15%; font-weight: bold;">Total Payable Amount(I) = (E)+(F)+(G)+(H)</td>
+                                            <td class="col-md-4"style="padding-left: 15%; font-weight: bold;">₹ {{TotalPayableAmount | number:'1.2-2'}}</td> 
+                                        </tr>
+            
+                                    </table>
+                                    <br><br>
+                                    <div class="offset-md-3"  *ngIf="showtbl" style="padding-left: 30px;">
+                                        <button class="btn btn-block btn-primary col-md-2" style="font-size:large;" (click) = 'savedata();'> Save and Continue </button>
+                                    </div>
+                                    <dx-toast [(visible)]="isVisible" [type]="type" [message]="message">
+                                    </dx-toast>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- card 6 end -->
+</main>
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

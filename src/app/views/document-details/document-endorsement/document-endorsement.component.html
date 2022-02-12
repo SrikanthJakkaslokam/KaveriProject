@@ -1,0 +1,216 @@
+<main class="main">
+    <div class="row">
+        <div class="col-sm">
+            <div class="row document-registration">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 15px; padding-top: 5px;">Document Registration
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="header-text">DOCUMENT NUMBER</label><br>
+                            <label class="header-text">{{finalRegNoData.fn_fetch_final_regnumber}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">DATE OF
+                                PRESENTATION</label><br>
+                            <label class="header-text">{{pendingRegNumberData.presentDate | date: 'dd/MM/yyyy'}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">DATE OF EXECUTION
+                            </label><br>
+                            <label class="header-text">{{dateOfExecution | date: 'dd/MM/yyyy'}}
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">APPLICATION
+                                TYPE</label><br>
+                            <label class="header-text">Property
+                                Registration</label>
+                        </div>
+                    </div>
+                </div>
+            </div> <br><br>
+            <div class="row endorsement-header">
+                <div style="margin-left: 3px;">
+                    <p></p>
+                </div>
+                <div class="col-md-5">
+                    <label style="padding-top: 5px;">Endorsement</label>
+                </div>
+            </div>
+            <div class="row" style="margin: 20px 100px 0px 100px;">
+                <div class="col-sm">
+                    <ng-container *ngTemplateOutlet="printDocument"></ng-container>
+                    <iframe #iframe style="display: none;"></iframe>
+                    <div class="row buttons mt-5">
+                        <div class="col-md-12 text-center">
+                            <button type="button" class="btn btn-primary mr-3" (click)="printMainContent()">Print</button>
+                            <button type="button" class="btn btn-primary" (click)="saveContinueCTA()">Save and Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<ng-template #printDocument>
+    <div style="margin-top: 80px; margin-bottom: 150px;" id="secondPage">
+        <div style="text-align: center;">
+            <p style="margin: 0px 0px 20px;">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</p>
+            <p style="margin: 0px 0px 20px;">ನೋಂದಣಿ ಹಾಗೂ ಮುದ್ರಾಂಕ ಇಲಾಖೆ</p>
+            <p style="margin: 0px 0px 20px; font-size: 15px;"><b>Department of Stamps and Registration</b></p>
+            <p style="margin: 0px 0px 20px;">ಪ್ರಮಾಣ ಪತ್ರ</p>
+            <p style="margin: 0px 0px 35px; padding-top: 1.5rem;">1957 ಕರ್ನಾಟಕ ಮುದ್ರಾಂಕ ಕಾಯ್ದೆಯ ಕಲಂ 10 ಎ ಅಡಿಯಲ್ಲಿಯ ಪ್ರಮಾಣ ಪತ್ರ</p>
+            <p style="
+            margin: 0px auto;
+            line-height: 2rem;">ಶ್ರೀ Mrs. gfghfhg (Applicant Name) ಇವರು 5000.00 (Amount) ರೂಪಾಯಿಗಳನ್ನು ನಿಗದಿತ ಶುಲ್ಕವಾಗಿ ಪಾವತಿಸಿರುವುದನ್ನು ದೃಢೀಕರಿಸಲಾಗಿದೆ.</p>
+        </div>
+        <div>
+            <table style="width: 100%; text-align: center; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಪ್ರಕಾರ <b>(Amount Type)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಮೊತ್ತ (ರೂ.) <b>(Amount)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹಣದ ಪಾವತಿಯ ವಿವರ <b>(Payment Details)</b></td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ನಗದು ರೂಪ <b>(Cash/Cheque)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;"><b></b></td>
+                    <td style="padding: 5px; border: 1px solid #000;"><b></b></td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಒಟ್ಟು</td>
+                    <td style="padding: 5px; border: 1px solid #000;"></td>
+                    <td style="padding: 5px; border: 1px solid #000;"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="padding: 2rem 0px 35px 0px;">
+            <p>ಸ್ಥಳ<b>(Location): DemoSRO</b></p>
+            <p>ದಿನಾಂಕ<b>(Date): {{documentSummary.registrationdatetime | date: 'dd.MM.yyyy'}}</b></p>
+        </div>
+        <div style="display: flex; align-items: flex-end; flex-direction: column;">
+            <p>ಉಪ-ನೋಂದಣಿ ಮತ್ತು ಯುಕ್ತ ಅಧಿಕಾರಿ</p>
+            <p><b>(Sub-Registrar Officer)</b></p>
+            <p><b>(DemoSRO)</b></p>
+        </div>
+    </div>
+    <section>
+        <div>
+            <p style="margin-bottom: 35px;">ದಾಸ್ತಾವೇಜು ಸಂಖ್ಯೆ<b>(Document Number)</b>:- <b></b> </p>
+            <p><b>(SRO Office) DemoSRO</b> ದಲ್ಲಿರುವ ಉಪನೋಂದಣಾಧಿಕಾರಿ <b>DemoSRO (SRO Officer)</b> ರವರ ಕಛೇರಿಯಲ್ಲಿ ದಿನಾಂಕ <b>(Date Time) {{documentSummary.registrationdatetime | date: 'dd.MM.yyyy'}}</b> ರಂದು <b>{{documentSummary.registrationdatetime | date: 'HH:mm:ss a'}}</b> ಗಂಟೆಗೆ ಈ ಕೆಳಗೆ ವಿವರಿಸಿದ ಶುಲ್ಕದೊಂದಿಗೆ</p>
+        </div>
+        <div>
+            <table style="width: 100%; text-align: left; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಕ್ರಮ ಸಂ <b>(SI. No.)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ವಿವರ <b>(Details)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ರೂ.ಪೈ <b>(Rs.)</b></td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">೧</td>
+                    <td style="padding: 5px; border: 1px solid #000;">ನೋಂದಣಿ ಶುಲ್ಕ</td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಒಟ್ಟು</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">೨</td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಸ್ಕ್ಯಾನಿಂಗ್‌ ಫೀ</td>
+                    <td style="padding: 5px; border: 1px solid #000;"></td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;"></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಒಟ್ಟು</td>
+                    <td style="padding: 5px; border: 1px solid #000;"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-top: 40px;">
+            <p>ಶ್ರೀ <b>{{executants && executants[0] ? executants[0].partyname : null}} (Executant)</b> ಇವರಿಂದ ಹಾಜರ ಮಾಡಲ್ಪಟ್ಟಿದೆ.</p>
+            <table style="width: 100%; text-align: left; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಕ್ರಮ ಸಂ <b>(SI. No.)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹೆಸರು <b>(Executant Name)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಫೋಟೋ <b>(Photo)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹೆಬ್ಬಿಟ್ಟಿನ ಗುರುತು <b>(Thumb Impression)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಸಃಹಿ <b>(Signature)</b></td>
+                </tr>
+                <ng-container *ngIf="executants.length > 0; else executant1">
+                    <tr *ngFor="let executant of executants; let i = index">
+                        <td style="padding: 5px; border: 1px solid #000;">{{i + 1}}</td>
+                        <td style="padding: 5px; border: 1px solid #000;">ಶ್ರೀ <b>{{executant.partyname}}</b></td>
+                        <td style="padding: 5px; border: 1px solid #000;"><img width="70px" [src]="executant.imageData ? ('data:image/png;base64,' + executant.imageData.photo | safehtml) : null" alt="" /></td>
+                        <td style="padding: 5px; border: 1px solid #000;"><img width="70px" [src]="executant.imageData ? ('data:image/bmp;base64,' + executant.imageData.thumb | safehtml) : null" alt="" /></td>
+                        <td style="padding: 5px; border: 1px solid #000;"></td>                    
+                    </tr>
+                </ng-container>
+                <ng-template #executant1>
+                    <tr>
+                        <td style="padding: 5px; border: 1px solid #000; text-align: center;" colspan="5">No executants found</td>                    
+                    </tr>
+                </ng-template>
+            </table>
+        </div>
+        <div style="margin-top: 40px;">
+            <p>ಬರೆದುಕೊಟ್ಟಿದ್ದಾಗಿ ಒಪ್ಪಿರುತ್ತಾರೆ</p>
+            <table style="width: 100%; text-align: left; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಕ್ರಮ ಸಂ <b>(SI. No.)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹೆಸರು <b>(Claimant Name)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಫೋಟೋ <b>(Photo)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹೆಬ್ಬಿಟ್ಟಿನ ಗುರುತು <b>(Thumb Impression)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಸಃಹಿ <b>(Signature)</b></td>
+                </tr>
+                <ng-container *ngIf="claimants.length > 0; else claimant1">
+                    <tr *ngFor="let claimant of claimants; let i = index">
+                        <td style="padding: 5px; border: 1px solid #000;">{{i + 1}}</td>
+                        <td style="padding: 5px; border: 1px solid #000;">ಶ್ರೀ <b>{{claimant.partyname}}</b></td>
+                        <td style="padding: 5px; border: 1px solid #000;"><img width="70px" [src]="claimant.imageData ? ('data:image/png;base64,' + claimant.imageData.photo | safehtml) : null" alt="" /></td>
+                        <td style="padding: 5px; border: 1px solid #000;"><img width="70px" [src]="claimant.imageData ? ('data:image/bmp;base64,' + claimant.imageData.thumb | safehtml) : null" alt="" /></td>
+                        <td style="padding: 5px; border: 1px solid #000;"></td>                    
+                    </tr>
+                </ng-container>
+                <ng-template #claimant1>
+                    <tr>
+                        <td style="padding: 5px; border: 1px solid #000; text-align: center;" colspan="5">No claimants found</td>                    
+                    </tr>
+                </ng-template>
+            </table>
+        </div>
+        <div style="margin-top: 40px;">
+            <p>ಗುರುತಿಸುವವರು <b>(Witness)</b></p>
+            <table style="width: 100%; text-align: left; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; border: 1px solid #000;">ಕ್ರಮ ಸಂ <b>(SI. No.)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಹೆಸರು ಮತ್ತು ವಿಳಾಸ <b>(Name, Address of Witness)</b></td>
+                    <td style="padding: 5px; border: 1px solid #000;">ಸಃಹಿ <b>(Signature)</b></td>
+                </tr>
+                <tbody>
+                    <tr *ngFor="let witness of documentSummary.witnessinfo; let i = index">
+                        <td style="padding: 5px; border: 1px solid #000;">{{i + 1}} </td>
+                        <td style="padding: 5px; border: 1px solid #000;"><b>Mrs. {{witness.name}}</b> ಗಂ <b>{{witness.address}}</b> <br> (ಬರೆಸಿಕೊಂಡವರು)</td>
+                        <td style="padding: 5px; border: 1px solid #000;">{{witness.sign}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        <div style="display: flex; align-items: flex-end; flex-direction: column; margin-top: 120px;">
+            <p>ಸಬ್‌ ರಿಜಿಸ್ಟ್ರಾರ್</p>
+            <p><b>(Sub-Registrar Officer)</b></p>
+        </div>
+        <div style="margin-top: 30px; border: 1px solid #000; padding: 20px; text-align: center;">
+            <p>೧ ನೇ ಪುಸ್ತಕದ ದ್ತಾವೇಜು<b>Book 1 Document</b></p>
+            <p>ನಂಬರ್‌ <b>DMO-1-00082-2021-22 </b>ಆಗಿ</p>
+            <p>ಸಿ.ಡಿ ನಂಬರ್‌ <b>DMOD6 </b>ನೇ ದ್ದರಲ್ಲಿ</p>
+            <p>ದಿನಾಂಕ <b>(Date) {{documentSummary.registrationdatetime | date: 'dd.MM.yyyy'}} </b>ರಂದು ನೋಂದಾಯಿಸಲಾಗಿದೆ.</p>
+            <p style="margin-top: 80px; text-align: right;">ಉಪನೋಂದಣಾಧಿಕಾರಿ <b>DemoSRO (DemoSRO) (SRO)</b></p>
+        </div>
+    </section>
+</ng-template>

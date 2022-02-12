@@ -1,0 +1,184 @@
+<div class="animated fadeIn">
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: -15px;">
+        <div class="col-md-12">
+            <div class="card-header"
+                style="background-color: #5e85c2;color: white;font-weight: 500;border-radius: 5px;height: 70px;">
+                <div class="row">
+                    <div class="col-md-1" class="circle" style="background-color: transparent;"></div>
+                    <div class="col-md-3">
+                        <span>Welcome <label style="text-transform: uppercase;">{{DepartmentUser}}</label></span><br>
+                        <span style="text-transform: uppercase;">{{DepartmentUserDesignation}} - {{deptData.sroname}}</span>
+                    </div>
+                    <Span class="mx-1">
+                        <img src="assets/img/avatars/line.png">
+                    </Span>
+                    <div class="col-md-4">
+                        <!-- <span>LAST LOGIN :</span><br>
+                        <span>12TH OCTOBER 2021 8.34AM</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: 15px;">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="font-weight: bold;">Applications alloted To Me</h4>
+                    <h1 style="font-weight: bold;font-size: 30px;">{{AllocatedApplications?AllocatedApplications.length
+                        :0}}<sub style="font-weight: 600;font-size: 12px;">Today</sub></h1>
+                    <section class="example-section">
+                        <mat-progress-bar [appProgressBarColor]="colorAppRcvd" class="example-margin"
+                            [color]="colorAppRcvd" [mode]="modeAppRcvd" [value]="valueAppRcvd"
+                            [bufferValue]="bufferValueAppRcvd">
+                        </mat-progress-bar>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="font-weight: bold;">Applications Reviewed</h4>
+                    <section class="d-flex">
+                        <h1 style="font-weight: bold;font-size: 30px;">{{totalApplicationAllocated}}<sub
+                                style="font-weight: 600;font-size: 12px;">/{{AllocatedApplications?AllocatedApplications.length
+                                :0}}</sub></h1>
+                    </section>
+                    <section class="example-section">
+                        <mat-progress-bar [appProgressBarColor]="colorAppAlctd" class="example-margin"
+                            [color]="colorAppAlctd" [mode]="modeAppAlctd" [value]="totalApplicationAllocated"
+                            [bufferValue]="bufferValueAppAlctd">
+                        </mat-progress-bar>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="font-weight: bold;">Total Application Verified</h4>
+                    <section class="d-flex">
+                        <h1 style="font-weight: bold;font-size: 30px;">89</h1>
+                        <span style="font-weight: 600;font-size: 12px;">
+                            <select type="text" name="closed" class="form-control"
+                                style="border: none;background-color: transparent;">
+                                <option>This Week</option>
+
+                            </select>
+                        </span>
+                    </section>
+                    <section class="example-section">
+                        <mat-progress-bar [appProgressBarColor]="colorAppClsd" class="example-margin"
+                            [color]="colorAppClsd" [mode]="modeAppClsd" [value]="valueAppClsd"
+                            [bufferValue]="bufferValueAppClsd">
+                        </mat-progress-bar>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: 15px;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color: transparent;color: black;font-weight: 600;">
+                    <span>Active Applications</span>
+                </div>
+                <div class="card-body" class="example-container mat-elevation-z8">
+                    <!-- <div class="example-container mat-elevation-z8"> -->
+                    <!-- <mat-form-field>
+                      <input matInput (keyup)="applyFilter(input.value)" placeholder="Filter" #input>
+                    </mat-form-field> -->
+                    <!-- <div class="example-header">
+                        <mat-form-field>
+                          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                        </mat-form-field>
+                      </div> -->
+                    <mat-table #table [dataSource]="allocated" #allocatedsorter="matSort" matSort>
+                        <ng-container matColumnDef="Action">
+                            <mat-header-cell *matHeaderCellDef>
+                                Action </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <button type="button" style="background-color: #0a429b;border-color:transparent"
+                                    *ngIf="element.finalRegistrationNumber === null && element.isUploadDocuments === false"
+                                    (click)="startRegistration(element);" class="btn btn-primary mr-4">Start
+                                    Registration</button>
+                                <button type="button" style="background-color: #0a429b;border-color:transparent"
+                                    *ngIf="element.finalRegistrationNumber && element.isUploadDocuments === false"
+                                    (click)="endorsement(element);" class="btn btn-primary mr-4">Endorsement</button>
+                                <button type="button" style="background-color: #0a429b;border-color:transparent"
+                                    *ngIf="element.finalRegistrationNumber && element.isUploadDocuments && element.currentStatus !== 'CD120'"
+                                    (click)="printAcknowledgement(element);" class="btn btn-primary mr-4">Print Acknowledgement</button>
+                                <p *ngIf="element.finalRegistrationNumber && element.isUploadDocuments && element.currentStatus === 'CD120'"><b>Registration Completed</b></p>
+                                <button type="button" style="background-color: #0a429b;border-color:transparent" *ngIf="element.currentStatus !== 'CD120'"
+                                    class="btn btn-primary ml-4" (click)="showHoldModal = true; currentApp = element">Put on Hold</button>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="sno">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1"> S.No.
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.sno}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="applicationNum">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-2">Application Number
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-2"> {{element.applicationNum}} </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="applicationDate">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1">Date</mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.applicationDate}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="time">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-1"> Time
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-1"> {{element.applicationTime}}
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="serviceName">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header class="col-sm-3">Application Type
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element" class="col-sm-3" style="text-align: start !important">
+                                {{element.serviceName}}
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns1"
+                            style="background-color: #707070;color: white;"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns1;" [hidden]="row.applicationNum == null"></mat-row>
+                    </mat-table><br>
+                    <!-- </div> -->
+                    <mat-paginator #allocatedPaginator [pageSizeOptions]="[10, 20, 30, 40]" showFirstLastButtons>
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="outer-box-container" *ngIf="showHoldModal">
+    <div class="outer-box">
+        <mat-icon style="color: #241f1f88; float: right; margin: 12px; cursor: pointer" (click)="showHoldModal = false; putOnHoldRemarks = ''">
+            close</mat-icon><br />
+        <div class="outer-box-padding">
+            <p style="
+            color: #707070;
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 12px;
+          ">
+                Are you sure you want to put application on hold?
+            </p>
+            <p class="text-muted">Add remarks</p>
+            <textarea class="form-control" id="putOnHoldRemarks" [(ngModel)]="putOnHoldRemarks"> </textarea>
+            <div class="schedule-actions mt-3">
+                <button class="btn s-btn" (click)="putOnHoldCTA()"
+                    [disabled]="!(putOnHoldRemarks && putOnHoldRemarks.length > 0)">Put on Hold</button>
+                <button class="btn p-btn" (click)="showHoldModal = false; putOnHoldRemarks = ''">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

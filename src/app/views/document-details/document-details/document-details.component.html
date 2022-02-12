@@ -1,0 +1,366 @@
+<app-header
+  [navbarBrandRouterLink]="['']"
+  [fixed]="true"
+  [navbarBrandFull]="{
+    src: 'assets/img/avatars/NoPath.png',
+    width: '70',
+    height: '70'
+  }"
+  [navbarBrandMinimized]="{
+    src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png',
+    width: '40',
+    height: '40'
+  }"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'"
+>
+  <img
+    src="assets/img/avatars/government-of-karnataka-logo-1000x500.png"
+    class="img-avatar"
+    style="float: left; margin-left: -80px"
+  />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept"
+    >Department of Stamps and Registration,Government of Karnataka</span
+  >
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt="" /></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button
+        type="button"
+        style="background-color: #0a429b"
+        class="btn btn-block btn-primary active"
+        routerLink="/departmental-login"
+        aria-pressed="true"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+</app-header>
+<div class="container-fluid propert-layout">
+  <div class="welcome-panel">
+    <div class="grey-circle"></div>
+    <div class="welcome-container">
+      <p class="welcome-text">WELCOME {{DepartmentUser}}</p>
+      <p class="fda">{{DepartmentUserDesignation}} - {{deptData.sroname}}</p>
+    </div>
+    <div>
+      <p class="fda">
+        <!-- LAST LOGIN:<br />
+        12TH OCTOBER 2021 8.34AM -->
+      </p>
+    </div>
+  </div>
+  <div class="stepper-panel mt-4">
+    <p style="color: #666; font-weight: 700; margin-top: 20px; cursor: pointer">
+      <span (click)="nav()">< Back</span>
+    </p>
+    <mat-horizontal-stepper labelPosition="bottom" #stepper [ngClass]="'last-edited-step-'+ selectedIndex" class="{{ 'last-edited-step-' + stepper.selectedIndex }}" (selectionChange)="stepChange($event)">
+      <!-- <ng-template matStepperIcon="details">
+        <mat-icon>home</mat-icon>
+      </ng-template> -->
+      <ng-template matStepperIcon="party">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 23 24"
+        >
+          <g id="noun_User_1331897" transform="translate(-13.37 -5)">
+            <path
+              id="Path_57740"
+              data-name="Path 57740"
+              d="M18.729,10.688c0-3.2,3.2-5.688,6.141-5.688s6.141,2.267,6.141,5.464-3.177,6.989-6.141,6.989S18.729,13.885,18.729,10.688ZM26.876,18.6H22.864c-5.236.012-9.478,3.614-9.494,8.061v.973a1.264,1.264,0,0,0,.466.964,1.754,1.754,0,0,0,1.132.4h19.8a1.5,1.5,0,0,0,1.6-1.357v-.981C36.354,22.214,32.112,18.612,26.876,18.6Z"
+              fill="#777"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="schedule">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 27.945 24"
+        >
+          <g id="noun_property_1987266" transform="translate(-2.5 -21.3)">
+            <path
+              id="Path_57767"
+              data-name="Path 57767"
+              d="M30,42.959h-.971V27.2c0-.669-.382-1.213-.853-1.213H23.591V42.959h-1.03V22.513c0-.669-.382-1.213-.853-1.213H11.3c-.471,0-.853.544-.853,1.213V42.959H9.413V25.983H4.765c-.471,0-.853.544-.853,1.213V42.959H2.941c-.235,0-.441.293-.441.627v1.087c0,.334.206.627.441.627H30c.235,0,.441-.293.441-.627V43.586C30.445,43.251,30.239,42.959,30,42.959ZM25.3,29.2c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H25.562c-.147,0-.265-.167-.265-.376Zm0,4.641c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H25.562c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H25.562c-.147,0-.265-.167-.265-.376ZM5.736,29.2c0-.209.118-.376.265-.376H7.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H6c-.147,0-.265-.167-.265-.376V29.2Zm0,4.641c0-.209.118-.376.265-.376H7.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H6c-.147,0-.265-.167-.265-.376V33.844Zm0,4.683c0-.209.118-.376.265-.376H7.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H6c-.147,0-.265-.167-.265-.376V38.526Zm13.09-14.049c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H19.091c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H19.091c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H19.091c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H19.091c-.147,0-.265-.167-.265-.376ZM15.531,24.478c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H15.8c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H15.8c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H15.8c-.147,0-.265-.167-.265-.376Zm-3.295-9.366c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H12.5c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H12.5c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H12.5c-.147,0-.265-.167-.265-.376Zm0,4.683c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v1.965c0,.209-.118.376-.265.376H12.5c-.147,0-.265-.167-.265-.376Zm3.295,0c0-.209.118-.376.265-.376h1.383c.147,0,.265.167.265.376v4.432H15.531Z"
+              fill="#777"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="valuation">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 17.156 21.393"
+        >
+          <g
+            id="noun_tax_and_fees_2035503"
+            data-name="noun_tax and fees_2035503"
+            transform="translate(-6 -3)"
+          >
+            <path
+              id="Path_57768"
+              data-name="Path 57768"
+              d="M22.2,3H6.953A.89.89,0,0,0,6,3.93V24.393l2.859-1.86,2.859,1.86,2.859-1.86,2.859,1.86,2.859-1.86,2.859,1.86V3.93A.89.89,0,0,0,22.2,3ZM19.344,18.812H15.531v-3.72h3.812Zm0-6.511H9.812v-1.86h9.531Zm0-3.72H9.812V6.72h9.531Z"
+              fill="#777"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="payment">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 19.838 26.426"
+        >
+          <path
+            id="Icon_awesome-rupee-sign"
+            data-name="Icon awesome-rupee-sign"
+            d="M19.094,6.025a.727.727,0,0,0,.744-.708V2.958a.727.727,0,0,0-.744-.708H.744A.727.727,0,0,0,0,2.958V5.6a.727.727,0,0,0,.744.708H6.031A4.567,4.567,0,0,1,9.81,7.913H.744A.727.727,0,0,0,0,8.621V10.98a.727.727,0,0,0,.744.708h9.842c-.385,2.129-2.043,3.458-4.634,3.458H.744A.727.727,0,0,0,0,15.854v3.127a.693.693,0,0,0,.239.52l10.232,8.987a.765.765,0,0,0,.5.188h5.118a.7.7,0,0,0,.5-1.228L7.245,19.232c4.742-.138,8.13-3.15,8.575-7.545h3.274a.727.727,0,0,0,.744-.708V8.621a.727.727,0,0,0-.744-.708H15.456a7.891,7.891,0,0,0-.884-1.888Z"
+            transform="translate(0 -2.25)"
+            fill="#777"
+          />
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="document">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 18.698 23.957"
+        >
+          <g
+            id="Group_5973"
+            data-name="Group 5973"
+            transform="translate(5534 19997)"
+          >
+            <path
+              id="Path_57769"
+              data-name="Path 57769"
+              d="M0,0V23.957H18.7V5.843H13.439a.6.6,0,0,1-.584-.584V0Z"
+              transform="translate(-5534 -19997)"
+              fill="#777"
+            />
+            <path
+              id="Path_57770"
+              data-name="Path 57770"
+              d="M48,2V6.09h4.09Z"
+              transform="translate(-5567.976 -19998.414)"
+              fill="#777"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="endorsement">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 18.756 24.032"
+        >
+          <g
+            id="Group_5972"
+            data-name="Group 5972"
+            transform="translate(5437.74 19995)"
+          >
+            <path
+              id="Path_57773"
+              data-name="Path 57773"
+              d="M96.26,2V26.032h18.756V7.861h-5.275a.607.607,0,0,1-.586-.586V2Z"
+              transform="translate(-5534 -19997)"
+              fill="#777"
+            />
+            <path
+              id="Path_57774"
+              data-name="Path 57774"
+              d="M144.25,4V8.1h4.1Z"
+              transform="translate(-5567.925 -19998.414)"
+              fill="#777"
+            />
+            <path
+              id="Path_57775"
+              data-name="Path 57775"
+              d="M124.768,37.688H121.7v2.849h3.42v.856h-4.44V33.48h4.264v.856H121.7v2.52h3.068Z"
+              transform="translate(-5551.263 -20019.254)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="scan">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 20.856 26.722"
+        >
+          <g
+            id="Group_5971"
+            data-name="Group 5971"
+            transform="translate(5362.43 19995)"
+          >
+            <path
+              id="Path_57771"
+              data-name="Path 57771"
+              d="M171.57,2V28.722h20.857V8.518h-5.866a.678.678,0,0,1-.652-.652V2Z"
+              transform="translate(-5534 -19997)"
+              fill="#777"
+            />
+            <path
+              id="Path_57772"
+              data-name="Path 57772"
+              d="M219.57,4V8.562h4.562Z"
+              transform="translate(-5566.358 -19998.35)"
+              fill="#777"
+            />
+            <path
+              id="Icon_awesome-arrow-up"
+              data-name="Icon awesome-arrow-up"
+              d="M.853,6.257.507,5.912a.372.372,0,0,1,0-.528L3.533,2.356a.372.372,0,0,1,.528,0L7.087,5.382a.372.372,0,0,1,0,.528l-.346.346a.374.374,0,0,1-.534-.006L4.42,4.374V8.85a.373.373,0,0,1-.374.374h-.5a.373.373,0,0,1-.374-.374V4.374L1.387,6.251a.371.371,0,0,1-.534.006Z"
+              transform="translate(-5355.383 -19986.199)"
+              fill="#fff"
+            />
+          </g>
+        </svg>
+      </ng-template>
+      <ng-template matStepperIcon="acknowledgement">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: 16px; height: 16px"
+          viewBox="0 0 18.698 23.957"
+        >
+          <g
+            id="Group_5969"
+            data-name="Group 5969"
+            transform="translate(5534 19997)"
+          >
+            <path
+              id="Path_57769"
+              data-name="Path 57769"
+              d="M0,0V23.957H18.7V5.843H13.439a.6.6,0,0,1-.584-.584V0Z"
+              transform="translate(-5534 -19997)"
+              fill="#777"
+            />
+            <path
+              id="Path_57770"
+              data-name="Path 57770"
+              d="M48,2V6.09h4.09Z"
+              transform="translate(-5567.976 -19998.414)"
+              fill="#777"
+            />
+          </g>
+        </svg>
+      </ng-template>
+
+      <!-- <mat-step state="details" [editable]="false" [completed]="false"   >
+        <ng-template matStepLabel>Property Details</ng-template>
+      </mat-step> -->
+      <mat-step state="party" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Party Details</ng-template>
+      </mat-step>
+      <mat-step state="schedule" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Property Schedule</ng-template>
+      </mat-step>
+      <mat-step state="valuation" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Valuation and fees</ng-template>
+      </mat-step>
+      <mat-step state="payment" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Payment Details</ng-template>
+      </mat-step>
+      <mat-step state="document" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Document Summary</ng-template>
+      </mat-step>
+      <mat-step state="endorsement" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Endorsement</ng-template>
+      </mat-step>
+      <mat-step state="scan" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Scan and Upload Document</ng-template>
+      </mat-step>
+      <mat-step state="acknowledgement" [editable]="false" [completed]="false" >
+        <ng-template matStepLabel>Acknowledgement Slip</ng-template>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <div class="document-text-panel">
+    <router-outlet></router-outlet>
+    <div class="schedule-actions" *ngIf="toggleBtns">
+      <button class="btn s-btn" (click)="verifyAndContinueCTA()">Verify and Continue</button>
+      <button class="btn p-btn" (click)="showHoldModal = true;">
+        Put on Hold
+      </button>
+      <button class="btn p-btn" (click)="showRefuseModal = true">
+        Refuse Application
+      </button>
+    </div>
+  </div>
+</div>
+<app-footer style="height: 50px; background-color: #fbfbfb; z-index: 1020">
+  <div class="row" style="margin-left: 10px">
+    <span style="color: black"
+      >©2021, Department of Stamps and Registration, Karnataka</span
+    >
+  </div>
+</app-footer>
+
+<div class="outer-box-container" *ngIf="showHoldModal">
+  <div class="outer-box">
+    <mat-icon
+      style="color: #241f1f88; float: right; margin: 12px; cursor: pointer"
+      (click)="showHoldModal = false"
+      >close</mat-icon
+    ><br />
+    <div class="outer-box-padding">
+      <p
+        style="
+          color: #707070;
+          font-size: 20px;
+          font-weight: 700;
+          margin-top: 12px;
+        "
+      >
+        Are you sure you want to put application on hold?
+      </p>
+      <p class="text-muted">Add remarks</p>
+      <textarea class="form-control" id="putOnHoldRemarks" [(ngModel)]="putOnHoldRemarks"> </textarea>
+      <div class="schedule-actions mt-3">
+        <button class="btn s-btn" (click)="putOnHoldCTA()" [disabled]="!(putOnHoldRemarks && putOnHoldRemarks.length > 0)">Put on Hold</button>
+        <button class="btn p-btn" (click)="showHoldModal = false">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="outer-box-container" *ngIf="showRefuseModal">
+  <div class="outer-box">
+    <mat-icon
+      style="color: #241f1f88; float: right; margin: 12px; cursor: pointer"
+      (click)="showRefuseModal = false"
+      >close</mat-icon
+    ><br />
+    <div class="outer-box-padding">
+      <p
+        style="
+          color: #707070;
+          font-size: 20px;
+          font-weight: 700;
+          margin-top: 12px;
+        "
+      >
+        Are you sure you want to refuse?
+      </p>
+      <p class="text-muted">Add remarks</p>
+      <textarea class="form-control" id="refuseAppRemarks" [(ngModel)]="refuseAppRemarks"> </textarea>
+      <div class="schedule-actions mt-3">
+        <button class="btn s-btn" (click)="refuseApplicationCTA()" [disabled]="!(refuseAppRemarks && refuseAppRemarks.length > 0)">Refuse Application</button>
+        <button class="btn p-btn" (click)="showRefuseModal = false">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

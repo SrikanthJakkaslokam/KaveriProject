@@ -1,0 +1,33 @@
+
+.propertyHeading::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 20px;
+  background: #0707c1;
+  left: -10px;
+  top: 5%;
+  position: absolute;
+  border-radius: 6px;
+}
+.propertyHeading{
+  position: relative;
+}
+::ng-deep .carousel-control-next{
+  left: 10% !important;
+}
+::ng-deep .carousel-control-prev{
+  width: 2% !important;
+}
+::ng-deep .carousel-control-next{
+  width: 2% !important;
+}
+.file-input {
+  display: none;
+}
+.fee-calc-section table, th,td{
+  border: 1px solid #000 !important;
+}
+// th{
+//   text-align: center;
+// }

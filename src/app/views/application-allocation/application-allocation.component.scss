@@ -1,0 +1,97 @@
+.circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 -5px 3px 0;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #dfdfdf;
+  }
+
+  .search {
+    width: 300px;
+    height: 45px;
+    margin-left: 155px;
+    // margin: -50px 0 0 900px;
+    // padding: 10.9px 21.5px 10.9px 24px;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #fff;
+  }
+
+  .example-container {
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-table {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+  }
+
+  .mat-column-Action {
+    flex: 0 0 15%;
+  }
+
+  .mat-column-applicationNum {
+    flex: 0 0 18%;
+  }
+
+  .mat-column-deoName {
+    flex: 0 0 13%;
+  }
+
+  .mat-column-serviceName {
+    flex: 0 0 28%;
+  }
+
+  .mat-column-sno {
+    flex: 0 0 5%;
+  }
+
+  .mat-column-applicationDate {
+    flex: 0 0 10%;
+  }
+
+  .mat-column-applicationTime {
+    flex: 0 0 10%;
+  }
+
+  .mat-column-time {
+    flex: 0 0 10%;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    // height: 60px;
+  }
+  
+  .example-margin {
+    // margin: 0 10px;
+    height: 15px;
+    border-radius: 10px;
+  }
+
+  ::ng-deep .mat-progress-bar-buffer {
+    background-color: #2d71dc;
+}
+
+::ng-deep .mat-progress-bar-value {
+    border-radius: 10px;
+}
+
+.example-header {
+    min-height: 64px;
+    padding: 8px 24px 0;
+  }
+
+  // ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  //   padding: .5em -1;
+  // }
+  ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0px!important;
+}

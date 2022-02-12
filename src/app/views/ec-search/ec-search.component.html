@@ -1,0 +1,1272 @@
+<app-header
+  [navbarBrandRouterLink]="['']"
+  [fixed]="true"
+  [navbarBrandFull]="{
+    src: 'assets/img/avatars/NoPath.png',
+    width: '70',
+    height: '70'
+  }"
+  [navbarBrandMinimized]="{
+    src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png',
+    width: '40',
+    height: '40'
+  }"
+  [sidebarToggler]="'lg'"
+  [asideMenuToggler]="'lg'"
+>
+  <img
+    src="assets/img/avatars/government-of-karnataka-logo-1000x500.png"
+    class="img-avatar"
+    style="float: left; margin-left: -80px"
+  />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept"
+    >Department of Stamps and Registration,Government of Karnataka</span
+  >
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a
+        class="nav-link"
+        data-toggle="dropdown"
+        href="#"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        dropdownToggle
+        (click)="(false)"
+      >
+        <span
+          >Hello, {{ loggedinUser }}&nbsp;&nbsp;&nbsp;&nbsp;<img
+            src="assets/img/avatars/avatar-blank.jpg"
+            class="img-avatar"
+            alt=""
+        /></span>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-right"
+        *dropdownMenu
+        aria-labelledby="simple-dropdown"
+      >
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"
+          ><i class="fa fa-lock"></i>Change Password</a
+        >
+      </div>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt="" /></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button
+        type="button"
+        style="background-color: #0a429b"
+        class="btn btn-block btn-primary active"
+        routerLink="/landing-page"
+        aria-pressed="true"
+      >
+        Logout
+      </button>
+    </li>
+  </ul>
+  <dx-tabs style="width: 100%; margin-top: 130px; position: fixed">
+    <dxi-item>
+      <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+    </dxi-item>
+    <dxi-item>
+      <span>About Department</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Resources</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>External Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Help</span>
+    </dxi-item>
+  </dx-tabs>
+</app-header>
+
+<main class="main">
+  <div
+    class="container-fluid"
+    style="background-color: #fbfbfb; padding-top: 0px 0px 0px 0px !important"
+  >
+    <div class="animated fadeIn">
+      <div
+        class="row"
+        style="margin-left: -80px; margin-top: 80px; margin-right: -25px"
+      >
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <img
+                  src="assets/img/avatars/Group 417.png"
+                  style="cursor: pointer"
+                  routerLink="/agricultural/non-agricultural"
+                /><br />
+              </div>
+              <div>
+                <img
+                  src="assets/img/avatars/Hello.png"
+                  style="width: 150px; height: 95px"
+                />
+                <img src="assets/img/avatars/ec-search.PNG" />
+              </div>
+              <form class="form-horizontal" [formGroup]="bhumiForm">
+                <div class="row" style="margin-top: 30px">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div class="form-group col-md-2" style="margin-left: -20px">
+                    <label for="district">DISTRICT</label>
+                    <select
+                      name="district"
+                      id=""
+                      (change)="ondistrictChange($event)"
+                      (ngModelChange)="ondistrictValuechange($event)"
+                      class="form-control"
+                      formControlName="district"
+                    >
+                      <option disabled readonly>Select District</option>
+                      <option
+                        *ngFor="let d of districtList"
+                        [value]="d.districtCode"
+                      >
+                        {{ d.districtNamee }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="taluka">TALUKA</label>
+                    <select
+                      type="text"
+                      name="taluka"
+                      class="form-control"
+                      formControlName="taluka"
+                      [(ngModel)]="selectedtalukvalue"
+                      (ngModelChange)="ontalukValuechange($event)"
+                      (change)="ontalukaChange($event)"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted }"
+                    >
+                      <!-- <option [value]="selectedtalukvalue" selected>{{talUka}}</option> -->
+                      <option disabled readonly>Select Taluka</option>
+                      <option
+                        *ngFor="let d of talukaList"
+                        [value]="d.talukCode"
+                      >
+                        {{ d.talukNamee }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="hobli">HOBLI</label>
+                    <select
+                      type="text"
+                      name="hobli"
+                      class="form-control"
+                      formControlName="hobli"
+                      [(ngModel)]="selectedhoblivalue"
+                      (ngModelChange)="onhobliValuechange($event)"
+                      (change)="onhobliChange($event)"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted }"
+                    >
+                      <!-- <option [value]="selectedhoblivalue" selected>{{town}}</option> -->
+                      <option disabled readonly>Select Hobli</option>
+                      <option *ngFor="let d of hobliList" [value]="d.hoblicode">
+                        {{ d.hoblinamee }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="village">INDEX II: VILLAGE</label>
+                    <select
+                      type="text"
+                      name="village"
+                      class="form-control"
+                      formControlName="village"
+                      [(ngModel)]="selectedvillagevalue"
+                      (change)="getRoadDetails($event)"
+                      required
+                      [ngClass]="{ 'is-invalid': submitted }"
+                    >
+                      <!-- <option [value]="" selected>{{vilLage}}</option> -->
+                      <option disabled readonly>
+                        Select Index II: Village
+                      </option>
+                      <option
+                        *ngFor="let d of villageList"
+                        [value]="d.villagecode"
+                      >
+                        {{ d.villagenamee }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top: 10px">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <label style="font-weight: 600">BOUNDARIES</label>
+                </div>
+
+                <div class="row">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div class="form-group col-md-2" style="margin-left: -20px">
+                    <!-- <label for="ecEast">East</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ecEast"
+                      placeholder="Value"
+                      required
+                    /> -->
+                    <label for="ecUnits">Select Property Type</label>
+                    <!-- <input type="text" class="form-control" id="ecUnits" placeholder="Value" required
+                        formControlName="ecUnits"> -->
+                    <select
+                      type="text"
+                      name=""
+                      id="selectedPropertytType"
+                      class="form-control"
+                      (change)="typeOfProperty()"
+                      required
+                    >
+                      <option value="" selected disabled>Select Property Type</option>
+                      <option value="agricultural">Agricultural</option>
+                      <option value="nonagricultural">Non - Agricultural</option>
+                    </select>
+                  </div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="ecWest">West</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ecWest"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="ecNorth">North</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ecNorth"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="ecSouth">South</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ecSouth"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -100px"
+                  ></div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-2">
+                      <label for="ecEast">East</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="ecEast"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="NorthtoSouth">North to South</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="NorthtoSouth"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-2" style="margin-left: 60px">
+                    <label for="EasttoWest">East to West</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="EasttoWest"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div class="form-group col-md-10" style="margin-left: -20px">
+                    <label for="">Description of Property</label>
+                    <textarea
+                      class="form-control"
+                      id="descECproperty"
+                      cols="20"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                </div>
+
+
+              <ng-container *ngIf="propertyType == '';">
+              </ng-container>
+
+              <ng-container *ngIf="propertyType == 'agricultural';">
+                <div class="agri my-5">
+                  <div class="row my-3">
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+
+                    <label style="font-weight: 600"
+                      >Unit of measurement</label>
+                    <div class="col-md-2">
+                        <select
+                        type="text"
+                        name=""
+                        id="unitOfMeasurment"
+                        class="form-control"
+                        (change)="agriculturalUnits()"
+                        required
+                      >
+                        <option value="">Select</option>
+                        <option value="acre">Acre</option>
+                        <option value="cent">Cent</option>
+                        <option value="gunta">Gunta</option>
+                        <option value="hectare">Hectare</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <ng-container *ngIf="agricultutalUnit == '';">
+                  </ng-container>
+                  <ng-container *ngIf="agricultutalUnit == 'acre';">
+                    <!-- Acre Start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-2">
+                        <label for="">Acre</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="acre"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="ecEast">Gunta</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="gunta"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="ecEast">Cents</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cents"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  </div>
+                  <!-- Acre End -->
+                  </ng-container>
+                  <ng-container *ngIf="agricultutalUnit == 'cent';">
+                    <!-- Cent Start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-2">
+                        <label for="ecEast">Cent</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="cents"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!-- Cent End -->
+                  </ng-container>
+                  <ng-container *ngIf="agricultutalUnit == 'gunta';">
+                    <!-- Gunta Start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-2">
+                        <label for="ecEast">Gunta</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="gunta"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!-- Gunta End -->
+                  </ng-container>
+                  <ng-container *ngIf="agricultutalUnit == 'hectare';">
+                    <!-- Hectare Start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-2">
+                        <label for="ecEast">Hectare</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="hectare"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="ecEast">Acre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="acre"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="ecEast">Gunta</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="gunta"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  <div class="form-group col-md-2">
+                    <label for="ecEast">Cents</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cents"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  </div>
+                  <!-- Hectare End -->
+                  </ng-container>
+
+                </div>
+              </ng-container>
+              <ng-container *ngIf="propertyType == 'nonagricultural';">
+                  <!-- Non Agri Start-->
+                <div class="nonagri my-5">
+                  <div class="row my-3">
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+
+                    <label style="font-weight: 600"
+                      >Unit of measurement</label>
+                    <div class="col-md-2">
+                        <select
+                        type="text"
+                        name="ecNonAgriUnits"
+                        id="unitOfMeasurment"
+                        class="form-control"
+                        (change)="nonAgriculturalUnits()"
+                        required
+                      >
+                        <option value="">Select</option>
+                        <option value="sqfeet">Sq. Feet</option>
+                        <option value="sqmetre">Sq. Metre</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <ng-container *ngIf="nonAgricultutalUnit == '';">
+                    <!-- no non agri unit Start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-3">
+                        <label for="ecEast">Property Measuring</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="propertyMeasuring"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="ecEast">East To West Measurement <strong>(ect)</strong></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="eastToWestMeasurment"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="ecEast">North To South Measurement <strong>(ect)</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="northToSouthMeasurment"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  </div>
+                  <!-- no non agri unit Start End -->
+                  </ng-container>
+                  <ng-container *ngIf="nonAgricultutalUnit == 'sqfeet';">
+                    <!-- Non Agri Sq Feet -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-3">
+                        <label for="ecEast">Property Measuring</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="propertyMeasuring"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="ecEast">East To West Measurement <strong>(Feet)</strong></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="eastToWestMeasurment"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="ecEast">North To South Measurement <strong>(Feet)</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="northToSouthMeasurment"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  </div>
+                  <!-- End Of Non agri Square feet -->
+                  </ng-container>
+                  <ng-container *ngIf="nonAgricultutalUnit == 'sqmetre';">
+                    <!-- Non Agri Sq Meter start -->
+                  <div class="row my-3" >
+                    <div
+                      class="form-group col-md-2"
+                      style="margin-left: -80px"
+                    ></div>
+                      <div class="form-group col-md-3">
+                        <label for="ecEast">Property Measuring</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="propertyMeasuring"
+                        placeholder="Value"
+                        required
+                      />
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="ecEast">East To West Measurement <strong>(Metre)</strong></label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="eastToWestMeasurment"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="ecEast">North To South Measurement <strong>(Metre)</strong></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="northToSouthMeasurment"
+                    placeholder="Value"
+                    required
+                  />
+                  </div>
+                  </div>
+                  <!-- Non Agri Sq meter end -->
+                  </ng-container>
+
+                </div>
+                <!-- Non Agri End -->
+              </ng-container>
+
+
+                <div class="row" style="margin-top: 10px">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <label style="font-weight: 600"
+                    >PROPERTY REGISTRATION DURATION</label>
+                </div>
+
+                <div class="row">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div class="form-group col-md-3" style="margin-left: -20px">
+                    <label for="fromdate">From Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="fromDate"
+                      placeholder="Value"
+                      required
+                    />
+                    <!-- <mat-card class="demo-inline-calendar-card">
+                          <mat-calendar (selectedChange)="selected = $event"></mat-calendar>
+                        </mat-card> -->
+                  </div>
+                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                  <div class="form-group col-md-3" style="margin-left: 60px">
+                    <label for="todate">To Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="toDate"
+                      placeholder="Value"
+                      required
+                    />
+                  </div>
+                </div>
+                <hr />
+
+                <div class="row" style="margin-top: 10px">
+                  <div
+                    class="form-group col-md-2"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div style="display: inline-block">
+                    <label style="font-weight: 600"
+                      >PROPERTY REGISTRATION DURATION</label
+                    >
+                    <p>
+                      Enter one or more details to futher improve your search
+                    </p>
+                  </div>
+                </div>
+              </form>
+              <div
+                class="form-row"
+                *ngFor="let obj of propertyNumberDetailsArray"
+              >
+                <div
+                  class="form-group col-md-2"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="form-group col-md-3" style="margin-left: -20px">
+                  <label
+                    for="propertyNumType"
+                    style="font-size: 14px; font-weight: 600"
+                    >PROPERTY NUMBER TYPE</label
+                  >
+                  <select
+                    [(ngModel)]="obj.propertyNumberType"
+                    class="form-control"
+
+                    required
+                  >
+                    <option value="0" selected>
+                      Select Property Number Type
+                    </option>
+                    <option
+                      *ngFor="let d of propertyNumberTypeList"
+                      [value]="d.propertytypeid"
+                    >
+                      {{ d.typeNameEnglish }}
+                    </option>
+                  </select>
+                </div>
+                <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                <div class="form-group col-md-3" style="margin-left: 60px">
+                  <label
+                    for="propertyDetails"
+                    style="font-size: 14px; font-weight: 600"
+                    >PRESENT PROPERTY NUMBER DETAILS</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="obj.propertyDetails"
+                    placeholder="Value"
+                  />
+                </div>
+                <div class="form-group col-md-3"></div>
+                <div class="form-group col-md-1">
+                  <span
+                    style="font-weight: 600; color: #0a429b; cursor: pointer"
+                    (click)="removeDetails(i)"
+                    >Delete</span
+                  >
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 10px">
+                <div
+                  class="form-group col-md-2"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="col-md-10">
+                  <span
+                    style="font-weight: 600; color: #0a429b; cursor: pointer"
+                    (click)="addMoreDetails()"
+                    >Add More Details</span
+                  >
+                </div>
+              </div>
+              <hr />
+
+              <div class="row" style="margin-top: 30px">
+                <div
+                  class="form-group col-md-2"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="col-md-3">
+                  <label style="font-weight: 600">ENTER OTP DETAILS</label
+                  ><br />
+                  <span style="color: #0a429b; font-size: 12px">{{
+                    otpSentSuccess
+                  }}</span>
+                </div>
+                <div class="col-md-2">
+                  <button
+                    type="button"
+                    class="btn btn-primary px-4"
+                    style="background-color: #0a429b"
+                    (click)="sendotp()"
+                  >
+                    Send OTP
+                  </button>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 30px">
+                <div
+                  class="form-group col-md-2"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="col-md-4">
+                  <label>Enter the OTP recevied on your mobile number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="otp"
+                    placeholder="Value"
+                    required
+                  />
+                  <span style="color: red; font-size: 12px">{{ otpmsg }}</span>
+                  <span style="color: #0a429b; font-size: 12px">{{
+                    otpmsgSuccess
+                  }}</span>
+                </div>
+                <div class="col-md-2 mb-0">
+                  <button
+                    type="button"
+                    (click)="verifyotp()"
+                    class="btn btn-primary px-4"
+                    style="background-color: #0a429b; margin-top: 25px"
+                  >
+                    Verify
+                  </button>
+                </div>
+              </div>
+              <hr />
+              <div class="row" style="margin-top: 30px">
+                <div
+                  class="form-group col-md-1"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="form-group col-md-10">
+                  <input
+                    type="checkbox"
+                    [checked]="digitallySignedisChecked"
+                    (change)="digitallySignedisChecked = $event.target.checked"
+                  />
+                  Check to apply for dititally signed EC.
+                </div>
+              </div>
+              <div
+                class="row"
+                style="text-align: center; justify-content: center"
+              >
+                <button
+                  type="button"
+                  class="btn btn-primary px-4"
+                  style="background-color: #0a429b"
+                  (click)="onsearch()"
+                >
+                  Search Property
+                </button>
+              </div>
+
+
+              <ng-container *ngIf="ecpdfData == undefined;">
+                {{ecpdfData}}
+              </ng-container>
+
+              <ng-container *ngIf="ecpdfData == false">
+                <div class="row m-5">
+                  <div class="col-md-3">
+                    <span>Application Number</span>
+                    <h4 style="font-weight: 500">{{ applicationData }}</h4>
+                  </div>
+                  <div class="col-md-6"></div>
+                  <div class="col-md-3" style="text-align: right; margin: auto">
+                    <img src="assets/img/icons/refresh.PNG" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/download.PNG" (click)="SavePDF()" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/print.PNG" (click)="printForm16()" class="m-1" style="cursor: pointer;" />
+                  </div>
+                </div>
+
+                <div style="margin-top: 80px; margin-bottom: 30px; margin-right: 10%; margin-left: 10%; border: 1px solid black; padding:20px;" id="form16Pdf">
+                  <div style="text-align: center;">
+                      <p style="margin: 0px 0px 20px; font-weight: 600;">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</p>
+                      <p style="margin: 0px 0px 20px; text-align: right;">ಅರ್ಜಿ ಸಂಖ್ಯೆ:0</p>
+                      <p style="margin: 0px 0px 20px; text-align: right;">ಪ್ರಮಾಣಪತ್ರದ ಸಂಖ್ಯೆ:0</p>
+                      <p style="margin: 0px 0px 20px;">ನಮೂನೆ 16(148ನೇ ನಿಯಮ) </p>
+                      <p style="margin: 0px 0px 20px;">ಸ್ವತ್ತಿನ ಮೇಲೆ ಋಣಭಾರ ರಾಹಿತ್ಯ ಪ್ರಮಾಣಪತ್ರ</p>
+                      <p style="margin: 0px 0px 35px; padding-top: 2.0rem;">ಕೆಳಗೆ ನಮೂದಿಸಿದಳ ಸ್ವತ್ತಿನ ಬಗ್ಗೆ ನೋಂದಾಯಿಸಿದ ಪತ್ರಗಳು ಮತ್ತು ಋಣಗಳು ಯಾವುದೇ ಇದ್ದಲ್ಲಿ, ಅವುಗಳ ವಿವರಗಳನ್ನು ಕೊಡುವ ಪ್ರಮಾಣ ಪತ್ರವನ್ನಸು ಕೋರಿ ನನಗೆ ಅಜಿ೯ ಸಲ್ಲಿಸಲಾಗಿರುವುದರಿಂದ</p>
+
+                      <p style="margin: 0px 0px 35px; padding-top: 2.0rem;"><b>(ಪ್ರಪತ್ರದಲ್ಲಿ ಕಾಣಿಸಿದಂತೆ ನಮೂದಿಸಬೇಕು ಮತ್ತು ವಿವರಿಸಬೇಕು)</b></p>
+                      <p style="margin: 0px auto; line-height: 2rem; text-align: left;">ಮೇಲೆ ತಿಳಿಸಿದ ಆಸ್ತಿಯ ವಿವರಗಳುನ್ನು <b>{{fromDate}} (from)</b> ರಿಂದ <b>{{toDate}} (to)</b> ದಿನಾಂಕದವರೆಗೆ ತಿಳಿಸಿದ ಸ್ವತ್ತಿಗೆ ಸಂಬಂಧಿಸಿದಂತೆ
+                        ನಡವಳಿಕೆಗಳನ್ನು ಮತ್ತು ಋಣಭಾರಗಳ ಬಗ್ಗೆ ಶೋಧನೆಯನ್ನು ಮಾಡಲಾಗಿದೆ ಎಂದು ನಾನು ಈ ಮೂಲಕ ದೃಢಪಡಿದುತ್ತೇನೆ ಮತ್ತು ಅದರ
+                        ಶೋಧನೆಯಿಂದ ಸಂಬಂಧಪಟ್ಟ ತಿಳಿಸಿದ ಸ್ವತ್ತನ್ನು ಕುರಿತು ಯಾವುದೇ ನಡವಳಿಕೆ ಅಥವಾ ಋಣಭಾರ ಕಂಡುಬಂದಿರುವುದಿಲ್ಲ.</p>
+
+                      <p style="margin: 0px auto; line-height: 2rem; text-align: left;">ಸ್ವತ್ತಿನ ವಿವರಗಳು: <b>((Village Name:{{vilLage}}),(Hobli Name:{{town}}),(Boundary Details: (EAST:{{east}})(WEST:{{west}})(NORTH:{{north}})(SOUTH:{{south}})(East to west:{{eastToWest}})(North to South: {{northToEast}})) (APT No:NEW-A-114,OLD-N/A)(Area:{{area}})</b></p>
+                  </div>
+                  <div>
+                      <table style="text-align: center;" class="mx-auto mb-5">
+                        <tr>
+                          <td class="p-3" style="border:1px solid black;">
+                            <p class="mb-2">ಶೋಧನೆ ನಡೆಸಿದವರು ಮತ್ತು ಪ್ರಮಾಣ ಪತ್ರ ಸಿದ್ಧಪಡಿಸಿದವರು </p> <br>
+                            <p>(FDA/SDA)</p>
+                          </td>
+                          <td  class="p-3" style="border:1px solid black;">
+                           <p class="mb-2"> ಶೋಧನೆ ಪರಿವೀಕ್ಷಿಸಿದವರು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರವನ್ನು ಪರಿವೀಕ್ಷಿಸಿದವರು </p><br> 
+                           <p>(SRO)</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" class="p-3" style="border:1px solid black; height: 100px;">
+                            ಸ್ಥಳ: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; ರುಜು :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; ಮುದ್ರೆ :
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+                  <div> 
+                      ಸೂಚನೆಗಳು - <br>
+                      ಟಿಪ್ಪಣಿ:- <br>
+                      <p>(1) ನೋಂದಾಯಿಸಿದ ದಸ್ತಾವೇಜುಲಲ್ಲಿ ಸ್ವತ್ತಿನ ವಿವರಗಳು ಅಜಿ೯ದಾರನು ಅಜಿ೯ಯಲ್ಲಿ ನಮೂದಿಸಿದ ಪ್ರಮಾಣದಿಂದ ಬೇರೆಯಾಗಿದ್ದಲ್ಲಿ
+                        ಅಂತಹವುಗಳನ್ನು ಪ್ರಮಾಣ ಪತ್ರದಲ್ಲಿ ಸೇರಿಸಲಾಗುವುರಿಲ್ಲ.</p>
+                  </div>
+              </div>
+
+              <div class="row" style="margin-top: 30px">
+                <div
+                  class="form-group col-md-1"
+                  style="margin-left: -80px"
+                ></div>
+                <div class="form-group col-md-10">
+                  <input
+                    type="checkbox"
+                    [checked]="isChecked"
+                    (change)="isChecked = $event.target.checked"
+                  />
+                  The above result displayed are related to the input provided
+                  by me & i would like to proceed with applying for a digital
+                  signed copy of the EC.
+                </div>
+              </div>
+
+              <div
+                class="row"
+                style="text-align: center; justify-content: center"
+              >
+                <button
+                  type="button"
+                  (click)="onsubmit()"
+                  class="btn btn-primary px-4"
+                  style="background-color: #0a429b"
+                >
+                  Proceed
+                </button>
+              </div>
+            </ng-container>
+
+
+            <ng-container *ngIf="ecpdfData == true">
+              <div class="row m-5">
+                <div class="col-md-3">
+                  <span>Application Number</span>
+                  <h4 style="font-weight: 500">{{ applicationData }}</h4>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-3" style="text-align: right; margin: auto">
+                  <!-- <img src="assets/img/icons/refresh.PNG" class="m-1" style="cursor: pointer;" /> -->
+                  <img src="assets/img/icons/download.PNG" (click)="SavePDF()" class="m-1" style="cursor: pointer;" />
+                  <img src="assets/img/icons/print.PNG" (click)="printForm15()" class="m-1" style="cursor: pointer;" />
+                </div>
+              </div>
+              <div style="margin-top: 80px; margin-bottom: 30px; margin-right: 10%; margin-left: 10%; border: 1px solid black; padding:20px;" id="form15Pdf">
+                <div style="text-align: center;">
+                    <p style="margin: 0px 0px 20px; font-weight: 600;">ಕರ್ನಾಟಕ ಸರ್ಕಾರ</p>
+                    <p style="margin: 0px 0px 20px; text-align: right;">ಅರ್ಜಿ ಸಂಖ್ಯೆ:({{ecpdfApplicationNumber}})</p>
+                    <p style="margin: 0px 0px 20px; text-align: right;">ಪ್ರಮಾಣಪತ್ರದ ಸಂಖ್ಯೆ:({{ecpdfCertificateNumber}})</p>
+                    <p style="margin: 0px 0px 20px;">ನಮೂನೆ 15(148ನೇ ನಿಯಮ) </p>
+                    <p style="margin: 0px 0px 35px; padding-top: 2.0rem;">ಕೆಳಗೆ ತಿಳಿಸಿದ ಆಸ್ತಿಯ ಸಂಬಂಧದಲ್ಲಿ ಋಣಭಾರಗಳು ಏನಾದರೂ ಇದ್ದರೆ ಮತ್ತು ನೋಂದಣಿಯಾದ ಕ್ರಮಗಳವಿವರಣೆಗಳ ಬಗ್ಗೆ ಪ್ರಮಾಣಪತ್ರಕ್ಕಾಗಿ ಅರ್ಜಿಯನ್ನು ಸಲ್ಲಿಸಲಾಗಿದೆ(ಅರ್ಜಿಯಲ್ಲಿ ಹೇಳಿದಂತೆ ತಿಳಿಸಬೇಕು ಮತ್ತು ವಿವರಿಸಬೇಕು)</p>
+                    <p style="
+                    margin: 0px auto;
+                    line-height: 2rem; text-align: left;">ಸ್ವತ್ತಿನ ವಿವರಗಳು: ((Village Name:{{vilLage}}),(Hobli Name:{{town}}),(Boundary Details: (EAST:{{east}})(WEST:{{west}})(NORTH:{{north}})(SOUTH:{{south}})(East to west:{{eastToWest}})(North to South: {{northToEast}})) (APT No:NEW-A-114,OLD-N/A)(Area: {{area}})</p>
+
+                    <p style="margin: 0px auto; line-height: 2rem; text-align: left; padding-top: 10px;">ಮೇಲೆ ತಿಳಿಸಿದ ಆಸ್ತಿಯ ವಿವರಗಳನ್ನು {{fromDate}} ರಿಂದ {{toDate}} ರವರೆಗೆ ಪುಸ್ತಕ 1 ರಲ್ಲಿ ಸೂಚಿಯಲ್ಲಿರುವುದನ್ನು ಶೋಧನೆ
+                      ನಡೆಸಲಾಯಿತು ಮತ್ತು ಈ ಶೋಧನೆಯಿಂದ ಕೆಳಗೆ ತೋರಿಸಿದ ಕ್ರಮಗಳು ಹಾಗೂ ಋಣಭಾರಗಳು ಕಂಡು ಬಂದುವೆಂಬುದನ್ನು
+                      ಪ್ರಮಣೀಕರಿಸುತ್ತೇನೆ,</p>
+                </div>
+                <div>
+                    <table style="width: 100%; text-align: center; border: 1px solid #c8ced3; margin: 0px auto; border-collapse: collapse;">
+                        <tr>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">ಕ್ರಮಾಂಕ</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">(ಎ) ಆಸ್ತಿ ವಿವರ</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">ನಿರ್ವಾಹಣಾ ಜಾರಿಯ ದಿನಾಂಕ</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">(ಬಿ) ದಸ್ತಾವೇಜಿನ ಸ್ವರೂಪ ಮತ್ತು ಮೌಲ್ಯ(IN RS,)</th>
+                            <th colspan="2" style="padding: 5px; border: 1px solid #000;">ಕಕ್ಷಿಗಾರರ ಹೆಸರು</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">ಸಂಪುಟ</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">ಪುಟ</th>
+                            <th rowspan="2" style="padding: 5px; border: 1px solid #000;">ದಸ್ತಾವೇಜಿನ ಉಲ್ಲೇಖ</th>
+                        </tr>
+
+                        <tr>
+                          <th style="padding: 5px; border: 1px solid #000;">ಬರೆದು ಕೊಟ್ಟವರು</th>
+                          <th style="padding: 5px; border: 1px solid #000;">ಬರೆಯಿಸಿಕೊಂಡವರು</th>
+                        </tr>
+
+                        <tr>
+                          <td style="border:1px solid black;">1</td>
+                          <td style="border:1px solid black;">2</td>
+                          <td style="border:1px solid black;">3</td>
+                          <td style="border:1px solid black;">4</td>
+                          <td style="border:1px solid black;">5</td>
+                          <td style="border:1px solid black;">6</td>
+                          <td style="border:1px solid black;">7</td>
+                          <td style="border:1px solid black;">8</td>
+                          <td style="border:1px solid black;">9</td>
+                        </tr>
+                        <tr *ngFor="let item of ecDetailsArray; index as i">
+                          <td style="border:1px solid black;">{{i+1}}</td>
+                          <td style="border:1px solid black;">{{item.propertyDetails}}</td>
+                          <td style="border:1px solid black;">{{item.executionDate}}</td>
+                          <td style="border:1px solid black;">Article Name: {{item.articleName}} <br> Market Value: {{item.marketValue}} <br> Consideration Amount: {{item.considerationAmt}}</td>
+                          <td style="border:1px solid black;">{{item.executant}}</td>
+                          <td style="border:1px solid black;">{{item.claimant}}</td>
+                          <td style="border:1px solid black;">{{item.cdNumber}}</td>
+                          <td style="border:1px solid black;">{{item.pageNumber}}</td>
+                          <td style="border:1px solid black;">{{item.documentReference}}</td>
+                        </tr>
+                    </table>
+                    <p style="margin: 0px auto; line-height: 2rem; text-align: left; padding-top: 20px;">ಸದರಿ ಆಸ್ತಿಗೆ ಸಂಬಂಧಿಸಿದಂತೆ ಪೂರ್ವೋಕ್ತ ಕ್ರಮಗಳು ಮತ್ತು ಋಣಭಾರಗಳ ಹೊರತು ಯಾವುದೇ ಕ್ರಮಗಳು,ಋಣಭಾರಗಳು ಉಂಟಾಗಿಲ್ಲವೆಂದು ಸಹ ಪ್ರಮಾಣೀಕರಿಸುತ್ತೇನೆ,</p>
+                    <table style="text-align: center;" class="mx-auto mb-5">
+                      <tr>
+                        <td class="p-3" style="border:1px solid black;">
+                          <p class="mb-2">ಶೋಧನೆ ನಡೆಸಿದವರು ಮತ್ತು ಪ್ರಮಾಣ ಪತ್ರ ಸಿದ್ಧಪಡಿಸಿದವರು </p>
+                          <br> Digitally Signed by SUDHA S <br>
+                          Date: 2021.09.23. 20:14:40 +05:30 <br>
+                          Designation: SDA Kengeri <br>
+                          Reason: Encumbrace Certificate <br>
+                          Location: Kengeri-SRO
+                        </td>
+                        <td  class="p-3" style="border:1px solid black;">
+                         <p class="mb-2"> ಶೋಧನೆ ಪರಿವೀಕ್ಷಿಸಿದವರು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರವನ್ನು ಪರಿವೀಕ್ಷಿಸಿದವರು </p><br> Digitally Signed by DIVYASHRI M
+                          <br>Date: 2021.09.23. 20:37:11 +05:30 <br>
+                          Designation: FDA Kengeri <br>
+                          Reason: Encumbrace Certificate <br>
+                          Location: Kengeri-SRO
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="p-3" style="border:1px solid black;">
+                          ಸ್ಥಳ: Kengeri &nbsp; &nbsp; &nbsp; ರುಜು &nbsp; &nbsp; &nbsp; &nbsp;  ಮುದ್ರೆ <br>
+                          Digitally Signed by SRIHARI M <br>
+                          Date: 2021.09.23. 8:59:22 +05:30 <br>
+                          Designation: SDA Kengeri <br>
+                          Reason: Encumbrace Certificate <br>
+                          Location: Kengeri-SRO
+                        </td>
+                      </tr>
+                    </table>
+                </div>
+                <div> 
+                    ಸೂಚನೆಗಳು- <br>
+                    <p>(1)ಈ ಋಣಭಾರ ಪ್ರಮಾಣಪತ್ರದಲ್ಲಿ ಕಂಡು ಬರುವ ಕ್ರಮಗಳು ಮತ್ತು ಋಣಭಾರಗಳ ಆಸ್ತಿಗಳ ವಿವರಣೆಯ ಮೇಲೆ ಅರ್ಜಿದಾರನು ಕೊಟ್ಟ ಪ್ರಕಾರವೇ ಇದೆ, ಒಂದು ವೇಳೆ ನೋಂದಣಿಯಾದ ಪತ್ರಗಳಲ್ಲಿ ಅರ್ಜಿದಾರನು ಕೊಟ್ಟಿರುವ ಆಸ್ತಿಯ ವಿವರಣೆ ವ್ಯತ್ಯಾಸವಾಗಿದಲ್ಲಿ ಅಂತಹ ವಿವರಣೆಯ ಈ ಋಣಭಾರ ಪತ್ರಿಕೆಯಲ್ಲಿ ಸೇರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.</p> <br>
+                    <p>(2)ನೋಂದಣಿ ಅಧಿನಿಯಮ 57 ಪ್ರಕರಣ ಮತ್ತು ನಿಯಮ 138(1)ರ ಪ್ರಕಾರ ಅರ್ಜಿದಾರನು ಇಚ್ಛೆಪಟ್ಟಲ್ಲಿ ನಿಗದಿಪಡಿಸಿದ ಫೀಜನ್ನು ಕೊಟ್ಟಲ್ಲಿ, ತಾನೇ ಸ್ವತಃ ನೋಂದಣಿ ಪುಸ್ತಕ ಮತ್ತು ಸೂಚಿಕೆಯನ್ನು ಋಣಭಾರ ಪತ್ರಿಕೆ ಮತ್ತು ಯಥಾ ನಕಲನ್ನು ತಯಾರು ಮಾಡಲು ಅವರ ಅಶಕ್ಕೆ ಕೊಡಲಾಗುವುದು,</p> <br>
+                    <p>&nbsp;&nbsp;&nbsp; (ಎ) ಆದರೆ ಈ ಪ್ರಸ್ತುತ ಅರ್ಜಿಯ ಪ್ರಕಾರ ಅರ್ಜಿದಾರನು ಸ್ವತಃ ಪರೀಕ್ಷಿಸಲು ಇಚ್ಛೆಪಡದಿದ್ದ ಕಾರಣ ಆಫೀಸಿನ ಸಿಬ್ಬಂದಿಯ ಶೋಧನೆಯನ್ನು ಆದಷ್ಟು ಜಾಗರೂಕತೆಯಿಂದ ಮಾಡಲಾಗಿದೆ. ಆದ್ದರಿಂದ ಈ ತತ್ಸಬದ್ಧವಾಗಿ ಯಾವುದೇ ತಪ್ಪುಗಳು ಶೋಧನೆಯಲ್ಲಿ ಕಂಡು ಬಂದಲ್ಲಿ ಇಲಾಖೆಯು ಯಾವುದೇ ರೀತಿ ಜವಾಬ್ದಾರಿಯಾಗಿರುವುದಿಲ್ಲ</p> <br>
+                    <p>&nbsp;&nbsp;&nbsp;(ಬಿ )ಮತ್ತು ಈ ಪ್ರಸ್ತುತ ಅರ್ಜಿಯ ಪ್ರಕಾರ ಅರ್ಜಿದಾರನೇ ಸ್ವತಃ ತಾವು ಋಣಭಾರೆಗಾಗಿ ಶೋಧನೆಯನ್ನು ಮಾಡಿರುದರಿಂದ ಈ ಋಣಭಾರ ಪತ್ರಿಕೆಯಲ್ಲಿ ಸದರಿ ಆಸ್ತಿಯ ವಿಚಾರದಲ್ಲಿ ಯಾವುದೇ ಲೋಪದೋಷಗಳು ಕಂಡುಬಂದಲ್ಲಿಯೂ ಸಹ ಇಲಾಖೆಯು ಯಾವರೀತಿಯಲ್ಲಿಯೂ ಜವಾಬ್ದಾರರಾಗುವುದಿಲ್ಲ.
+                  </p>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 30px">
+              <div
+                class="form-group col-md-1"
+                style="margin-left: -80px"
+              ></div>
+              <div class="form-group col-md-10">
+                <input
+                  type="checkbox"
+                  [checked]="isChecked"
+                  (change)="isChecked = $event.target.checked"
+                />
+                The above result displayed are related to the input provided
+                by me & i would like to proceed with applying for a digital
+                signed copy of the EC.
+              </div>
+            </div>
+
+            <div
+              class="row"
+              style="text-align: center; justify-content: center"
+            >
+              <button
+                type="button"
+                (click)="onsubmit()"
+                class="btn btn-primary px-4"
+                style="background-color: #0a429b"
+              >
+                Proceed
+              </button>
+            </div>
+            </ng-container>
+
+              <!-- <ng-container *ngIf="pdf == ''; else pdfview">
+                <div class="row"></div>
+              </ng-container>
+
+              <ng-template #pdfview>
+                <div class="row m-5">
+                  <div class="col-md-3">
+                    <span>Application Number</span>
+                    <h4 style="font-weight: 500">{{ applicationData }}</h4>
+                  </div>
+                  <div class="col-md-6"></div>
+                  <div class="col-md-3" style="text-align: right; margin: auto">
+                    <img src="assets/img/icons/refresh.PNG" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/download.PNG" (click)="download()" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/print.PNG" class="m-1" style="cursor: pointer;" />
+                  </div>
+                </div>
+
+                <iframe
+                  id="pdfViewer"
+                  width="100%"
+                  height="1300px"
+                  class="mt-2"
+                ></iframe>
+                 {{pdf}}
+                <br /><br />
+                <div class="row" style="margin-top: 30px">
+                  <div
+                    class="form-group col-md-1"
+                    style="margin-left: -80px"
+                  ></div>
+                  <div class="form-group col-md-10">
+                    <input
+                      type="checkbox"
+                      [checked]="isChecked"
+                      (change)="isChecked = $event.target.checked"
+                    />
+                    The above result displayed are related to the input provided
+                    by me & i would like to proceed with applying for a digital
+                    signed copy of the EC.
+                  </div>
+                </div>
+
+                <div
+                  class="row"
+                  style="text-align: center; justify-content: center"
+                >
+                  <button
+                    type="button"
+                    (click)="onsubmit()"
+                    class="btn btn-primary px-4"
+                    style="background-color: #0a429b"
+                  >
+                    Proceed
+                  </button>
+                </div>
+              </ng-template> -->
+
+
+
+              <!-- <ng-template #pdfview>
+                 <div class="row m-5">
+                   <div class="col-md-3">
+                     <span>Application Number</span>
+                     <h4 style="font-weight: 500;">{{applicationData}}</h4>
+                   </div>
+                   <div class="col-md-6"></div>
+                   <div class="col-md-3" style="text-align: right; margin: auto;">
+                    <img src="assets/img/icons/refresh.PNG" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/download.PNG" (click)="download()" class="m-1" style="cursor: pointer;" />
+                    <img src="assets/img/icons/print.PNG" class="m-1" style="cursor: pointer;" />
+                   </div>
+                 </div>
+                <div class="row">
+                  <div class="pdf-container mx-5" style="border: 1px solid #858585; width:90%; position: relative; height: 100vh;">
+                    <pdf-viewer
+                      [src]="src"
+                      [rotation]="0"
+                      [original-size]="false"
+                      [show-all]="true"
+                      [fit-to-page]="true"
+                      [zoom]="1"
+                      [zoom-scale]="'page-width'"
+                      [stick-to-page]="false"
+                      [render-text]="true"
+                      [external-link-target]="'blank'"
+                      [autoresize]="true"
+                      [show-borders]="false"
+                      style="position: inherit !important;">
+                    </pdf-viewer>
+                    </div>
+                  </div>
+               </ng-template> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</main>
+
+<app-footer
+  style="
+    background-color: #34373d;
+    z-index: 1020;
+    height: 50px;
+    border: 1px solid #34373d;
+  "
+>
+  <div class="row" style="margin-left: 10px">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px; background-color: #fbfbfb; z-index: 1020">
+  <div class="row" style="margin-left: 10px">
+    <span style="color: black"
+      >©2021, Department of Stamps and Registration, Karnataka</span
+    >
+  </div>
+</app-footer>

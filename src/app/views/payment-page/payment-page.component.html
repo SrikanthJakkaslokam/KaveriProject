@@ -1,0 +1,180 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+  [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+    style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg"
+            class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active"
+        routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+  <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+    <dxi-item>
+      <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+    </dxi-item>
+    <dxi-item>
+      <span>About Department</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Resources</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>External Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Help</span>
+    </dxi-item>
+  </dx-tabs>
+</app-header>
+<main class="main">
+  <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+    <div class="animated fadeIn">
+
+      <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+          <div class="card">
+
+            <div class="card-body">
+
+              <div style="height: 150px;">
+                <!-- <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px"> -->
+                <img src="assets/img/avatars/alreadymade.png"><br>
+                <img src="assets/img/avatars/updatepayment.png">
+              </div><br>
+              <br>
+              <form class="form-horizontal" [formGroup]="paymentForm">
+                <div class="row" style="margin-top: 30px;">
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="number">Purpose Of Challan : </label>
+                    <p>Property Registration</p>
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="number">Challan Number</label>
+                    <input type="text" class="form-control" id="number" formControlName="number" placeholder="Value"
+                      required [ngClass]="{ 'is-invalid': submitted && f.number.errors }">
+                    <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+                      <div *ngIf="f.number.errors.required">Challan Number Required </div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="number">Amount in Rupees</label>
+                    <input type="text" name="amount" placeholder="Value" class="form-control" />
+                  </div>
+                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                    <label for="number">Date of Trasanctions</label>
+                    <input type="text" name="date" placeholder="Value" class="form-control" />
+                  </div>
+                </div><br><br>
+                <div style="text-align: center;">
+                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                    (click)="onSubmit();">Verify Challan</button>
+                </div>
+
+
+              </form>
+
+            </div>
+            <br><br>
+            <table class="table-bordered text-center ml-5 pl-4 pb-5" style="width: 85vw;">
+              <thead>
+                <tr class="text-light">
+                  <th>CHALLAN NUMBER</th>
+                  <th>AMOUNT PAID</th>
+                  <th>DATE OF TRANSECTION</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>12345</td>
+                  <td>12000</td>
+                  <td>12/12/2020</td>
+                  <td><a routerLink="" style="color: #0a429b;">Delete</a></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="text-align: center;margin-top: 3%;margin-bottom: 2%;">
+              <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;">
+                Continue</button>
+            </div>
+          </div>
+        </div><br><br>
+
+      </div>
+    </div>
+  </div>
+</main>
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

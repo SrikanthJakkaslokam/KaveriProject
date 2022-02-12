@@ -1,0 +1,327 @@
+<app-header
+    [navbarBrandRouterLink]="['']"
+    [fixed]="true"
+    [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+    [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+    [sidebarToggler]="'lg'"
+    [asideMenuToggler]="'lg'"
+>
+    <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float: left; margin-left: -80px;" />
+    <span class="Kaveri">Kaveri Online Services</span>
+    <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+    <ul class="nav navbar-nav ml-auto">
+        <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+        <li class="nav-item dropdown" dropdown placement="bottom right">
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
+                <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+                <div class="dropdown-header text-center"><strong>Account</strong></div>
+                <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+                <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+                <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+            </div>
+        </li>
+
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link"><img src="assets/img/avatars/bell.png" alt="" /></a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+        </li>
+    </ul>
+    <dx-tabs style="width: 100%; margin-top: 130px; position: fixed;">
+        <dxi-item>
+            <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+        </dxi-item>
+        <dxi-item>
+            <span>About Department</span>
+        </dxi-item>
+        <dxi-item>
+            <span>Resources</span>
+        </dxi-item>
+        <dxi-item>
+            <span>Links</span>
+        </dxi-item>
+        <dxi-item>
+            <span>External Links</span>
+        </dxi-item>
+        <dxi-item>
+            <span>Help</span>
+        </dxi-item>
+    </dx-tabs>
+</app-header>
+
+<main class="main">
+    <div class="container-fluid" style="background-color: #fbfbfb; padding-top: 0px 0px 0px 0px !important;">
+        <div class="animated fadeIn">
+            <div class="row" style="margin-left: -80px; margin-top: 80px; margin-right: -25px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body mx-2">
+                          <div>
+                            <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/ec-search"><br>
+                        </div>
+                          <div class="ec_search_result_card">
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="propertyHeading" style="font-weight: bold;font-size: large;">Application Details</label>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                <label for="" style="font-weight: bold;">Application Number : {{applicationData}}</label>
+                              </div>
+                              <div class="col-md-4">
+                                  <label for="" style="font-weight: bold;">Application Type : Encumberence Certificate</label>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="ec_search_result_card">
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="propertyHeading" style="font-weight: bold;font-size: large;">Applicant Details</label>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-3">
+                                <label for="" style="font-weight: bold;">First Name : </label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">Middle Name : </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label for="" style="font-weight: bold;">Last Name : </label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">Adhar Number : 1111 1111 1111</label>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="ec_search_result_card">
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="propertyHeading" style="font-weight: bold;font-size: large;">Input Search Parameters</label>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                                <div class="col-md-3">
+                                    <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                                </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="" style="font-weight: 500;font-size: medium;">BOUNDARIES</label>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">NORTH : {{north}}</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">EAST : {{east}}</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">WEST : {{west}}</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">SOUTH : {{south}}</label>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">EAST TO WEST : {{eastToWest}}</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">NORTH TO SOUTH : {{northToSouth}}</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <label for="" style="font-weight: bold;">UNITS : {{units}}</label>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-10">
+                                  <label for="" style="font-weight: bold;">DESCRIPTION : {{description}}</label>
+                              </div>
+                            </div>
+                            <div class="row my-3 mx-auto">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th colspan="3" style="background-color: #0a429b; color:#fff">Property Details</th>
+                                  </tr>
+                                  <tr>
+                                    <th scope="col">SI No</th>
+                                    <th scope="col">Property Number Type</th>
+                                    <th scope="col">Property Details</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of propertyTypeData;index as i">
+                                    <th scope="row">{{i+1}}</th>
+                                    <td>{{item.propertyName}}</td>
+                                    <td>{{item.propertyValue}}</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="ec_search_result_card">
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="propertyHeading" style="font-weight: bold;font-size: large;">Payment Details</label>
+                              </div>
+                            </div>
+                            <div class="row my-3 mx-auto">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th colspan="3" style="background-color: #0a429b; color:#fff">Payment Details</th>
+                                  </tr>
+                                  <tr>
+                                    <th scope="col">SI No</th>
+                                    <th scope="col">Fee Description</th>
+                                    <th scope="col">Amount</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Application Fees</td>
+                                    <td>5.00</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Search Fees</td>
+                                    <td>140.00</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Total Amount Payable</td>
+                                    <td>145.00</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <br>
+                            <div class="row my-2">
+                              <div class="col-md-6">
+                                <label class="propertyHeading" style="font-weight: bold;font-size: large;">Payment Details</label>
+                              </div>
+                            </div>
+                            <div class="row my-3 mx-auto">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th colspan="6" style="background-color: #0a429b; color:#fff">Payment Details</th>
+                                  </tr>
+                                  <tr>
+                                    <th scope="col">SI No</th>
+                                    <th scope="col">Reference No.</th>
+                                    <th scope="col">Transaction Date</th>
+                                    <th>Amount</th>
+                                    <th>Payment Status</th>
+                                    <th>Acknowledgement Receipt</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">01</th>
+                                    <td>3276549089006</td>
+                                    <td>30-09-2021 09:48:27</td>
+                                    <td>145.00</td>
+                                    <td>Payment recieved at Payment Gateway</td>
+                                    <td style="color:#0a429b; cursor: pointer;">View</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <br />
+                          <div class="row"  style="text-align: center; justify-content: center;">
+                            <button type="button" class="btn btn-primary px-4 mx-2" style="background-color: #0a429b;" (click)="popup = true">Submit</button>
+                            <button type="button" class="btn btn-primary px-4" style="background-color: #ddd; color:#0a429b"
+                            >Close</button>
+
+                            <div class="overlay" *ngIf="popup">
+                              <div class="popup">
+                                  <!-- <h2>Here i am</h2> -->
+                                  <img class="mt-2" src="assets/img/avatars/success-icon.PNG" alt="" />
+                                  <!-- <a class="close" (click)="popup = false">&times;</a> -->
+                                  <div class="content my-4">
+                                  Application Submitted Successfully
+                                  </div>
+                                  <div>
+                                    <button type="button" class="btn btn-primary px-4 mb-2" style="background-color: #0a429b;" (click)="popup = false">Close</button>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-footer style="background-color: #34373d; z-index: 1020; height: 50px; border: 1px solid #34373d;">
+    <div class="row" style="margin-left: 10px;">
+        <div class="col-xs-2">
+            <span></span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">Accessibility Statement&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Help&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Feedback&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;FAQ&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+        </div>
+        <div class="col-xs-1">
+            <span class="ftrs">&emsp;Visitors Analytics</span>
+        </div>
+        <!-- <div class="col-xs-1">
+    </div> -->
+    </div>
+</app-footer>
+<app-footer style="height: 50px; background-color: #fbfbfb; z-index: 1020;">
+    <div class="row" style="margin-left: 10px;">
+        <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+    </div>
+</app-footer>

@@ -1,0 +1,68 @@
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0px !important;
+ margin-left: 0px !important; 
+}
+.circle {
+    width: 48px;
+    height: 48px;
+    margin: 0 -5px 3px 0;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #dfdfdf;
+  }
+  .main .container-fluid {
+    padding: 10px 10px 10px 10px;
+    background-color: #fbfbfb;
+    font-family: "Segoe UI";
+  }
+  .search {
+    width: 300px;
+    height: 45px;
+    margin-left: 155px;
+    // margin: -50px 0 0 900px;
+    // padding: 10.9px 21.5px 10.9px 24px;
+    border-radius: 24px;
+    border: solid 1px #707070;
+    background-color: #fff;
+  }
+
+  .input[type=checkbox] {
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 15px;
+    font: 16px/16px;
+}
+.remarks input{
+  border:2px solid rgb(57, 81, 192);
+}
+.buttons button{
+  font-size: 12px;
+}
+.modal-header {
+  border-bottom: 0 none;
+}
+ input[type=checkbox]{
+  box-sizing: border-box;
+  padding: 0;
+  zoom: 1.5;
+ }
+
+.modal-footer {
+  border-top: 0 none;
+}
+.modal-body {
+  padding: 1.5rem;
+}
+.continue-block {
+  margin: 15px 0px 20px 0px;
+}
+.table-container {
+  margin: 30px 0px 30px 0px;
+}

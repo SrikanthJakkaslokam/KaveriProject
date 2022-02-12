@@ -1,0 +1,432 @@
+<style>
+  .mat-tab-label {
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: .6;
+  min-width: 400px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  color: #0a429b!important;
+}
+</style>
+
+<main class="main">
+  <div class="" style="background-color: #fbfbfb;">
+    <div class="animated fadeIn">
+      <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: -15px;">
+        <div class="col-md-12">
+                <div class="card-header"  style="background-color: #5e85c2;color: white;font-weight: 500;border-radius: 5px;height: 70px;">
+                  <div class="row">
+                    <div class="col-md-1" class="circle"></div>
+                    <div class="col-md-3">
+                      <span>Welcome <label style="text-transform: uppercase;">Tanmay</label></span><br>
+                      <span style="text-transform: uppercase;">SUB REGISTRAR- BENGALURU URBAN</span>
+                    </div>
+                    <img src="assets/img/avatars/line.png" style="margin-left: -40px;">
+                      <div class="col-md-3">
+                        <span>LAST LOGIN :</span><br>
+                        <span>12TH OCTOBER 2021 8.34AM</span>
+                      </div>
+                       <div class="col-md-5">
+                    </div>
+                  </div> 
+                </div>
+        </div>
+        
+    </div>
+      <div class="row" style="margin-left: -85px;margin-right: -25px;margin-top: 40px;">
+        <div class="col-md-12">
+          <!-- <div class="card"> -->
+            <!-- <div class="card-body"> -->
+             
+              <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" animationDuration="0ms">
+                <!-- <mat-tab label="Liability Filing"></mat-tab>
+                <mat-tab label="Liablity Report"></mat-tab>
+                <mat-tab label="Revenue Report"></mat-tab> -->
+                <mat-tab *ngFor="let link of routerLinks" label="{{ link.header }}">
+                  <div *ngIf="link.id === 0">
+                    <ng-container>
+                      <div class="row" style="margin-top: 50px;">
+                        <div class="col-md-12">
+                          <div class="card">
+                           
+                            <div class="card-body">
+                              <div>
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"><br>
+                            </div><br>
+                              <br/> <h2 class="col-10 offset-6" class="propertyHeading" style="margin-left: 35px;">
+                               Liability Filing
+                            </h2>
+                            <br/> <h3 class="col-10 offset-6" style="margin-left: 10px;color: #4E4E4E;">
+                              SEARCH LIABILITIES
+                                 </h3>
+                              <form class="form-horizontal" [formGroup]="liabilityFillingForm">
+                                <!-- <div style="margin-top: 100px;"> -->
+                                <div class="row" style="margin-top: 30px;">
+                                  <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                                  <div class="form-group col-md-2" style="margin-left: -20px;">
+                                    <label for="sroName">SRO Name<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <select type="text" name="sroName" class="form-control" formControlName="sroName" required
+                                            [ngClass]="{ 'is-invalid': submitted && liablityFillingformControl.sroName.errors }">
+                                      <option disabled readonly>Select SRO Name</option>
+                                      <option *ngFor="let sro of sroNames" [value]="sro.srocode"> {{sro.sronamee}}</option>
+                                    </select>
+                                    <div *ngIf="submitted && liablityFillingformControl.sroName.errors" class="invalid-feedback">
+                                      <div *ngIf="liablityFillingformControl.sroName.errors.required">SRO Name is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="bookName">Book Name<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <select type="text" name="bookName" class="form-control" formControlName="bookName" required
+                                            [ngClass]="{ 'is-invalid': submitted && liablityFillingformControl.bookName.errors }">
+                                      <option disabled readonly>Select Book Name</option>
+                                      <option *ngFor="let book of books" [value]="book.bookid"> {{book.booknameenglish}}</option>
+                                    </select>
+                                    <div *ngIf="submitted && liablityFillingformControl.bookName.errors" class="invalid-feedback">
+                                      <div *ngIf="liablityFillingformControl.bookName.errors.required">Book Name is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="financialYear">Financial Year<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <select type="text" name="financialYear" class="form-control" formControlName="financialYear" required
+                                            [ngClass]="{ 'is-invalid': submitted && liablityFillingformControl.financialYear.errors }">
+                                      <option disabled readonly>Select Financial Year</option>
+                                      <option *ngFor="let financialYear of financialYears" [value]="financialYear.financial_year"> {{financialYear.financial_year}}</option>
+                                    </select>
+                                    <div *ngIf="submitted && liablityFillingformControl.financialYear.errors" class="invalid-feedback">
+                                      <div *ngIf="liablityFillingformControl.financialYear.errors.required">Financial Year is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="documentNumber">Document Number</label>
+                                    <input type="text" class="form-control" placeholder="Value"
+                                           formControlName="documentNumber">
+                                  </div>
+                                </div> <br/><br/>
+                                <div style="text-align: center;">
+                                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                          (click)="searchPropertyDetails()">Search</button>
+                                </div><br>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <br/> <h2 class="col-10 offset-6" class="propertyHeading"  style="margin-left: 35px;">
+                            Property Details
+                          </h2>
+                            <div class="card-body">
+                              <table class="table table-bordered">
+                                <tr class="bg-primary" >
+                                  <td colspan="11" class="text-white"  style="background-color: #093172;">Property Details</td>
+                                </tr>
+                                <tr class="text-center">
+                                  <td rowspan="2">S.No.</td>
+                                  <td rowspan="2">Select</td>
+                                  <td rowspan="2">Property Details</td>
+                                  <td rowspan="2">Property Details Number</td>
+                                  <td rowspan="2">Executant</td>
+                                  <td rowspan="2">Claimant</td>
+                                  <td rowspan="2">Liability Details</td>
+                                </tr><br/>
+                                <ng-container *ngIf="resMsg=='No Record Found'; else LiabilityData">
+                                  <tr style="line-height: 14px;">
+                                    <td colspan="7" style="text-align: center;">{{resMsg}}</td>
+                                  </tr>
+                              </ng-container>
+                              <ng-template  #LiabilityData>
+                                <tr style="line-height: 14px;" class="text-center">
+                                  <td>{{1}}</td>
+                                <td><input type="radio" name="liafiling" id="liafiling"></td>
+                                  <td>{{propertyDetails}}</td>
+                                  <td>{{propertyNumberDetails}}</td>
+                                  <td>{{executant}}</td>
+                                  <td>{{claimant}}</td>
+                                  <td>{{liabilityDetails}}</td>
+                                </tr>
+                              </ng-template>
+                               
+                              </table> <br/><br/>
+                              <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                        (click)="showSimilarProperty();">Show Similar Property</button>
+                                <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                        (click)="showExactProperty();">Show Exact Property</button>
+                              </div><br><br><br>
+                    
+
+                              <div *ngIf="showSimilar">
+                                <table class="table table-bordered">
+                                  <tr class="bg-primary" >
+                                    <td colspan="11" class="text-white"  style="background-color: #093172;">Similar Property Details</td>
+                                  </tr>
+                                  <tr class="text-center">
+                                    <td rowspan="2">S.No.</td>
+                                    <td rowspan="2">Select</td>
+                                    <td rowspan="2">Final Registration Number</td>
+                                    <td rowspan="2">Execution Date</td>
+                                    <td rowspan="2">Article Name</td>
+                                    <td scope="col" colspan="3">Property Details</td>
+                                  </tr>
+                                  <tr class="text-center">
+                                    <td scope="col">LandMark</td>
+                                    <td scope="col">Property Number Details</td>
+                                    <td scope="col">Property Description</td>
+                                  </tr>
+                                  <!-- <ng-container *ngIf="resMsg=='No Record Found'; else LiabilityData">
+                                    <tr style="line-height: 14px;">
+                                      <td colspan="7" style="text-align: center;">{{resMsg}}</td>
+                                    </tr>
+                                </ng-container> -->
+                               
+                                <!-- <ng-template> -->
+                                  <tr style="line-height: 14px;" class="text-center">
+                                    <td>{{1}}</td>
+                                  <td><input type="radio" name="similarprop" id="similarprop"></td>
+                                    <td>{{finalRegnNum}}</td>
+                                    <td>{{execDate}}</td>
+                                    <td>{{articleName}}</td>
+                                    <td>{{landmark}}</td>
+                                    <td>{{propNumDetails}}</td>
+                                    <td>{{propDesc}}</td>
+                               </tr>
+                                <!-- </ng-template> -->
+                                 
+                                </table> <br/><br/>
+                              </div>
+                            </div>
+                          </div>
+                    
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                           <br/> <h2 class="col-10 offset-6" class="propertyHeading"  style="margin-left: 35px;">
+                              Add Liabilities Details
+                            </h2>
+                            <div class="card-body">
+                              <form class="form-horizontal" [formGroup]="liabilityDetailsForm">
+                                <!-- <div style="margin-top: 100px;"> -->
+                                <div class="row" style="margin-top: 30px;">
+                                  <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                                  <div class="form-group col-md-2" style="margin-left: -20px;">
+                                    <label for="issueDate">Issue Date<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <input type="date" class="form-control" placeholder="Value"
+                                           formControlName="issueDate" required
+                                           [ngClass]="{ 'is-invalid': submitted && liablityDetailsformControl.issueDate.errors }">
+                                    <div *ngIf="submitted && formControl.issueDate.errors" class="invalid-feedback">
+                                      <div *ngIf="formControl.issueDate.errors.required">IssueDate is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="issuedBy">Issued By<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <input type="text" class="form-control" placeholder="Value"
+                                           formControlName="issuedBy" required
+                                           [ngClass]="{ 'is-invalid': submitted && liablityDetailsformControl.issuedBy.errors }">
+                                    <div *ngIf="submitted && liablityDetailsformControl.issuedBy.errors" class="invalid-feedback">
+                                      <div *ngIf="liablityDetailsformControl.issuedBy.errors.required">Issued By is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="liablityAmount">Liability Amount<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <input type="text" class="form-control" placeholder="Value"
+                                           formControlName="liabilityAmount" required
+                                           [ngClass]="{ 'is-invalid': submitted && liablityDetailsformControl.liabilityAmount.errors }">
+                                    <div *ngIf="submitted && liablityDetailsformControl.liabilityAmount.errors" class="invalid-feedback">
+                                      <div *ngIf="liablityDetailsformControl.liabilityAmount.errors.required">Liability Amount is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 60px;">
+                                    <label for="orderNumber">Order Number</label>
+                                    <input type="text" class="form-control" placeholder="Value"
+                                           formControlName="orderNumber" required
+                                           [ngClass]="{ 'is-invalid': submitted && liablityDetailsformControl.orderNumber.errors }">
+                                  </div>
+                    <!--                  <div class="col-md-1" style="margin-left: -150px;"></div>-->
+                               
+                    
+                                </div> 
+                                <div class="row">
+                                  <div class="form-group col-md-10" style="margin-left: 100px;">
+                                    <label for="liabilityNote">Liability Note<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <textarea type="text" class="form-control" style="height: 80px;width: 98%;"
+                                              placeholder="" formControlName="liabilityNote"
+                                              [ngClass]="{ 'is-invalid': submitted && liablityDetailsformControl.liabilityNote.errors }"
+                                              required></textarea>
+                                    <div *ngIf="submitted && liablityDetailsformControl.liabilityNote.errors"
+                                         class="invalid-feedback">
+                                      <div *ngIf="liablityDetailsformControl.liabilityNote.errors.required">LiabilityNote is required</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <br/><br/>
+                                <div style="text-align: center;">
+                                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                          (click)="addLiability();">Save</button>
+                                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                      >Cancel</button>
+                                </div><br>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div *ngIf="link.id === 1">
+                    <ng-container>
+                      <div class="row" style="margin-top: 50px;">
+                        <div class="col-md-12">
+                          <div class="card">
+                           
+                            <div class="card-body">
+                              <div>
+                                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;"><br>
+                            </div><br>
+                              <br/> <h2 class="col-10 offset-6" class="propertyHeading" style="margin-left: 35px;">
+                               Liability Report
+                            </h2>
+                            <br/> <h3 class="col-10 offset-6" style="margin-left: 10px;color: #4E4E4E;">
+                              SEARCH LIABILITIES
+                                 </h3>
+                              <form class="form-horizontal" [formGroup]="liabilityReportForm">
+                                <!-- <div style="margin-top: 100px;"> -->
+                                <div class="row" style="margin-top: 30px;">
+                                  <div class="form-group col-md-2" style="margin-left: -80px;"></div>
+                                  <div class="form-group col-md-2" style="margin-left: 50px;">
+                                    <label for="sroname">SRO Name<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <select type="text" name="sroname" class="form-control" formControlName="sroname" (change)="onsroChange($event)" required
+                                            [ngClass]="{ 'is-invalid': submitted && liabilityReportForm.sroname.errors }">
+                                      <option disabled readonly>Select SRO Name</option>
+                                      <option *ngFor="let sro of sroList" [value]="sro.srocode"> {{sro.sronamee}}</option>
+                                    </select>
+                                    <div *ngIf="submitted && liabilityReportForm.sroname.errors" class="invalid-feedback">
+                                      <div *ngIf="liabilityReportForm.sroname.errors.required">SRO Name is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-2" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 120px;">
+                                    <label for="fromdate">From Date<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <input type="date" class="form-control" placeholder="Value"
+                                    formControlName="fromdate" required
+                                    [ngClass]="{ 'is-invalid': submitted && liabilityReportForm.fromdate.errors }">
+                                    <div *ngIf="submitted && liabilityReportForm.fromdate.errors" class="invalid-feedback">
+                                      <div *ngIf="liabilityReportForm.fromdate.errors.required">From Date is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-2" style="margin-left: -80px;"></div> -->
+                                  <div class="form-group col-md-2" style="margin-left: 120px;">
+                                    <label for="todate">To Date<sup style="color: red;font-weight: bold;">*</sup></label>
+                                    <input type="date" class="form-control" placeholder="Value"
+                                    formControlName="todate" required
+                                    [ngClass]="{ 'is-invalid': submitted && liabilityReportForm.todate.errors }">
+                                    <div *ngIf="submitted && liabilityReportForm.todate.errors" class="invalid-feedback">
+                                      <div *ngIf="liabilityReportForm.todate.errors.required">To Date is required</div>
+                                    </div>
+                                  </div>
+                                  <!-- <div class="form-group col-md-1" style="margin-left: -80px;"></div> -->
+                                
+                                </div> <br/><br/>
+                                <div style="text-align: center;">
+                                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                          (click)="getLiabilityReport()">Get Details</button>
+                                </div><br>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <br/> <h2 class="col-10 offset-6" class="propertyHeading"  style="margin-left: 35px;">
+                              Liability Report
+                          </h2>
+                          <div class="row">
+                            <div class="col-md-4">
+                              <span style="margin-left: 40px;">REPORT GENERATED FROM {{fromdate}} TO {{todate}}</span>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                              <span>SRO NAME: {{sro}}</span>
+                            </div>
+                          </div><br><br>
+                            <div class="card-body">
+                              <table class="table table-bordered">
+                                <tr class="bg-primary" >
+                                  <td colspan="11" class="text-white"  style="background-color: #093172;"> Liability Report</td>
+                                </tr>
+                                <tr class="text-center">
+                                  <td rowspan="2">Order Number</td>
+                                  <td rowspan="2">Liability Note</td>
+                                  <td rowspan="2">Liability Date</td>
+                                  <td rowspan="2">Final Registration Number</td>
+                                  <td rowspan="2">Property Schedule</td>
+                                  <td rowspan="2">Property Number Details</td>
+                                  <td rowspan="2">Village</td>
+                                </tr><br/>
+                                <!-- <ng-container *ngIf="resMsg=='No Record Found'; else LiabilityData">
+                                  <tr style="line-height: 14px;">
+                                    <td colspan="7" style="text-align: center;">{{resMsg}}</td>
+                                  </tr>
+                              </ng-container> -->
+                             
+                              <!-- <ng-template> -->
+                                <tr style="line-height: 14px;" class="text-center">
+                                  <!-- <td>{{1}}</td> -->
+                                <!-- <td><input type="radio" name="bhoomiSelect" id="bhoomiSelect"></td> -->
+                                  <td>{{orderNum}}</td>
+                                  <td>{{liabilityNote}}</td>
+                                  <td>{{liabilityDate}}</td>
+                                  <td>{{finalRegNum}}</td>
+                                  <td>{{propertySchedule}}</td>
+                                  <td>{{propertyNumDetails}}</td>
+                                  <td>{{village}}</td>                                </tr>
+                              <!-- </ng-template> -->
+                               
+                              </table> <br/><br/>
+                              <div style="text-align: center;">
+                                <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                                        >Print Report</button>
+                                
+                              </div><br>
+                    
+                            </div>
+                          </div>
+                    
+                        </div>
+                      </div>
+                      <br>
+                      
+                    </ng-container>
+                  </div>
+                  <!-- <div *ngIf="link.id === 2">
+                    <ng-container></ng-container>
+                  </div> -->
+                </mat-tab>
+              </mat-tab-group>
+            <!-- </div> -->
+          <!-- </div> -->
+        </div>
+      </div >
+      
+    </div>
+  </div>
+</main>

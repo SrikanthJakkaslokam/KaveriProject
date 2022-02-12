@@ -1,0 +1,149 @@
+<div class="text-padding">
+    <div>
+        <div class="step1">
+            <p class="title-border ">Document Registration</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <p class="sub-text font-black">DOCUMENT NUMBER</p>
+                <div class="sub-text font-black">{{pendingRegNumberData.pendingregnumber}}</div>
+            </div>
+            <div class="col-md-3">
+                <p class="sub-text font-black">DATE OF PRESENTATION</p>
+                <div class="sub-text font-black">{{pendingRegNumberData.presentDate | date: 'dd/MM/yyyy'}}</div>
+            </div>
+            <div class="col-md-3">
+                <p class="sub-text font-black">APPLICATION TYPE</p>
+                <div class="sub-text font-black">Property Registration</div>
+            </div>
+        </div>
+        <div class="step1" style="margin-top: 60px;">
+            <p class="title-border">Market Valuation and Fee Calculation</p>
+        </div>
+        <div id="valuation-fees" *ngIf="valutions.length; else noValuations">
+            <table style="width: 100%; margin-bottom: 30px;" *ngFor="let value of valutions; let i= index">
+                <p class="property-text">Valuations and Fees {{i + 1}} of {{valutions.length}}</p>
+                <tr>
+                    <td rowspan="10" style="width: 350px; padding: 36px 40px;">
+                        <p class=" mb-0 font-weight-bold mb-4">Property {{i + 1}} of {{valutions.length}}</p>
+                        <p class=" mb-0 td-value">Agricultural plot located in District: Bengaluru (Rural), Taluka:
+                            Devanahalli., Hobli: Vijayapura, Village: Kommasandra, SRO: Kommasandra bearing Survey no.
+                            56
+                            and Hissa no. 2, admeasuring 5000 sq.ft. area.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Market Valuation</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Total Valuation Amount</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold font-blue">{{value.marketvalue | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Consideration Amount</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Total Consideration Amount</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold font-blue"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="7" style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold" style="margin-top: 110px;">Fee Calculation</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Government Duty after Exemption (A)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Surcharge Value (B)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">{{value.surcharge | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Cess Value (C)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">{{value.cess | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Scanning Fees (D)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold"></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Muatation Fees (E)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">{{value.mutationfee | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">Denotation of Stamp duty (F)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold">{{value.deficitstampduty | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border: none;"></td>
+                </tr>
+                <tr cell>
+                    <td style="padding: 12px 200px" colspan="3">
+                        <p class=" mb-0 font-weight-bold">Total Stamp Duty (G)=(A)+(B)+(C)+(D)+(E)-(F)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold font-blue">{{value.stampduty | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 200px" colspan="3">
+                        <p class=" mb-0 font-weight-bold">Total Registration Fees (H)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold font-blue">{{value.registrationfee | currency:"INR":"symbol"}}
+                        </p>
+                    </td>
+                </tr>
+                <tr style="height: 20px;">
+                    <td style="border: none;"></td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 200px" colspan="3">
+                        <p class=" mb-0 font-weight-bold">Total Payable Amount (G)+(H)</p>
+                    </td>
+                    <td style="padding: 12px 42px">
+                        <p class=" mb-0 font-weight-bold font-blue">{{(value.stampduty + value.registrationfee) | currency:"INR":"symbol"}}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ng-template #noValuations>
+            <div class="step1">
+                <h4 class="">No matching records found</h4>
+            </div>
+        </ng-template>
+    </div>
+</div>

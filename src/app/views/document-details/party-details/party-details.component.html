@@ -1,0 +1,166 @@
+<div class="text-padding">
+  <div class="step1">
+    <p class="title-border">Document Registration</p>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p class="sub-text font-black">DOCUMENT NUMBER</p>
+      <div class="sub-text font-black">
+        {{ pendingRegNumberData.pendingregnumber }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">DATE OF PRESENTATION</p>
+      <div class="sub-text font-black">
+        {{ pendingRegNumberData.presentDate | date: "dd/MM/yyyy" }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">APPLICATION TYPE</p>
+      <div class="sub-text font-black">Property Registration</div>
+    </div>
+  </div>
+  <div class="step1" style="margin-top: 60px">
+    <p class="title-border">Party Details</p>
+  </div>
+  <div class="row mb-5">
+    <div class="col-md-3">
+      <p class="font-weight-bold">Party Type</p>
+      <select class="custom-select" (change)="onPartyTypeChange()" id="partyType" [(ngModel)]="partyType">
+        <option selected value="null">Select</option>
+        <option>Presenter</option>
+        <option>Claimant</option>
+        <option>Executant</option>
+        <option>Witness</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <p class="font-weight-bold">Selected Individual or Appearance</p>
+      <select class="custom-select" [(ngModel)]="partyName" (change)="onPartyNameChange()">
+        <option selected value="null">Select</option>
+        <option class="font-weight-bold" [value]="party.partyid" *ngFor="let party of filteredPartyInfos">
+          <ng-container *ngIf="partyType != 'Witness'">{{ party.firstname }} {{ party.middlename }} {{ party.lastname }}</ng-container>          
+          <ng-container *ngIf="partyType == 'Witness'">{{ party.witnessname }}</ng-container>          
+        </option>
+      </select>
+    </div>
+    <div class="col-md-3">
+            <button type="button" class="btn btn-primary px-4" style="margin-top:30px" [disabled]="isactive" routerLink="/party-ekyc">PartyeKYC</button>
+    </div>
+  </div>
+  <div class="row pb-4" style="border-bottom: 1px solid #000">
+    <div class="col-md-3">
+      <p class="sub-text font-black m-0">
+        PARTY TYPE: <b>{{ selectedParty?.partytypeid }}</b>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <p class="sub-text font-black m-0">
+        INDIVIDUAL/ORGANIZATION:
+        <b>{{
+          selectedParty.isorganization === true
+          ? "Organization"
+          : selectedParty.isorganization === false
+          ? "Individual"
+          : null
+          }}</b>
+      </p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-3 mb-3">
+      <p class="sub-text font-black">
+        FIRST NAME: <b>{{ selectedParty.firstname }}</b>
+      </p>
+    </div>
+    <div class="col-md-3 mb-3">
+      <p class="sub-text font-black">
+        MIDDLE NAME: <b>{{ selectedParty.middlename }}</b>
+      </p>
+    </div>
+    <div class="col-md-3 mb-3">
+      <p class="sub-text font-black">
+        LAST NAME: <b>{{ selectedParty.lastname }}</b>
+      </p>
+    </div>
+    <div class="col-md-3 mb-3">
+      <p class="sub-text font-black">
+        AGE: <b>{{ selectedParty.age }}</b>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">
+        SEX:
+        <b *ngIf="selectedParty">{{
+          selectedParty.sex === 0
+          ? "Male"
+          : selectedParty.sex === 1
+          ? "Female"
+          : ""
+          }}</b>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">
+        ADDRESS: <b>{{ selectedParty.address }}</b>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">
+        PAN: <b>{{ selectedParty.pan }}</b>
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">
+        PROFESSION: <b>{{ selectedParty.profession }}</b>
+      </p>
+    </div>
+  </div>
+  <div class="row mt-5" *ngIf="toggleWebCamThumb()">
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <div class="d-flex justify-content-start flex-column align-items-center">
+        <p class="marg-24">PHOTOGRAPH</p>
+        <div>
+          <video id="webcam" autoplay playsinline height="250" style="margin: 0 auto; width: 90%"></video>
+          <canvas id="canvas" class="d-none"></canvas>
+          <!-- <audio id="snapSound" src="audio/snap.wav" preload="auto"></audio> -->
+          <img id="captured-img" [src]="img | safehtml" style="height: 250px; display: none; margin: auto;" />
+        </div>
+        <ng-container *ngIf="mode === 'capture'">
+          <p class="font-blue font-weight-bold mt-4 cursor-pointer" id="capture-img" (click)="captureImg()">CAPTURE</p>
+        </ng-container>
+        <ng-container *ngIf="mode === 'reCapture'">
+          <p class="font-blue font-weight-bold mt-4 cursor-pointer" style="width: 100%; padding: 0px 9%;" id="recapture-img"><span (click)="recaptureImg()">RECAPTURE</span><span class="float-right" 
+            (click)="saveImg()">SAVE</span></p>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="d-flex justify-content-start flex-column align-items-center">
+        <div>
+          <select class="custom-select" style="margin-bottom: 12px;" [(ngModel)]="fingerName">
+            <option selected value="null">Select</option>
+            <option *ngFor="let finger of fingers">{{finger}}</option>
+          </select>
+        </div>
+        <div style="
+            width: 90%;
+            height: 250px;
+            border: 1px solid #707070;
+            margin: 0 auto;
+          ">
+          <img id="captured-bio" [src]="capturedImage" alt="" style="width: 100%; height: 250px" *ngIf="capturedImage" />
+        </div>
+        <ng-container *ngIf="tMode === 'capture'">
+          <p class="font-blue font-weight-bold mt-4 cursor-pointer" id="capture-img" (click)="captureThumb()">CAPTURE</p>
+        </ng-container>
+        <ng-container *ngIf="tMode === 'reCapture'">
+          <p class="font-blue font-weight-bold mt-4 cursor-pointer" style="width: 100%; padding: 0px 9%;" id="recapture-img"><span (click)="recaptureThumb()">RECAPTURE</span><span class="float-right" 
+            (click)="saveThumb()">SAVE</span></p>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

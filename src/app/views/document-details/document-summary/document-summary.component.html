@@ -1,0 +1,483 @@
+<main class="main">
+    <div class="row">
+        <div class="col-sm">
+            <div class="row document-registration">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 16px">Document Registration
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DOCUMENT NUMBER</label><br>
+                            <label
+                                style="font-weight: 12px;font-weight: 600;">{{pendingRegNumberData?.pendingregnumber}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DATE OF
+                                PERSENTATION</label><br>
+                            <label style="font-size: 12px;font-weight:  600;">{{pendingRegNumberData?.presentDate |
+                                date: 'dd-MM-yyyy'}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">DATE OF
+                                EXECUTION</label><br>
+                            <label *ngIf="documentSummary.finalregistrationnumber; else noFinalRegdNo">{{documentSummary.executedate | 
+                                date: 'dd-MM-yyyy'}}</label>
+                            <ng-template #noFinalRegdNo>
+                                <input type="date" class="form-control col-sm-8" placeholder="Value"
+                                    [(ngModel)]="dateOfExecution" id="value">
+                            </ng-template>                                
+                        </div>
+                        <div class="col-md-3">
+                            <label style="font-size: 12px;font-weight: 600;">APPLICATION
+                                TYPE</label><br>
+                            <label style="font-size: 12px;font-weight: 600;">Property
+                                Registration</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div> <br>
+            <div class="row buttons" *ngIf="documentSummary.finalregistrationnumber === null">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary" (click)="generate()"
+                        [disabled]="dateOfExecution === undefined">Generate</button>
+                </div>
+            </div><br>
+            <ng-container *ngIf="isGenerated">
+                <div class="row document-summary-i">
+                    <div style="margin-left: 3px;">
+                        <p>
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <label style="font-weight: bold; font-size: 16px">Document Summary
+                        </label>
+                    </div>
+                </div><br />
+                <ng-container *ngTemplateOutlet="printDocument"></ng-container>
+                <iframe #iframe style="display: none;"></iframe>
+                <div class="row buttons">
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary mr-3" (click)="printMainContent()">Print</button>
+                        <button type="button" class="btn btn-primary" *ngIf="deptData.designationid === 4" (click)="navToEndorsement()">Save</button>
+                        <button type="button" class="btn btn-primary" *ngIf="deptData.designationid === 1" (click)="sroApproval()">Approve</button>                        
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</main>
+<ng-template #printDocument>
+    <div class="row" id="print-mode-document">
+        <div class="col-sm">
+            <div class="document-header" style="display: flex;">
+                <div>
+                    <img src="assets/logo.png">
+                </div>
+                <div style="padding-left: 15px;">
+                    <h1 style="margin: 0px !important;
+                    font-weight: bold;
+                    color: #659bff;
+                    font-size: 18px;
+                    font-family: Segoe UI;">Department of Stamps & Registration</h1>
+                    <h4 style="font-size: 16px; font-weight: bold; margin: 0px;">Government of Karnataka</h4>
+                </div>
+            </div><br />
+            <div class="row document-summary">
+                <div class="col-sm" style="text-align: center;">
+                    <p style=" margin-top: 15px;
+                    font-size: 22px;
+                    font-weight: bold;
+                    font-family: Segoe UI;">DOCUMENT SUMMARY REPORT </p>
+                </div>
+            </div>
+            <div class="row document-details">
+                <div class="col-md-3">
+                    <h3 style="margin-top: 15px; font-weight: bold; font-family: Segoe UI;">Document Details :</h3>
+                </div>
+            </div>
+            <div class="row document-table">
+                <div class="col-md-8">
+                    <table class="table-bordered"
+                        style="width: 40vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Document Number:
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{pendingRegNumberData?.pendingregnumber}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Book: </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{documentSummary.book}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">No. of Pages :
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{documentSummary.pagecount}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Nature of Deed :
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{documentSummary.naturedeed}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Stamp Article :
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{documentSummary.stamparticlename}}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Execution Date :
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{dateOfExecution
+                                | date: 'dd-MM-yyyy'}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row document-details">
+                <div class="col-md-12">
+                    <h3>Stamp Duty Payment Details : </h3>
+                    <div class="row document-table ml-0">
+                        <div class="col-md-12 pl-0">
+                            <table class="table-bordered"
+                                style="width: 70vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Sr. No.
+                                    </th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Payment
+                                        Mode</th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Amount (In
+                                        Rs.)</th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">DD/Challan
+                                        Description</th>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">NA</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">NA</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">NA</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">NA</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row document-details">
+                <div class="col-md-12">
+                    <h3>Receipt Payment Details : </h3>
+                    <div class="row document-table">
+                        <div class="col-md-8">
+                            <table class="table-borderless" style="width: 70vw;">
+                                <tr>
+                                    <td style="font-weight: 600;">Receipt Number : </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Receipt : </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount Paid By : <br>
+                                        Total Receipt Amount (In Rs.): </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 600;">Fees Description *</td>
+                                    <td style="font-weight: 600;">Amount (In Rs.) *</td>
+                                </tr>
+                                <tr>
+                                    <td>[1.] Registration Fee</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>[2.] Scanning Fee </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: 600;">Amount (In Rs.) ** </td>
+                                    <td style="font-weight: 600;">Payment Mode **</td>
+                                    <td style="font-weight: 600;">Description **</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-bottom: 2rem;">
+            <ng-container *ngFor="let property of documentSummary.propertyinfo;">
+                <div id="document-summary">
+                    <div class="row">
+                        <div class="col-md-12 document-summary">
+                            <p><span class="vill">Index II village: </span><span class="adoor">{{property.villagenamee}}
+                                    Property Type:</span><span class="urban"> {{property.propertytype}}</span></p>
+                        </div>
+                        <div class="col-md-12 document-boundary mt-3">
+                            <p>Boundary Details: </p>
+                            <div>
+                                <h5 class="ml-3"> [East] : {{property.eastboundary}} [West] : {{property.westboundary}}
+                                </h5>
+                            </div>
+                            <div>
+                                <h5 class="ml-3">[North] : {{property.northboundary}} [South] :
+                                    {{property.southboundary}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12 document-value">
+                            <p class="valuation" style="font-size: 16px; font-weight: bold;">Valuation Details: </p>
+                        </div>
+                        <div class="col-md-10" style="text-align: justify;">
+                            Estimated value of the property based on the description available
+                            in the
+                            document/application as per guidelines. Property Description Name of
+                            the
+                            Presenter/Applicant: <b>{{presenterDetails.partyname}}</b> Description of Property :kkhdsjk
+                            hfjkdshf
+                            jkdshf
+                            jdkshfjdskh f
+                            Article :Conveyance District :Koppal Taluk :Yelburga ( Kukanoor
+                            Hobli ) SRO
+                            :<b>{{property.sroname}}</b> Location of Property: <b>{{property.villagenamee}}</b> Property
+                            Type
+                            =
+                            <b>{{property.propertytype}}</b> - <b>{{property.propertytype}}</b> Estimated Guideline Rate
+                            = Rs. 74.32
+                            /Sq.Feet Area
+                            Site/Land Area = 1 Sq.Feet Site/Land Component Site/Land area = 1
+                            Sq.Feet
+                            Estimated
+                            Guideline Rate for Site area = Rs. 74.32 /Sq.Feet Value of Site Area
+                            =
+                            Rs.74.32
+                            Total Estimated Market Value(EMV)of the Property = <b>{{property.marketvalue | currency:
+                                'INR' : 'Rs.'}}</b> (<b>Rs.{{property.marketvalue | amountToWord}}
+                                only</b>).
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 document-value">
+                            <p class="valuation mt-4" style="font-size: 16px; font-weight: bold;">**All Duties below are
+                                in Rs.**</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <p>Consideration : [{{property.consideration}}] Market Value : [{{property.marketvalue}}]
+                            </p>
+                            <p>Govt.Duty : [{{property.stampduty}}] CESS Duty : [{{property.cessduty}}] Additional :
+                                [{{property.additionalduty}}] </p>
+                            <p>Stamp Duty : [5000.00] </p>
+                            <p>Land Mark : {{property.landmark}}, Property Type: {{property.propertytype}},
+                                Index-II
+                                Village: {{property.villagenamee}}, Hobli Name: , Area Name: ,
+                                Measurement: , East To West: , North To South: </p>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-12 document-boundary">
+                            <p class="schedule" style="font-size: 16px;
+                            font-weight: bold;
+                            font-family: Segoe UI;">Schedule Description</p>
+                        </div>
+                    </div>
+                    <div class="row document-table">
+                        <div class="col-md-12">
+                            <table class="table-bordered"
+                                style="width: 70vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                                <tr>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Schedule
+                                        Type</th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Area</th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        Description</th>
+                                    <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Bhoomi
+                                        Parties</th>
+                                </tr>
+                                <tr *ngFor="let schedule of property.propertyschedules">
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{schedule.scheduletype}}</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{schedule.totalarea}}</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{schedule.scheduledescription}}</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{schedule.scheduleparties}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div> <br>
+                    <div class="row">
+                        <div class="col-md-12 document-boundary">
+                            <p class="schedule" style="font-size: 16px;
+                            font-weight: bold;
+                            font-family: Segoe UI;">Property Number Details</p>
+                        </div>
+                    </div>
+                    <div class="row document-table mt-1">
+                        <div class="col-md-12">
+                            <table class="table-bordered"
+                                style="width: 60vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                                <tr>
+                                    <th scope="col"
+                                        style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Property
+                                        Number Type</th>
+                                    <th scope="col"
+                                        style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Numbers
+                                    </th>
+                                    <th scope="col"
+                                        style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Add.
+                                        Description</th>
+                                </tr>
+                                <tr *ngFor="let propertyNo of property.propertynumberdetails">
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;"
+                                        scope="row">{{propertyNo.propertynumbertype}}</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{propertyNo.currentnumber}}</td>
+                                    <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                        {{propertyNo.propertynumberdescription}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- <ng-template #noProperties>
+                <div class="row">
+                    <div class="col-sm">
+                        <h4>No properties found</h4>
+                    </div>
+                </div>
+            </ng-template> -->
+            <hr style="margin-top: 2rem;">
+            <div class="row document-boundary mt-4">
+                <div class="col-md-12">
+                    <p class="" style="font-size: 16px;
+                    font-weight: bold;
+                    font-family: Segoe UI;">Party Details :</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table-bordered text-center"
+                        style="width: 80vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                        <tr>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Sr.No</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Party Name , Age ,
+                                Address , Profession</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Party Type</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Is Executor</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Is Presenter</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Admission Date
+                            </th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Sec. 88 Exemption
+                            </th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Photo</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Thumb</th>
+                        </tr>
+                        <tr *ngFor="let party of documentSummary.partyinfo; let i = index">
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{i + 1}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{party.partyname}}, {{party.age}}, {{party.address}}, {{party.profession}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{party.partytypename}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{party.isexecutor
+                                ? 'Yes': 'No'}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{party.ispresenter ? 'Yes': 'No'}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{party.admissiondate | date: 'dd-MM-yyyy'}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{party.section88exemption ? 'Yes': 'No'}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;"><img width="70px"
+                                    [src]="party.imageData ? ('data:image/png;base64,' + party.imageData.photo | safehtml) : null"
+                                    alt="" /></td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;"><img width="70px"
+                                    [src]="party.imageData ? ('data:image/bmp;base64,' + party.imageData.thumb | safehtml) : null"
+                                    alt="" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row document-boundary mt-3">
+                <div class="col-md-12">
+                    <p>Identifying Parties:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table-bordered"
+                        style="width: 70vw; border: 1px solid #c8ced3; border-collapse: collapse;">
+                        <tr>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Sr.No</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Witness Name</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Address</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Age</th>
+                            <th style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">Profession</th>
+                        </tr>
+                        <tr *ngFor="let witness of documentSummary.witnessinfo; let i = index">
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{i + 1}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{witness.name}}
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{witness.address}}</td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">{{witness.age}}
+                            </td>
+                            <td style="border: 1px solid #c8ced3; padding: 5px 8px; font-size: 14px;">
+                                {{witness.profession}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div
+                style="display: flex; justify-content: space-between; padding: 2rem 14rem 0px 0px; font-size: 16px; font-weight: normal;">
+                <div>
+                    <h4 style="font-weight: normal; font-size: 14px;">Signature of Presenter</h4>
+                </div>
+                <div>
+                    <h4 style="font-weight: normal; font-size: 14px;">Signature of Operator</h4>
+                </div>
+                <div>
+                    <h4 style="font-weight: normal; font-size: 14px;">Signature of SDA/FDA</h4>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; margin: 2rem 4rem 0px 0px;">
+                <div>
+                    <p style="font-size: 16px; 
+                    font-weight: 600;">Signature of Sub-Registrar</p>
+                </div><br>
+            </div>
+            <div class="row" style="margin-top: 3rem;">
+                <div class="col-md-12">
+                    <div>
+                        <p style="font-size: 14px; font-weight: 600;">* Note: Please Mention
+                            Document Number and CD Number after Registration
+                        </p>
+                    </div>
+                    <div>
+                        <p style="font-size: 14px; font-weight: 600;"> * Note: If total number of
+                            parties exceed more than 100, Thumb print of parties shall not be
+                            displayed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

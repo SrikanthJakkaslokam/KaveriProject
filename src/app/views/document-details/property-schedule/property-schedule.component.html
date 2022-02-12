@@ -1,0 +1,64 @@
+<div class="text-padding">
+  <div class="step1">
+    <p class="title-border">Document Registration</p>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p class="sub-text font-black">DOCUMENT NUMBER</p>
+      <div class="sub-text font-black">{{pendingRegNumberData?.pendingregnumber}}</div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">DATE OF PRESENTATION</p>
+      <div class="sub-text font-black">{{pendingRegNumberData?.presentDate | date: 'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black">APPLICATION TYPE</p>
+      <div class="sub-text font-black">Property Registration</div>
+    </div>
+  </div>
+</div>
+<div class="step2 text-padding">
+  <p class="title-border">Property Details</p>
+</div>
+<div id="property-schedule" *ngIf="propertySchedules.length > 0; else noProperties">
+  <div class="text-padding" *ngFor="let property of propertySchedules; let i = index">
+    <p class="property-text">Property {{i + 1}} of {{properties.length}}</p>
+    <div class="row">
+      <div class="col-md-3">
+        <p class="sub-text font-black">SCHEDULE: <b>{{property.scheduleid}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">AREA: <b>{{property.totalarea}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">EAST TO WEST: <b>{{property.easttowest}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">NORTH TO SOUTH: <b>{{property.northtosouth}}</b></p>
+      </div>
+    </div>
+    <p class="boundary-text">BOUNDARIES:</p>
+    <div class="row">
+      <div class="col-md-3">
+        <p class="sub-text font-black">NORTH: <b>{{property.northboundary}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">EAST: <b>{{property.eastboundary}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">WEST: <b>{{property.westboundary}}</b></p>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black">SOUTH: <b>{{property.southboundary}}</b></p>
+      </div>
+    </div>
+    <div class="schedule-text">
+      DESCRIPTION: <b>{{property.description}}</b>
+    </div>
+  </div>  
+</div>
+<ng-template #noProperties>
+  <div class="step2 text-padding">
+    <h4 class="">No matching records found</h4>
+  </div>
+</ng-template>

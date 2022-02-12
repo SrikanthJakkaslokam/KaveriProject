@@ -1,0 +1,133 @@
+<main class="main">
+    <div class="row">
+        <div class="col-sm">
+            <div class="row document-registration">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div style="margin-left: 3px;">
+                            <p style="width: 4px; height: 25px;border-radius: 3px; background: rgb(57, 81, 192);">
+                            </p>
+                        </div>
+                        <div class="col-md-5">
+                            <label style="font-weight: bold;font-size: 15px">Document Registration
+                            </label>
+                        </div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="header-text">DOCUMENT NUMBER</label><br>
+                            <label class="header-text">{{acknowledgementData.finalRegistrationNumber}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">DATE OF
+                                PRESENTATION</label><br>
+                            <label class="header-text">{{acknowledgementData.presentDate | date: 'dd/MM/yyyy'}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">DATE OF EXECUTION
+                            </label><br>
+                            <label class="header-text">{{acknowledgementData.executeDate | date: 'dd/MM/yyyy'}}
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="header-text">APPLICATION
+                                TYPE</label><br>
+                            <label class="header-text">Property
+                                Registration</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row acknowledgement-header">
+                <div style="margin-left: 3px;">
+                    <p></p>
+                </div>
+                <div class="col-md-5">
+                    <label style="font-weight: bold;font-size: 15px">Acknowledgement Slip
+                    </label>
+                </div>
+            </div>
+            <ng-container *ngTemplateOutlet="printDocument"></ng-container>
+            <iframe #iframe style="display: none;"></iframe>
+            <div class="row buttons">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary mr-3" (click)="printMainContent()">Print Acknowledgement Slip</button>
+                    <button type="button" class="btn btn-primary" *ngIf="applicationData.currentStatus !== 'CD120'" (click)="regdCompleteCTA()">Document Registration Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<ng-template #printDocument>
+    <div class="row" style="margin: 20px 45px 45px 45px;">
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="font-family: 'Libre Barcode 39';font-size: 22px;"> <img
+                            src="https://i.imgur.com/lhlX7sC.gif" width="180"></p>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center;">
+                    <img src="assets/logo.png" style="width: 75px;">
+                    <p style="font-size: 18px; font-weight: 600; padding-top: 10px;">
+                        Department of Registration and Stamps</p>
+                    <p style="font-size: 18px; font-weight: 600;">
+                        Acknowledgement Slip</p>
+                </div>
+            </div>
+            <hr style="border-width: 2px;">
+            <div style="margin-left: 2rem;">
+                <p>The document has been registered with</p>
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                    <div style="flex-grow: 1;">
+                        <p style="font-size: 14px;">Document No</p>
+                        <p style="font-size: 14px;">Date of Registration</p>
+                        <p style="font-size: 14px;">Date of Scanning</p>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <p style="font-size: 14px; font-weight: 600;">{{acknowledgementData.finalRegistrationNumber}}</p>
+                        <p style="font-size: 14px; font-weight: 600;">{{acknowledgementData.registrationDate | date: 'dd/MM/yyyy HH:mm'}}</p>
+                        <p style="font-size: 14px; font-weight: 600;">{{acknowledgementData.scanningDate | date: 'dd/MM/yyyy HH:mm'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 2rem; margin-top: 25px;">
+                <h2 style="text-decoration: underline;
+                text-align: center; font-size: 22px;">Certificate</h2>
+                <p style="text-align: center;
+                font-size: 15px;">Certified that, all the pages of this document have been <br /> properly scanned and
+                    stored.</p>
+            </div>
+            <div
+                style="display: flex; flex-direction: row; justify-content: space-evenly; margin-left: 2rem; margin-top: 3rem;">
+                <div style="flex-grow: 2;">
+                    <h3 style="font-weight: 600;">Verified by</h3>
+                    <br>
+                    <h3 style="font-weight: 600;">SDA/FDA</h3>
+                    <!-- <p><b>{{currentDate | date: 'fullDate'}}</b></p> -->
+                    <p>The Document has been delivered to <span><b></b></span></p>
+                </div>
+                <div style="flex-grow: 1;">
+                    <h3></h3>
+                    <br>
+                    <h3 style="font-weight: 600;">Sub Registrar</h3>
+                    <h4 style="font-weight: 600;"></h4>
+                </div>
+            </div>
+            <hr style="border-width: 2px;">
+            <div style="margin-left: 2rem; margin-bottom: 3rem;">
+                <p>I have received the above document in original and certify that, no papers pertaining to <br> the
+                    said document are remaining with the Sub Registrar.</p>
+            </div>
+            <div style="display: flex; justify-content: space-evenly; margin-left: 2rem;">
+                <div style="flex-grow: 1.75;">
+                    <p>Date: <b>{{currentDate | date: 'dd/MM/yyyy HH:mm:ss a'}}</b></p>
+                </div>
+                <div style="flex-grow: 1;">
+                    <p style="font-size: 15px;"><b>Signature</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

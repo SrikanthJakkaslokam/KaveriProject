@@ -1,0 +1,1332 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+  [navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+  [navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+  [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+    style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg"
+            class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active"
+        routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+  <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+    <dxi-item>
+      <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+    </dxi-item>
+    <dxi-item>
+      <span>About Department</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Resources</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>External Links</span>
+    </dxi-item>
+    <dxi-item>
+      <span>Help</span>
+    </dxi-item>
+  </dx-tabs>
+</app-header>
+
+<main class="main">
+
+  <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+
+    <div class="animated fadeIn">
+
+      <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;font-family: Segoe UI">
+        <div class="col-md-12">
+          <div class="card">
+
+            <div class="card-body">
+              <div>
+                <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/fee-calculation"><br>
+              </div><br><br>
+              <div>
+                <img src="assets/img/avatars/party-1.png">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-left: -80px;margin-right: -25px;">
+        <div class="col-md-4">
+          <div class="card">
+            <br>
+            <div style="text-align: left;">
+              <h3 style="font-weight: bold;margin-left: 20px;">Select the Party</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <img src="assets/img/avatars/party-3.png">
+                </div>
+                <div class="col-md-10">
+
+                  <div class="card" style="margin-top: 10px;">
+                    <span style="padding: 10px;font-weight: bold;" routerLink="/party-details">PRESENTER</span>
+                  </div>
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-2">
+                  <img src="assets/img/avatars/party-3.png">
+                </div>
+                <div class="col-md-10">
+
+                  <div class="card" style="margin-top: 10px;">
+                    <span style="padding: 10px;font-weight: bold;cursor: pointer;"
+                      routerLink="/party-details-executant">EXECUTANT</span>
+                  </div>
+                </div>
+              </div><br>
+              <div class="row">
+                <div class="col-md-2">
+                  <img src="assets/img/avatars/party-3.png">
+                </div>
+                <div class="col-md-10">
+
+                  <div class="card" style="margin-top: 10px;">
+                    <span style="padding: 10px;font-weight: bold;cursor: pointer;"
+                      routerLink="/party-details-witness">IDENTIFIERS</span>
+                  </div>
+                </div>
+              </div><br>
+              <!-- <div class="row">
+                    <div class="col-md-2">
+                      <img src="assets/img/avatars/party-3.png">
+                    </div>
+                    <div class="col-md-10">
+                      
+                      <div class="card" style="margin-top: 10px;">
+                        <span  style="padding: 10px;font-weight: bold;">PRESENTER</span>
+                      </div>
+                    </div>
+                  </div><br>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img src="assets/img/avatars/party-3.png">
+                    </div>
+                    <div class="col-md-10">
+                      
+                      <div class="card" style="margin-top: 10px;">
+                        <span  style="padding: 10px;font-weight: bold;">AUTHORITY HOLDER</span>
+                      </div>
+                    </div>
+                  </div>  -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8" style="font-family: Segoe UI">
+          <div class="card">
+            <br>
+            <div style="text-align: left;">
+              <h3 style="font-weight: bold;margin-left: 20px;">Enter the Details</h3>
+            </div>
+            <div class="card-body">
+              <!-- <div id="scrolledtabs">
+                                    <dx-tabs
+                                        [scrollByContent]="true"
+                                        [showNavButtons]="true"
+                                    >
+                                        <dxi-item [width]="50">
+                                      <span>EXECUTANT 1</span>
+                                  </dxi-item>
+                                  <dxi-item [width]="50">
+                                    <span>EXECUTANT 1</span>
+                                </dxi-item>
+                                <dxi-item [width]="50">
+                                  <span>EXECUTANT 1</span>
+                              </dxi-item>
+                              <dxi-item [width]="50">
+                                <span>EXECUTANT 1</span>
+                            </dxi-item>
+                            <dxi-item [width]="50">
+                              <span>EXECUTANT 1</span>
+                          </dxi-item>
+                                </dx-tabs></div> -->
+              <nav mat-tab-nav-bar [backgroundColor]="background">
+                <div mat-tab-link *ngFor="let link of links; let index = index" (click)="activeLink = link"
+                  [active]="activeLink == link">PRESENTER</div>
+                <!-- <div mat-tab-link *ngFor="let link of links; let index = index"
+                                     (click)="activeLink = link"
+                                     [active]="activeLink == link"> {{link}}&emsp;<button [disabled]="links.length === 1"
+                                     (click)="removeTab(index)"><img src="assets/img/avatars/close (2).png" ></button>&nbsp;&nbsp;<img src="assets/img/avatars/plus.png" (click)="addLink()"> </div> -->
+                <!-- <mat-tab-group [selectedIndex]="selected.value"
+                                     (selectedIndexChange)="selected.setValue($event)">
+                        <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+                          Contents for {{tab}} tab
+                        </mat-tab>
+                      </mat-tab-group> -->
+              </nav>
+
+              <!-- <button mat-raised-button class="example-action-button" (click)="toggleBackground()">
+                                  Toggle background
+                                </button> -->
+              <!-- <button mat-raised-button class="example-action-button" (click)="addLink()">
+                                  Add link
+                                </button> -->
+              <br>
+
+
+              <form [formGroup]="presenterForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+                <div style="padding: 50px">
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span>Who is presenting</span>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="Executant" id="radio1" value=""
+                          [checked]="isClaimant" (click)="ClaimantChange()" formControlName="Executant">
+                        <label class="form-check-label" for="radio1">
+                          Claimant
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="Executant" id="radio2" value="Executant"
+                          [checked]="isExecutant" (click)="ExicutentChange()" formControlName="Executant">
+                        <label class="form-check-label" for="radio2">
+                          Executant
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                  </div><br><br>
+
+
+                  <!-- <div class="row">
+                    <div class="col-md-4">
+                      <span>Property number</span>
+                    </div>
+   
+                    <div class="col-md-2" *ngFor="let propertyno of propertyView">
+                      <div class="form-check">
+                        <input class="form-check-input" [checked]="checkbox" (change)="propertyexecutent($event)" type="checkbox" name="{{propertyno.currentnumber}}">
+                        <label class="form-check-label">
+                          {{propertyno.currentnumber}}
+                        </label>
+                      </div>
+                    </div>
+        
+                  </div><br><br> -->
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <span>Whether Individual or Organization</span>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+
+                        <input class="form-check-input" type="radio" name="oradio" id="radio5" value="option3"
+                          formControlName="PREFirstInd" [checked]="IsPREFirstInd" (change)="IndividualChange()">
+                        <label class="form-check-label" for="radio5">
+                          Individual
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="oradio" id="radio6" value="option4"
+                          formControlName="PREFirstOrg" [checked]="PREFirstOrg" (change)="OrganizationChange()">
+                        <label class="form-check-label" for="radio6">
+                          Organization
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                  </div><br><br>
+                  <ng-container *ngIf="VisibleIndividual">
+              
+                    <div class="row">
+
+                      <div class="form-group col-md-4">
+                        <label for="salInd">Salutation*</label>
+                        <select type="text" name="salInd" class="form-control" formControlName="salInd" [ngStyle]="salutation ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Value</option>
+                          <option *ngFor="let s of salutations" [value]="s.salutationid"> {{s.descriptione}}</option>
+                        </select>
+                        <div  *ngIf="salutation">
+                          <div style="color: #f86c6b;font-size: 80%;">Salutation is required</div>
+                        </div>
+                      </div>
+                      <br>
+
+                      <div class="form-group col-sm-4">
+                        <label>First Name*</label>
+                        <input
+                          type="text"
+                          formControlName="IFirstName"
+                          placeholder="Value"
+                          class="form-control"
+                          [ngStyle]="firstnameInd ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          
+                        />
+                        <div *ngIf="firstnameInd">
+                          <div style="color: #f86c6b;font-size: 80%;">First Name is required</div>
+                        </div>
+                      </div>
+
+                      <!-- <div class="form-group col-sm-4">
+                        <label for="IFullname">First Name*</label>
+                        <input type="text" class="form-control" 
+                        formControlName="IFirstName" [ngClass]="{ 'is-invalid': submitted && f.IFirstName.errors }" />
+                          <div *ngIf="submitted && f.IFirstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.IFirstName.errors.required">Username is required</div>
+                      
+                          </div>
+                      </div> -->
+                      <div class="form-group col-sm-4">
+                        <label for="IFullname">Middle Name</label>
+                        <input type="text" class="form-control" id="IMiddleName" placeholder="Value"
+                          formControlName="IMiddleName" />
+                      </div>
+                    
+                    </div><br>
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="ILastName">Last Name</label>
+                        <input type="text" class="form-control" id="ILastName" placeholder="Value"
+                          formControlName="ILastName" />
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="IAliasName">Alias Name</label>
+                        <input type="text" class="form-control" id="IAliasName" placeholder="Value"
+                          formControlName="IAliasName">
+                      </div>
+                      <!-- <div class="form-group col-sm-4">
+                              <label for="Fullname">Corrected Name</label>
+                              <input type="text" class="form-control" id="CorrectedName" placeholder="Value" required formControlName="CorrectedName">
+                            </div> -->
+                    
+                      <!-- <div class="form-group col-sm-4">
+                              <label for="Fullname">Gender</label>
+                              <input type="text" class="form-control" id="Sex" placeholder="Value" required formControlName="Sex">
+                            </div> -->
+                          
+                    </div><br>
+                    <div class="row">
+                     
+
+                      <div class="form-group col-sm-4">
+                        <label for="IAge">Age*</label>
+                        <input type="text" class="form-control" id="IAge" placeholder="Value"
+                          formControlName="IAge" [ngStyle]="ageInd ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <div *ngIf="ageInd">
+                            <div style="color: #f86c6b;font-size: 80%;">Age is required</div>
+                          </div>
+                      </div>
+                <div class="form-group col-md-4">
+                  <label for="ISex">Gender*</label>
+                  <select type="text" name="ISex" class="form-control" formControlName="ISex" [ngStyle]="genderInd ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                    <option disabled readonly>Select Gender</option>
+                    <option *ngFor="let d of IgenderList" [value]="d.genderid"> {{d.descriptione}}</option>
+                  </select>
+                  <div *ngIf='genderInd' >
+                    <div style="color: #f86c6b;font-size: 80%;">Gender is required</div>
+                  </div>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="IProfession">Profession</label>
+                  <input type="text" class="form-control" id="IProfession" placeholder="Value" required
+                    formControlName="IProfession">
+                </div>
+                      <div class="form-group col-sm-3">
+                        <label for="IIdType">Id Proof Type</label>
+                        <select type="text" name="IIDproof" class="form-control" formControlName="IIDproof">
+                          <option disabled readonly>Select Id Proof</option>
+                          <option *ngFor="let id of idProofType" [value]="id.idprooftypeid">{{id.description}}</option>
+                        
+                        </select>
+                      </div>
+                     
+                      <div class="form-group col-sm-3">
+                        <label for="IPAN">Id No.</label>
+                        <input type="text" class="form-control" placeholder="Value"
+                          formControlName="IPAN" maxlength='10' minlength='10'>
+  
+                      </div>
+                      <div class="form-group col-sm-3"><label for=""></label>
+                        <a class="nav-link" style="cursor:pointer;color: #0a429b;font:bold;font-size: medium;">Verify</a>
+                      </div>
+                    </div><br>
+                    <div class="row">
+  
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label style="font: bold;font-size: medium;">Address Details*</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- <div class="form-group col-sm-4">
+                        <label for="IHouseNo">House No/Building Name*</label>
+                        <input type="text" class="form-control" id="IHouseNo" placeholder="Value" required
+                          formControlName="IHouseNo">
+                      </div> -->
+
+                      <div class="form-group col-sm-4">
+                        <label for="IHouseNo">House No/Building Name*</label>
+                        <input type="text" class="form-control" id="IHouseNo" placeholder="Value"
+                          formControlName="IHouseNo" [ngStyle]="inhousenoInd ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <div *ngIf="inhousenoInd">
+                            <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                          </div>
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="Istreet">Street Address*</label>
+                        <input type="text" class="form-control" id="Istreet" placeholder="Value" required
+                          formControlName="Istreet" [ngStyle]="streetAddressInd ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <div *ngIf="streetAddressInd">
+                            <div style="color: #f86c6b;font-size: 80%;">Street Address is required</div>
+                          </div>
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="IState">State*</label>
+                        <select type="text" name="IState" class="form-control" formControlName="IState" [ngStyle]="state ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select State</option>
+                          <option value="1">Karnataka</option>
+                          <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                        </select>
+                        <div *ngIf="state">
+                                    <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                                </div>
+                      </div>
+                    </div><br>
+                    <div class="row">
+  
+                      <div class="form-group col-md-4">
+                        <label for="Idistrict">District*</label>
+                        <select type="text" name="IDistrict" class="form-control" formControlName="IDistrict"
+                          [(ngModel)]="Iselecteddistvalue" (ngModelChange)="IondistrictValuechange($event)"
+                          (change)="IondistrictChange($event)" [ngStyle]="district ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select District</option>
+                          <option *ngFor="let d of IdistrictList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                        </select>
+                        <div *ngIf="district">
+                          <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                      </div>
+  
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="Italuka">Taluka*</label>
+                        <select type="text" name="Italuka" class="form-control" formControlName="Italuka"
+                          [(ngModel)]="Iselectedtalukvalue" (ngModelChange)="IontalukValuechange($event)"
+                          (change)="IontalukaChange($event)"  [ngStyle]="taluka ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Taluka</option>
+                          <option *ngFor="let d of ItalukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                        </select>
+                        <div *ngIf="taluka">
+                          <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                      </div>
+                        <!-- <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                                <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                            </div> -->
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="Ihobli">Hobli*</label>
+                        <select type="text" name="Ihobli" class="form-control" formControlName="Ihobli"
+                          [(ngModel)]="Iselectedhoblivalue" (ngModelChange)="IonhobliValuechange($event)"
+                          (change)="IonhobliChange($event)" [ngStyle]="hobli ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Hobli</option>
+                          <option *ngFor="let d of IhobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                        </select>
+                        <div *ngIf="hobli">
+                          <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                      </div>
+                        <!-- <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                              <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                          </div> -->
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="ICity">City/Village*</label>
+                        <select type="text" name="ICity" class="form-control" formControlName="ICity"
+                          [(ngModel)]="Iselectedvillagevalue" [ngStyle]="city ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select City/Village</option>
+                          <option *ngFor="let d of IvillageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                        </select>
+                        <div *ngIf="city">
+                          <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                      </div>
+                        <!-- <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
+                                    <div *ngIf="f.City.errors.required">Village is required</div>
+                                </div> -->
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="IPinCode">Pin code*</label>
+                        <input type="text" class="form-control" id="IPincode" placeholder="Value" [ngStyle]="pincode ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          formControlName="IPincode">
+                          <div *ngIf="pincode">
+                            <div style="color: #f86c6b;font-size: 80%;">Pincode is required</div>
+                        </div>
+                      </div>
+                    </div><br>
+                    </ng-container>
+                  <ng-container *ngIf="VisibleOrganization">
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="Orgname">Organization Name</label>
+                        <input type="text" class="form-control" id="Orgname" placeholder="Value" [ngStyle]="organisationName ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          formControlName="Orgname">
+                          <div *ngIf="organisationName" >
+                            <div style="color: #f86c6b;font-size: 80%;">Organization Name is required</div>
+                          </div>
+                      </div>
+                      <!-- <div class="form-group col-sm-4">
+                              <label for="OrgCorrected">Corrected Name</label>
+                              <input type="text" class="form-control" id="OrgCorrected" placeholder="Value" required formControlName="OrgCorrected">
+                            </div> -->
+                      <div class="form-group col-sm-4">
+                        <label for="OrgYrOfInco">Year Of Incorporation</label>
+                        <input type="text" class="form-control" id="OrgYrOfInco" placeholder="Value" required
+                          formControlName="OrgYrOfInco">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgTAN">TAN</label>
+                        <input type="text" class="form-control" id="OrgTAN" placeholder="Value" required
+                          formControlName="OrgTAN">
+                      </div>
+                    </div><br>
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label style="font: bold;font-size: medium;">Address Details*</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="OrgHouseNo">House No/Building Name*</label>
+                        <input type="text" class="form-control" id="OrgHouseNo" name="OrgHouseNo" placeholder="Value"
+                           formControlName="OrgHouseNo" [ngStyle]="HouseOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" />
+                           <div *ngIf="HouseOrg" >
+                            <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                          </div>
+
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="Orgstreet">Street Address*</label>
+                        <input type="text" class="form-control" id="Orgstreet" placeholder="Value" required
+                          formControlName="Orgstreet">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="OrgState">State*</label>
+                        <select type="text" name="OrgState" class="form-control" formControlName="OrgState" [ngStyle]="StateOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select State</option>
+                          <option value="1">Karnataka</option>
+                          <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                        </select>
+                        <div *ngIf="StateOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                                    <div *ngIf="f.IState.errors.required">State is required</div>
+                                </div> -->
+                      </div>
+                    </div>
+
+                    <div class="row">
+
+                      <div class="form-group col-md-4">
+                        <label for="OrgDistrict">District*</label>
+                        <select type="text" name="OrgDistrict" class="form-control" formControlName="OrgDistrict"
+                          [(ngModel)]="Orgselecteddistvalue" (ngModelChange)="OrgondistrictValuechange($event)"
+                          (change)="OrgondistrictChange($event)" [ngStyle]="DistrictOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select District</option>
+                          <option *ngFor="let d of OrgdistrictList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                        </select>
+                        <div *ngIf="DistrictOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.IDistrict.errors" class="invalid-feedback">
+                                  <div *ngIf="f.IDistrict.errors.required">District is required</div>
+                              </div> -->
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="Orgtaluka">Taluka*</label>
+                        <select type="text" name="Orgtaluka" class="form-control" formControlName="Orgtaluka"
+                          [(ngModel)]="Orgselectedtalukvalue" (ngModelChange)="OrgontalukValuechange($event)"
+                          (change)="OrgonItalukaChange($event)" [ngStyle]="TalukaOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Taluka</option>
+                          <option *ngFor="let d of OrgtalukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                        </select>
+                        <div *ngIf="TalukaOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.Italuka.errors" class="invalid-feedback">
+                                <div *ngIf="f.Italuka.errors.required">Taluka is required</div>
+                            </div> -->
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="Orghobli">Hobli*</label>
+                        <select type="text" name="Orghobli" class="form-control" formControlName="Orghobli"
+                          [(ngModel)]="Orgselectedhoblivalue" (ngModelChange)="OrgonhobliValuechange($event)"
+                          (change)="OrgonhobliChange($event)" [ngStyle]="HobliOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Hobli</option>
+                          <option *ngFor="let d of OrghobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                        </select>
+                        <div *ngIf="HobliOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.Ihobli.errors" class="invalid-feedback">
+                              <div *ngIf="f.Ihobli.errors.required">Hobli is required</div>
+                          </div> -->
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="OrgCity">City/Village*</label>
+                        <select type="text" name="Orgvillage" class="form-control" formControlName="Orgvillage"
+                          [(ngModel)]="Orgselectedvillagevalue" [ngStyle]="CityOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select City/Village</option>
+                          <option *ngFor="let d of OrgvillageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                        </select>
+                        <div *ngIf="CityOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.ICity.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ICity.errors.required">Village is required</div>
+                                </div> -->
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgPincode">Pin code*</label>
+                        <input type="text" class="form-control" id="OrgPincode" placeholder="Value" required
+                          formControlName="OrgPincode" [ngStyle]="PincodeOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <div *ngIf="PincodeOrg" >
+                            <div style="color: #f86c6b;font-size: 80%;">Pin code is required</div>
+                          </div>
+                      </div>
+                    </div><br>
+
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label style="font: bold;font-size: medium;">Represented By Authorized Signatory</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-4">
+                        <label for="salInd">Salutation*</label>
+                        <select type="text" name="salInd" class="form-control" formControlName="salInd" [ngStyle]="salutation ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Value</option>
+                          <option *ngFor="let s of salutations" [value]="s.salutationid"> {{s.descriptione}}</option>
+                        </select>
+                        <div  *ngIf="salutation">
+                          <div style="color: #f86c6b;font-size: 80%;">Salutation is required</div>
+                        </div>
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASFirstName">First Name*</label>
+                        <input type="text" class="form-control" id="OrgRASFirstName" placeholder="Value" required
+                          formControlName="OrgRASFirstName" [ngStyle]="firstNameOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" />
+                          <div *ngIf="firstNameOrg" >
+                            <div style="color: #f86c6b;font-size: 80%;">First Name is required</div>
+                          </div>
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASMiddlename">Middle Name</label>
+                        <input type="text" class="form-control" id="OrgRASMiddleName" placeholder="Value"
+                          formControlName="OrgRASMiddleName">
+                      </div>
+                     
+                    </div><br>
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASLastname">Last Name</label>
+                        <input type="text" class="form-control" id="OrgRASLastName" placeholder="Value"
+                          formControlName="OrgRASLastName">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASAliasName">Alias Name</label>
+                        <input type="text" class="form-control" id="OrgRASAliasName" placeholder="Value"
+                          formControlName="OrgRASAliasName">
+                      </div>
+                      <!-- <div class="form-group col-sm-4">
+                              <label for="Fullname">Corrected Name</label>
+                              <input type="text" class="form-control" id="CorrectedName" placeholder="Value" required formControlName="CorrectedName">
+                            </div> -->
+                    
+                      <!-- <div class="form-group col-sm-4">
+                              <label for="Fullname">Gender</label>
+                              <input type="text" class="form-control" id="Sex" placeholder="Value" required formControlName="Sex">
+                            </div> -->
+                          </div><br>
+                          <div class="row">
+                            <div class="form-group col-sm-4">
+                              <label for="OrgRASAge">Age*</label>
+                              <input type="text" class="form-control" id="OrgRASAge" placeholder="Value" [ngStyle]="AgeOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                                formControlName="OrgRASAge">
+                                <div *ngIf="AgeOrg" >
+                                  <div style="color: #f86c6b;font-size: 80%;">Age is required</div>
+                                </div>
+                            </div>
+                      <div class="form-group col-md-4">
+                        <label for="OrgRASSex">Gender*</label>
+                        <select type="text" name="OrgRASSex" class="form-control" formControlName="OrgRASSex" [ngStyle]="GenderOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Gender</option>
+                          <option *ngFor="let d of OrgRASgenderList" [value]="d.genderid"> {{d.descriptione}}</option>
+                        </select>
+                        <div *ngIf="GenderOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">Gender is required</div>
+                        </div>
+                      </div>
+                    </div><br>
+                    <div class="row">
+                      
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASProfession">Profession</label>
+                        <input type="text" class="form-control" id="OrgRASProfession" placeholder="Value" required
+                          formControlName="OrgRASProfession">
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgType">Id Proof Type</label>
+                        <select type="text" name="Orgproof" class="form-control" formControlName="Orgproof">
+                          <option disabled readonly>Select Id Proof</option>
+                          <option *ngFor="let id of idProofType" [value]="id.idprooftypeid">{{id.description}}</option>
+                        
+                        </select>
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASPAN">Id No.</label>
+                        <input type="text" class="form-control" id="OrgRASPAN" placeholder="Value" required
+                          formControlName="OrgRASPAN" maxlength='10' minlength='10'>
+  
+                      </div>
+                      <!-- <div class="form-group col-sm-4"><label for=""></label>
+                        <a class="nav-link" style="cursor:pointer;color: #0a429b;font:bold;font-size: medium;">Verify</a>
+                      </div> -->
+                    </div><br>
+                    <div class="row">
+  
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-6">
+                        <label style="font: bold;font-size: medium;">Address Details*</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASHouseNo">House No/Building Name*</label>
+                        <input type="text" class="form-control" id="OrgRASHouseNo" placeholder="Value" [ngStyle]="HouseRAOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          formControlName="OrgRASHouseNo">
+                          <div *ngIf="HouseRAOrg" >
+                            <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                          </div>
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASstreet">Street Address*</label>
+                        <input type="text" class="form-control" id="OrgRASstreet" placeholder="Value" [ngStyle]="streetRaOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          formControlName="OrgRASstreet">
+                          <div *ngIf="streetRaOrg" >
+                            <div style="color: #f86c6b;font-size: 80%;">Street Address is required</div>
+                          </div>
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="OrgRASState">State*</label>
+                        <select type="text" name="OrgRASState" class="form-control" formControlName="OrgRASState" [ngStyle]="stateRAOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select State</option>
+                          <option value="1">Karnataka</option>
+                          <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                        </select>
+                        <div *ngIf="stateRAOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                                    <div *ngIf="f.State.errors.required">State is required</div>
+                                </div> -->
+                      </div>
+                    </div><br>
+                    <div class="row">
+  
+                      <div class="form-group col-md-4">
+                        <label for="OrgRASDistrict">District*</label>
+                        <select type="text" name="OrgRASDistrict" class="form-control" formControlName="OrgRASDistrict"
+                          [(ngModel)]="OrgRASselecteddistvalue" (ngModelChange)="OrgRASondistrictValuechange($event)"
+                          (change)="OrgRASondistrictChange($event)" [ngStyle]="DistrictRaOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select District</option>
+                          <option *ngFor="let d of OrgRASdistrictList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                        </select>
+                        <div *ngIf="DistrictRaOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.IDistrict.errors" class="invalid-feedback">
+                                  <div *ngIf="f.IDistrict.errors.required">District is required</div>
+                              </div> -->
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="OrgRAStaluka">Taluka*</label>
+                        <select type="text" name="OrgRAStaluka" class="form-control" formControlName="OrgRAStaluka"
+                          [(ngModel)]="OrgRASselectedtalukvalue" (ngModelChange)="OrgRASontalukValuechange($event)"
+                          (change)="OrgRASontalukaChange($event)" [ngStyle]="TalukaRaOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Taluka</option>
+                          <option *ngFor="let d of OrgRAStalukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                        </select>
+                        <div *ngIf="TalukaRaOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                                <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                            </div> -->
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="OrgRAShobli">Hobli*</label>
+                        <select type="text" name="OrgRAShobli" class="form-control" formControlName="OrgRAShobli"
+                          [(ngModel)]="OrgRASselectedhoblivalue" (ngModelChange)="OrgRASonhobliValuechange($event)"
+                          (change)="OrgRASonhobliChange($event)" [ngStyle]="HobliRaOrg ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select Hobli</option>
+                          <option *ngFor="let d of OrgRAShobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                        </select>
+                        <div *ngIf="HobliRaOrg" >
+                          <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                              <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                          </div> -->
+                      </div>
+  
+                      <div class="form-group col-md-4">
+                        <label for="OrgRASCity">City/Village*</label>
+                        <select type="text" name="OrgRASCity" class="form-control" formControlName="OrgRASCity"
+                          [(ngModel)]="OrgRASselectedvillagevalue" [ngStyle]="RAOrgcity ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                          <option disabled readonly>Select City/Village</option>
+                          <option *ngFor="let d of OrgRASvillageList" [value]="d.villagecode"> {{d.villagenamee}}</option>
+                        </select>
+                        <div *ngIf="RAOrgcity" >
+                          <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                        </div>
+                        <!-- <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
+                                    <div *ngIf="f.City.errors.required">Village is required</div>
+                                </div> -->
+                      </div>
+                      <div class="form-group col-sm-4">
+                        <label for="OrgRASPinCode">Pin code*</label>
+                        <input type="text" class="form-control" id="OrgRASPincode" placeholder="Value" [ngStyle]="RAORGPIncode ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                          formControlName="OrgRASPincode">
+                          <div *ngIf="RAORGPIncode" >
+                            <div style="color: #f86c6b;font-size: 80%;">Pin code is required</div>
+                          </div>
+                      </div>
+                    </div><br>
+                  </ng-container>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="POAradio" id="radio7" value="option5"
+                          (click)="POAChange()" [checked]="POAradioStatus" formControlName="POAradio">
+                        <label class="form-check-label" for="radio7">
+                          Represented by Power Of Attorney
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                  </div><br>
+                  <ng-container *ngIf="VisiblePOA">
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="POAindRadio" id="POAindRadio"
+                            value="option3" (click)="POAIndividualChange()" [checked]="VisiblePOAIndividual"
+                            formControlName="POAIndRadio">
+                          <!-- <input class="form-check-input" type="radio" name="POAindRadio" id="radio9" value="option3"
+                                [checked]="VisiblePOAIndividual" formControlName="POAIndRadio"> -->
+
+                          <!-- <input class="form-check-input" type="radio" name="POAindRadio" id="radio9" value="option3" (click)="POAIndividualChange()" 
+                                [checked]="POAradioStatus"  formControlName="POAIndRadio"> -->
+                          <label class="form-check-label" for="radio9">
+                            Individual
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="POAOrgRadio" id="POAOrgRadio"
+                            value="option4" [checked]="VisiblePOAOrganization" (click)="POAOrganizationChange()"
+                            formControlName="POAOrgRadio">
+                          <label class="form-check-label" for="radio10">
+                            Organization
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-md-6"></div>
+                    </div><br>
+
+                    <!-- individual details display here below -->
+                    <ng-container *ngIf="VisiblePOAIndividual">
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label for="salInd">Salutation*</label>
+                          <select type="text" name="salInd" class="form-control" formControlName="salInd" [ngStyle]="salutation ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Value</option>
+                            <option *ngFor="let s of salutations" [value]="s.salutationid"> {{s.descriptione}}</option>
+                          </select>
+                          <div  *ngIf="salutation">
+                            <div style="color: #f86c6b;font-size: 80%;">Salutation is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAFIrstname">POA Holder Name</label>
+                          <input type="text" class="form-control" name="POAFIrstname" id="POAFIrstname"
+                            placeholder="Value" formControlName="POAFIrstname">
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                          <label for="POARelationship">Relationship*</label>
+                          <select type="text" name="POARelationship" class="form-control"
+                            formControlName="POARelationship" [(ngModel)]="POAselectedrelationshipvalue" lass="form-control" id="OrgRASPincode" placeholder="Value" [ngStyle]="PoaRelationship ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Relationship</option>
+                            <option *ngFor="let d of POArelationshipList" [value]="d.id"> {{d.relatione}}</option>
+                          </select>
+
+                          <div  *ngIf="PoaRelationship">
+                            <div style="color: #f86c6b;font-size: 80%;">Relationship is required</div>
+                          </div>
+                        </div>
+                       
+                        <!-- <div class="form-group col-sm-4">
+                          <label for="POAMiddlename">Middle Name</label>
+                          <input type="text" class="form-control" name="POAMiddlename" id="POAMiddlename"
+                            placeholder="Value" formControlName="POAMiddlename">
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POALastname">Last Name</label>
+                          <input type="text" class="form-control" name="POALastname" id="POALastname"
+                            placeholder="Value" formControlName="POALastname">
+                        </div> -->
+                      </div><br>
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="POARelativeName">Relative's Name*</label>
+                          <input type="text" class="form-control" id="POARelativeName" placeholder="Value" [ngStyle]="PoaRelativeName ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POARelativeName">
+                            <div  *ngIf="PoaRelativeName">
+                              <div style="color: #f86c6b;font-size: 80%;">Relative's Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="Fullname">Age*</label>
+                          <input type="text" class="form-control" id="POAAge" placeholder="Value" [ngStyle]="PoaAge ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAAge">
+                            <div  *ngIf="PoaAge">
+                              <div style="color: #f86c6b;font-size: 80%;">Age is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="POASex">Gender*</label>
+                          <select type="text" name="POASex" class="form-control" formControlName="POASex"
+                            [(ngModel)]="POAselectedgendervalue" [ngStyle]="PoaSex ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Gender</option>
+                            <option *ngFor="let d of POAgenderList" [value]="d.genderid"> {{d.descriptione}}</option>
+                          </select>
+                          <div  *ngIf="PoaSex">
+                            <div style="color: #f86c6b;font-size: 80%;">Gender is required</div>
+                          </div>
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <label style="font: bold;font-size: medium;">Address Details*</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="POAHouseNo">House No/Building Name*</label>
+                          <input type="text" class="form-control" id="POAHouseNo" placeholder="Value" [ngStyle]="PoaHouseNo ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAHouseNo">
+                            <div  *ngIf="PoaHouseNo">
+                              <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAstreet">Street Address*</label>
+                          <input type="text" class="form-control" id="POAstreet" placeholder="Value" [ngStyle]="Poastreet ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAstreet">
+                            <div  *ngIf="Poastreet">
+                              <div style="color: #f86c6b;font-size: 80%;">Street Address is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="POAState">State*</label>
+                          <select type="text" name="POAState" class="form-control" formControlName="POAState" [ngStyle]="PoaState ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select State</option>
+                            <option value="1">Karnataka</option>
+                            <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                          </select>
+                          <div  *ngIf="PoaState">
+                            <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                                    <div *ngIf="f.State.errors.required">State is required</div>
+                                </div> -->
+                        </div>
+                      </div><br>
+                      <div class="row">
+
+                        <!-- <div class="form-group col-md-4" >
+                              <label for="District">District*</label>
+                              <select type="text" name="District" class="form-control" formControlName="District" (ngModel)="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"  (change)="ondistrictChange($event)"
+                                       [ngClass]="{ 'is-invalid': submitted && f.District.errors }">
+                                      <option disabled readonly>Select District</option>
+                                      <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                                  </select>
+                                  <div *ngIf="submitted && f.District.errors" class="invalid-feedback">
+                                    <div *ngIf="f.District.errors.required">District is required</div>
+                                </div>
+                          </div> -->
+
+                        <div class="form-group col-md-4">
+                          <label for="district">District*</label>
+                          <select type="text" name="POADistrict" class="form-control" formControlName="POADistrict"
+                            [(ngModel)]="POAselecteddistvalue" (ngModelChange)="POAondistrictValuechange($event)"
+                            (change)="POAondistrictChange($event)" [ngStyle]="PoaDistrict ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select District</option>
+                            <option *ngFor="let d of POAdistrictList" [value]="d.districtCode"> {{d.districtNamee}}
+                            </option>
+                          </select>
+                          <div  *ngIf="PoaDistrict">
+                            <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.District.errors" class="invalid-feedback">
+                                  <div *ngIf="f.District.errors.required">District is required</div>
+                              </div> -->
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="POAtaluka">Taluka*</label>
+                          <select type="text" name="POAtaluka" class="form-control" formControlName="POAtaluka"
+                            [(ngModel)]="POAselectedtalukvalue" (ngModelChange)="POAontalukValuechange($event)"
+                            (change)="POAontalukaChange($event)" [ngStyle]="Poataluka ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Taluka</option>
+                            <option *ngFor="let d of POAtalukaList" [value]="d.talukCode"> {{d.talukNamee}}</option>
+                          </select>
+                          <div  *ngIf="Poataluka">
+                            <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                                <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                            </div> -->
+                        </div>
+ 
+                        <div class="form-group col-md-4">
+                          <label for="hobli">Hobli*</label>
+                          <select type="text" name="POAhobli" class="form-control" formControlName="POAhobli"
+                            [(ngModel)]="POAselectedhoblivalue" (ngModelChange)="POAonhobliValuechange($event)"
+                            (change)="POAonhobliChange($event)" [ngStyle]="Poahobli ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Hobli</option>
+                            <option *ngFor="let d of POAhobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                          </select>
+                          <div  *ngIf="Poahobli">
+                            <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                          </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                          <label for="POACity">City/Village*</label>
+                          <select type="text" name="POACity" class="form-control" formControlName="POACity"
+                            [(ngModel)]="POAselectedvillagevalue" [ngStyle]="PoaCity ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select City/Village</option>
+                            <option *ngFor="let d of POAvillageList" [value]="d.villagecode"> {{d.villagenamee}}
+                            </option>
+                          </select>
+                          <div  *ngIf="PoaCity">
+                            <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                          </div>
+
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAPincode">Pin code*</label>
+                          <input type="text" class="form-control" id="POAPincode" placeholder="Value" [ngStyle]="PoaPincode ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAPincode">
+                            <div  *ngIf="PoaPincode">
+                              <div style="color: #f86c6b;font-size: 80%;">Pin code is required</div>
+                            </div>
+                        </div>
+                      </div><br>
+
+                    </ng-container>
+
+                    <!-- organization data display here below -->
+
+                    <ng-container *ngIf="VisiblePOAOrganization">
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgname">Organization Name*</label>
+                          <input type="text" class="form-control" id="POAOrgname" placeholder="Value" [ngStyle]="PoaOrgname ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAOrgname">
+                            <div  *ngIf="PoaOrgname">
+                              <div style="color: #f86c6b;font-size: 80%;">Organization Name is required</div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group col-sm-4">
+                                <label for="POAOrgCorrected">Corrected Name</label>
+                                <input type="text" class="form-control" id="POAOrgCorrected" placeholder="Value" required formControlName="POAOrgCorrected">
+                              </div> -->
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgYrOfInco">Year Of Incorporation</label>
+                          <input type="text" class="form-control" id="POAOrgYrOfInco" placeholder="Value"
+                            formControlName="POAOrgYrOfInco" >
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgTAN">TAN</label>
+                          <input type="text" class="form-control" id="POAOrgTAN" placeholder="Value"
+                            formControlName="POAOrgTAN">
+                        </div>
+                      </div><br>
+
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <label style="font: bold;font-size: medium;">Address Details*</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgHouseNo">House No/Building Name*</label>
+                          <input type="text" class="form-control" id="POAOrgHouseNo" placeholder="Value" [ngStyle]="PoaOrgHouseNo ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAOrgHouseNo">
+                            <div  *ngIf="PoaOrgHouseNo">
+                              <div style="color: #f86c6b;font-size: 80%;">House No/Building Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgstreet">Street Address*</label>
+                          <input type="text" class="form-control" id="POAOrgstreet" placeholder="Value" [ngStyle]="PoaOrgstreet ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAOrgstreet">
+                            <div  *ngIf="PoaOrgstreet">
+                              <div style="color: #f86c6b;font-size: 80%;">Street Address is required</div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group col-sm-4">
+                                <label for="Fullname">State</label>
+                                <input type="text" class="form-control" id="State" placeholder="Value" required formControlName="State">
+                              </div> -->
+                        <div class="form-group col-md-4">
+                          <label for="POAOrgState">State*</label>
+                          <select type="text" name="POAOrgState" class="form-control" formControlName="POAOrgState" [ngStyle]="PoaOrgState ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select State</option>
+                            <option value="1">Karnataka</option>
+                            <!-- <option *ngFor="let d of stateList" [value]="d.stateCode"> {{d.stateNamee}}</option> -->
+                          </select>
+                          <div  *ngIf="PoaOrgState">
+                            <div style="color: #f86c6b;font-size: 80%;">State is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                                      <div *ngIf="f.State.errors.required">State is required</div>
+                                  </div> -->
+                        </div>
+                      </div><br>
+                      <div class="row">
+                        <div class="form-group col-md-4">
+                          <label for="OrgDistrict">District*</label>
+                          <select type="text" name="OrgDistrict" class="form-control" formControlName="POAOrgDistrict"
+                            [(ngModel)]="POAOrgselecteddistvalue" (ngModelChange)="POAOrgondistrictValuechange($event)"
+                            (change)="POAOrgondistrictChange($event)" [ngStyle]="PoaOrgDistrict ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select District</option>
+                            <option *ngFor="let d of POAOrgdistrictList" [value]="d.districtCode"> {{d.districtNamee}}
+                            </option>
+                          </select>
+                          <div  *ngIf="PoaOrgDistrict">
+                            <div style="color: #f86c6b;font-size: 80%;">District is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.District.errors" class="invalid-feedback">
+                                      <div *ngIf="f.District.errors.required">District is required</div>
+                                  </div> -->
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="POAOrgtaluka">Taluka*</label>
+                          <select type="text" name="POAOrgtaluka" class="form-control" formControlName="POAOrgtaluka"
+                            [(ngModel)]="POAOrgselectedtalukvalue" (ngModelChange)="POAOrgontalukValuechange($event)"
+                            (change)="POAOrgontalukaChange($event)" [ngStyle]="PoaOrgtaluka ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Taluka</option>
+                            <option *ngFor="let org of POAOrgtalukaList" [value]="org.talukCode"> {{org.talukNamee}}
+                            </option>
+                          </select>
+                          <div  *ngIf="PoaOrgtaluka">
+                            <div style="color: #f86c6b;font-size: 80%;">Taluka is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                                    <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                                </div> -->
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label for="POAOrghobli">Hobli*</label>
+                          <select type="text" name="POAOrghobli" class="form-control" formControlName="POAOrghobli"
+                            [(ngModel)]="POAOrgselectedhoblivalue" (ngModelChange)="POAOrgonhobliValuechange($event)"
+                            (change)="POAOrgonhobliChange($event)" [ngStyle]="PoaOrghobli ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Hobli</option>
+                            <option *ngFor="let d of POAOrghobliList" [value]="d.hoblicode"> {{d.hoblinamee}}</option>
+                          </select>
+                          <div  *ngIf="PoaOrghobli">
+                            <div style="color: #f86c6b;font-size: 80%;">Hobli is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                                  <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                              </div> -->
+                        </div>
+
+                      </div><br>
+
+                      <div class="row">
+
+                        <div class="form-group col-md-4">
+                          <label for="POAOrgvillage">City/Village*</label>
+                          <select type="text" name="POAOrgvillage" class="form-control" formControlName="POAOrgvillage"
+                            [(ngModel)]="POAOrgselectedvillagevalue" [ngStyle]="PoaOrgvillage ? {'border-color': '#f86c6b'} : {'border-color': '#111'}">
+                            <option disabled readonly>Select Index II: Village</option>
+                            <option *ngFor="let d of POAOrgvillageList" [value]="d.villagecode"> {{d.villagenamee}}
+                            </option>
+                          </select>
+                          <div  *ngIf="PoaOrgvillage">
+                            <div style="color: #f86c6b;font-size: 80%;">City/Village is required</div>
+                          </div>
+                          <!-- <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                                  <div *ngIf="f.village.errors.required">Village is required</div>
+                              </div> -->
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="PinCode">Pin code*</label>
+                          <input type="text" class="form-control" id="POAOrgPincode" placeholder="Value" [ngStyle]="PoaOrgPincode ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"
+                            formControlName="POAOrgPincode">
+                            <div  *ngIf="PoaOrgPincode">
+                              <div style="color: #f86c6b;font-size: 80%;">Pin code is required</div>
+                            </div>
+                        </div>
+
+                      </div><br>
+
+
+                      <div class="row">
+                        <div class="form-group col-sm-6">
+                          <label style="font: bold;font-size: medium;">Represented by Authorized Signatory</label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgFIrstname">First Name*</label>
+                          <input type="text" class="form-control" id="POAOrgFIrstname" name="POAOrgFIrstname"
+                            placeholder="Value" [ngStyle]="PoaOrgFIrstname ? {'border-color': '#f86c6b'} : {'border-color': '#111'}" formControlName="POAOrgFIrstname">
+                            <div  *ngIf="PoaOrgFIrstname">
+                              <div style="color: #f86c6b;font-size: 80%;">First Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgMiddlename">Middle Name</label>
+                          <input type="text" class="form-control" id="POAOrgMiddlename" name="POAOrgMiddlename"
+                            placeholder="Value" formControlName="POAOrgMiddlename">
+                        </div>
+                        <div class="form-group col-sm-4">
+                          <label for="POAOrgLastname">Last Name*</label>
+                          <input type="text" class="form-control" id="POAOrgLastname" name="POAOrgLastname"
+                            placeholder="Value" [ngStyle]="PoaOrgLastname ? {'border-color': '#f86c6b'} : {'border-color': '#111'}"  formControlName="POAOrgLastname">
+                            <div  *ngIf="PoaOrgLastname">
+                              <div style="color: #f86c6b;font-size: 80%;">Last Name is required</div>
+                            </div>
+                        </div>
+                      </div><br>
+                    </ng-container>
+
+                  </ng-container>
+
+                  <div style="text-align: center;"><br />
+                    <button type="submit" class="btn btn-primary px-4" style="background-color: #0a429b;"
+                      >Save and Continue</button>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

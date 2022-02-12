@@ -1,0 +1,87 @@
+<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="true" [navbarBrandFull]="{
+    src: 'assets/img/avatars/NoPath.png',
+    width: '70',
+    height: '70'
+  }" [navbarBrandMinimized]="{
+    src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png',
+    width: '40',
+    height: '40'
+  }" [sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+    <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+        style="float: left; margin-left: -80px" />
+    <span class="Kaveri">Kaveri Online Services</span>
+    <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item d-md-down-none">
+            <a class="nav-link"><img src="assets/img/avatars/bell.png" alt="" /></a>
+        </li>
+        <li class="nav-item d-md-down-none">
+            <button type="button" style="background-color: #0a429b" class="btn btn-block btn-primary active"
+                routerLink="/landing-page" aria-pressed="true">
+                Logout
+            </button>
+        </li>
+    </ul>
+</app-header>
+
+<div class="container-fluid propert-layout">
+    <div class="welcome-panel">
+        <div class="grey-circle"></div>
+        <div class="welcome-container">
+          <p class="welcome-text">WELCOME Tanmay</p>
+          <p class="fda">DEO - BENGALURU URBAN</p>
+        </div>
+        <div>
+          <p class="fda">
+            LAST LOGIN:<br />
+            12TH OCTOBER 2021 8.34AM
+          </p>
+        </div>
+    </div>
+    <main class="main" style="margin-left: 0px; background-color: #fbfbfb; margin-top: 20px;">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+
+<!-- <app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+    <div class="row" style="margin-left: 10px;">
+      <div class="col-xs-2">
+        <span></span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">Accessibility Statement&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Help&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Feedback&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;FAQ&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+      </div>
+      <div class="col-xs-1">
+        <span class="ftrs">&emsp;Visitors Analytics</span>
+      </div>
+    </div>
+  </app-footer>
+  <app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+    <div class="row" style="margin-left: 10px;">
+      <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+    </div>
+  </app-footer> -->

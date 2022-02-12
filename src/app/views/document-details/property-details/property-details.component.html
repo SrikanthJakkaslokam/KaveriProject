@@ -1,0 +1,232 @@
+<div class="text-padding">
+  <div class="step1">
+    <p class="title-border">Document Registration</p>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <p class="sub-text font-black" style="font-size: 13px;">DOCUMENT NUMBER</p>
+      <div class="sub-text font-black" style="font-size: 13px;">{{pendingRegNumberData.pendingregnumber}}</div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black" style="font-size: 13px;">DATE OF PRESENTATION</p>
+      <div class="sub-text font-black" style="font-size: 13px;">{{pendingRegNumberData.presentDate | date:
+        'dd/MM/yyyy'}}</div>
+    </div>
+    <div class="col-md-3">
+      <p class="sub-text font-black" style="font-size: 13px;">APPLICATION TYPE</p>
+      <div class="sub-text font-black" style="font-size: 13px;">Property Registration</div>
+    </div>
+  </div>
+</div>
+<div class="text-padding">
+  <div class="step2">
+    <p class="title-border">Property Details</p>
+  </div>
+</div>
+<div id="property-details" *ngIf="properties.length > 0; else noProperties">
+  <div class="step3" *ngFor="let property of properties;let i = index">
+    <div class="text-padding">
+      <p class="property-text">Property {{i + 1}} of {{properties.length}}</p>
+      <div class="row">
+        <div class="col-md-3">
+          <p class="sub-text font-black" style="font-size: 16px;">DISTRICT: {{property.districtname}}</p>
+          <div class="sub-text font-black" style="font-size: 16px;">SRO: {{property.sronamee}}</div>
+        </div>
+        <div class="col-md-3">
+          <p class="sub-text font-black" style="font-size: 16px;">TALUKA: {{property.taluknamee}}</p>
+          <div class="sub-text font-black" style="font-size: 16px;">PROPERTY TYPE: </div>
+        </div>
+        <div class="col-md-3">
+          <p class="sub-text font-black" style="font-size: 16px;">HOBLI/ TOWN: {{property.hoblinamee}}</p>
+          <div class="sub-text font-black" style="font-size: 16px;">SURVEY NO: {{property.survey_no}}</div>
+        </div>
+        <div class="col-md-3">
+          <p class="sub-text font-black" style="font-size: 16px;">INDEX II: VILLAGE: {{property.villagenamee}}</p>
+          <div class="sub-text font-black" style="font-size: 16px;">HISSA NO: {{property.hissa_no}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-4 mt-4 text-padding">
+      <div class="table-lable">
+        <p class="table-lable">Property Data - Bhoomi</p>
+        <p></p>
+      </div>
+
+      <table class="table-bordered" style="border-color: #000">
+        <col />
+        <col />
+        <col />
+        <colgroup span="4"></colgroup>
+        <col />
+        <tr>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            S.No.
+          </th>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            Survey No
+          </th>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            Hissa No
+          </th>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            Owner Name
+          </th>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            Relationship
+          </th>
+          <th style="vertical-align: middle; text-align: center; border-color: #000">
+            Relative Name
+          </th>
+          <th style="horizontal-align: middle; text-align: center; width: 300px; border-color: #000">
+            <div style="border: none; border-bottom: 1px solid #000; padding: 3px">
+              Available Extent
+            </div>
+        <tr>
+          <th
+            style="vertical-align: middle; text-align: center; width: 100px; border: none; border-right: 1px solid #000;">
+            Acre
+          </th>
+          <th
+            style="vertical-align: middle; text-align: center; width: 100px; border: none; border-right: 1px solid #000;">
+            Gunta
+          </th>
+          <th style="vertical-align: middle; text-align: center; width: 150px; border: none; ">
+            Fraction od Gunta
+          </th>
+        </tr>
+        </th>
+        </tr>
+        <tr>
+          <th style="vertical-align: middle; text-align: center; border-color: #000" scope="col">1</th>
+          <td style="border-color: #000">{{property.survey_no}}</td>
+          <td style="border-color: #000">{{property.hissa_no}}</td>
+          <td style="border-color: #000">{{property?.propertyDetails?.ownername}}</td>
+          <td style="border-color: #000">{{property?.propertyDetails?.relationship}}</td>
+          <td style="border-color: #000">{{property?.propertyDetails?.relativename}}</td>
+          <td style="border-color: #000">
+        <tr>
+          <td style="width: 100px; border: none; border-right: 1px solid #000; padding: 0;">
+            {{property?.propertyDetails?.totalextacre}}</td>
+          <td style="width: 100px; border: none; border-right: 1px solid #000; padding: 0;">
+            {{property?.propertyDetails?.totalextgunta}}</td>
+          <td style="width: 150px; border: none; padding: 0;">{{property?.propertyDetails?.totalextfgunta}}</td>
+        </tr>
+        </td>
+        </tr>
+      </table>
+    </div>
+    <!-- table 2 -->
+    <div class="text-padding">
+      <div class="table-lable">
+        <p class="table-lable">Court Order Details</p>
+        <p></p>
+      </div>
+      <div style="width: 100%; overflow:auto">
+        <table class="table-bordered">
+          <col />
+          <col />
+          <col />
+          <colgroup span="4"></colgroup>
+          <col />
+          <tr>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 50px">
+              S.No.
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 150px">
+              SRO
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 200px">
+              Court order no
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 250px">
+              Injection or stay against the property
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 380px">
+              Order details
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 250px">
+              Survey no
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 250px">
+              Current Number
+            </th>
+            <th style="vertical-align: middle; border-color: #000; text-align: center; width: 250px">
+              Old Number
+            </th>
+            <th style="text-align: center; width: 400px ;border-color: #000">
+              <div style="border: none; border-bottom: 1px solid #000; padding: 3px">
+                Boundaries
+              </div>
+          <tr>
+            <th
+              style="vertical-align: middle; text-align: center; width: 100px;border: none; border-right: 1px solid #000;">
+              East
+            </th>
+            <th
+              style="vertical-align: middle; text-align: center; width: 100px;border: none; border-right: 1px solid #000;">
+              West
+            </th>
+            <th
+              style="vertical-align: middle; text-align: center; width: 100px;border: none; border-right: 1px solid #000;">
+              North
+            </th>
+            <th style="vertical-align: middle; text-align: center; width: 100px;border: none; ">
+              south
+            </th>
+          </tr>
+          </th>
+          <th style="vertical-align: middle; text-align: center; width: 200px; border-color: #000">
+            Area
+          </th>
+          <th style="vertical-align: middle; text-align: center; width: 280px; border-color: #000">
+            Description
+          </th>
+          </tr>
+          <tr *ngFor="let order of property.courtOrders; let j = index">
+            <th style="vertical-align: middle; text-align: center; border-color: #000" scope="col">{{j + 1}}</th>
+            <td style="border-color: #000">{{order.sro}}</td>
+            <td style="border-color: #000">{{order.court_order_number}}</td>
+            <td style="border-color: #000">{{order.injuction_or_stay_flag}}</td>
+            <td style="border-color: #000"></td>
+            <td style="border-color: #000">{{order.survey_no}}</td>
+            <td style="border-color: #000">{{order.currentnumber}}</td>
+            <td style="border-color: #000">{{order.oldnumber}}</td>
+            <td style="border-color: #000">
+          <tr>
+            <td style="width: 100px; border: none; border-right: 1px solid #000;">{{order.eastboundary}}</td>
+            <td style="width: 100px; border: none; border-right: 1px solid #000;">{{order.westboundary}}</td>
+            <td style="width: 100px; border: none; border-right: 1px solid #000;">{{order.northboundary}}</td>
+            <td style="width: 100px;border: none; ">{{order.southboundary}}</td>
+          </tr>
+          </td>
+          <td style="border-color: #000"></td>
+          <td style="border-color: #000"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row" style="margin: 45px 25px 0px 25px;">
+      <div class="col-md-3">
+        <p class="sub-text font-black" style="font-size: 16px;">STAMP ARTICLE SELECTED</p>
+        <div class="sub-text font-black" style="font-size: 16px;">48- SALE OF VACANT PLOT</div>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black" style="font-size: 16px;">STAMP SUB ARTICLE SELECTED</p>
+        <div class="sub-text font-black" style="font-size: 16px;">48 A- AGRICULTURAL</div>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black" style="font-size: 16px;">REGISTRATION FEE ARTICLE SELECTED</p>
+        <div class="sub-text font-black" style="font-size: 16px;">8- SALE OF PROPERTY</div>
+      </div>
+      <div class="col-md-3">
+        <p class="sub-text font-black" style="font-size: 16px;">BOOK NUMBER</p>
+        <div class="sub-text font-black" style="font-size: 16px;">1-IMMOVABLE PROPERTY</div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noProperties>
+  <div class="text-padding ml-4 mt-4">
+    <h3>No matching records found</h3>
+  </div>
+</ng-template>

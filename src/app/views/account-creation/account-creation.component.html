@@ -1,0 +1,271 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+[sidebarToggler]="'lg'" [asideMenuToggler]="'lg'">
+
+<img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar"
+  style="float:left;margin-left:-80px" />
+<span class="Kaveri">Kaveri Online Services</span>
+<span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+<ul class="nav navbar-nav ml-auto">
+  <li class="nav-item d-md-down-none">
+  </li>
+  <li class="nav-item d-md-down-none"></li>
+  <li class="nav-item d-md-down-none">
+
+  </li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+  <li class="nav-item d-md-down-none">
+   <button type="button" class="btn btn-block btn-outline-primary px-4" routerLink="/account-creation">Register</button>
+ </li>
+ <li class="nav-item d-md-down-none"></li>
+ <li class="nav-item d-md-down-none">
+   <button type="button" class="btn btn-primary px-4" routerLink="/landing-page">Log In</button>
+   </li>
+</ul>
+</app-header>
+
+<div class="app-body">
+
+<main class="main">
+
+  <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+    <div class="row" style="margin-left: -80px;margin-top: 10px;margin-right: -25px;">
+      <div class="col-md-3"></div>
+      <div  class="col-md-6">
+        <div class="card" style="margin-bottom: 40px;">
+          <div class="card-header"
+            style="background-color: #05265b;color: white;font-weight: 500;border-radius: 5px;">
+            <span>Create Account</span>
+          </div>
+          <form  [formGroup]="registrationForm" class="form-horizontal" style="font-family: Segoe UI;">
+            <div class="card-body">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="firstname">First Name*</label>
+                  <input type="text" class="form-control" id="firstname" formControlName="firstname"
+                    placeholder="Value" required
+                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" ngModel pattern="[a-zA-Z ]*">
+                    <!-- pattern="[A-Za-z0-9]+"  -->
+                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="middlename">Middle Name</label>
+                  <input type="text" class="form-control" id="middlename" formControlName="middlename"  [ngClass]="{ 'is-invalid': submitted && f.middlename.errors }"
+                    placeholder="Value" minlength="0" ngModel pattern="[a-zA-Z ]*">
+                    
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" class="form-control" id="lastname" formControlName="lastname"
+                    placeholder="Value" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"  ngModel pattern="[a-zA-Z ]*" required>
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="gender">Gender*</label>
+                  <select type="text" name="gender" class="form-control" formControlName="gender"
+                     [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" required>
+                    <option disabled readonly>Select Gender</option>
+                    <option *ngFor="let d of genderList" [value]="d.genderid"> {{d.descriptione}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors.required">Gender is required</div>
+                </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="email">Email ID*</label>
+                  <input type="email" class="form-control" id="email" formControlName="email" placeholder="Value"
+                    required [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  ngModel [email]="true">
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email ID is required</div>
+                      <div *ngIf="f.deptuser.errors.email">Invalid email</div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="mobilenumber">Mobile Number*</label>
+                  <input type="text" class="form-control" id="mobilenumber" formControlName="mobilenumber"
+                    placeholder="Value" required [ngClass]="{ 'is-invalid': submitted && f.mobilenumber.errors }" ngModel pattern='^(?=.*[6-9])[0-9]*' maxlength='10' minlength='10'>
+                    <div *ngIf="submitted && f.mobilenumber.errors" class="invalid-feedback">
+                      <div *ngIf="f.mobilenumber.errors.required">Mobile Number is required</div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="form-group col-md-8">
+                  <label for="securityque">Security Question*</label>
+                  <select type="text" name="securityque" class="form-control" formControlName="securityque"
+                     required [ngClass]="{ 'is-invalid': submitted && f.securityque.errors }">
+                    <option disabled readonly>Select Security Question</option>
+                    <option *ngFor="let d of SecQuestionList" [value]="d.securityqstid"> {{d.questione}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.securityque.errors" class="invalid-feedback">
+                    <div *ngIf="f.securityque.errors.required">Security Question is required</div>
+                </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="answer">Answer*</label>
+                  <input type="text" class="form-control" id="answer" formControlName="secanswer" placeholder="Value"
+                    required [ngClass]="{ 'is-invalid': submitted && f.secanswer.errors }">
+                    <div *ngIf="submitted && f.secanswer.errors" class="invalid-feedback">
+                      <div *ngIf="f.secanswer.errors.required">Answer is required</div>
+                  </div>
+                </div>
+              </div><br><br>
+              <div class="row" style="margin-right: 150px;">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" class="form-group" style="margin-left: 25px;font-size: 14px;">
+                  <label for="info">Enter the text you see in the image below
+                  </label><br>
+                  <div class="input-group" style="text-align: center!important" >
+                    
+                    <!-- <label for="CaptchaCode" style="font-weight: bold;">{{CaptchaCode}}</label> -->
+                    <img [src] ="ImagePath" class="col-md-9 " >
+                        <span class="input-group-append">
+                          <button type="button" class="btn btn-primary" style="background-color: #0a429b;" (click)="Captcha();"><img src="assets/img/avatars/redo.png" alt=""></button>
+                        </span>
+                  </div><br>
+                  
+                  <input type="text" class="form-control" id="CaptchaUserInput" formControlName="CaptchaUserInput" placeholder="Value"
+                  (change)="ValidateCaptcha()"  required [ngClass]="{ 'is-invalid': submitted && f.CaptchaUserInput.errors }">
+                    <div *ngIf="submitted && f.CaptchaUserInput.errors" class="invalid-feedback">
+                      <div *ngIf="f.CaptchaUserInput.errors.required">Captcha is required</div>
+                  </div>
+                    <span for="info" style="color: red;">{{captcha}}
+                    </span>
+                  <!-- <input type="text" class="form-control" id="CaptchaUserInput"  (change)="GetSurvayNoist()"placeholder="Value"
+                  required> -->
+                </div>
+                <div class="col-md-3"></div>
+              </div><br><br>
+              <div class="row" style="margin-right: 100px;">
+                <div class="col-md-5"></div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;margin-left: -8px;width: 150px;"
+                    (click)="onSubmit();">Register</button>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+              <div class="row" style="margin-right: 100px;">
+                <div class="col-md-5"></div>
+                <div class="col-md-4">
+                    <div class="form-group" style="margin-left: -2px;font-size: 14px;margin-top: 10px;">
+                      <label for="info" >Already a User ? <a routerLink = "/landing-page" style="color: black; font-weight: bold;">Login</a>
+                      </label>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+              </div><br>
+              <!-- <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7" style="margin-left: 2px;font-size: 10px;">Already a User?<a href="">Login</a>
+                </div>
+              </div> -->
+            </div>
+            <!-- <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert" style="max-width : 100%;"> -->
+            <!-- <strong >Registration Successfully Done!!!</strong> -->
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div> -->
+          </form>
+          <dx-toast [(visible)]="isVisible" [type]="type" [message]="message">
+          </dx-toast>
+          <dx-toast [(visible)]="isVisiblesms" [type]="type" [message]="message">
+          </dx-toast>
+          <dx-toast [(visible)]="isVisiblefail" [type]="type" [message]="message">
+          </dx-toast>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+</div>
+
+<app-footer style="background-color: #05265b;color: white;">
+<div class="row" style="margin-top: 20px;margin-left: 10px;">
+  <div class="col-md-6">
+    <img src="assets/img/avatars/footer.png">
+    <!-- <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png">
+            <span style="color: white;">Kaveri Online Services</span>
+            <span style="color: white;">Department of Stamps and Registration,Government of Karnataka</span> -->
+  </div>
+  <div class="col-md-2">
+    <h3 style="font-weight: 500;">Follow Us</h3>
+  </div>
+  <div class="col-md-2">
+    <h3 style="font-weight: 500;">Contact Us</h3>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-6"></div>
+  <div class="col-md-2" style="margin-left: -50px;margin-top: -20px;">
+    <img src="assets/img/avatars/Group 153.png" style="margin-left: 10px;cursor: pointer;">
+    <img src="assets/img/avatars/Group 154.png" style="margin-left: 10px;cursor: pointer;">
+    <img src="assets/img/avatars/Group 155.png" style="margin-left: 10px;cursor: pointer;">
+    <img src="assets/img/avatars/Group 156.png" style="margin-left: 10px;cursor: pointer;">
+  </div>
+  <div class="col-md-2" style="margin-left: 50px;margin-top: -20px;">
+    <span>8th floor, Kandaya Bhavan,</span><br>
+    <span>K.G. Road, Bengaluru-560009</span><br><br>
+
+    <span>Ph. No. 080-22220979</span>
+  </div>
+  <div class="col-md-2" style="margin-top: -20px;">
+    <span>sd1.igro@karnataka.gov.in</span><br>
+    <span>sd2.igro@karnataka.gov.in</span><br>
+    <span>sd3.igro@karnataka.gov.in</span><br>
+    <span>sd4.igro@karnataka.gov.in</span>
+  </div>
+
+</div><br>
+</app-footer>
+<app-footer style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+<div class="row" style="margin-left: 10px;">
+  <div class="col-xs-2">
+    <span></span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">Accessibility Statement&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Help&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Feedback&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;FAQ&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+  </div>
+  <div class="col-xs-1">
+    <span class="ftrs">&emsp;Visitors Analytics</span>
+  </div>
+  <!-- <div class="col-xs-1">
+    </div> -->
+</div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+<div class="row" style="margin-left: 10px;">
+  <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+</div>
+</app-footer>

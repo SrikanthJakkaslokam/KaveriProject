@@ -1,0 +1,26 @@
+.modal-content {
+    padding: 20px 25px;
+}
+.modal-header {
+    border-bottom: 0 none;
+    margin-bottom: 30px;
+    padding: 1.5rem;
+    .modal-title {
+        font-weight: bold; 
+        border-left: 4px solid rgb(57, 81, 192);            
+        padding-left: 5px;
+    }
+}
+.modal-footer {
+    border-top: 0 none;
+}
+.modal-body {
+    padding: 1.5rem;
+}
+.buttons button{
+    font-size: 12px;
+}
+.buttons{
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}

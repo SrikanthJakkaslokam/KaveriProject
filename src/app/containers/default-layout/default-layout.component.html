@@ -1,0 +1,124 @@
+<app-header [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}"
+[sidebarToggler]="'lg'" [asideMenuToggler]="'lg'" style="height: 80px;">
+
+<img src="assets/img/avatars/online1.png"
+  style="float:left;margin-left:-5%" />
+<!-- <h2 style="font-family:Segoe UI;font-weight: bold;float: left;margin: 0px 270px 30px -270px;">Kaveri Online Services</h2><br>
+<h4 style="font-family:Segoe UI;float: left;font-style: italic;margin: 0px 0px 0px 0px;">Department of Stamps and Registration,Government of Karnataka</h4> -->
+<ul class="nav navbar-nav ml-auto">
+    <li class="nav-item d-md-down-none">
+        <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+        </li>
+       <li class="nav-item d-md-down-none">
+      <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/departmental-login" aria-pressed="true">Logout</button>
+      </li>
+    </ul>
+  
+</app-header>
+
+<div class="app-body">
+  
+  <div #appSidebar  
+  (minimizedChange)="toggleMinimize($event)" style="width: 70px;background-color: #fff;margin-top: 25px;border: 1px solid rgba(0, 0, 0, 0.16);border-top: none;">
+  <!-- <app-sidebar-nav  [perfectScrollbar] [disabled]="appSidebar.minimized">
+    <img src="assets/img/avatars/bell.png" alt="">
+  </app-sidebar-nav>
+  <app-sidebar-minimizer></app-sidebar-minimizer> -->
+  <!-- <div class="sidebar"> -->
+    <ul class="nav">
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/subregistrar-dashboard"><img
+            src="assets/img/avatars/dashboardp.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/pending-application"><img
+            src="assets/img/avatars/file.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/application-allocation"><img
+            src="assets/img/avatars/add-friend (1).png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/returned-applications"><img
+            src="assets/img/avatars/userp.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/list4"><img
+            src="assets/img/avatars/rupee.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/list4"><img
+            src="assets/img/avatars/bellp.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/list4"><img
+            src="assets/img/avatars/settings.png"></a>
+      </li>
+      <li class="nav-item" class="circle">
+        <a class="nav-link" routerLinkActive="active" routerLink="/list4"><img
+            src="assets/img/avatars/donut-chart.png"></a>
+      </li>
+    
+    </ul>
+  <!-- </div> -->
+
+</div>
+
+
+  <main class="main" style="margin-left: 0px;background-color: #fbfbfb;margin-top: -5px;">
+  
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div><!-- /.container-fluid -->
+    
+  </main>
+ 
+  
+</div>
+
+<div style="background-color: #34373d;z-index: 1020;border: 1px solid #34373d;" class="foot">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+      </div> -->
+  </div>
+</div>
+  <div style="background-color: #fbfbfb;z-index: 1020;" class="foot1">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</div>

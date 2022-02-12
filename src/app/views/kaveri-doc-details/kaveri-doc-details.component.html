@@ -1,0 +1,226 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+         
+       <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+               
+                <div class="card-body">
+                    <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/search-on-kaveri"><br>
+                    </div>
+                    <div>
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <img src="assets/img/avatars/kaveridet.png">
+                    </div>
+                    <form class="form-horizontal" [formGroup]="kaveridocDetailsForm" (ngSubmit)="onSubmit()"> 
+                    <div style="margin-top: 30px;margin-left: 60px;">
+                        <div class="row">
+                            <div class="form-group col-md-2"></div>
+                            <div class="form-group col-md-2">
+                                <label for="district">District</label>
+                                <select type="text" name="district" class="form-control" formControlName="district" [(ngModel)]="selecteddistvalue" (ngModelChange)="ondistrictValuechange($event)"  (change)="ondistrictChange($event)"
+                                required [ngClass]="{ 'is-invalid': submitted && f.district.errors }">
+                                <option disabled readonly>Select District</option>
+                                <option *ngFor="let d of districtList" [value]="d.districtCode"> {{d.districtNamee}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.district.errors" class="invalid-feedback">
+                              <div *ngIf="f.district.errors.required">District is required</div>
+                          </div>
+                            </div>
+                            <div class="form-group col-md-2" style="margin-left: 60px;">
+                                <label for="taluka">Taluka</label>
+                                <select type="text" name="taluka" class="form-control" formControlName="taluka" [(ngModel)]="selectedtalukvalue" (change)="ontalukaChange($event)" (ngModelChange)="ontalukValuechange($event)"
+                                [ngClass]="{ 'is-invalid': submitted && f.taluka.errors }" required>
+                                <option disabled readonly>Select Taluka</option>
+                                <option *ngFor="let t of talukaList" [value]="t.talukCode"> {{t.talukNamee}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.taluka.errors" class="invalid-feedback">
+                              <div *ngIf="f.taluka.errors.required">Taluka is required</div>
+                          </div>
+                            </div>
+                            <div class="form-group col-md-2" style="margin-left: 60px;">
+                                <label for="hobli">Hobli/ Town Name</label>
+                                <select type="text" name="hobli" class="form-control" formControlName="hobli" [(ngModel)]="selectedhoblivalue"  (change)="onhobliChange($event)" (ngModelChange)="onhobliValuechange($event)"
+                                [ngClass]="{ 'is-invalid': submitted && f.hobli.errors }"
+                                required>
+                                <option disabled readonly>Select Hobli</option>
+                                <option *ngFor="let h of hobliList" [value]="h.hoblicode"> {{h.hoblinamee}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.hobli.errors" class="invalid-feedback">
+                              <div *ngIf="f.hobli.errors.required">Hobli is required</div>
+                          </div>
+                            </div>
+                            <div class="form-group col-md-2" style="margin-left: 40px;"></div>
+                       </div><br>
+                      <div class="row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-2">
+                            <label for="village">Index- II:Village</label>
+                            <select type="text" name="village" class="form-control" formControlName="village" [(ngModel)]="selectedvillagevalue"  (change)="onvillageChange($event)"
+                                [ngClass]="{ 'is-invalid': submitted && f.village.errors }" required>
+                                <option disabled readonly>Select Index II: Village</option>
+                                <option *ngFor="let v of villageList" [value]="v.villagecode"> {{v.villagenamee}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.village.errors" class="invalid-feedback">
+                              <div *ngIf="f.village.errors.required">Village is required</div>
+                          </div>
+                        </div>
+                       
+                        <div class="form-group col-md-2" style="margin-left: 60px;">
+                            <label for="propertyType">Property Type</label>
+                            <select type="text" name="propertyType" class="form-control" formControlName="propertyType" [(ngModel)]="selectedpropertyType" 
+                            [ngClass]="{ 'is-invalid': submitted && f.propertyType.errors }" required>
+                             <option *ngFor="let v of PropertyTypeList" [value]="v.propertytypeid"> {{v.typeNameEnglish}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.propertyType.errors" class="invalid-feedback">
+                          <div *ngIf="f.propertyType.errors.required">Village is required</div>
+                      </div>
+                        </div>
+                        <div class="form-group col-md-2" style="margin-left: 60px;">
+                            <label for="village">Property ID</label>
+                            <input type="text" class="form-control" placeholder="Value" [(ngModel)]="docNo"
+                            formControlName="propertyID" [ngClass]="{ 'is-invalid': submitted && f.propertyID.errors }"  required>
+                            <div *ngIf="submitted && f.propertyID.errors" class="invalid-feedback">
+                              <div *ngIf="f.propertyID.errors.required">Property ID is required</div>
+                          </div> 
+                            <!-- <select type="text" name="village" class="form-control" formControlName="propertyID" 
+                            required>
+                            <option disabled readonly>Select Property Id</option>
+                            <option>Select Property Id</option> -->
+                            <!-- <option *ngFor="let v of villageList" [value]="v.villagecode"> {{v.villagenamee}}</option> -->
+                        <!-- </select> -->
+                        </div>
+                        <div class="form-group col-md-2" style="margin-left: 40px;"></div>
+                      </div><br>
+                      <div class="row">
+                        <div class="form-group col-md-2"></div>
+ 
+                        <div class="form-group col-md-2">
+                            <label for="survey">Date of Transaction</label>
+                            <!-- <input type="text" class="form-control" id="survey" placeholder="Value" [(ngModel)]="surVey"
+                            formControlName="surveyno" required> -->
+                            <input class="form-control" id="date-input" type="date" name="date-input" [(ngModel)]="dateTrxn" placeholder="date" formControlName="transactionDate">
+                        </div>
+                        <div class="form-group col-md-2" style="margin-left: 60px;">
+                        </div>
+                        <div class="form-group col-md-2" style="margin-left: 40px;"></div>
+                      </div>
+                    </div><br><br>
+                    <div class="row">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7">
+                        <button type="button" class="btn btn-primary px-4" style="background-color: #0a429b;" (click)="onSubmit()">Find My Property</button>
+                        </div>
+                      </div><br><br>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+      </div>
+    </div>
+  </main>
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

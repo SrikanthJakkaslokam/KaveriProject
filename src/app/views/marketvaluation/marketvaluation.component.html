@@ -1,0 +1,316 @@
+<app-header  [navbarBrandRouterLink]="['']" [fixed]="true"
+[navbarBrandFull]="{src: 'assets/img/avatars/NoPath.png', width: '70', height: '70'}"
+[navbarBrandMinimized]="{src: 'assets/img/avatars/government-of-karnataka-logo-1000x500.png', width: '40', height: '40'}" [sidebarToggler]="'lg'"
+[asideMenuToggler]="'lg'">
+
+  <img src="assets/img/avatars/government-of-karnataka-logo-1000x500.png" class="img-avatar" style="float:left;margin-left:-80px" />
+  <span class="Kaveri">Kaveri Online Services</span>
+  <span class="Dept">Department of Stamps and Registration,Government of Karnataka</span>
+  <ul class="nav navbar-nav ml-auto">
+    <!-- <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></a>
+    </li> -->
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
+        dropdownToggle (click)="false">
+        <span>Hello, {{loggedinUser}}&nbsp;&nbsp;&nbsp;&nbsp;<img src="assets/img/avatars/avatar-blank.jpg" class="img-avatar" alt="" /></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+        <div class="dropdown-header text-center"><strong>Account</strong></div>
+        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <!--<a class="dropdown-item"><i class="fa fa-wrench"></i> Setting</a>-->
+        <a class="dropdown-item" href="#" routerLink="/change-password"><i class="fa fa-lock"></i>Change Password</a>
+      </div>
+    </li>
+    
+    <li class="nav-item d-md-down-none">
+      <a class="nav-link"><img src="assets/img/avatars/bell.png" alt=""></a>
+      </li>
+     <li class="nav-item d-md-down-none">
+    <button type="button" style="background-color: #0a429b;" class="btn btn-block btn-primary active" routerLink="/landing-page" aria-pressed="true">Logout</button>
+    </li>
+  </ul>
+        <dx-tabs style="width: 100%;margin-top: 130px;position: fixed">
+            <dxi-item>
+                <a href="#" routerLink="/dashboard" ></a>
+                <span>Home</span>
+            </dxi-item>
+            <dxi-item>
+                <span>About Department</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Resources</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>External Links</span>
+            </dxi-item>
+            <dxi-item>
+                <span>Help</span>
+            </dxi-item>
+        </dx-tabs> 
+</app-header>    
+   
+<main class="main"> 
+    <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;">
+      
+      <div class="animated fadeIn">
+       <div class="row" style="margin-left: -80px;margin-top: 80px;margin-right: -25px;">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <img src="assets/img/avatars/Group 417.png" style="cursor: pointer;" routerLink="/property-schedule-component"><br>
+                    </div>
+                    <div>
+                        <img src="assets/img/avatars/Hello.png" style="width: 150px;height:95px">
+                        <img src="assets/img/avatars/MarketValuetion.png">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+      </div>
+    <!-- </div> -->
+    <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+      
+        <div class="animated fadeIn">
+          
+         <div class="row" style="margin-left: -80px;margin-right: -25px;">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body" style="margin-left: 50px;">
+                    <br/>
+                    <div class="row">
+                      <div>
+                          <label class="unselectable" style="cursor: pointer; padding-left: 10px; font-weight: bold;" (click)="Backbuttonclicks()"> < &nbsp;&nbsp;&nbsp; </label><br>
+                      </div>
+                          <label style="font-size: 16px;font-weight: bold;">PROPERTY {{displaypropertytypeNum}} OF {{numofprop}}</label><br>
+                      <div>
+                          <label class="unselectable" style="cursor: pointer; font-weight: bold;" (click)="frontbuttonclicks()"> &nbsp;&nbsp;&nbsp;> </label><br>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-3">
+                          <label for="district" style="font-weight: bold;">DISTRICT : {{disTrict}}</label>
+                      </div>
+                      <div class="col-md-3">
+                          <label for="taluka" style="font-weight: bold;">TALUKA : {{talUka}}</label>
+                      </div>
+                      <div class="col-md-3">
+                          <label for="hobli" style="font-weight: bold;">HOBLI/TOWN : {{town}}</label>
+                      </div>
+                      <div class="col-md-3">
+                          <label for="village" style="font-weight: bold;">INDEX II: VILLAGE : {{vilLage}}</label>
+                      </div>
+                  </div><br>
+                  <br><br>
+                  <div class="row">
+                    <div class="form-group col-md-2">
+                    <!-- <img src="assets/img/avatars/Input@3x.png" style = "width: 133px;"> -->
+                    <label style="font-size: 16px;font-weight: bold;">Property Usage</label><br>
+                    <label style="font-size: 16px;font-weight: bold;">AGRICULTURAL</label>
+                    </div>
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-2">
+                        <label for="totalArea" style="font-size: 14px;font-weight: bold;">Total Area</label><br>
+                        <label style="font-size: 16px;font-weight: bold;">{{Unitcode}} Acres</label>
+                    </div>
+                    <div class="form-group col-md-1"></div>
+                    <div class="form-group col-md-3"></div>
+                  </div>
+                     <!-- <div>
+                        <label for="PropertyType">
+                            Property Type
+                        </label>
+                        <input id="value" type="text">
+                      </div>
+                    <div>
+                        <label for="TotalArea">
+                            Total Area
+                        </label>
+                        <input id="value" type="text" >
+                      </div> -->
+
+                
+                  </div>
+              </div>
+          </div>
+      </div>
+   
+        </div>
+      <!-- </div> -->
+    <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+      
+        <div class="animated fadeIn">
+         <div class="row" style="margin-left: -80px;margin-right: -25px;">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-body">   
+                    <img src="assets/img/avatars/Agriculture Rate details@3x.png" style = "width: 211px;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12" style = "margin-left: -80px;
+                                margin-top: 22px;">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body" style = "width: 1276px;">
+                                                <table class="table table-striped table-bordered">
+                                                    <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Property Type</th>
+                                                            <th>Rate(₹/Acres)</th>
+                                                            <th>Select</th>
+            
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let p of products; let i=index;">
+                                                            <td>{{i+1}}</td>
+                                                            <td>{{p.propertytype}}</td>
+                                                            <td>{{p.rate}}</td>
+                                                            <td><input type="checkbox"(change)="SelectedPropertytypeRate(p);" value="{{i}}" [(ngModel)]="products[i].checked" [checked]="p.checked"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+   
+        </div>
+      <!-- </div> -->
+      <!-- <div class="container-fluid" style="background-color: #fbfbfb;padding-top: 0px 0px 0px 0px!important;"> -->
+      
+        <div class="animated fadeIn">
+            <div class="row" style="margin-left: -80px;margin-right: -25px;">
+             <div class="col-md-12">
+                 <div class="card">
+                     <div class="card-body"> 
+                        <img src="assets/img/avatars/Annexure rules@3x.png" style = "width: 159px;"><br><br>  
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col-md-12" style = "margin-left: -80px;"
+                                   >
+                                       <div class="panel panel-default">
+                                           <div class="panel-body" style = "width: 1276px;">
+                                                   <table class="table table-striped table-bordered" >
+                                                       <thead style="background-color: #0a429b;color: #fbfbfb;">
+                                                           <tr>
+                                                               <th>S.No</th>
+                                                               <th>Yes</th>
+                                                               <th>No</th>
+                                                               <th>Annexure Rule</th>
+                                                               <th>Percentage</th>
+                                                               <th>Amount(₹)</th>
+                                                           </tr>
+                                                       </thead>
+                                                       <tbody>
+                                                           <tr *ngFor='let annexurerules of Annexurerules; let i=index;'>
+                                                               
+                                                               <td>{{i+1}}</td>
+                                                               <td><input type="checkbox" (click)="SelectedAnnexarule(annexurerules)" value="{{annexurerules.i}}" [(ngModel)]="Annexurerules[i].Yeschecked"/></td>
+                                                               <td><input type="checkbox" (click)="Removepercentagerule(annexurerules)" [(ngModel)]="Annexurerules[i].Nochecked"/></td>
+                                                               <td>{{annexurerules.description}}</td>
+                                                               <td>{{annexurerules.percentage}}</td>
+                                                               <td>{{annexurerules.Amount}}</td>
+                                                           </tr>
+                                                       </tbody>
+                                                   </table>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div style="text-align: center;">
+                            <button type="button" class="btn btn-primary px-4" (click)="ValuateTotalAmount()" style="background-color: #0a429b;">Valuate</button>
+                       </div><br><br>
+                       <div class="container" *ngIf="TotalValuationAmount">
+                        <div class="row">
+                            <div class="col-md-12" style = "margin-left: -80px;" >
+                                <div class="panel panel-default">
+                                    <div class="panel-body" style = "width: 1276px;">
+                                            <table class="table table-striped table-bordered" >
+                                                <tbody>
+                                                    <tr *ngFor='let totallist of Totallist; let i=index;'>
+                                                        <td>{{totallist.name}}</td>
+                                                        <td>{{totallist.amount}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                          <button type="button" class="btn btn-primary px-4" (click)="SendValuationdetailstoApi()" style="background-color: #0a429b;">Save and Continue</button>
+                     </div>
+                    </div>
+                    
+                     </div>
+                 </div>
+             </div>
+         </div>
+      </div>
+      
+      
+      <!-- </div> -->
+    </div>
+    </main>
+
+
+
+<app-footer  style="background-color: #34373d;z-index: 1020;height: 50px;border: 1px solid #34373d;">
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-xs-2">
+      <span></span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">Accessibility Statement&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Terms & Conditions&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Website Policies&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Help&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Feedback&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Contact Us&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Web Information Manager&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;FAQ&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Sitemap&emsp;|</span>
+    </div>
+    <div class="col-xs-1">
+      <span class="ftrs">&emsp;Visitors Analytics</span>
+    </div>
+    <!-- <div class="col-xs-1">
+    </div> -->
+  </div>
+</app-footer>
+<app-footer style="height: 50px;background-color: #fbfbfb;z-index: 1020;">
+  <div class="row" style="margin-left: 10px;">
+    <span style="color: black;">©2021, Department of Stamps and Registration, Karnataka</span>
+  </div>
+</app-footer>

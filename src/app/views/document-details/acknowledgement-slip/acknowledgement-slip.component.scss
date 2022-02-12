@@ -1,0 +1,87 @@
+main {
+  padding: 0px 25px 0px 25px;
+}
+.card-body {
+    padding: 30px;
+  }
+  .document-registration {
+    padding: 5px 10px;
+    .header-text {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .acknowledgement-header {
+    padding: 0px 10px;
+    margin-top: 25px;
+    p {
+      width: 4px; 
+      height: 25px;
+      border-radius: 3px; 
+      background: rgb(57, 81, 192);
+    }
+    label {
+      font-weight: bold;
+      font-size: 15px;
+    }
+  }
+  .endorsement {
+    margin: 20px 0px 0px 0px;
+  }
+  th, td {
+    padding: 5px 10px;
+    border: 2px solid #000;
+  }
+  .circle {
+      width: 48px;
+      height: 48px;
+      margin: 0 -5px 3px 0;
+      border-radius: 24px;
+      border: solid 1px #707070;
+      background-color: #dfdfdf;
+    }
+    .main .container-fluid {
+      padding: 20px;
+      background-color: #fbfbfb;
+      font-family: "Segoe UI";
+    }
+    .search {
+      width: 300px;
+      height: 45px;
+      margin-left: 155px;
+      border-radius: 24px;
+      border: solid 1px #707070;
+      background-color: #fff;
+    }
+  
+    .input[type=checkbox] {
+      box-sizing: border-box;
+      padding: 0;
+      border-radius: 15px;
+      font: 16px/16px;
+  }
+  .remarks{
+    border-color: #2023da;
+  }
+  .buttons button{
+    font-size: 12px;
+  }
+  .modal-header {
+    border-bottom: 0 none;
+  }
+  
+  .modal-footer {
+    border-top: 0 none;
+  }
+  .modal-body {
+    padding: 1.5rem;
+  }
+  .continue-block {
+    margin: 30px 0px 30px 0px;
+  }
+  .table-container {
+    margin: 30px 0px 30px 0px;
+  }
+  .registered{
+    margin-left: 60px;
+  }

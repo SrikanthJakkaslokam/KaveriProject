@@ -1,0 +1,70 @@
+* {
+    font-family: Segoe UI !important;
+}
+.title-border {
+    border-left: 5px solid #0a429b;
+    opacity: 1;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #222;
+    font-weight: bold;
+  }
+.sub-text {
+    font-size: 13px;
+    color: #000;
+  }
+.step2 {
+    margin-bottom: 33px;
+    margin-top: 85px;
+  }
+.step1 {
+    margin-bottom: 33px;
+  }
+.property-text,
+  .boundary-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 40px;
+  }
+  .boundary-text {
+    margin-top: 36px;
+    font-size: 18px;
+  }
+
+.schedule-text {
+  font-size: 18px;
+  color: #4e4e4e;
+  margin-top: 40px;
+  width: 70%;
+}
+
+.text-padding {
+  padding: 0 40px;
+}
+
+.td-value {
+    color: #707070;
+}
+ .font-black {
+     color: #4E4E4E;
+ }
+ .font-blue {
+     color: #0A429B !important;
+ }
+ .custom-select {
+     border-color: #0A429B;
+     &:focus {
+         box-shadow: none !important;
+         outline: none !important;
+     }
+ }
+ td {
+    border: 1px solid #707070;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.marg-24 {
+  margin-bottom: 27.5px;
+}
